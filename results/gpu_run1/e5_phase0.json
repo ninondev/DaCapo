@@ -1,0 +1,343 @@
+{
+  "config": {
+    "experiment": "e5_analogy",
+    "outdir": "outputs_gate",
+    "tau": 0.7
+  },
+  "config_hash": "fc4e49c6cfb3",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "packages": {
+      "numpy": "2.1.3",
+      "torch": "2.11.0+cu130",
+      "torchcrepe": null,
+      "basic-pitch": "0.4.0",
+      "mir_eval": "0.8.2",
+      "pretty_midi": "0.2.11.post0",
+      "librosa": "0.11.0"
+    },
+    "fluidsynth": "FluidSynth runtime version 2.3.4",
+    "git_commit": "unknown",
+    "git_dirty": true
+  },
+  "wall_seconds": 11.64,
+  "finished_utc": "2026-10-26T18:53:11Z",
+  "results": {
+    "summary": {
+      "tau": 0.7,
+      "cap1": {
+        "CI_lit": null,
+        "CI_ctl": null,
+        "ANA": null,
+        "RI+2": null,
+        "LI+2": null,
+        "RI+5": null,
+        "LI+5": null,
+        "RI-3": null,
+        "LI-3": null
+      },
+      "cap2": {
+        "CI_lit": null,
+        "CI_ctl": null,
+        "ANA": null,
+        "RI+2": null,
+        "LI+2": null,
+        "RI+5": null,
+        "LI+5": null,
+        "RI-3": null,
+        "LI-3": null
+      },
+      "cap3": {
+        "CI_lit": null,
+        "CI_ctl": null,
+        "ANA": null,
+        "RI+2": null,
+        "LI+2": null,
+        "RI+5": null,
+        "LI+5": null,
+        "RI-3": null,
+        "LI-3": null
+      }
+    },
+    "rows": [
+      {
+        "id": "mel00",
+        "split": "pilot",
+        "cond": "ctl",
+        "arm": "cap1",
+        "seed": "s1",
+        "acc": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.2857142857142857,
+          "D": 0.3333333333333333
+        },
+        "acc_oct": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.2857142857142857,
+          "D": 0.3333333333333333
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.171875,
+        "gap_rms_db_vs_context": 1.9877665709198191,
+        "choice": "none"
+      },
+      {
+        "id": "mel00",
+        "split": "pilot",
+        "cond": "ctl",
+        "arm": "cap2",
+        "seed": "s1",
+        "acc": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.2857142857142857,
+          "D": 0.0
+        },
+        "acc_oct": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.2857142857142857,
+          "D": 0.0
+        },
+        "gap_voiced": 0.934375,
+        "gap_polyphony": 0.703125,
+        "gap_rms_db_vs_context": -1.6985435065619874,
+        "choice": "none"
+      },
+      {
+        "id": "mel00",
+        "split": "pilot",
+        "cond": "ctl",
+        "arm": "cap3",
+        "seed": "s1",
+        "acc": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.2857142857142857,
+          "D": 0.0
+        },
+        "acc_oct": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.2857142857142857,
+          "D": 0.0
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.09375,
+        "gap_rms_db_vs_context": 2.3286724642914356,
+        "choice": "none"
+      },
+      {
+        "id": "mel00",
+        "split": "pilot",
+        "cond": "lit",
+        "arm": "cap1",
+        "seed": "s1",
+        "acc": {
+          "B": 0.5,
+          "B~": 0.3333333333333333,
+          "A": 0.6666666666666666,
+          "D": 0.3333333333333333
+        },
+        "acc_oct": {
+          "B": 0.5,
+          "B~": 0.3333333333333333,
+          "A": 0.6666666666666666,
+          "D": 0.3333333333333333
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.203125,
+        "gap_rms_db_vs_context": 2.6771132108957447,
+        "choice": "none"
+      },
+      {
+        "id": "mel00",
+        "split": "pilot",
+        "cond": "lit",
+        "arm": "cap2",
+        "seed": "s1",
+        "acc": {
+          "B": 0.5,
+          "B~": 0.3333333333333333,
+          "A": 0.5,
+          "D": 0.3333333333333333
+        },
+        "acc_oct": {
+          "B": 0.5,
+          "B~": 0.3333333333333333,
+          "A": 0.5,
+          "D": 0.3333333333333333
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.0625,
+        "gap_rms_db_vs_context": 1.9925024688499668,
+        "choice": "none"
+      },
+      {
+        "id": "mel00",
+        "split": "pilot",
+        "cond": "lit",
+        "arm": "cap3",
+        "seed": "s1",
+        "acc": {
+          "B": 0.6666666666666666,
+          "B~": 0.3333333333333333,
+          "A": 0.6666666666666666,
+          "D": 0.3333333333333333
+        },
+        "acc_oct": {
+          "B": 0.6666666666666666,
+          "B~": 0.3333333333333333,
+          "A": 0.6666666666666666,
+          "D": 0.3333333333333333
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.296875,
+        "gap_rms_db_vs_context": 2.7661619103844077,
+        "choice": "none"
+      },
+      {
+        "id": "mel01",
+        "split": "pilot",
+        "cond": "ctl",
+        "arm": "cap1",
+        "seed": "s1",
+        "acc": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.16666666666666666,
+          "D": 0.6
+        },
+        "acc_oct": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "C": 0.3333333333333333,
+          "D": 0.6
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.078125,
+        "gap_rms_db_vs_context": -0.7605496736938445,
+        "choice": "none"
+      },
+      {
+        "id": "mel01",
+        "split": "pilot",
+        "cond": "ctl",
+        "arm": "cap2",
+        "seed": "s1",
+        "acc": {
+          "B": 0.0,
+          "B~": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "acc_oct": {
+          "B": 0.0,
+          "B~": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "gap_voiced": 0.0,
+        "gap_polyphony": 0.03125,
+        "gap_rms_db_vs_context": -34.08867263717301,
+        "choice": "none"
+      },
+      {
+        "id": "mel01",
+        "split": "pilot",
+        "cond": "ctl",
+        "arm": "cap3",
+        "seed": "s1",
+        "acc": {
+          "B": 0.0,
+          "B~": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "acc_oct": {
+          "B": 0.0,
+          "B~": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "gap_voiced": 0.0125,
+        "gap_polyphony": 0.109375,
+        "gap_rms_db_vs_context": -33.76815106796811,
+        "choice": "none"
+      },
+      {
+        "id": "mel01",
+        "split": "pilot",
+        "cond": "lit",
+        "arm": "cap1",
+        "seed": "s1",
+        "acc": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "A": 0.0,
+          "D": 0.8
+        },
+        "acc_oct": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "A": 0.0,
+          "D": 0.8
+        },
+        "gap_voiced": 1.0,
+        "gap_polyphony": 1.15625,
+        "gap_rms_db_vs_context": 0.7618807786200958,
+        "choice": "D"
+      },
+      {
+        "id": "mel01",
+        "split": "pilot",
+        "cond": "lit",
+        "arm": "cap2",
+        "seed": "s1",
+        "acc": {
+          "B": 0.0,
+          "B~": 0.16666666666666666,
+          "A": 0.0,
+          "D": 0.6
+        },
+        "acc_oct": {
+          "B": 0.0,
+          "B~": 0.16666666666666666,
+          "A": 0.0,
+          "D": 0.6
+        },
+        "gap_voiced": 0.490625,
+        "gap_polyphony": 0.453125,
+        "gap_rms_db_vs_context": -5.461864894073935,
+        "choice": "none"
+      },
+      {
+        "id": "mel01",
+        "split": "pilot",
+        "cond": "lit",
+        "arm": "cap3",
+        "seed": "s1",
+        "acc": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "A": 0.0,
+          "D": 0.8
+        },
+        "acc_oct": {
+          "B": 0.3333333333333333,
+          "B~": 0.16666666666666666,
+          "A": 0.0,
+          "D": 0.8
+        },
+        "gap_voiced": 0.996875,
+        "gap_polyphony": 1.140625,
+        "gap_rms_db_vs_context": 0.9435960478332879,
+        "choice": "D"
+      }
+    ]
+  }
+}

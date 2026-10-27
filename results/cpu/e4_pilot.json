@@ -1,0 +1,123 @@
+{
+  "config": {
+    "experiment": "e4_sing_sweep",
+    "asr": "openai/whisper-small.en",
+    "f0": "swift"
+  },
+  "config_hash": "8f768a15c2ad",
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.14.1+cpu",
+      "torchcrepe": "0.0.24",
+      "basic-pitch": "0.4.0",
+      "mir_eval": "0.8.2",
+      "pretty_midi": "0.2.11.post0",
+      "librosa": "1.0.0"
+    },
+    "fluidsynth": "FluidSynth runtime version 2.3.4",
+    "git_commit": "c49d343f87d647cf42cc3a8e23c2972dd5ce08e7",
+    "git_dirty": true
+  },
+  "wall_seconds": 93.47,
+  "finished_utc": "2026-10-26T17:08:44Z",
+  "results": {
+    "summary": {
+      "ctx_oohs_k3|test": {
+        "npa": 0.25,
+        "npa_mismatch": 0.077,
+        "npa_oct": 0.667,
+        "rpa": 0.339,
+        "wer": 0.583,
+        "wer_mismatch": 1.095,
+        "voiced_frac": 0.737,
+        "polyphony": 1.455,
+        "n": 1
+      },
+      "noguide|test": {
+        "npa": 0.0,
+        "npa_mismatch": 0.054,
+        "npa_oct": 0.167,
+        "rpa": 0.0,
+        "wer": 0.333,
+        "wer_mismatch": 0.939,
+        "voiced_frac": 0.566,
+        "polyphony": 1.471,
+        "n": 1
+      },
+      "sde_oohs_n0.25|test": {
+        "npa": 1.0,
+        "npa_mismatch": 0.108,
+        "npa_oct": 1.0,
+        "rpa": 0.959,
+        "wer": 12.417,
+        "wer_mismatch": 12.638,
+        "voiced_frac": 0.629,
+        "polyphony": 0.86,
+        "n": 1
+      }
+    },
+    "rows": [
+      {
+        "file": "item03__ctx_oohs_k3__s1.wav",
+        "id": "item03",
+        "split": "test",
+        "arm": "ctx_oohs_k3",
+        "seed": "s1",
+        "npa": 0.25,
+        "npa_oct": 0.6666666666666666,
+        "voiced_notes": 1.0,
+        "rpa": 0.33912037037037035,
+        "rca": 0.6006944444444444,
+        "npa_mismatch": 0.07713498622589532,
+        "npa_oct_mismatch": 0.11580843399025217,
+        "wer": 0.5833333333333334,
+        "wer_mismatch": 1.0950413223140496,
+        "hyp": "hold my hand and stay with me still with me and i understand",
+        "voiced_frac": 0.7365951742627346,
+        "polyphony": 1.4548494983277591
+      },
+      {
+        "file": "item03__noguide__s1.wav",
+        "id": "item03",
+        "split": "test",
+        "arm": "noguide",
+        "seed": "s1",
+        "npa": 0.0,
+        "npa_oct": 0.16666666666666666,
+        "voiced_notes": 0.8333333333333334,
+        "rpa": 0.0,
+        "rca": 0.1597222222222222,
+        "npa_mismatch": 0.05371900826446281,
+        "npa_oct_mismatch": 0.11649713922441195,
+        "wer": 0.3333333333333333,
+        "wer_mismatch": 0.9385992795083703,
+        "hyp": "hold my hand say it with me the night is done",
+        "voiced_frac": 0.5664285714285714,
+        "polyphony": 1.4714285714285715
+      },
+      {
+        "file": "item03__sde_oohs_n0.25__s1.wav",
+        "id": "item03",
+        "split": "test",
+        "arm": "sde_oohs_n0.25",
+        "seed": "s1",
+        "npa": 1.0,
+        "npa_oct": 1.0,
+        "voiced_notes": 1.0,
+        "rpa": 0.9594907407407407,
+        "rca": 0.9594907407407407,
+        "npa_mismatch": 0.107649925831744,
+        "npa_oct_mismatch": 0.16068022886204705,
+        "wer": 12.416666666666666,
+        "wer_mismatch": 12.637688069506252,
+        "hyp": "ooooh ooooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oooh oo",
+        "voiced_frac": 0.6293565683646113,
+        "polyphony": 0.8595317725752508
+      }
+    ]
+  }
+}

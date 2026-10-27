@@ -1,0 +1,23 @@
+{
+ "device": "cuda",
+ "load_seconds": 8.1,
+ "base_seconds": 5.4,
+ "n_steps_recorded": 8,
+ "t_schedule": [
+  1.0,
+  0.9531,
+  0.8984,
+  0.832,
+  0.75,
+  0.6445,
+  0.5,
+  0.3008
+ ],
+ "identity_rel_maxdiff": 0.0,
+ "swap_vs_base_rel_maxdiff": 0.2835130967543175,
+ "swap_seconds": 1.9,
+ "combine_rel_maxdiff": 0.0,
+ "combine_denoiser_calls": 16,
+ "passed": true,
+ "total_seconds": 21.6
+}

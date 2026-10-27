@@ -1,0 +1,174 @@
+# Da Capo
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ninondev/DaCapo/blob/main/notebook.ipynb)
+
+[English](README.md) | 中文
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/hero_dark.svg">
+  <img alt="示意图：在 ACE-Step 1.5 里，旋律经过规划器的 5 Hz 规划 token 之后，只有 29% 的帧音名正确；同一段旋律直接作为稠密音频交给渲染器，得分是 91%，和原音频（90%）一样。" src="figures/hero_light.svg" width="100%">
+</picture>
+
+我小学学了六年音乐，业余考级考到六七级（满级十级），上初中就没再碰了。后来是 AI 写歌让我又对音乐有了兴趣。我想让 AI 唱我自己写的旋律，结果歌是好听的，旋律却不是我的；想让副歌在后面再出现一次，它基本做不到。
+
+这个仓库就是我在找原因。我研究一个开源模型 ACE-Step 1.5，测旋律在它里面是在哪一步丢掉的。
+
+## 模型是怎么工作的
+
+[ACE-Step 1.5](https://github.com/ace-step/ACE-Step-1.5)（MIT 许可）分两部分。一个语言模型（规划器）先把歌写成一份粗略的规划，形式是 token，每秒 5 个。一个流匹配模型（渲染器）再根据这份规划、歌词和一句文字描述，用 8 个去噪步生成音频。渲染器也可以不用规划，直接拿一段真实音频当稠密上下文。
+
+我给旋律打分用的是音级准确率：音名（C、D、E 这些，不管八度）和我的乐谱对得上的时间占多少。
+
+## 我发现了什么
+
+1. 规划会丢掉大部分旋律。经过规划器的 token 之后，只有 29% 的帧音名是对的，瞎猜大约是 10%。这还是 token 直接从这段旋律自己的音频算出来的情况，对规划器来说已经很容易了。同一段旋律直接作为稠密音频交给渲染器，得分是 91%，和原音频（90%）一样。
+2. 丢失发生在 token 化这一步。用一个线性探针，从同样每秒 5 帧的音频潜变量里读音名，准确率是 0.919；从规划 token 里读，只有 0.575。
+3. 在我的测试里，模型要么唱对歌词，要么唱对旋律，两样不能都对。只给歌词不给旋律，它能唱出 66% 的词。我用一段没有歌词的旋律去引导它，音唱准了（86% 到 100%），歌词却掉到 3% 或更少。
+
+所以我把控制放在渲染器里，因为旋律在那里还在。我的代码能看到 8 个去噪步中的每一步，可以读取或修改模型正在生成的东西，也可以换掉它听的文字、歌词或音频，而且不多调用一次模型。
+
+## 结果
+
+这里每个数字都来自 [`results/`](results/) 里的文件，每张图都由 [`figures/make_figures.py`](figures/make_figures.py) 从这些文件画出来。测试规模还小，每一节都写了样本量。
+
+### 旋律在哪里丢失
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/e1_melody_paths_dark.svg">
+  <img alt="柱状图：旋律经过各条路径后的音级准确率（合并 80、120、160 BPM），shift 3.0 与 1.0：原音频 0.90 和 0.90；以稠密 25 Hz 潜变量为上下文 0.91 和 0.91；仅 VAE 往返 0.90 和 0.90；5 Hz 规划 token 0.29 和 0.31；规划 token 加新配器 0.31 和 0.32；无音频条件 0.10 和 0.11。" src="figures/e1_melody_paths_light.svg" width="100%">
+</picture>
+
+我做了 16 条音符完全已知的旋律，每条是钢琴或长笛旋律，配和弦、贝斯和鼓，速度分别是 80、120、160 BPM。每条旋律都走一遍模型的每条路径，再测出来还剩多少旋律。
+
+走稠密音频这条路，音名保留得和我的测量工具能测到的一样好。它的音符 F1 是 0.72，原音频是 0.78，差距和单纯把音频编码再解码一次差不多。走规划 token 就少多了。我把每个输出也和同速度的其他旋律比一次，扣掉这个随机水平之后，token 只保留了 28%（95% 置信区间 22% 到 34%）的旋律信息，音符 F1 只有 0.12。
+
+<sub>16 条旋律 × 3 种速度，一个随机种子，NVIDIA L4，8 步 turbo 模型。shift 是采样器的一个设置：3.0 是 ACE-Step 文档给 turbo 推荐的值，默认值 1.0 结果一样。“无音频”这一项每种设置只有 6 个不同的生成结果。我之前在 CPU 上做过一次更小的测试（每种速度 4 条旋律），90 BPM 时 token 得了 0.51，GPU 上没有重复出来，所以我用 GPU 的数字。代码：[`experiments/e1_melody_paths`](experiments/e1_melody_paths/)。</sub>
+
+### 为什么会丢失
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/e1b_probe_dark.svg">
+  <img alt="柱状图：线性探针在测试旋律上的音级准确率，规划 token 与同为 5 Hz 的音频潜变量对比：全部帧 0.575 对 0.919；帧内音高不变 0.645 对 0.982；帧内有换音 0.412 对 0.773；没学过的主奏乐器 0.504 对 0.846。多数类基线为 0.125。" src="figures/e1b_probe_light.svg" width="100%">
+</picture>
+
+帧率低不是全部原因。一个音在整个 200 毫秒的帧里都没变时，探针从音频潜变量里几乎能全读对（0.982），从规划 token 里只有 0.645。分开读每个 token 里的编码数字会好一点（0.748）。token 还把乐器的音色混进了规划：按整段算，只换主奏乐器，变掉的 token 和换一条旋律差不多多（73% 对 71% 的帧）。同一段音频编码两次，本来就会变掉大约 15%。
+
+<sub>48 条旋律 × 3 种主奏乐器。探针在 42 条旋律上学习，在另外 6 条上测试（720 帧，一次划分）。代码：[`experiments/e1_melody_paths`](experiments/e1_melody_paths/)。</sub>
+
+### 歌词还是旋律
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/e4_tradeoff_dark.svg">
+  <img alt="散点图：21 种设置（20 种引导加无引导）下，唱在乐谱音高上的音的比例和听得出的歌词比例。无引导时分别是 0.03 和 0.66。音唱准 86% 以上的设置，歌词最多只剩 0.03。378 段音频里只有 2 段两样都对了一半以上。" src="figures/e4_tradeoff_light.svg" width="100%">
+</picture>
+
+我让模型按一条旋律唱一句歌词，每个单音节的词对一个音。没有引导时它不知道旋律，所以音只是碰巧对上（3%），但能唱出 66% 的词。然后我用这段旋律的无歌词版本引导它，有两种方式：在 8 步里的前 k 步当上下文，或者加噪后当生成的起点（SDEdit，一种已有的方法，我拿来当基线）。凡是把音唱准的设置（86% 以上），歌词都没了（3% 或更少）。378 段测试音频里，只有 2 段音和词都对了一半以上。
+
+我猜旋律和歌词得一起引导，一个音节一个音节地对上。这就是“歌词时钟”（E6）的想法，我还没做。
+
+<sub>12 条旋律（3 条用来试设置，9 条用来测试）× 21 种设置 × 2 个随机种子。歌词由 Whisper large-v3 转写。这个测试是探索性的：设置没有在测试前登记。代码：[`experiments/e4_sing`](experiments/e4_sing/)。</sub>
+
+### 测量本身就难
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/e0_ruler_dark.svg">
+  <img alt="点图：音高追踪器在完全准确的旋律上的准确率，独奏和加响亮伴奏对比：钢琴 0.95 对 0.09，合成器 0.95 对 0.55，类人声 0.93 对 0.59。" src="figures/e0_ruler_light.svg" width="100%">
+</picture>
+
+测模型之前，我先在每个音都已知的音频上测了我的测量工具。音高追踪器测独奏旋律很准，一加上响亮的伴奏就不行了。完整混音里的类人声旋律，错一两个音很难被发现（最好的 AUC 是 0.65 到 0.78）。所以有伴奏的时候，我都和原音频上的同一个分数比；唱歌的部分，我只给要求“无伴奏”的歌打分。
+
+<sub>图里每种条件 9 条旋律；找错音的测试每种条件 6 条旋律。代码：[`experiments/e0_ruler`](experiments/e0_ruler/)。</sub>
+
+## 我现在在做的
+
+钩子的代码在 [`dacapo/ace.py`](dacapo/ace.py)。在 8 个去噪步的每一步，它都能看到模型以为最后的音频会是什么样，实验可以读它、改它，或者在中途换掉文字、歌词或音频。钩子什么都不改时，输出和不加钩子完全一样（CPU 和 GPU 上差别都是 0.0），所以我看到的变化都来自我做的事。
+
+主要的研究（E5）是看模型会不会发展一个动机。我给它放一个模式，比如 A B A，或者一个动机和它升高后的样子，留一段空白让它填，再看它填了什么：原样重复、移调、模进还是类比，并和打乱的旋律、错开的时间这些对照比。第一次运行前，我就把假设、停止规则和代码版本写好登记了（[预注册文件](experiments/e5_motif/registration/prereg.json)）。
+
+第一次运行没过我自己定的质量检查。只有 49% 的空白里是一条清楚的旋律、音量正常，而我要求 75%，所以按我自己的规则，这次对动机什么也说明不了，不能说能，也不能说不能。我在自己的设置里找到两个可能的原因：填空时给了模型错的任务指令；每首歌都用了同一份起始噪声。结果和更正都在 [`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json) 里。修好后的运行会在开始前先登记。
+
+第二个研究（E6）是歌词时钟。它会引导模型里连接歌词和音频的注意力头，让每个音节落在对应的音上，旋律引导负责保持音高。
+
+## 进展
+
+| | 问题 | 状态 |
+|---|---|---|
+| E0 | 我的测量工具准不准？ | 完成 |
+| E1 | 旋律经过模型每条路径后还剩多少？ | GPU 上完成：16 条旋律 × 3 种速度，两种 shift |
+| E1b | 规划 token 里有什么，丢失在哪里？ | GPU 上完成：48 条旋律，一次测试划分 |
+| E2 | 能不能在每个去噪步加钩子而不改变输出？ | 完成：CPU 和 GPU 上输出完全一样 |
+| E3 | 能不能不管什么乐器都从音频潜变量里读出音高？ | 探索性：新乐器上 0.88（瞎猜 0.03）；专门的子空间并不比完整潜变量好 |
+| E4 | 能不能既唱准音又唱清楚词？ | 探索性：12 条旋律 × 21 种设置 × 2 个种子 |
+| E5 | 能不能发展一个动机？ | 第一次运行没过质量检查；下一步是修好后的运行 |
+| E6 | 歌词时钟能不能对准每个音节？ | 计划中 |
+
+[`LOG.md`](LOG.md)（英文）记下了每一次运行，包括失败和我犯的错。
+
+## 我怎么做
+
+我先在音符已知的音频上测测量工具，再测模型。主要的研究在运行前写好假设和停止规则；有改动就加新文件，不改旧文件。不好的结果也公开。每种方法都会给同样多的尝试次数，“多生成几次挑最好的”会作为基线。我不用语言模型来判断音乐，最后的结论会用真人盲听。仓库里每个数字都能查到对应的结果文件，音频可以用固定的随机种子由代码重新生成（同一台设备结果一样，CPU 和 GPU 之间可能不同）。
+
+## 运行
+
+最简单的是点上面的 Colab 按钮，选 L4，然后点“全部运行”。笔记本会自动安装、下载 ACE-Step 的开源权重（约 10 GB）、跑完所有 GPU 测试（L4 上约 2.5 小时，不算安装和下载），最后给你一个结果压缩包。
+
+在自己电脑上跑测量工具（macOS 或 Linux）：
+
+```bash
+git clone https://github.com/ninondev/DaCapo && cd DaCapo
+uv venv --python 3.12 && source .venv/bin/activate
+uv pip install -e ".[dev,transcription]"
+uv pip install --no-deps basic-pitch        # 用 ONNX 模型，不装 TensorFlow
+# FluidSynth 和 General MIDI 音色库：
+#   Ubuntu: sudo apt install fluidsynth fluid-soundfont-gm
+#   macOS:  brew install fluid-synth，然后 export DACAPO_SF2=/path/to/FluidR3_GM.sf2
+pytest -q                                    # 13 个测试
+python experiments/e0_ruler/run.py --quick   # 测试测量工具（CPU 约 3 分钟）
+python figures/make_figures.py               # 从 results/ 重新画所有图
+```
+
+运行歌曲模型的测试还需要装 [ACE-Step 1.5](https://github.com/ace-step/ACE-Step-1.5)。每一步的具体命令在 [`experiments/run_all.py`](experiments/run_all.py) 里。
+
+<details>
+<summary>文件</summary>
+
+```
+dacapo/           代码库：旋律、渲染、音高追踪、打分，还有 ace.py（接到 ACE-Step 上的钩子）
+experiments/      每个研究一个文件夹（e0 到 e5），还有笔记本调用的 run_all.py
+results/cpu/      CPU 上跑出来的结果文件
+results/gpu_run1/ 第一次 GPU 运行（NVIDIA L4）的结果文件
+figures/          图和画图的脚本
+tests/            单元测试和“渲染到分析”的测试
+LOG.md            按时间记下的每次运行
+notebook.ipynb    Colab 笔记本
+```
+
+</details>
+
+## 计划
+
+- [x] 在音符已知的音频上测试测量工具
+- [x] 找到旋律在开源歌曲模型里丢失的位置
+- [x] 每个去噪步的钩子，在 CPU 和 GPU 上确认完全准确
+- [x] 摸清音准和歌词之间的取舍（探索性）
+- [ ] 动机研究：修好后的运行，开始前先登记
+- [ ] 歌词时钟（E6）
+- [ ] 用更多随机种子重复，再请音乐人做盲听测试
+- [ ] arXiv 论文和带音频的演示页
+
+## 致谢和许可
+
+这个项目研究的是 [ACE-Step 1.5](https://github.com/ace-step/ACE-Step-1.5)，用到了 [SwiftF0](https://pypi.org/project/swift-f0/)、[FCPE](https://pypi.org/project/torchfcpe/)、[CREPE](https://github.com/maxrmorrison/torchcrepe)、[Basic Pitch](https://github.com/spotify/basic-pitch)、[Whisper](https://github.com/openai/whisper)、[mir_eval](https://github.com/craffel/mir_eval)、[FluidSynth](https://www.fluidsynth.org/) 和 FluidR3_GM 音色库。谢谢所有公开模型和工具的人。
+
+引用格式：
+
+```bibtex
+@misc{dacapo2026,
+  title  = {Da Capo: Measuring and Steering Musical Structure in AI Song Models},
+  author = {ninondev},
+  year   = {2026},
+  url    = {https://github.com/ninondev/DaCapo}
+}
+```
+
+MIT 许可，© 2026 ninondev（[LICENSE](LICENSE)）。

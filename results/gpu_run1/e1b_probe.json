@@ -1,0 +1,126 @@
+{
+  "config": {
+    "experiment": "e1b_code_probe",
+    "levels": [
+      8,
+      8,
+      8,
+      5,
+      5,
+      5
+    ],
+    "fps": 5.0,
+    "test_melodies": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "classifier": "logreg (C=0.1 standardized; digits one-hot C=1.0)"
+  },
+  "config_hash": "9d051f32d1a0",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "packages": {
+      "numpy": "2.1.3",
+      "torch": "2.11.0+cu130",
+      "torchcrepe": null,
+      "basic-pitch": "0.4.0",
+      "mir_eval": "0.8.2",
+      "pretty_midi": "0.2.11.post0",
+      "librosa": "0.11.0"
+    },
+    "fluidsynth": "FluidSynth runtime version 2.3.4",
+    "git_commit": "unknown",
+    "git_dirty": true
+  },
+  "wall_seconds": 493.12,
+  "finished_utc": "2026-10-26T19:40:01Z",
+  "results": {
+    "sensitivity": {
+      "same_audio_reencode": {
+        "mean_identical_frac": 0.845,
+        "n": 6
+      },
+      "timbre_flute": {
+        "mean_identical_frac": 0.271,
+        "n": 48
+      },
+      "timbre_violin": {
+        "mean_identical_frac": 0.276,
+        "n": 48
+      },
+      "transp+2": {
+        "mean_identical_frac": 0.272,
+        "n": 6
+      },
+      "2wrong": {
+        "mean_identical_frac": 0.772,
+        "n": 6
+      },
+      "delay200ms": {
+        "mean_identical_frac": 0.254,
+        "n": 6
+      },
+      "delay200ms_realigned": {
+        "mean_identical_frac": 0.158,
+        "n": 6
+      },
+      "other_melody": {
+        "mean_identical_frac": 0.291,
+        "n": 48
+      }
+    },
+    "probes": {
+      "pitch_class": {
+        "majority_baseline": 0.125,
+        "quant": {
+          "acc": 0.575,
+          "acc_frames_with_note_change": 0.412,
+          "acc_frames_steady": 0.645,
+          "acc_unseen_timbre": 0.504
+        },
+        "digits": {
+          "acc": 0.667,
+          "acc_frames_with_note_change": 0.477,
+          "acc_frames_steady": 0.748,
+          "acc_unseen_timbre": 0.562
+        },
+        "latent_pool5": {
+          "acc": 0.919,
+          "acc_frames_with_note_change": 0.773,
+          "acc_frames_steady": 0.982,
+          "acc_unseen_timbre": 0.846
+        }
+      },
+      "midi_pitch": {
+        "majority_baseline": 0.062,
+        "quant": {
+          "acc": 0.421,
+          "acc_frames_with_note_change": 0.273,
+          "acc_frames_steady": 0.484,
+          "acc_unseen_timbre": 0.35
+        },
+        "digits": {
+          "acc": 0.494,
+          "acc_frames_with_note_change": 0.338,
+          "acc_frames_steady": 0.562,
+          "acc_unseen_timbre": 0.392
+        },
+        "latent_pool5": {
+          "acc": 0.922,
+          "acc_frames_with_note_change": 0.787,
+          "acc_frames_steady": 0.98,
+          "acc_unseen_timbre": 0.762
+        }
+      }
+    },
+    "n_train_frames": 5040,
+    "n_test_frames": 720,
+    "frac_test_frames_with_note_change": 0.3
+  }
+}

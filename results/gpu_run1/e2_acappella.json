@@ -1,0 +1,110 @@
+{
+ "settings": {
+  "out": "outputs_acappella",
+  "seeds": "11,12,13",
+  "duration": 16.0,
+  "shift": 3.0,
+  "device": "cuda"
+ },
+ "rows": [
+  {
+   "key": "acap_female",
+   "seed": 11,
+   "wav": "acap_female_s11.wav",
+   "seconds": 3.4,
+   "voiced_frac": 0.361,
+   "low_energy": 0.3477,
+   "polyphony": 1.55,
+   "f0_range_semitones": 21.3,
+   "median_f0_hz": 147.5
+  },
+  {
+   "key": "acap_female",
+   "seed": 12,
+   "wav": "acap_female_s12.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.365,
+   "low_energy": 0.0014,
+   "polyphony": 0.86,
+   "f0_range_semitones": 7.1,
+   "median_f0_hz": 246.6
+  },
+  {
+   "key": "acap_female",
+   "seed": 13,
+   "wav": "acap_female_s13.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.266,
+   "low_energy": 0.0011,
+   "polyphony": 0.69,
+   "f0_range_semitones": 6.6,
+   "median_f0_hz": 261.7
+  },
+  {
+   "key": "acap_male",
+   "seed": 11,
+   "wav": "acap_male_s11.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.314,
+   "low_energy": 0.3555,
+   "polyphony": 1.63,
+   "f0_range_semitones": 19.2,
+   "median_f0_hz": 163.9
+  },
+  {
+   "key": "acap_male",
+   "seed": 12,
+   "wav": "acap_male_s12.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.455,
+   "low_energy": 0.0015,
+   "polyphony": 0.89,
+   "f0_range_semitones": 6.8,
+   "median_f0_hz": 196.9
+  },
+  {
+   "key": "acap_male",
+   "seed": 13,
+   "wav": "acap_male_s13.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.21,
+   "low_energy": 0.2118,
+   "polyphony": 0.8,
+   "f0_range_semitones": 5.7,
+   "median_f0_hz": 235.8
+  },
+  {
+   "key": "folk_female",
+   "seed": 11,
+   "wav": "folk_female_s11.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.412,
+   "low_energy": 0.3882,
+   "polyphony": 1.51,
+   "f0_range_semitones": 21.3,
+   "median_f0_hz": 130.6
+  },
+  {
+   "key": "folk_female",
+   "seed": 12,
+   "wav": "folk_female_s12.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.291,
+   "low_energy": 0.1125,
+   "polyphony": 1.65,
+   "f0_range_semitones": 12.2,
+   "median_f0_hz": 147.5
+  },
+  {
+   "key": "folk_female",
+   "seed": 13,
+   "wav": "folk_female_s13.wav",
+   "seconds": 2.1,
+   "voiced_frac": 0.318,
+   "low_energy": 0.7336,
+   "polyphony": 1.57,
+   "f0_range_semitones": 23.2,
+   "median_f0_hz": 147.7
+  }
+ ]
+}

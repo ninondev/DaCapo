@@ -1,0 +1,81 @@
+{
+ "registered_utc": "2026-10-26T17:14:21Z",
+ "title": "Musical analogy in context: does a song DiT copy, transpose or extrapolate a motif? Exact-ground-truth induction tests, with causal localization, in ACE-Step 1.5",
+ "hypotheses": [
+  "H1 content copy: CI(X-lit) = acc(B) - acc(B~) >= 0.25, with 95% cluster-bootstrap CI > 0 over 12 melodies. Stated prior about 0.65.",
+  "H2 content-addressed induction rather than lag copying: CI(X-lit) - CI(X-ctl) >= 0.15, with CI > 0. Prior about 0.45.",
+  "H3 transposition-relational induction: for at least 2 of k in {+2,+5,-3}, RI_k >= 0.15 with CI > 0, RI_k - RI(X-ctl) >= 0.10, and RI_k > LI_k. The pre-stated alternative 'literal-lag copier' is LI_k >= 0.15 with RI_k CI including 0. Prior about 0.2, since Fathi 2026 found a transposition null in symbolic models.",
+  "H4 sequence extrapolation: in SEQ, the gap is classified as T_6 A in >= 20% of items, each of T_5 A and T_7 A in <= 5%, and the T_6 A rate exceeds its NULL coincidence rate (exact binomial p < 0.01). Copy-left (T_4 A) and lag (T_2 A) rates are reported. Prior about 0.1.",
+  "H5 analogy proper (A:T_5A::B:?): acc(T_5 B) - acc(T_5 B~) >= 0.15 with CI > 0 in ANA. Prior about 0.15.",
+  "H6 localization (no directional prior): blocking gap->B keys in one layer type reduces CI(X-lit) by >= 50% (CI of the reduction > 0), the other layer type by < 25%, and the random key block by < 25%.",
+  "H7 pointer as a causal probe: in X-ctl, +beta on gap->B logits raises the B-rate to >= 0.5 (from <= 0.15 without the pointer) and beats FCPE-selected best-of-3 at one third of the NFE, with voiced fraction within 10% of no-pointer runs."
+ ],
+ "kill_criteria": [
+  "K0: the ruler gate fails (hypothesis-render classification < 0.95 or 1-wrong-note AUC < 0.9). Redesign the units before any DiT run.",
+  "K1: in Phase 0, fewer than 75% of pilot gaps pass the voicing/monophony/RMS gate under flute, synth voice and clarinet captions. Infill is then not measurable: stop the primary, give the ACE slot to the secondary, and report the gate failure.",
+  "K2: at the interim after 6 confirmatory melodies, CI(X-lit) is below 0.10 and LI under X-ctl is below 0.10. The renderer does not use in-context motifs: finish Phase 1a only (a null result plus the benchmark) and skip Phases 2-3.",
+  "K3: CI(X-ctl) >= CI(X-lit) - 0.05. Content addressing is refuted, and Phase 2 is retargeted to the lag-copy pathway.",
+  "K4: the random key block reduces CI by >= 25%, or the empty-block unit test fails. No localization claim is made.",
+  "K5: every beta that moves the B-rate also drops voiced fraction by more than 10%. The pointer is reported as null and no control claim is made.",
+  "Paper-level: if H1-H5 are all null while the quality gates pass, publish the negative benchmark result. If the gates fail, it is an infill-quality failure, not an induction finding, and must not be reported as one."
+ ],
+ "baselines_and_controls": [
+  "Chance: the derangement foil B~ (same rhythm and pitch multiset), T_k B~ for the relational indices, the NULL context (silence + D) for absolute accuracy against B, and coincidence rates under X-ctl.",
+  "Lag control: X-ctl = [A][B][C] breaks the 8 s period, separating content-addressed induction from 'repeat what was 8 s ago'. The copy-left (X) and copy-next (D) hypotheses are in the bank so that local copying is not mistaken for induction.",
+  "Literal vs relational inside the same runs: LI_k against RI_k when X = T_k A.",
+  "Extrapolation guards: +-1 transposition hypotheses, copy-left, lag, and a double-f0/superposition check to catch latent averaging.",
+  "Knockout specificity: a size- and layer-matched random key block, plus the unit test that an empty block reproduces the baseline.",
+  "Compute-matched best-of-N: pointer (1 run) against best-of-3 no-pointer selected by FCPE, a tracker never used for evaluation. Phase 1 reports oracle pass@2 only as an upper-bound diagnostic, never as a method. Paste-B-into-gap is the trivial ceiling.",
+  "Circularity controls: every hypothesis is an exact symbolic render; tau is calibrated on renders only; SwiftF0 and Basic Pitch are never used for selection, steering or layer choice; layer-type blocks are fixed a priori, not ranked on outcomes; beta is tuned only on the 2 pilot melodies, which are excluded from confirmatory tests; the pre-registration JSON is committed before Phase 1; seeds are paired across conditions.",
+  "External reference points: E0 solo-lead ruler ceilings, and Fathi 2026's symbolic transposition null as the expected outcome for H3."
+ ],
+ "metrics": [
+  "Per-note pitch accuracy against each hypothesis: SwiftF0 median f0 over the central 60% of each note, +-50 cents, global lag search +-120 ms, 0.4 s margins at the gap edges excluded.",
+  "CI, RI_k, LI_k, hypothesis-selection rates from argmax with render-calibrated tau, and the 'none' rate, all with cluster-bootstrap CIs over melodies and exact binomial tests for rates.",
+  "Octave-tolerant (pitch-class) variants, and Basic Pitch skyline note-F1 (mir_eval, 50 ms onset, 50 cents) as a replication.",
+  "Onset-F1 to B, reported separately (rhythm copying vs pitch copying).",
+  "Quality guards per gap: voiced fraction, Basic Pitch polyphony, SwiftF0 confidence, RMS relative to the context, spectral flatness.",
+  "pass@2 across seeds (bias vs variance of relational completion).",
+  "Knockout effect sizes as relative CI reduction with CIs; pointer B-rate gain at equal NFE.",
+  "Diagnostics only (never outcomes): attention mass from gap queries to each context unit per step and layer; NFE and wall-clock per arm."
+ ],
+ "ruler_gate_result": {
+  "per_condition": {
+   "lit": 1.0,
+   "ctl": 1.0,
+   "rel+2": 1.0,
+   "rel+5": 1.0,
+   "rel-3": 1.0,
+   "seq": 1.0,
+   "ana": 1.0,
+   "null": 1.0
+  },
+  "tau_candidates": {
+   "0.3": 1.0,
+   "0.4": 1.0,
+   "0.5": 1.0,
+   "0.6": 1.0,
+   "0.7": 1.0
+  },
+  "tau": 0.7,
+  "overall": 1.0,
+  "self_acc_mean": 0.9924,
+  "wrong_note_auc": {
+   "1_wrong": 0.9286,
+   "2_wrong": 0.9643
+  },
+  "passed": true
+ },
+ "deviations_and_disclosures": [
+  "One CPU trial was run before registration on pilot melody mel00 (condition lit, caption cap1): gap classified as B (acc 1.00 vs foil 0.33), gap polyphony 1.67 (clean flute renders: 1.02). Pilot melodies mel00-mel01 are excluded from all confirmatory tests.",
+  "A third Phase-0 caption (cap3, explicitly unaccompanied) was added after that trial because of the polyphony observation; caption selection still uses only pilot melodies and the pre-stated gate (voiced>=0.6, polyphony<=1.3, |RMS|<=6 dB, >=75% of gaps).",
+  "Generation runs on Colab GPU (bf16) instead of this CPU container; seeds are paired across conditions but not bit-identical across devices."
+ ],
+ "code_sha256": {
+  "experiments/e5_analogy/make_items.py": "0d63999b9289f952fdaa72f343c81bd0d37c4542ea99d418057c3c6989664cf9",
+  "experiments/e5_analogy/score_analogy.py": "b50da711ddfd686b3ef556de181b9d6e98b87885078ac3726e4686c74e49edb6",
+  "experiments/e5_analogy/run_analogy.py": "919dd449301ca0f68422f5c9d54b6dd753a212b88e96e5e1a7115ed8752b1988",
+  "src/ryuichi/metrics.py": "4f5dd1c1a704465f7e239d356876270387eda4df25eb213c3514eeceb89cd230",
+  "src/ryuichi/analysis.py": "c1bda818eaaf9986f97f99513400e6be8e8311e7cd825e816a587e35a0999bdc"
+ }
+}

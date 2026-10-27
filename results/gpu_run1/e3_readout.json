@@ -1,0 +1,68 @@
+{
+ "wall_seconds": 0.6,
+ "n_train_frames": 10752,
+ "n_test_frames": 2688,
+ "lda_top_eigenvalues": [
+  5.29,
+  4.95,
+  3.91,
+  3.72,
+  3.12,
+  2.54,
+  2.27,
+  2.18,
+  1.73,
+  0.99
+ ],
+ "heldout_pitch_acc_k4": 0.611,
+ "heldout_pitchclass_acc_k4": 0.834,
+ "per_timbre_k4": {
+  "cello": 0.661,
+  "choir_aahs": 0.377,
+  "clarinet": 0.732,
+  "pan_flute": 0.641,
+  "synth_voice": 0.688,
+  "voice_oohs": 0.567
+ },
+ "heldout_pitch_acc_k8": 0.789,
+ "heldout_pitchclass_acc_k8": 0.913,
+ "per_timbre_k8": {
+  "cello": 0.837,
+  "choir_aahs": 0.569,
+  "clarinet": 0.951,
+  "pan_flute": 0.754,
+  "synth_voice": 0.891,
+  "voice_oohs": 0.732
+ },
+ "heldout_pitch_acc_k16": 0.882,
+ "heldout_pitchclass_acc_k16": 0.92,
+ "per_timbre_k16": {
+  "cello": 0.942,
+  "choir_aahs": 0.583,
+  "clarinet": 0.951,
+  "pan_flute": 0.926,
+  "synth_voice": 0.962,
+  "voice_oohs": 0.929
+ },
+ "heldout_pitch_acc_k31": 0.88,
+ "heldout_pitchclass_acc_k31": 0.92,
+ "per_timbre_k31": {
+  "cello": 0.94,
+  "choir_aahs": 0.578,
+  "clarinet": 0.953,
+  "pan_flute": 0.929,
+  "synth_voice": 0.967,
+  "voice_oohs": 0.913
+ },
+ "heldout_pitch_acc_full64_nearest_mean": 0.879,
+ "edited_frame_fraction": {
+  "mel0_choir_aahs": 0.535,
+  "mel1_voice_oohs": 0.629,
+  "mel2_synth_voice": 0.538,
+  "mel3_clarinet": 0.623,
+  "mel4_cello": 0.604,
+  "mel5_pan_flute": 0.653,
+  "mel6_choir_aahs": 0.501,
+  "mel7_voice_oohs": 0.6
+ }
+}

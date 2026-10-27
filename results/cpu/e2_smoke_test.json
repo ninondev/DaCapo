@@ -1,0 +1,23 @@
+{
+ "device": "cpu",
+ "load_seconds": 22.3,
+ "base_seconds": 84.1,
+ "n_steps_recorded": 8,
+ "t_schedule": [
+  1.0,
+  0.9531,
+  0.8984,
+  0.832,
+  0.75,
+  0.6445,
+  0.5,
+  0.3008
+ ],
+ "identity_rel_maxdiff": 0.0,
+ "swap_vs_base_rel_maxdiff": 0.5311761678683246,
+ "swap_seconds": 84.2,
+ "combine_rel_maxdiff": 0.0,
+ "combine_denoiser_calls": 16,
+ "passed": true,
+ "total_seconds": 495.4
+}

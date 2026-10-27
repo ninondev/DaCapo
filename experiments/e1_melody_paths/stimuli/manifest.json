@@ -1,0 +1,1637 @@
+{
+ "seed": 7,
+ "stimuli": [
+  {
+   "id": "m0_piano_90",
+   "wav": "m0_piano_90.wav",
+   "duration": 23.0,
+   "bpm": 90,
+   "lead": "piano",
+   "caption": "instrumental pop, clear piano lead melody, soft block-chord piano, bass guitar, simple rock drums, 90 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 90 bpm",
+   "melody": {
+    "bpm": 90.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 0.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 1.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 2.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 3.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 3.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 4.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 10.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 10.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 19.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 20.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 21.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 22.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 23.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 24.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 24.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 25.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 27.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 29.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 30.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 31.0,
+      "dur": 1.0,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 333
+  },
+  {
+   "id": "m0_piano_150",
+   "wav": "m0_piano_150.wav",
+   "duration": 14.0,
+   "bpm": 150,
+   "lead": "piano",
+   "caption": "instrumental pop, clear piano lead melody, soft block-chord piano, bass guitar, simple rock drums, 150 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 150 bpm",
+   "melody": {
+    "bpm": 150.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 0.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 1.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 2.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 3.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 3.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 4.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 10.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 10.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 19.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 20.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 21.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 22.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 23.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 24.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 24.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 25.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 27.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 29.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 30.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 31.0,
+      "dur": 1.0,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 200
+  },
+  {
+   "id": "m1_flute_90",
+   "wav": "m1_flute_90.wav",
+   "duration": 23.0,
+   "bpm": 90,
+   "lead": "flute",
+   "caption": "instrumental pop, clear flute lead melody, soft block-chord piano, bass guitar, simple rock drums, 90 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 90 bpm",
+   "melody": {
+    "bpm": 90.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 0.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 1.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 3.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 14.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.5,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 20.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 22.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 23.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 81,
+      "start": 24.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 25.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 25.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 79,
+      "start": 26.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 27.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 28.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 29.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 81,
+      "start": 30.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 79,
+      "start": 31.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 78,
+      "start": 31.5,
+      "dur": 0.5,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 333
+  },
+  {
+   "id": "m1_flute_150",
+   "wav": "m1_flute_150.wav",
+   "duration": 14.0,
+   "bpm": 150,
+   "lead": "flute",
+   "caption": "instrumental pop, clear flute lead melody, soft block-chord piano, bass guitar, simple rock drums, 150 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 150 bpm",
+   "melody": {
+    "bpm": 150.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 0.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 1.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 3.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 14.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.5,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 20.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 22.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 23.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 81,
+      "start": 24.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 25.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 25.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 79,
+      "start": 26.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 27.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 28.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 83,
+      "start": 29.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 81,
+      "start": 30.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 79,
+      "start": 31.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 78,
+      "start": 31.5,
+      "dur": 0.5,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 200
+  },
+  {
+   "id": "m2_piano_90",
+   "wav": "m2_piano_90.wav",
+   "duration": 23.0,
+   "bpm": 90,
+   "lead": "piano",
+   "caption": "instrumental pop, clear piano lead melody, soft block-chord piano, bass guitar, simple rock drums, 90 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 90 bpm",
+   "melody": {
+    "bpm": 90.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 0.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 2.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 3.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 20.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 21.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 22.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 23.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 24.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 25.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 26.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 28.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 29.5,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 31.5,
+      "dur": 0.5,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 333
+  },
+  {
+   "id": "m2_piano_150",
+   "wav": "m2_piano_150.wav",
+   "duration": 14.0,
+   "bpm": 150,
+   "lead": "piano",
+   "caption": "instrumental pop, clear piano lead melody, soft block-chord piano, bass guitar, simple rock drums, 150 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 150 bpm",
+   "melody": {
+    "bpm": 150.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 0.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 2.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 3.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 20.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 21.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 22.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 23.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 24.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 25.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 26.0,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 28.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 29.5,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 31.5,
+      "dur": 0.5,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 200
+  },
+  {
+   "id": "m3_flute_90",
+   "wav": "m3_flute_90.wav",
+   "duration": 23.0,
+   "bpm": 90,
+   "lead": "flute",
+   "caption": "instrumental pop, clear flute lead melody, soft block-chord piano, bass guitar, simple rock drums, 90 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 90 bpm",
+   "melody": {
+    "bpm": 90.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 0.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 0.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 1.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 1.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 2.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 2.5,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 4.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 20.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 21.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 22.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 24.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 24.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 25.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 26.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 27.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 28.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 29.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 29.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 31.0,
+      "dur": 1.0,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 333
+  },
+  {
+   "id": "m3_flute_150",
+   "wav": "m3_flute_150.wav",
+   "duration": 14.0,
+   "bpm": 150,
+   "lead": "flute",
+   "caption": "instrumental pop, clear flute lead melody, soft block-chord piano, bass guitar, simple rock drums, 150 bpm",
+   "reorch_caption": "cinematic instrumental, solo violin lead melody over a warm string orchestra, no drums, 150 bpm",
+   "melody": {
+    "bpm": 150.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 0.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 0.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 1.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 1.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 2.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 2.5,
+      "dur": 2.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 4.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 20.0,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 21.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 22.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 24.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 24.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 25.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 26.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 27.5,
+      "dur": 1.0,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 28.5,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 29.0,
+      "dur": 0.5,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 29.5,
+      "dur": 1.5,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 31.0,
+      "dur": 1.0,
+      "vel": 100
+     }
+    ]
+   },
+   "min_note_ms": 200
+  }
+ ]
+}

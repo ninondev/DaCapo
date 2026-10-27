@@ -1,0 +1,12 @@
+{
+ "addendum_utc": "2026-10-26T19:42:09Z",
+ "refers_to": "experiments/e5_analogy/results/e5_prereg.json",
+ "change": "Project renamed from 'ryuichi' to 'dacapo' before any confirmatory DiT run. The only code changes are import lines (from ryuichi.X -> from dacapo.X) and the package directory name (src/ryuichi -> src/dacapo); no logic, threshold or hypothesis changed.",
+ "new_code_sha256": {
+  "experiments/e5_analogy/make_items.py": "ad901970faab5ac27e689cb879c439ed65d29e4925d6e3a3f20a1dc6a9cbd2ec",
+  "experiments/e5_analogy/score_analogy.py": "2c4ccdd29b591a45790257247d94e879d7cbad3f4a9ce5391d2ed547fbad2e89",
+  "experiments/e5_analogy/run_analogy.py": "919dd449301ca0f68422f5c9d54b6dd753a212b88e96e5e1a7115ed8752b1988",
+  "src/dacapo/metrics.py": "4f5dd1c1a704465f7e239d356876270387eda4df25eb213c3514eeceb89cd230",
+  "src/dacapo/analysis.py": "c1bda818eaaf9986f97f99513400e6be8e8311e7cd825e816a587e35a0999bdc"
+ }
+}

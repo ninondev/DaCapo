@@ -1,0 +1,1216 @@
+{
+ "seed": 21,
+ "bpm": 100.0,
+ "items": [
+  {
+   "id": "item00",
+   "split": "dev",
+   "key": "C major",
+   "words": [
+    "I",
+    "walk",
+    "down",
+    "to",
+    "the",
+    "sea",
+    "and",
+    "watch",
+    "the",
+    "light",
+    "go",
+    "slow"
+   ],
+   "lyrics": "[Verse]\nI walk down to the sea and watch the light go slow",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item00_clarinet.wav",
+    "oohs": "guides/item00_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item01",
+   "split": "dev",
+   "key": "D major",
+   "words": [
+    "The",
+    "rain",
+    "falls",
+    "on",
+    "the",
+    "road",
+    "and",
+    "all",
+    "the",
+    "town",
+    "is",
+    "still"
+   ],
+   "lyrics": "[Verse]\nThe rain falls on the road and all the town is still",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item01_clarinet.wav",
+    "oohs": "guides/item01_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item02",
+   "split": "dev",
+   "key": "F major",
+   "words": [
+    "We",
+    "ran",
+    "past",
+    "the",
+    "old",
+    "mill",
+    "where",
+    "the",
+    "white",
+    "birds",
+    "sing"
+   ],
+   "lyrics": "[Verse]\nWe ran past the old mill where the white birds sing",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item02_clarinet.wav",
+    "oohs": "guides/item02_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item03",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Hold",
+    "my",
+    "hand",
+    "and",
+    "stay",
+    "with",
+    "me",
+    "till",
+    "the",
+    "night",
+    "is",
+    "done"
+   ],
+   "lyrics": "[Verse]\nHold my hand and stay with me till the night is done",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item03_clarinet.wav",
+    "oohs": "guides/item03_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item04",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "cold",
+    "wind",
+    "blows",
+    "through",
+    "trees",
+    "and",
+    "calls",
+    "my",
+    "name",
+    "at",
+    "dawn"
+   ],
+   "lyrics": "[Verse]\nThe cold wind blows through trees and calls my name at dawn",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item04_clarinet.wav",
+    "oohs": "guides/item04_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item05",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Bright",
+    "stars",
+    "burn",
+    "in",
+    "the",
+    "dark",
+    "and",
+    "fade",
+    "when",
+    "we",
+    "wake",
+    "up"
+   ],
+   "lyrics": "[Verse]\nBright stars burn in the dark and fade when we wake up",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item05_clarinet.wav",
+    "oohs": "guides/item05_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item06",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "She",
+    "sang",
+    "a",
+    "song",
+    "of",
+    "home",
+    "with",
+    "a",
+    "soft",
+    "and",
+    "clear",
+    "voice"
+   ],
+   "lyrics": "[Verse]\nShe sang a song of home with a soft and clear voice",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item06_clarinet.wav",
+    "oohs": "guides/item06_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item07",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Let",
+    "the",
+    "boat",
+    "drift",
+    "on",
+    "the",
+    "lake",
+    "as",
+    "the",
+    "sun",
+    "sinks",
+    "low"
+   ],
+   "lyrics": "[Verse]\nLet the boat drift on the lake as the sun sinks low",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item07_clarinet.wav",
+    "oohs": "guides/item07_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item08",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Our",
+    "hearts",
+    "beat",
+    "as",
+    "one",
+    "when",
+    "the",
+    "bells",
+    "ring",
+    "in",
+    "the",
+    "square"
+   ],
+   "lyrics": "[Verse]\nOur hearts beat as one when the bells ring in the square",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item08_clarinet.wav",
+    "oohs": "guides/item08_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item09",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Give",
+    "me",
+    "one",
+    "more",
+    "day",
+    "to",
+    "see",
+    "the",
+    "green",
+    "fields",
+    "bloom"
+   ],
+   "lyrics": "[Verse]\nGive me one more day to see the green fields bloom",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 3.6,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item09_clarinet.wav",
+    "oohs": "guides/item09_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item10",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "lamp",
+    "glows",
+    "warm",
+    "and",
+    "we",
+    "sit",
+    "and",
+    "tell",
+    "the",
+    "tales",
+    "of",
+    "old"
+   ],
+   "lyrics": "[Verse]\nThe lamp glows warm and we sit and tell the tales of old",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item10_clarinet.wav",
+    "oohs": "guides/item10_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "item11",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Snow",
+    "fell",
+    "on",
+    "the",
+    "roofs",
+    "and",
+    "the",
+    "whole",
+    "world",
+    "turned",
+    "white"
+   ],
+   "lyrics": "[Verse]\nSnow fell on the roofs and the whole world turned white",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "clarinet": "guides/item11_clarinet.wav",
+    "oohs": "guides/item11_oohs.wav"
+   },
+   "duration": 14.0
+  }
+ ]
+}
