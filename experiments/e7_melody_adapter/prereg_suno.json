@@ -1,0 +1,354 @@
+{
+  "code_sha256": {
+    "dacapo/analysis.py": "5d19e4dfdbf14186e83d18fa514795510e0e66f3f06fe9b528db9f4f51da3fb2",
+    "dacapo/metrics.py": "a69087619f92fa750866a6904ca949e2efd1512daf5ab88fdf268df15b8db7b7",
+    "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+    "dacapo/render.py": "96b67d791a983116a52bea8697c51d3bc0a8b9ae421f9c24af95164a511a9d79",
+    "dacapo/symbolic.py": "c2542d093f1c247b1d3bb095ea66cb1efde36c5e9ebcc9e3497c28c493a4e487",
+    "experiments/e7_melody_adapter/colab_e7_pack.ipynb": "2c59af87bd7914ea8e9546c5aa3ba315da1c4bc07fa03798b18dea52e3f7f30f",
+    "experiments/e7_melody_adapter/colab_e7_suno.ipynb": "4de42d4496e586a1061710f79951dcc505268b8f1d95510a31978733e7dacf03",
+    "experiments/e7_melody_adapter/colab_setup.py": "21c7fefe31c3b2f84bd60e1f3e2955aa604781204f54be1be9d0406676306f39",
+    "experiments/e7_melody_adapter/lib.py": "560421f2af50b6e6aba520f746bbd32b7ebfb223734df72d06aaa218ac1ac3b1",
+    "experiments/e7_melody_adapter/pack.py": "568dbc782c0e1fd335b3b0d8f547c5869079def07a1ad0dacb0e02af7254b089",
+    "experiments/e7_melody_adapter/registration.py": "f6e4d607033dec197310dc6d5aaac775d169f0055c3e16310b6bb9564fe0963e",
+    "experiments/e7_melody_adapter/requirements-e7.txt": "a6f755a09be3c24f9a59a5937a334bcf680f1af5f5063576fa04bddac26f907e",
+    "experiments/e7_melody_adapter/run_stage.sh": "1c5459f6feae5b2a35cb9958e901c152e4cc5e89ccb896e4cbdaef9b6bd41c34",
+    "experiments/e7_melody_adapter/suno.py": "a6ddff3b676885ea1b198dfca8361eab59e59a63e62c88424a375f2f7cecccf6"
+  },
+  "config": {
+    "decision": {
+      "already_accurate": "any measured route has median strict-external NPA >= 0.90 and median WR >= 0.60 on that same route",
+      "not_measured": "no route has at least ten complete item pairs: not measured, no negative claim",
+      "note_f1": "unvalidated diagnostic only in Stage S; excluded from decision",
+      "provisional_negative": "measured routes do not pass; re-evaluate the same private files after Stage 0c selects a validated singing ruler",
+      "ruler_insufficient": "ruler median NPA < 0.95: inconclusive, stop and report",
+      "threshold_changes": "only easier positive thresholds with recorded rationale; stricter rules need owner agreement"
+    },
+    "experiment": "e7_stage_s",
+    "measurement": {
+      "adjustment": "correct minus chance for accuracies and WR; chance minus correct for deviation",
+      "bootstrap": {
+        "confidence": 0.95,
+        "draws": 2000,
+        "seed": 20261027,
+        "unit": "item"
+      },
+      "chance": "apply the identical full search to every other reference; average their scores",
+      "f0_hop_s": 0.01,
+      "pitch_tolerance_cents": 50.0,
+      "relaxed": {
+        "comparison_limit": "units match external studies; references, tools and alignment differ, so scores are not directly comparable",
+        "duration_ratio": "0.5 to 2 times non-rest reference frame count, to frame quantization",
+        "normalization": "number of non-rest reference frames",
+        "note_accuracy": "median matched voiced output pitch per reference note within 50 cents; missing notes wrong",
+        "octave_metric": "same path and transposition; fold error into [-6, 6] for deviation and note accuracy; diagnostic only",
+        "output": "10 ms MIDI pitch frames; retain unvoiced frames",
+        "pitch_cost": "absolute semitone error, no octave folding",
+        "reference": "10 ms MIDI pitch frames; remove reference rest frames only",
+        "silence_cost_semitones": 3.0,
+        "steps": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "subsequence_start": "any output frame, all reference frames consumed",
+        "tie_order": "lower normalized cost, smaller absolute shift, earlier end, lower signed shift; path ties prefer (1,1), (1,2), (2,1)",
+        "transition_costs": "(1,1): one cost; (1,2): mean of two output costs for one reference frame; (2,1): sum of two reference costs at one output frame",
+        "transpositions_semitones": [
+          -12,
+          -11,
+          -10,
+          -9,
+          -8,
+          -7,
+          -6,
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "ruler_roles": {
+        "evaluator": "fcpe",
+        "label": "swift",
+        "selector": "crepe"
+      },
+      "stage_s_f0": "swift",
+      "strict_external": {
+        "coarse_candidates_per_speed_and_shift": 2,
+        "coarse_start_step_s": 0.1,
+        "complete_reference_required": true,
+        "fine_radius_s": 0.1,
+        "fine_start_step_s": 0.01,
+        "global_candidates_refined": 16,
+        "note_f1": "unvalidated Basic Pitch notes; same chosen alignment; no second lag or transposition search; onset tolerance 0.05 s, offsets ignored",
+        "npa": {
+          "central": 0.6,
+          "min_voiced": 3,
+          "tol_cents": 50.0,
+          "tolerance_operator": "strictly less than"
+        },
+        "octave_metric": "same chosen alignment, diagnostic only",
+        "reference_regions": "full note durations, without rests",
+        "search_objective": "fraction of written voiced-frame duration matching absolute pitch within 50 cents",
+        "speed_definition": "performed tempo / reference tempo; time = start + reference_time / speed",
+        "speed_ratios": [
+          0.9,
+          0.91,
+          0.92,
+          0.93,
+          0.94,
+          0.95,
+          0.96,
+          0.97,
+          0.98,
+          0.99,
+          1.0,
+          1.01,
+          1.02,
+          1.03,
+          1.04,
+          1.05,
+          1.06,
+          1.07,
+          1.08,
+          1.09,
+          1.1
+        ],
+        "tie_order": "higher frame accuracy, speed nearer one, smaller absolute shift, earlier start, lower speed, lower signed shift",
+        "transpositions_semitones": [
+          -12,
+          -11,
+          -10,
+          -9,
+          -8,
+          -7,
+          -6,
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "version": "stage-s-v1",
+      "voice_present": {
+        "active_rms_dbfs_min": -40.0,
+        "active_seconds_min": 1.0,
+        "energy_share": "sum squared vocal samples / sum squared mixture samples over all channels",
+        "frame_overlap": false,
+        "frame_seconds": 0.05,
+        "partial_frame": "use its actual duration and samples",
+        "peak_gate": "not used for external audio",
+        "vocal_energy_share_min": 0.2
+      },
+      "words": {
+        "chance": "mean recall against each of the other eleven lyrics",
+        "matching": "longest common subsequence, preserving order and token multiplicity",
+        "normalization": "lowercase ASCII words; retain internal apostrophes; normalize curly apostrophe",
+        "recall": "matched reference tokens / reference token count; empty reference returns zero",
+        "section_tags": "remove text enclosed in square brackets"
+      }
+    },
+    "melodies": {
+      "bars": 8,
+      "bpm_range": [
+        90,
+        110
+      ],
+      "count": 12,
+      "keys": [
+        "C major",
+        "D major",
+        "F major",
+        "G major"
+      ],
+      "lyrics": "one original English syllable per note; no owner-held-out melody",
+      "meter": [
+        4,
+        4
+      ],
+      "midi_pitch_range": [
+        57,
+        76
+      ],
+      "notes_range": [
+        24,
+        40
+      ],
+      "seed": 20261027
+    },
+    "models": {
+      "ace_source_commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+      "ace_weights": "ACE-Step/Ace-Step1.5",
+      "ace_weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+      "asr": "openai/whisper-large-v3",
+      "asr_revision": "06f233fe06e710322aca913c1bc4249a0d71fce1",
+      "cpu_asr_fallback": false,
+      "f0": "swift-f0==0.3.0",
+      "separator": "htdemucs",
+      "separator_package": "demucs==4.1.0"
+    },
+    "note_transcription": {
+      "backend": "onnx",
+      "method": "dacapo.analysis.notes_basic_pitch",
+      "min_note_ms": 80.0,
+      "package": "basic-pitch==0.4.0",
+      "skyline": true,
+      "use": "unvalidated note-F1 diagnostic only; never the Stage S decision"
+    },
+    "phase": "preregistered_external_measurement",
+    "pitch_extraction": {
+      "confidence_min": 0.5,
+      "fmax_hz": 1500.0,
+      "fmin_hz": 65.0,
+      "method": "dacapo.analysis.f0_swift",
+      "package": "swift-f0==0.3.0",
+      "resampling": "10 ms grid from zero; searchsorted timestamp index, clipped at track endpoints, as in dacapo.analysis._to_grid"
+    },
+    "privacy": {
+      "audio_in_zips": false,
+      "private_zip": "Suno numeric CSV/JSON only; retained by the owner privately",
+      "public_statement": "Stage S was evaluated under prereg_suno.json. The conclusion is in the private record.",
+      "public_zip": "ACE-Step controls and synthetic ruler only",
+      "publication": "No Suno score, route outcome, accuracy claim or threshold comparison before owner confirms terms permit publication."
+    },
+    "render": {
+      "programs": {
+        "oohs": 53,
+        "piano": 0
+      },
+      "reverb": false,
+      "sample_rate": 48000,
+      "soundfont": "FluidR3_GM; exact SHA256 in records/suno_pack.json"
+    },
+    "ruler_self_check": {
+      "accompaniment_gain": 0.35,
+      "block_repetitions": 2,
+      "block_tail_beats": 8,
+      "ceiling": "median strict NPA across clean, speed and transposition variants; exclude corrupted notes",
+      "intro_seconds_cycle": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "peak_cap": 0.95,
+      "recovery_diagnostic": {
+        "decision_gate": false,
+        "relaxed": "report start and transposition errors without a new gate",
+        "speed_tolerance": 0.010001,
+        "strict_start_tolerance_s": 0.1,
+        "transpose_tolerance_semitones": 0
+      },
+      "sensitivity": "ROC AUC over twelve clean and twelve two-error NPA scores; bootstrap paired items, retaining both labels; matched-pair win rate is a separate diagnostic; no Stage S AUC gate",
+      "source": "synthetic FluidSynth Voice Oohs, not natural singing",
+      "tempo_ratio": 1.03,
+      "transpose_semitones": 2,
+      "variants": [
+        "clean",
+        "speed_1.03",
+        "transpose_2",
+        "two_wrong_notes"
+      ],
+      "vocal_gain": 1.0,
+      "wrong_note_indices": [
+        5,
+        21
+      ],
+      "wrong_note_offset_semitones": 1,
+      "wrong_note_offsets": [
+        1,
+        -1
+      ],
+      "wrong_notes": 2
+    },
+    "suno": {
+      "arms": [
+        "noguide",
+        "ctx_oohs_k3",
+        "ctx_oohs_k6",
+        "ctx_clarinet_k4"
+      ],
+      "bootstrap_draws": 2000,
+      "bootstrap_seed": 20261027,
+      "caption": "pop, full band, female vocal",
+      "draws": [
+        0,
+        1
+      ],
+      "duration_extra_beats": 8,
+      "f0_method": "swift",
+      "max_wall_seconds": 5400,
+      "minimum_complete_item_pairs": 10,
+      "npa_threshold": 0.9,
+      "pair_aggregation": "arithmetic mean of a and b within item",
+      "requests_per_item_route": 1,
+      "retain_both_outputs": true,
+      "route_aggregation": "median of item pair means; never pool different routes",
+      "routes": {
+        "R1": "MIDI prompt",
+        "R2": "piano audio cover/reference",
+        "R3": "Voice Oohs audio cover/reference"
+      },
+      "ruler_ceiling_minimum": 0.95,
+      "runtime_estimate": "about one hour on L4 was a brief estimate, not validated; stop at 1.5 times that budget",
+      "seed_tag": "e7-suno",
+      "separator_overlap": 0.25,
+      "separator_shifts": 0,
+      "shift": 3.0,
+      "steps": 8,
+      "word_recall_threshold": 0.6
+    },
+    "tool_roles_status": "The three distinct roles in measurement.ruler_roles are provisional H1 examples. Stage 0c must select and validate the evaluator before H1 preregistration.",
+    "validity": {
+      "chance": "all other eleven references, identical search and transcription matching",
+      "e5_v2": "required and register.py --check must pass before the GPU run",
+      "external_study_comparison": "Do not directly compare deviations with Qwen-Music; references, F0 and alignment differ.",
+      "hash_policy": "verify all code and melody/lyric hashes before scoring; changes require a reviewed addendum marked deviation and reporting original-version results",
+      "unrun": "Suno service use, GPU generation, separation and Whisper have not run in Cloud."
+    }
+  },
+  "lyrics_sha256": "ad9a0b39e9e21107c6d1b0891f902dd40c40ffb82b7a8e40971df383cb5ea00b",
+  "manifest_sha256": "97d11ac90cd4494c616c27279ceea7cf3b0884d44aeabef16901adc2f48170dd",
+  "registered_utc": "2026-10-27T15:15:38Z",
+  "schema_version": 1,
+  "source_pack_record_sha256": "a90a1f8338c1e9b0cc26c6c858cf26748384bb73febe9af7dc4c6143bbffcccc",
+  "status": "awaiting_review_and_merge_before_external_generation"
+}

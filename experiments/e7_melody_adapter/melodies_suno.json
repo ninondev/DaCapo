@@ -1,0 +1,2855 @@
+{
+  "bars": 8,
+  "items": [
+    {
+      "id": "mel00",
+      "key": "C major",
+      "lyrics": "I watch the sun rise past the hill\nThe pale light warms the roof at dawn\nMy small boat rocks on waves of gold\nWe sail back home and sing once more",
+      "melody": {
+        "bpm": 105,
+        "notes": [
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 1.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 6.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 9.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 14.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 17.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 22.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 25.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 30.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "I",
+        "watch",
+        "the",
+        "sun",
+        "rise",
+        "past",
+        "the",
+        "hill",
+        "The",
+        "pale",
+        "light",
+        "warms",
+        "the",
+        "roof",
+        "at",
+        "dawn",
+        "My",
+        "small",
+        "boat",
+        "rocks",
+        "on",
+        "waves",
+        "of",
+        "gold",
+        "We",
+        "sail",
+        "back",
+        "home",
+        "and",
+        "sing",
+        "once",
+        "more"
+      ]
+    },
+    {
+      "id": "mel01",
+      "key": "D major",
+      "lyrics": "The rain falls soft on leaves of green\nI hear each drop tap on the glass\nYour coat hangs near the old front door\nCome sit with me till clouds drift past",
+      "melody": {
+        "bpm": 109,
+        "notes": [
+          {
+            "dur": 0.5,
+            "pitch": 66,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 67,
+            "start": 0.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 66,
+            "start": 4.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 6.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 67,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 8.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 66,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 67,
+            "start": 12.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 14.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 66,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 67,
+            "start": 16.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 66,
+            "start": 20.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 22.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 66,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 24.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 28.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 30.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "rain",
+        "falls",
+        "soft",
+        "on",
+        "leaves",
+        "of",
+        "green",
+        "I",
+        "hear",
+        "each",
+        "drop",
+        "tap",
+        "on",
+        "the",
+        "glass",
+        "Your",
+        "coat",
+        "hangs",
+        "near",
+        "the",
+        "old",
+        "front",
+        "door",
+        "Come",
+        "sit",
+        "with",
+        "me",
+        "till",
+        "clouds",
+        "drift",
+        "past"
+      ]
+    },
+    {
+      "id": "mel02",
+      "key": "F major",
+      "lyrics": "We walk where tall reeds touch the stream\nThe wind bends each thin stem in turn\nA white bird lifts its wings and flies\nI hold this day and let it burn",
+      "melody": {
+        "bpm": 92,
+        "notes": [
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 67,
+            "start": 1.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 5.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 70,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 9.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 70,
+            "start": 13.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 67,
+            "start": 17.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 21.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 25.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 67,
+            "start": 29.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "We",
+        "walk",
+        "where",
+        "tall",
+        "reeds",
+        "touch",
+        "the",
+        "stream",
+        "The",
+        "wind",
+        "bends",
+        "each",
+        "thin",
+        "stem",
+        "in",
+        "turn",
+        "A",
+        "white",
+        "bird",
+        "lifts",
+        "its",
+        "wings",
+        "and",
+        "flies",
+        "I",
+        "hold",
+        "this",
+        "day",
+        "and",
+        "let",
+        "it",
+        "burn"
+      ]
+    },
+    {
+      "id": "mel03",
+      "key": "G major",
+      "lyrics": "The train rolls out past fields of wheat\nIts low hum keeps a slow warm beat\nMy hand rests on the cold grey pane\nOne day this road leads home once more",
+      "melody": {
+        "bpm": 110,
+        "notes": [
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 0.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 4.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 6.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 8.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 76,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 76,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 12.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 14.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 16.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 20.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 22.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 24.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 28.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 30.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "train",
+        "rolls",
+        "out",
+        "past",
+        "fields",
+        "of",
+        "wheat",
+        "Its",
+        "low",
+        "hum",
+        "keeps",
+        "a",
+        "slow",
+        "warm",
+        "beat",
+        "My",
+        "hand",
+        "rests",
+        "on",
+        "the",
+        "cold",
+        "grey",
+        "pane",
+        "One",
+        "day",
+        "this",
+        "road",
+        "leads",
+        "home",
+        "once",
+        "more"
+      ]
+    },
+    {
+      "id": "mel04",
+      "key": "C major",
+      "lyrics": "I plant one seed in soft dark earth\nThe spring rain wakes its roots at night\nA small green shoot breaks through the ground\nWe lift its leaves up to the light",
+      "melody": {
+        "bpm": 95,
+        "notes": [
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 60,
+            "start": 1.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 60,
+            "start": 5.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 59,
+            "start": 9.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 59,
+            "start": 13.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 60,
+            "start": 17.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 60,
+            "start": 21.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 25.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 60,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 29.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "I",
+        "plant",
+        "one",
+        "seed",
+        "in",
+        "soft",
+        "dark",
+        "earth",
+        "The",
+        "spring",
+        "rain",
+        "wakes",
+        "its",
+        "roots",
+        "at",
+        "night",
+        "A",
+        "small",
+        "green",
+        "shoot",
+        "breaks",
+        "through",
+        "the",
+        "ground",
+        "We",
+        "lift",
+        "its",
+        "leaves",
+        "up",
+        "to",
+        "the",
+        "light"
+      ]
+    },
+    {
+      "id": "mel05",
+      "key": "D major",
+      "lyrics": "The moon hangs low right past the bay\nWe count the lights that line the shore\nYour voice floats through the cool salt air\nI turn and hear that tune once more",
+      "melody": {
+        "bpm": 98,
+        "notes": [
+          {
+            "dur": 1.5,
+            "pitch": 66,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 66,
+            "start": 1.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 5.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 9.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 61,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 13.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 66,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 66,
+            "start": 17.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 21.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 66,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 67,
+            "start": 25.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 29.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "moon",
+        "hangs",
+        "low",
+        "right",
+        "past",
+        "the",
+        "bay",
+        "We",
+        "count",
+        "the",
+        "lights",
+        "that",
+        "line",
+        "the",
+        "shore",
+        "Your",
+        "voice",
+        "floats",
+        "through",
+        "the",
+        "cool",
+        "salt",
+        "air",
+        "I",
+        "turn",
+        "and",
+        "hear",
+        "that",
+        "tune",
+        "once",
+        "more"
+      ]
+    },
+    {
+      "id": "mel06",
+      "key": "F major",
+      "lyrics": "The snow lies deep on roof and road\nMy boots leave marks near to the gate\nA red scarf moves through all the white\nYour lamp is on and I can wait",
+      "melody": {
+        "bpm": 97,
+        "notes": [
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 70,
+            "start": 0.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 4.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 6.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 8.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 12.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 14.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 70,
+            "start": 16.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 20.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 22.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 67,
+            "start": 24.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 65,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 65,
+            "start": 28.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 30.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "snow",
+        "lies",
+        "deep",
+        "on",
+        "roof",
+        "and",
+        "road",
+        "My",
+        "boots",
+        "leave",
+        "marks",
+        "near",
+        "to",
+        "the",
+        "gate",
+        "A",
+        "red",
+        "scarf",
+        "moves",
+        "through",
+        "all",
+        "the",
+        "white",
+        "Your",
+        "lamp",
+        "is",
+        "on",
+        "and",
+        "I",
+        "can",
+        "wait"
+      ]
+    },
+    {
+      "id": "mel07",
+      "key": "G major",
+      "lyrics": "We pass the shops and cross the square\nThe bells call out the time at noon\nYou tap your heel and take my hand\nWe hum one verse then change the tune",
+      "melody": {
+        "bpm": 109,
+        "notes": [
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 0.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 4.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 6.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 8.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 12.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 14.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 16.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 20.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 22.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 24.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 28.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 30.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "We",
+        "pass",
+        "the",
+        "shops",
+        "and",
+        "cross",
+        "the",
+        "square",
+        "The",
+        "bells",
+        "call",
+        "out",
+        "the",
+        "time",
+        "at",
+        "noon",
+        "You",
+        "tap",
+        "your",
+        "heel",
+        "and",
+        "take",
+        "my",
+        "hand",
+        "We",
+        "hum",
+        "one",
+        "verse",
+        "then",
+        "change",
+        "the",
+        "tune"
+      ]
+    },
+    {
+      "id": "mel08",
+      "key": "C major",
+      "lyrics": "A kite pulls hard on one thin string\nThe blue sky fills its broad red sail\nI run with you right through the field\nWe laugh and chase its long white tail",
+      "melody": {
+        "bpm": 96,
+        "notes": [
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 1.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 5.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 60,
+            "start": 9.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 60,
+            "start": 13.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 17.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 64,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 21.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 64,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 62,
+            "start": 25.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 60,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 62,
+            "start": 29.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 60,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "A",
+        "kite",
+        "pulls",
+        "hard",
+        "on",
+        "one",
+        "thin",
+        "string",
+        "The",
+        "blue",
+        "sky",
+        "fills",
+        "its",
+        "broad",
+        "red",
+        "sail",
+        "I",
+        "run",
+        "with",
+        "you",
+        "right",
+        "through",
+        "the",
+        "field",
+        "We",
+        "laugh",
+        "and",
+        "chase",
+        "its",
+        "long",
+        "white",
+        "tail"
+      ]
+    },
+    {
+      "id": "mel09",
+      "key": "D major",
+      "lyrics": "The stars shine through the bare black trees\nTheir light falls on the path like rain\nI hear your steps right by my own\nWe find the way back home once more",
+      "melody": {
+        "bpm": 103,
+        "notes": [
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 1.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 6.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 9.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 14.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 17.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 22.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 25.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 66,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 64,
+            "start": 30.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 62,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "stars",
+        "shine",
+        "through",
+        "the",
+        "bare",
+        "black",
+        "trees",
+        "Their",
+        "light",
+        "falls",
+        "on",
+        "the",
+        "path",
+        "like",
+        "rain",
+        "I",
+        "hear",
+        "your",
+        "steps",
+        "right",
+        "by",
+        "my",
+        "own",
+        "We",
+        "find",
+        "the",
+        "way",
+        "back",
+        "home",
+        "once",
+        "more"
+      ]
+    },
+    {
+      "id": "mel10",
+      "key": "F major",
+      "lyrics": "The bread is warm the tea is sweet\nWe share the last red plum at dawn\nA small wren sings near to the door\nIts song stays close when you are gone",
+      "melody": {
+        "bpm": 99,
+        "notes": [
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 1.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 5.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 70,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 9.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 74,
+            "start": 13.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 17.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 70,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 72,
+            "start": 21.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 70,
+            "start": 25.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 65,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 67,
+            "start": 29.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 65,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "bread",
+        "is",
+        "warm",
+        "the",
+        "tea",
+        "is",
+        "sweet",
+        "We",
+        "share",
+        "the",
+        "last",
+        "red",
+        "plum",
+        "at",
+        "dawn",
+        "A",
+        "small",
+        "wren",
+        "sings",
+        "near",
+        "to",
+        "the",
+        "door",
+        "Its",
+        "song",
+        "stays",
+        "close",
+        "when",
+        "you",
+        "are",
+        "gone"
+      ]
+    },
+    {
+      "id": "mel11",
+      "key": "G major",
+      "lyrics": "The tide draws lines right through the sand\nA shell lies where the waves have been\nWe leave two stones next to the path\nAnd trust the sea to sing once more",
+      "melody": {
+        "bpm": 92,
+        "notes": [
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 0.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 1.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 2.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 3.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 4.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 5.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 5.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 7.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 8.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 9.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 10.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 11.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 12.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 69,
+            "start": 13.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 13.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 15.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 16.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 17.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 18.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 19.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 69,
+            "start": 20.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 71,
+            "start": 21.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 21.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 71,
+            "start": 23.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 71,
+            "start": 24.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 72,
+            "start": 25.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 26.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 72,
+            "start": 27.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 74,
+            "start": 28.0,
+            "vel": 90
+          },
+          {
+            "dur": 0.5,
+            "pitch": 74,
+            "start": 29.0,
+            "vel": 90
+          },
+          {
+            "dur": 1.5,
+            "pitch": 69,
+            "start": 29.5,
+            "vel": 90
+          },
+          {
+            "dur": 1.0,
+            "pitch": 67,
+            "start": 31.0,
+            "vel": 90
+          }
+        ]
+      },
+      "phrase_form": "ABAC",
+      "words": [
+        "The",
+        "tide",
+        "draws",
+        "lines",
+        "right",
+        "through",
+        "the",
+        "sand",
+        "A",
+        "shell",
+        "lies",
+        "where",
+        "the",
+        "waves",
+        "have",
+        "been",
+        "We",
+        "leave",
+        "two",
+        "stones",
+        "next",
+        "to",
+        "the",
+        "path",
+        "And",
+        "trust",
+        "the",
+        "sea",
+        "to",
+        "sing",
+        "once",
+        "more"
+      ]
+    }
+  ],
+  "meter": [
+    4,
+    4
+  ],
+  "schema_version": 1,
+  "seed": 20261027
+}

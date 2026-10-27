@@ -1,0 +1,61 @@
+{
+  "config": {
+    "asr_model": null,
+    "asr_revision": null,
+    "experiment": "e7_suno_pack_registration",
+    "f0_tool": null,
+    "generator_sha256": "568dbc782c0e1fd335b3b0d8f547c5869079def07a1ad0dacb0e02af7254b089",
+    "seed": 20261027,
+    "separator": null
+  },
+  "config_hash": "439f98e1b787",
+  "environment": {
+    "fluidsynth": "FluidSynth runtime version 2.4.4",
+    "git_commit": "3c0c259d53251bd1992f1330e74f93776d20a0af",
+    "git_dirty": true,
+    "machine": "x86_64",
+    "packages": {
+      "basic-pitch": "0.4.0",
+      "librosa": "1.0.0",
+      "mir_eval": "0.8.2",
+      "numpy": "2.5.4",
+      "pretty_midi": "0.2.11.post0",
+      "torch": "2.14.1+cpu",
+      "torchcrepe": "0.0.24"
+    },
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.12.14"
+  },
+  "environment_scope": "registration-time snapshot; not a measurement of this machine",
+  "finished_utc": "2026-10-27T13:58:24Z",
+  "results": {
+    "lyrics_by_item_sha256": {
+      "mel00": "a16ddce1533dc5588eb646c4a565e2c27e2a39e16b6a8e83e4b69ab675d6620c",
+      "mel01": "946d6eb7a60d7188aeb01d82437f2a22c68e138305bde8df2f526e2e52dd6bde",
+      "mel02": "61bde74892b6a02b13f8aee900782c3bf8df56e02c86031b524f18b50bf255c6",
+      "mel03": "cfc1fc35829b65e898458ac07eafc210ed1d848bca4ef39fb7cb04cb298616ef",
+      "mel04": "2fbc2832ab74ef4746cbbb646af288724cf6283de855738eef17848ec384e7d6",
+      "mel05": "9f567503960bcb002df97397a17018a9fc5f2aff41c2e71f2eb854e507ddd371",
+      "mel06": "58208e468031851499b3c09dbae9e8090a92c08111ae143fc8b6cab276f39dfe",
+      "mel07": "66bdac8943a734efd66ce154e7c41a1d90b08884a6845dd4335a9591339857ca",
+      "mel08": "5506b38a8d9f51260d93097dc87dc0dde65dd7b2e8a1062395dc2e6409126c6e",
+      "mel09": "3c0207307a5ae69963f4758b190e3288e57e4f384a2ae8b5afeed5d08c142313",
+      "mel10": "b96d5d5c477feacfd4dd0104782a102d1e295d611f42b1c5996b719bd3ca39f8",
+      "mel11": "22f54da6a71a23bd3711af8ecf81200131783da2b1b5a01ad9d654d08c96f753"
+    },
+    "lyrics_provenance": "Lyrics written by Codex for this experiment.",
+    "lyrics_sha256": "ad9a0b39e9e21107c6d1b0891f902dd40c40ffb82b7a8e40971df383cb5ea00b",
+    "melodies_sha256": "97d11ac90cd4494c616c27279ceea7cf3b0884d44aeabef16901adc2f48170dd",
+    "render": {
+      "programs": {
+        "oohs": 53,
+        "piano": 0
+      },
+      "reverb": false,
+      "sample_rate": 48000,
+      "soundfont": "FluidR3_GM.sf2",
+      "soundfont_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0"
+    }
+  },
+  "wall_seconds": 0.0
+}
