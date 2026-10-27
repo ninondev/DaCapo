@@ -241,7 +241,7 @@
     {
       "id": "mel01",
       "key": "D major",
-      "lyrics": "The rain falls soft on leaves of green\nI hear each drop tap on the glass\nYour coat hangs near the old front door\nCome sit with me till clouds drift past",
+      "lyrics": "The rain falls soft on leaves of green\nI hear each drop tap on the glass\nYour coat hangs near the old front door\nCome sit with me while clouds drift past",
       "melody": {
         "bpm": 109,
         "notes": [
@@ -469,7 +469,7 @@
         "sit",
         "with",
         "me",
-        "till",
+        "while",
         "clouds",
         "drift",
         "past"
@@ -715,7 +715,7 @@
     {
       "id": "mel03",
       "key": "G major",
-      "lyrics": "The train rolls out past fields of wheat\nIts low hum keeps a slow warm beat\nMy hand rests on the cold grey pane\nOne day this road leads home once more",
+      "lyrics": "The train rolls out past fields of wheat\nIts low hum keeps a slow warm beat\nMy hand rests on the cold clear pane\nSome day this road leads home once more",
       "melody": {
         "bpm": 110,
         "notes": [
@@ -937,9 +937,9 @@
         "on",
         "the",
         "cold",
-        "grey",
+        "clear",
         "pane",
-        "One",
+        "Some",
         "day",
         "this",
         "road",
@@ -952,7 +952,7 @@
     {
       "id": "mel04",
       "key": "C major",
-      "lyrics": "I plant one seed in soft dark earth\nThe spring rain wakes its roots at night\nA small green shoot breaks through the ground\nWe lift its leaves up to the light",
+      "lyrics": "I plant this seed in soft dark earth\nThe spring rain wakes its roots at night\nA small green shoot breaks through the ground\nWe lift its leaves up to the light",
       "melody": {
         "bpm": 95,
         "notes": [
@@ -1154,7 +1154,7 @@
       "words": [
         "I",
         "plant",
-        "one",
+        "this",
         "seed",
         "in",
         "soft",
@@ -1663,7 +1663,7 @@
     {
       "id": "mel07",
       "key": "G major",
-      "lyrics": "We pass the shops and cross the square\nThe bells call out the time at noon\nYou tap your heel and take my hand\nWe hum one verse then change the tune",
+      "lyrics": "We pass the shops and cross the square\nThe bells call out the time at noon\nYou tap your heel and take my hand\nWe hum this song then change the tune",
       "melody": {
         "bpm": 109,
         "notes": [
@@ -1889,8 +1889,8 @@
         "hand",
         "We",
         "hum",
-        "one",
-        "verse",
+        "this",
+        "song",
         "then",
         "change",
         "the",
@@ -1900,7 +1900,7 @@
     {
       "id": "mel08",
       "key": "C major",
-      "lyrics": "A kite pulls hard on one thin string\nThe blue sky fills its broad red sail\nI run with you right through the field\nWe laugh and chase its long white tail",
+      "lyrics": "A kite pulls hard on its thin string\nThe blue sky fills its broad red sail\nI run with you right through the field\nWe laugh and chase its long white tail",
       "melody": {
         "bpm": 96,
         "notes": [
@@ -2105,7 +2105,7 @@
         "pulls",
         "hard",
         "on",
-        "one",
+        "its",
         "thin",
         "string",
         "The",
@@ -2611,7 +2611,7 @@
     {
       "id": "mel11",
       "key": "G major",
-      "lyrics": "The tide draws lines right through the sand\nA shell lies where the waves have been\nWe leave two stones next to the path\nAnd trust the sea to sing once more",
+      "lyrics": "The tide draws lines right through the sand\nA shell lies where the waves have been\nWe leave smooth stones next to the path\nAnd trust the sea to sing once more",
       "melody": {
         "bpm": 92,
         "notes": [
@@ -2829,7 +2829,7 @@
         "been",
         "We",
         "leave",
-        "two",
+        "smooth",
         "stones",
         "next",
         "to",

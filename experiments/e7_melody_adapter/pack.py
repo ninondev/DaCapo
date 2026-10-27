@@ -33,33 +33,37 @@ KEYS = (("C major", 60), ("D major", 62), ("F major", 65), ("G major", 67))
 ROUTES = ("R1", "R2", "R3")
 SEED_TAGS = ("e7-suno", "e7-smoke", "e7-data", "e7-dev", "e7-test", "e7-listen")
 STYLE = "pop, full band, female vocal"
+TABLE_FIELDS = ("item_id", "route", "take", "filename", "bpm", "key", "style",
+                "actual_bpm", "actual_key", "actual_style", "route_available",
+                "actual_option", "model_version", "date_utc", "credits_used", "notes")
+ROUTE_AVAILABLE_VALUES = ("yes", "no", "unknown")
 
 # Every line has eight one-syllable words. Four lines match 32 notes.
 LYRICS = (
     ("I watch the sun rise past the hill", "The pale light warms the roof at dawn",
      "My small boat rocks on waves of gold", "We sail back home and sing once more"),
     ("The rain falls soft on leaves of green", "I hear each drop tap on the glass",
-     "Your coat hangs near the old front door", "Come sit with me till clouds drift past"),
+     "Your coat hangs near the old front door", "Come sit with me while clouds drift past"),
     ("We walk where tall reeds touch the stream", "The wind bends each thin stem in turn",
      "A white bird lifts its wings and flies", "I hold this day and let it burn"),
     ("The train rolls out past fields of wheat", "Its low hum keeps a slow warm beat",
-     "My hand rests on the cold grey pane", "One day this road leads home once more"),
-    ("I plant one seed in soft dark earth", "The spring rain wakes its roots at night",
+     "My hand rests on the cold clear pane", "Some day this road leads home once more"),
+    ("I plant this seed in soft dark earth", "The spring rain wakes its roots at night",
      "A small green shoot breaks through the ground", "We lift its leaves up to the light"),
     ("The moon hangs low right past the bay", "We count the lights that line the shore",
      "Your voice floats through the cool salt air", "I turn and hear that tune once more"),
     ("The snow lies deep on roof and road", "My boots leave marks near to the gate",
      "A red scarf moves through all the white", "Your lamp is on and I can wait"),
     ("We pass the shops and cross the square", "The bells call out the time at noon",
-     "You tap your heel and take my hand", "We hum one verse then change the tune"),
-    ("A kite pulls hard on one thin string", "The blue sky fills its broad red sail",
+     "You tap your heel and take my hand", "We hum this song then change the tune"),
+    ("A kite pulls hard on its thin string", "The blue sky fills its broad red sail",
      "I run with you right through the field", "We laugh and chase its long white tail"),
     ("The stars shine through the bare black trees", "Their light falls on the path like rain",
      "I hear your steps right by my own", "We find the way back home once more"),
     ("The bread is warm the tea is sweet", "We share the last red plum at dawn",
      "A small wren sings near to the door", "Its song stays close when you are gone"),
     ("The tide draws lines right through the sand", "A shell lies where the waves have been",
-     "We leave two stones next to the path", "And trust the sea to sing once more"),
+     "We leave smooth stones next to the path", "And trust the sea to sing once more"),
 )
 
 
@@ -193,7 +197,7 @@ def build_pack_record(manifest: dict, soundfont: str | Path, snapshot: dict,
     results = {"melodies_sha256": hashlib.sha256(json_bytes(manifest)).hexdigest(),
                "lyrics_sha256": lyrics_hash(manifest),
                "lyrics_by_item_sha256": {it["id"]: hashlib.sha256(it["lyrics"].encode()).hexdigest() for it in manifest["items"]},
-               "lyrics_provenance": "Lyrics written by Codex for this experiment.",
+               "lyrics_provenance": "Lyrics written by the agents for this experiment.",
                "render": {"programs": PROGRAMS, "sample_rate": SAMPLE_RATE, "reverb": False,
                           "soundfont": "FluidR3_GM.sf2", "soundfont_sha256": sha256_file(soundfont)}}
     return _record(cfg, results, snapshot, registered_utc)
@@ -242,13 +246,14 @@ def build_license_record(snapshot: dict, registered_utc: str = REGISTERED_UTC) -
                          "policy": "Research-only licenses permit measurement, never training or repository inclusion."}, snapshot, registered_utc)
 
 
-def write_source_records() -> None:
-    """Regenerate source metadata while retaining its registration snapshot."""
+def write_source_records(*, refresh_snapshot: bool = False, registered_utc: str | None = None) -> None:
+    """Regenerate sources; refresh provenance only for an explicit new registration."""
     manifest = build_manifest()
     record_path = HERE / "records" / "suno_pack.json"
     old = json.loads(record_path.read_text()) if record_path.exists() else None
-    snapshot = old["environment"] if old else environment()
-    registered = old["finished_utc"] if old else REGISTERED_UTC
+    snapshot = old["environment"] if old and not refresh_snapshot else environment()
+    registered = registered_utc or (old["finished_utc"] if old and not refresh_snapshot
+                                    else time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
     if snapshot.get("git_commit") in (None, "unknown"):
         raise RuntimeError("Run source generation from the repository root.")
     MANIFEST.write_bytes(json_bytes(manifest))
@@ -268,16 +273,16 @@ def _output_directory(path: str | Path) -> Path:
 
 
 def _write_owner_table(path: Path, manifest: dict) -> None:
-    fields = ("item_id", "route", "take", "filename", "route_available", "actual_option",
-              "model_version", "date_utc", "credits_used", "notes")
     with path.open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer = csv.DictWriter(stream, fieldnames=TABLE_FIELDS)
         writer.writeheader()
         for item in manifest["items"]:
             for route in ROUTES:
                 for take in ("a", "b"):
                     writer.writerow({"item_id": item["id"], "route": route, "take": take,
-                                     "filename": f"S_{item['id']}_{route}_{take}.mp3"})
+                                     "filename": f"S_{item['id']}_{route}_{take}.mp3",
+                                     "bpm": item["melody"]["bpm"], "key": item["key"],
+                                     "style": STYLE, "route_available": "unknown"})
 
 
 def build_upload_pack(output_dir: str | Path, manifest_path: str | Path = MANIFEST,
@@ -331,12 +336,14 @@ def build_upload_pack(output_dir: str | Path, manifest_path: str | Path = MANIFE
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="stage", required=True)
-    sub.add_parser("records", help="Regenerate deterministic source records.")
+    records = sub.add_parser("records", help="Regenerate deterministic source records.")
+    records.add_argument("--refresh-snapshot", action="store_true",
+                         help="Record the current environment and UTC time for a new registration.")
     render = sub.add_parser("render", help="Render the upload pack from a clean clone.")
     render.add_argument("--output", required=True)
     args = parser.parse_args()
     if args.stage == "records":
-        write_source_records()
+        write_source_records(refresh_snapshot=args.refresh_snapshot)
     else:
         print(json.dumps(build_upload_pack(args.output), indent=2))
 

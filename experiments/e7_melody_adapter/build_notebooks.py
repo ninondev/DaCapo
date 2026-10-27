@@ -40,7 +40,7 @@ os.environ["PYTHONPATH"] = str(REPO)
 if not (REPO / "experiments/e7_melody_adapter/prereg_suno.json").is_file():
     raise RuntimeError("Wait for the preregistration PR to be reviewed and merged into main.")
 print("DaCapo commit:", subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip())
-from experiments.e7_melody_adapter.colab_setup import checkout_state, verify_registered_files, prepare
+from experiments.e7_melody_adapter.stage_s_setup import checkout_state, verify_registered_files, prepare
 checkout_state()
 verify_registered_files()
 '''
@@ -48,7 +48,7 @@ verify_registered_files()
 
 def notebook(cells: list[dict], gpu: bool) -> dict:
     metadata = {"kernelspec": {"display_name": "Python 3", "name": "python3"},
-                "language_info": {"name": "python", "version": "3.12"}, "colab": {"provenance": []}}
+                "language_info": {"name": "python"}, "colab": {"provenance": []}}
     if gpu:
         metadata.update(accelerator="GPU", colab={"gpuType": "L4", "provenance": []})
     return {"cells": cells, "metadata": metadata, "nbformat": 4, "nbformat_minor": 5}
@@ -59,7 +59,7 @@ def build() -> dict[str, dict]:
         md('''
 # Stage S: make the upload pack
 
-Use a **Python 3.12 CPU runtime**. Run this only after the preregistration PR has been
+Use the **default Colab CPU runtime** (Python 3.12 or 3.13). Run this only after the preregistration PR has been
 reviewed and merged into main. This notebook does not contact Suno or download song-model weights.
 It creates 12 original melody MIDI files, piano and Voice Oohs WAV files, lyric text,
 and a recording table. Do not upload any owner-held-out melody.
@@ -74,7 +74,7 @@ it to the reviewer before generating on Suno. Read `suno_protocol.md` for the th
 runtime = prepare("pack", WORK)
 os.environ.update(runtime["environment"])
 PACK_OUTPUT = REPO / "experiments/e7_melody_adapter/outputs/upload-pack"
-subprocess.run(["bash", "experiments/e7_melody_adapter/run_stage.sh", "pack",
+subprocess.run(["bash", "experiments/e7_melody_adapter/stage_s_run.sh", "pack",
                 "--output", str(PACK_OUTPUT)], check=True, env=dict(os.environ))
 '''),
         code('''
@@ -97,14 +97,16 @@ The GPU scoring notebook additionally requires the reviewed E5 v2 merge and regi
         md('''
 # Stage S: score on a GPU
 
-Use **Python 3.12 and an L4 or A100 GPU**. Run only after the Stage S preregistration and
+Use the **default Colab runtime with an L4 or A100 GPU** (Python 3.12 or 3.13). Run only after the Stage S preregistration and
 E5 v2 have both been reviewed and merged. The first guards stop before model downloads if
 E5 v2 is missing. This runtime downloads the pinned open ACE-Step and Whisper weights and
 the htdemucs separator. No service API or paid endpoint is called by this code.
 
-The brief estimated about one hour on L4; this has not been measured. CPU alignment is
-substantial. The scorer stops after the registered 1.5-hour budget between clips and keeps
-partial records. Partial results do not establish a completed decision.
+Scoring has no time stop. Every scored clip is checkpointed in Drive under its audio hash.
+Run the same notebook again with the same input and output paths to resume the same
+preregistration. It reuses finished scores and generated audio. The ruler is scored first,
+then Suno, then ACE-Step controls. Only ACE generation has its registered active-generation
+budget; a control timeout does not invalidate a completed ruler-and-Suno decision.
 
 Suno scores stay private. The public zip contains only ACE-Step controls and the synthetic
 ruler. Neither zip contains Suno audio or extracted vocals. Do not publish scores or a route
@@ -113,9 +115,21 @@ in the development environment.
 '''),
         code(CLONE),
         code('''
-from experiments.e7_melody_adapter.colab_setup import require_e5_source
+from google.colab import drive
+drive.mount("/content/drive")
+# Edit only these input/output locations. Do not edit registered scoring definitions.
+INPUTS = Path("/content/drive/MyDrive/e7-suno/audio")
+RECORDS_CSV = Path("/content/drive/MyDrive/e7-suno/suno_recording_table.csv")
+RESULTS = Path("/content/drive/MyDrive/e7-suno/scored")
+# Keep this directory for every resume of this preregistered run.
+RESULTS.mkdir(parents=True, exist_ok=True)
+if not INPUTS.is_dir() or not RECORDS_CSV.is_file():
+    raise FileNotFoundError("Set INPUTS and RECORDS_CSV to the downloaded audio and completed table.")
+'''),
+        code('''
+from experiments.e7_melody_adapter.stage_s_setup import require_e5_source, preflight_audio_inputs
 require_e5_source()
-subprocess.run([sys.executable, "experiments/e5_motif/register.py", "--check"], check=True)
+preflight_audio_inputs(INPUTS)
 runtime = prepare("gpu", WORK)
 os.environ.update(runtime["environment"])
 # Basic Pitch uses its ONNX path. Install it separately without TensorFlow dependencies.
@@ -130,17 +144,9 @@ available_arms = {arm["name"] for arm in arms(["clarinet", "oohs"])}
 assert {"noguide", "ctx_oohs_k3", "ctx_oohs_k6", "ctx_clarinet_k4"} <= available_arms
 '''),
         code('''
-from google.colab import drive
-drive.mount("/content/drive")
-# Edit only these input/output locations. Do not edit registered scoring definitions.
-INPUTS = Path("/content/drive/MyDrive/e7-suno/audio")
-RECORDS_CSV = Path("/content/drive/MyDrive/e7-suno/suno_recording_table.csv")
-RESULTS = Path("/content/drive/MyDrive/e7-suno/scored")
-if not INPUTS.is_dir() or not RECORDS_CSV.is_file():
-    raise FileNotFoundError("Set INPUTS and RECORDS_CSV to the downloaded audio and completed table.")
 checkout_state()
 verify_registered_files()
-subprocess.run(["bash", "experiments/e7_melody_adapter/run_stage.sh", "suno",
+subprocess.run(["bash", "experiments/e7_melody_adapter/stage_s_run.sh", "suno",
                 "--inputs", str(INPUTS), "--records-csv", str(RECORDS_CSV),
                 "--output-dir", str(RESULTS)], check=True, env=dict(os.environ))
 '''),
@@ -165,8 +171,11 @@ checkout_state()
 The scorer prints the two completed zip locations, not Suno scores. Copy `e7_suno_public.zip`
 for the public review and keep `suno_private.zip` in the owner's private store. The reviewer
 applies the preregistered decision rule. Missing pairs are listed and are not invented.
-If a budget or integrity guard stops the run, retain its partial records and report that
-the run did not complete. Do not select a favorable subset or silently extend the budget.
+Keep the Drive output directory and all checkpoints. On a runtime interruption, rerun the
+same notebook and the same output path to continue. Unreadable audio must be downloaded
+again from the original request; do not generate a replacement song. A control-generation
+budget stop is reported separately from ruler and Suno completion. Do not select a
+favorable subset or silently change the registered generation budget.
 '''),
     ], True)
     return {"colab_e7_pack.ipynb": pack, "colab_e7_suno.ipynb": suno}

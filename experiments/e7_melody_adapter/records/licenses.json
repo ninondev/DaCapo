@@ -4,13 +4,13 @@
     "asr_revision": null,
     "experiment": "e7_stage_s_license_registration",
     "f0_tool": null,
-    "generator_sha256": "568dbc782c0e1fd335b3b0d8f547c5869079def07a1ad0dacb0e02af7254b089",
+    "generator_sha256": "1a4481c1b7764b66596a2a38bee336da7cbac776c88593d5833e6e3eb3294909",
     "separator": null
   },
-  "config_hash": "8b7d04079a8a",
+  "config_hash": "ceb527bfe76f",
   "environment": {
     "fluidsynth": "FluidSynth runtime version 2.4.4",
-    "git_commit": "3c0c259d53251bd1992f1330e74f93776d20a0af",
+    "git_commit": "59a8365dcc8f494d5d22fadd4e41009e7489e878",
     "git_dirty": true,
     "machine": "x86_64",
     "packages": {
@@ -26,7 +26,7 @@
     "python": "3.12.14"
   },
   "environment_scope": "registration-time snapshot; not a measurement of this machine",
-  "finished_utc": "2026-10-27T13:58:24Z",
+  "finished_utc": "2026-10-27T17:44:31Z",
   "results": {
     "external_datasets_used": [],
     "policy": "Research-only licenses permit measurement, never training or repository inclusion.",

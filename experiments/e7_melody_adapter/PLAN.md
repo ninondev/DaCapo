@@ -3,12 +3,17 @@
 Read this file first at the start of every task. Continue from Progress.
 Reply to the owner in Chinese. Use simple English in repository files.
 Do not put the owner's personal background in the repository.
+Do not put assistant product names, real names, personal email addresses, or
+other private information in repository files, commit messages, or PR text.
+Use "the agents" or a role such as "the reviewing agent" for attribution.
+Paper citations may retain author names. Exact model and tool identifiers
+remain experiment inputs; they are needed to identify the measured systems.
 
 ## Progress
 
 - [x] Saved the task base in `.git/e7_base`.
 - [x] Read the task brief, root README and log, E4 code, and `dacapo/ace.py`.
-- [x] Fetched `origin/main`. It matches local HEAD at
+- [x] Fetched `origin/main`. The checked base is
   `3c0c259d53251bd1992f1330e74f93776d20a0af`.
 - [x] Checked the five E5 v2 prerequisite files. All are absent at that commit.
 - [x] Audit and complete the pre-existing untracked E7 draft.
@@ -18,20 +23,31 @@ Do not put the owner's personal background in the repository.
 - [x] Finish S4 implementation: GPU controls, synthetic ruler, scoring, and exports.
 - [x] Run `pytest experiments/e7_melody_adapter/tests` and record all counts.
 - [x] Run `bash experiments/e7_melody_adapter/precommit_check.sh`.
-- [ ] Owner creates the PR. Claude reviews and merges the preregistration.
+- [x] Opened PR #1 on the requested branch after the first implementation.
+- [x] Complete the thirteen review fixes described in this plan.
+- [x] Regenerate source records and the Stage S preregistration before any run.
+- [x] Run the full CPU suite with no skips and the boundary/hash checks.
+- [x] Add the repair as a new commit for PR #1 with the configured identity.
+- [ ] The reviewing agent reviews and merges the revised preregistration.
 - [ ] Owner runs the pack notebook and Suno protocol after that merge.
 - [ ] Wait for E5 v2 to be pushed and registered before GPU scoring.
-- [ ] Claude applies S5 using the private result package.
+- [ ] The reviewing agent applies S5 using the private result package.
 - [ ] H1 Stage 0 through Stage 5 remain future work, subject to the gates below.
 
-This task delivers the implementation of the brief's first task, steps 1-6.
-It does not run Suno, GPU generation, separation, Whisper, training, or H1 gates.
+The first implementation is commit 59a8365 in PR #1. The current task repairs
+that implementation before external generation. Append commits on the same
+branch; do not rewrite history, push to main, or merge the PR. The owner has
+authorized setting the required repository-local submission identity. Verify
+that identity before committing; keep identity details out of source files.
+This task does not run Suno, GPU generation, separation, Whisper, training,
+or H1 gates.
 
 ## Surprises & Discoveries
 
 - The task started with an untracked E7 draft. Useful work must be preserved and
   audited. Existing draft files are not evidence that a GPU run succeeded.
-- Local HEAD and fetched `origin/main` are the commit listed in Progress.
+- The initial base and fetched `origin/main` are the base commit in Progress.
+  The first implementation was committed later as 59a8365.
   `dacapo/seeds.py`, `dacapo/words.py`, `experiments/e6_clock/readout.py`,
   `experiments/e5_motif/registration/addendum_2.json`, and
   `experiments/e5_motif/register.py` are absent there.
@@ -67,10 +83,9 @@ It does not run Suno, GPU generation, separation, Whisper, training, or H1 gates
 - 2026-10-27: Use the local Debian runtime prefix for mandatory CPU rendering
   because system installation is unavailable. Keep the CLI and exact FluidR3
   font in ignored outputs, and preserve the soundfont SHA256 in provenance.
-- 2026-10-27: Assert the four E4 arm names in the notebook, but infer with
-  `text2music` and `is_covers=False`. On the first k denoiser calls, replace only
-  the 64 source channels and preserve the captured live mask. Do not use E4's
-  cover-nofsq task instruction; training and inference must share text2music.
+- 2026-10-27: Review correction: Stage S controls use the actual E4 arm
+  dictionaries. The earlier custom text2music hook did not implement those
+  controls. H1 route A remains text2music with its own context hook.
 - 2026-10-27: Strict-external alignment optimizes full-note absolute-pitch frame
   accuracy over 100 ms starts, all 21 speeds, and all 25 shifts. Keep two start
   candidates per speed/shift, then refine the best sixteen globally over plus
@@ -98,10 +113,90 @@ It does not run Suno, GPU generation, separation, Whisper, training, or H1 gates
   checking equality with the frozen local formula. Intermediate result JSON
   files also use write_result and clean provenance.
 
-- 2026-10-27: Reviewed the pinned upstream conditioning and loader source.
-  The native loader can download unpinned missing assets or overwrite checkpoint
-  Python from the source tree. Require a complete pinned snapshot and matching
-  model code before loading. A mismatch stops the run without modifying files.
+- 2026-10-27: Review correction: the two pinned checkpoint Python files differ
+  from the pinned source by design. The earlier mismatch rejection blocked all
+  GPU runs. Materialize the snapshot, verify its original hashes, then copy
+  only the two approved files from the pinned source before loading. Record
+  both original and replacement hashes; never modify the shared cache.
+
+### Review repair decisions, before external generation
+
+On a full runtime loss during an ACE call, exact active time cannot be recovered.
+Persist a reservation of the remaining allowance before each call. Normal
+completion replaces it with measured time; an unresolved reservation consumes
+the remaining allowance on restart. Record this conservative charge separately
+from measured time. Recover completed output audio before checking the budget
+or loading the model. Hash saved guides before reuse as well as output clips.
+
+The owner explicitly authorizes a new preregistration for this unrun study.
+Keep the old version in Git history; do not rewrite that history. The repaired
+registration gets a fresh UTC time and hashes. This pre-generation repair is
+not a silent change to an already executed study. After the new registration
+is merged, changes to its locked files require a reviewed deviation addendum.
+
+1. Score the complete synthetic ruler first, then Suno, then ACE controls.
+   Scoring has no wall-time stop. Save each completed audio-hash result and
+   generated artifact on Drive under the same registration identity. Resuming
+   reuses them. Record actual stage times. Use a spawn-based process pool for
+   all twelve reference searches and test exact serial/parallel equality.
+   ACE generation alone has 432 seconds: 96 draws times the previous run's
+   upper warm-call estimate of 3 seconds, times 1.5. Count active generation
+   calls across resumes, not installation, model loading, or scoring. An ACE
+   budget stop is reported separately and cannot cancel a complete Suno/ruler
+   decision. The earlier unmeasured 5400-second total stop is removed.
+2. Stage S uses `stage_s_lib.py`, `stage_s_setup.py`, `stage_s_run.sh`, and
+   `requirements-stage-s.txt`. Lock these, `suno.py`, `pack.py`,
+   `registration.py`, both Stage S notebooks, and the read-only measurement
+   dependencies listed in `registration.CODE_FILES`. H1 uses separate future
+   files such as `h1_lib.py`, `run_h1.sh`, and `requirements-h1.txt`.
+3. Download the exact weight revision with `local_dir`, using real files.
+   Before replacing checkpoint code, verify the original SHA256 values:
+   `modeling_acestep_v15_turbo.py` is
+   `c1ab0dd547124fee7ada449b2b86eae8201dc7d15889932643bbb67e3c982444`;
+   `configuration_acestep_v15.py` is
+   `b89870c5c7a7ce060eb0bcdbb5ffc86b0b1a324ca325a26be552ea1b42496dc5`.
+   Copy only those files from the pinned `acestep/models/turbo/` source.
+   Then require an empty mismatch list. Stop on an unexpected original hash
+   or source revision. A resumed setup verifies the recorded replacement too.
+4. Accept Python 3.12 and 3.13. Tell the owner to use the default Colab runtime;
+   do not require a manual Python version change.
+5. Check nonzero size and decodability before GPU work. Record unreadable
+   inputs separately and request a new download of the same song, never a
+   new generation. Score decodable short clips normally. Record per-Suno
+   scoring failures and continue with the next file; preserve completed rows.
+6. Read the actual four arm dictionaries from E4 at GPU execution time.
+   Forward task, guide source, cover strength, and cover noise through
+   `dacapo.ace.generate`. Keep the registered shared captions, seeds, BPM,
+   keyscale, and duration. The guided Stage S arms use `cover-nofsq`.
+7. Replace number words and easily varied spellings in the supplied lyrics
+   before registration, while keeping one syllable per note. Freeze a small
+   equivalence table for number forms and spellings such as gray/grey and
+   till/til. Regenerate the melody/lyric source hashes.
+8. Freeze ASR waveform preparation, resampling, input dtype, model dtype,
+   pipeline parameters, language, task, and transformers version. Assert the
+   active ASR configuration rather than relying on changing library defaults.
+9. After Stage 0c, replace only the selected F0 evaluator for rescoring the
+   same private inputs. Keep alignment, ASR, lyrics, stems, sampling budget,
+   thresholds, and aggregation fixed. Recheck the synthetic-ruler NPA ceiling
+   of at least 0.95. The same route-level NPA 0.90 and WR 0.60 rule applies.
+   A positive rescore triggers the stop rule; inadequate calibration remains
+   pending. Record the evaluator and a reviewed addendum. Any changed rule may
+   only make a positive conclusion easier, not harder.
+10. The recording table supplies BPM, key, and the shared style, plus fields
+    for actual entered values. Fill tempo/key controls when available. Define
+    Drive locations, full file names, and route availability values in the
+    protocol. Accept extension case variants without choosing between files.
+11. Call the silence-penalized relaxed objective DTW cost. Separately report
+    voiced aligned-frame absolute pitch deviation and the unvoiced-frame
+    fraction. A compatibility `deviation_semitones` field denotes penalized
+    cost, never a pure voiced pitch error. No cross-study numeric comparison.
+12. Retain the current Stage S voice measure and label it as its own
+    definition. Vocal energy is divided by mixture energy over all channels;
+    active RMS uses all samples and channels in each 50 ms frame. This is not
+    an assertion of equivalence to the E6 stem-sum/mono algorithm.
+13. Write the public "Stage S was evaluated" statement only when the relevant
+    measurement is complete. Otherwise write "the run did not complete".
+    Keep every Suno score, route outcome, and decision private.
 
 Small choices are made here and work continues. Do not ask the owner to resolve
 routine details. Stop only for the explicit stop conditions in this plan.
@@ -133,7 +228,7 @@ The inherited evidence in the brief is:
   voice-like solo audio. Detecting two wrong notes in mixtures gives AUC
   0.75-0.78, below 0.8. Separated real singing has not been validated.
 
-The brief cites Claude's source review dated 2026-10-27. These are context,
+The brief cites the reviewing agent's source review dated 2026-10-27. These are context,
 not new measurements from this task:
 
 - Qwen-Music, arXiv 2607.11699: audio-reference cover melody deviation was
@@ -150,7 +245,7 @@ not new measurements from this task:
 
 ## Work boundaries and delivery
 
-The repository is `https://github.com/ninondev/DaCapo`. E5 is owned by Claude.
+The repository is `https://github.com/ninondev/DaCapo`. E5 is owned by the reviewing agent.
 Start the next task from the updated main branch, after reading this plan.
 At the start of each task run:
 
@@ -198,19 +293,22 @@ that needs the actual model may skip when `ACESTEP_REPO` is absent. Use fake
 tensors following the approach in
 `/opt/ACE-Step-1.5/acestep/training_v2/make_test_fixtures.py` where useful.
 The owner reply must state passed, skipped, and failed counts separately.
+This repair delivery requires the complete test suite to pass with no skips.
 
 Cloud work is CPU implementation, tests, and documentation. All model generation,
 vocal separation, Whisper, and training are written for the owner's GPU runtime.
-Use `run_stage.sh <stage>` for every GPU stage. Colab notebooks call that script.
-This also supports a later 12 GB RTX 4080 Laptop runtime if Colab is insufficient.
+The Stage S notebooks call `stage_s_run.sh <stage>`. H1 will use its own
+`run_h1.sh`, code, and requirements. Never extend or repurpose a locked Stage S
+file for H1. Keep GPU operations callable from scripts so later work can also
+use a 12 GB RTX 4080 Laptop if Colab is insufficient.
 
-The owner creates the PR in Codex and gives it to Claude for review and merge.
-The owner does not merge it. Do not start using a main-branch Colab link before
+PR #1 is open. Append the repair commit and give the PR to the reviewing
+agent. The owner does not merge it. Do not use a main-branch Colab link before
 that notebook is merged. The link form is:
 `https://colab.research.google.com/github/ninondev/DaCapo/blob/main/experiments/e7_melody_adapter/<name>.ipynb`.
 
-GPU notebooks emit result zips. The owner gives them to Claude. Claude checks
-them and commits the public `records/*.json`. Suno records follow the private
+GPU notebooks emit result zips. The owner gives them to the reviewing agent,
+who checks them and commits the public `records/*.json`. Suno records follow the private
 policy below. Never claim a GPU path was tested merely because CPU tests pass.
 
 ## Provenance, versions, and seeds
@@ -244,7 +342,7 @@ Pin the following in the requirements or explicit notebook installation:
 | Metrics and audio | `mir_eval==0.8.2`, `pretty_midi==0.2.11.post0`, `librosa==1.0.0` |
 | Basic Pitch | Separate `pip install --no-deps basic-pitch==0.4.0` |
 
-Do not put Basic Pitch as a dependency line in `requirements-e7.txt`; that can
+Do not put Basic Pitch as a dependency line in `requirements-stage-s.txt`; that can
 pull TensorFlow. Explain the separate no-dependencies command in a comment.
 
 Until E5 v2 exists, use this exact local seed formula:
@@ -269,17 +367,27 @@ registered code; any post-registration change needs the addendum process.
 Freeze definitions and parameters in each preregistration before the relevant
 run. Code hashes bind the Stage S implementation to `prereg_suno.json`.
 
-**Separation and voice presence.** Use htdemucs vocals. Voice-present requires
-vocal-stem energy share at least 0.2 and at least 1.0 second of nonoverlapping
-50 ms vocal frames with RMS at least -40 dBFS. These three limits come from
-E5 v2 `experiments/e6_clock/readout.py` (`VOCAL_SHARE_MIN`,
-`VOCAL_ACTIVE_MIN_S`, `VOCAL_ACTIVE_DBFS`). Do not use its fourth `PEAK_MIN`
+**Separation and voice presence.** Use htdemucs vocals. Stage S has its own
+registered voice-present definition: summed vocal-stem energy divided by summed
+mixture energy over all channels must be at least 0.2. Nonoverlapping 50 ms
+frames with RMS at least -40 dBFS must total at least 1.0 second. Compute RMS
+over all samples and channels of each frame, including a final partial frame.
+The numeric thresholds were borrowed from E5 v2, but this is not its E6
+stem-sum energy and mono-average RMS algorithm. Do not use the E6 `PEAK_MIN`
 condition for external audio; the original generation peak is unavailable.
+H1 must register its chosen definition separately after E5 v2 is available.
 
 **Lyrics.** WR is reference-word recall from fixed-revision Whisper large-v3 on
 separated vocals. Refuse scoring without CUDA. Do not substitute a smaller ASR
-model. Stage S freezes its own matching function. H1 must instead use
-`dacapo.words.lyric_words`, `norm_word`, and `match_words`; record that transition
+model. Stage S freezes its own matching function and small word-equivalence
+table. Normalize digits 0-12 to their English words, gray to grey, and til to
+till in both lyrics and transcripts. Keep LCS word matching and multiplicity.
+Freeze transformers 4.57.6, Whisper float16, and float32 waveform input. Average
+vocal channels to mono and use librosa resampling to 16 kHz. The ASR pipeline
+uses 30-second chunks, 5-second stride, batch size 1, and CUDA device 0.
+Generation kwargs set language to English and task to transcribe. Assert these
+settings at runtime; do not replace the model or alter defaults silently.
+H1 must instead use `dacapo.words.lyric_words`, `norm_word`, and `match_words`; record that transition
 in `LOG.md`. Match the same transcript against each of the other eleven lyrics
 and report their mean and correct-minus-wrong WR. Repeats, added lyrics, and
 hallucinations on instrumental sections can inflate recall.
@@ -296,7 +404,8 @@ for each output/reference pairing and put them in CSV. Freeze the coarse/fine
 algorithm in the preregistration. Use precisely the same search for all eleven
 wrong references. Report chance means and correct-minus-wrong scores. Also
 report octave-tolerant NPA on the same alignment as a diagnostic only. The
-wrapper is in `lib.py`; do not alter the library's fixed-lag NPA function.
+Stage S wrapper is in `stage_s_lib.py`; do not alter the library's fixed-lag
+NPA function. H1 wrappers belong in separate files.
 
 **Relaxed pitch.** Draw reference MIDI pitch at 10 ms and remove reference rest
 frames. Convert output vocal F0 to MIDI pitch at 10 ms and keep its unvoiced
@@ -306,9 +415,14 @@ transpose -12 through +12 and take the smallest normalized cost. Only steps
 non-rest reference duration, to frame quantization. Cost is absolute semitone
 error without octave folding, normalized by reference frame count.
 
-Report the matched segment's mean absolute deviation in semitones and the share
-of reference notes whose matched output median pitch is within 50 cents. Missing
-notes count as wrong. Report octave-folded diagnostics separately. Perform the
+Report the normalized DTW cost, which includes the fixed silence penalty.
+Also report the mean absolute deviation on voiced aligned frames and the
+unvoiced aligned-frame fraction. Each reference frame has unit total weight,
+shared between its assigned output frames; use that same weighting for both
+quantities. Pure voiced deviation is null when no voiced assignment exists. Name these separately so the cost is never
+presented as pure voiced pitch deviation. Report the share of reference notes
+whose matched output median pitch is within 50 cents; missing notes are wrong.
+Report octave-folded diagnostics separately. Perform the
 identical full search for all eleven wrong melodies. For accuracy report correct
 minus their mean; for deviation report their mean minus correct. The best segment
 is selected using the right melody, so the absolute score is optimistic. The
@@ -330,25 +444,27 @@ Use `dacapo.symbolic` and a fixed seed to make twelve original eight-bar,
 4/4 melodies. Tempo is 90-110 BPM; keys are C, D, F, and G major; range is
 A3-E5 (MIDI 57-76); each melody has 24-40 notes. Use mostly scale steps, a few
 leaps, and repeated motifs. Write simple singable English lyrics, mostly
-one-syllable words, with one syllable per note. The required lyric provenance
-must identify its author in records. Do not use the owner's future test set.
+one-syllable words, with one syllable per note. Avoid numeric forms and easily
+varied spellings in the source lyrics. The required provenance says the lyrics
+were written by the agents. Do not use the owner's future test set.
 
 `melodies_suno.json` stores pitch, start and duration in beats, BPM, key, and
 lyrics. `records/suno_pack.json` records its SHA256, the lyrics SHA256, and
 render settings including program, sample rate, and soundfont SHA256. It does
 not contain rendered audio or Suno output.
 
-`colab_e7_pack.ipynb` runs on CPU after merge to main. It renders piano program
+`colab_e7_pack.ipynb` runs on the default Colab CPU runtime after merge to main.
+Python 3.12 and 3.13 are supported. It renders piano program
 0 and Voice Oohs program 53 at 48 kHz, writes MIDI with `Melody.to_midi`, and
 adds lyric text and the CSV record sheet. It emits `e7_suno_upload.zip` and
 `suno_upload_hashes.json`, containing each upload file's SHA256. The owner
-downloads both and gives the hash record to Claude.
+downloads both and gives the hash record to the reviewing agent.
 
 ### S2: owner operation
 
 Keep the English protocol in `suno_protocol.md` and give the instructions in
-Chinese in the owner reply. Wait for Claude to confirm the preregistration is
-merged before any Suno generation.
+Chinese in the owner reply. Wait for the reviewing agent to confirm the
+preregistration is merged before any Suno generation.
 
 - R1: use a MIDI prompt in Suno Studio, the supplied lyrics, and the exact style
   `pop, full band, female vocal`.
@@ -359,9 +475,14 @@ merged before any Suno generation.
 Current menu names are not known. Skip any unavailable route and record the
 actual options shown, displayed model version, date, and credits used. Request
 once per item and available route. Keep both returned songs; never pick one.
-Name them `S_<melody_id>_<route>_<a|b>.mp3` and place them in one Drive folder.
-Keep the filled CSV with them. Only upload these twelve study melodies. Do not
-upload owner-held-out melodies to any website or app before Stage 4. The owner
+Name them `S_<melody_id>_<route>_<a|b>.mp3`; the extension is case-insensitive.
+Use `/content/drive/MyDrive/e7-suno/audio` for audio and
+`/content/drive/MyDrive/e7-suno/suno_recording_table.csv` for the filled sheet.
+The sheet supplies `bpm`, `key`, and `style`. Fill tempo and key controls when
+available, then record the actual entered values and settings. Record
+`route_available` as `yes`, `no`, or `unknown`. Keep result checkpoints in the
+Drive output directory specified by the notebook. Only upload these twelve
+study melodies. Do not upload owner-held-out melodies to any website or app before Stage 4. The owner
 must read Suno's terms and confirm whether evaluation results may be published.
 
 ### S3: preregistration and decision
@@ -369,10 +490,14 @@ must read Suno's terms and confirm whether evaluation results may be published.
 Before external generation, write `prereg_suno.json` with a UTC timestamp,
 melody/lyric hashes, all Stage S measurement definitions and parameters,
 routes, controls, thresholds, decision rule, analysis, and scoring-code hashes.
-Hash at least the scoring source, scoring notebook, and `run_stage.sh`. The
-scoring notebook checks hashes before scoring. Mismatch must stop it.
-After registration, use a new reviewed addendum marked `deviation` for a scoring
-change, retain the old registration, and still report original-version results.
+`registration.CODE_FILES` is the exact locked runtime dependency set. The
+Stage S files are separate from future H1 code. The scoring notebook checks
+all registered hashes before scoring, and a mismatch stops the run. After
+`prereg_suno.json` is merged, any change to a file in CODE_FILES requires a
+reviewed addendum marked `deviation`. Retain the original registration and
+report original-version results when any exist. The owner has explicitly
+authorized replacing the initial unrun registration for this repair, before
+external generation; the original remains in Git history.
 
 A route is measured only with both returned songs on at least ten items.
 First average a and b for each item. Then take the median across complete
@@ -390,14 +515,25 @@ Mark all Stage S note-F1 as an unvalidated-ruler diagnostic; it cannot decide.
 
 At notebook start require `dacapo.ace.generate` to accept `rng_seed` and require
 `register.py --check` to return zero. E5 v2 and its addendum must exist. Otherwise
-stop and tell the owner to wait for Claude. Call `arms(['clarinet', 'oohs'])`
-only in the GPU notebook and assert the four required arms exist.
+stop and tell the owner to wait for the reviewing agent. Use the default Colab
+GPU runtime with Python 3.12 or 3.13. Import E4 `arms(['clarinet', 'oohs'])`
+inside GPU-only code and assert the four required dictionaries match the
+registration. Ordinary CPU tests never import the real model through E4.
 
-Read the Drive audio and completed record sheet. Validate names and quantities;
-list missing songs without aborting the whole analysis or inventing results.
+Before any GPU model work, read the Drive audio and completed record sheet.
+Validate names, quantities, nonzero file size, and decodability. List missing
+and unreadable songs separately; exclude only unreadable inputs from clips.
+Ask for a new download of the same song, never a new generation. Keep decodable
+short clips. Catch each Suno scoring failure, save its reason, and continue.
+
+The execution order is complete ruler, Suno scoring, then ACE controls.
 Generate ACE-Step controls for the same twelve melodies with `noguide`,
 `ctx_oohs_k3`, `ctx_oohs_k6`, and `ctx_clarinet_k4`. Use the exact shared style,
 lyrics, BPM, and keyscale. Preregister duration as melody length plus two bars.
+Forward each actual E4 arm's task, source guide, cover strength, and cover noise
+through `dacapo.ace.generate`. No-guide uses text2music; guided arms use
+cover-nofsq with cover strengths 3/8, 6/8, and 4/8 respectively. Do not replace
+these controls with a different context-hook implementation.
 Read `GUIDES` from E4 without running its main: clarinet 71 and oohs 53 at
 48 kHz. Use two `e7-suno` seed pairs per item, matched across arms. Apply the
 same strict-external, relaxed, WR, voice, and chance measures as for Suno.
@@ -413,17 +549,26 @@ Freeze the F0 tool and settings before running; Stage S uses SwiftF0.
 Write one CSV row per clip and summary JSON with item-level bootstrap 95 percent
 intervals. Split numeric results into `e7_suno_public.zip` for ACE-Step and the
 synthetic ruler, and `suno_private.zip` for Suno. Neither zip contains Suno audio
-or separated vocals. The L4 estimate is about one hour, not a measurement.
-Stop if the registered GPU budget exceeds 1.5 times its limit; do not silently
-extend it or select a favorable completed subset.
+or separated vocals. Persist each finished clip and generated control asset
+on Drive with its audio SHA256 and registration identity. On a rerun, verify
+and reuse matching completed work. Do not regenerate or rescore completed
+clips. A different preregistration must not consume those checkpoint results.
+
+Scoring has no wall-time limit. Record actual times for each stage. The ACE
+generation allowance is 432 seconds of active generation across resumes,
+derived from 96 draws at 3 seconds per warm call times 1.5. Setup, loading,
+rendering, and scoring time are reported separately. If controls exhaust their
+allowance, preserve their results and report the incomplete control stage.
+That cannot invalidate an otherwise complete ruler and Suno decision.
 
 ### S5: private review and continuation
 
-Claude applies the preregistration to the results. Before the owner confirms
-the terms permit publication, the only public outcome statement is:
+The reviewing agent applies the preregistration to the results. Before the
+owner confirms the terms permit publication, a complete evaluation uses only:
 "Stage S was evaluated under prereg_suno.json. The conclusion is in the private
-record." Do not put Suno scores, route outcomes, accuracy conclusions, or
-threshold comparisons in public PLAN, LOG, records, or the PR. Suno result
+record." An incomplete evaluation instead says "the run did not complete".
+Do not put Suno scores, route outcomes, accuracy conclusions, or threshold
+comparisons in public PLAN, LOG, records, or the PR. Suno result
 records belong only in the owner's private repository. Do not use the quoted
 statement before an evaluation has actually happened.
 
@@ -433,7 +578,14 @@ rule 3 is triggered: stop for the owner to choose H7 (one-note edits), H2 (motif
 development), or H1 with an open-source parity goal. The last option needs a
 kill-rule-3 deviation in `prereg_h1.json`. A measured negative is provisional.
 H1 may then proceed, but after Stage 0c picks a validated ruler, rescore the same
-private Suno files. If that reaches the positive rule, stop in the same way.
+private Suno files under `rescore_after_0c`. Replace only the selected F0
+estimator, keeping ASR, separation, audio hashes, all search parameters,
+thresholds, and aggregation fixed. Record the evaluator and its revision in a
+reviewed addendum. Require the same synthetic-ruler NPA ceiling of 0.95 before
+using the same 0.90 NPA and 0.60 WR decision. Insufficient calibration remains
+pending; a positive result stops in the same way. Never make the rule stricter
+as part of rescoring. If a rule changes, it may only make a positive decision
+easier, with the reason recorded.
 
 ## H1 roadmap and gates
 
@@ -446,14 +598,14 @@ Then add the learning material described below. Total GPU budget is about
 
 Before any Stage 0 GPU work, main must contain E5 v2 `addendum_2.json` and the
 registration check must pass. Until then do independent CPU preparation and
-report that Claude's E5 v2 push and registration are pending.
+report that the reviewing agent's E5 v2 push and registration are pending.
 
 ### Stage 0: cheap checks, at most 3 GPU hours
 
 - 0a: if networking permits, spend at most 30 minutes on relevant work after
   2026-10-27, checking kill rule 3. If not, log that it was not done and relies
-  on Claude's 2026-10-27 review.
-- Before 0b, write `prereg_h1_stage01.json` and have Claude merge it. Specify
+  on the reviewing agent's 2026-10-27 review.
+- Before 0b, write `prereg_h1_stage01.json` and have the reviewing agent merge it. Specify
   ruler candidates, separator, dataset, vocal levels, 0c rule, Stage 1 labels
   and gate, and smoke-run settings. Later changes need deviation addenda.
 - 0b: measure L4 peak VRAM, seconds per step, and per-clip generation time for
@@ -502,7 +654,7 @@ alternatives written down in advance. If it still fails, stop and report.
 Before Stage 2 training results, write `prereg_h1.json` with a UTC timestamp.
 It includes selected label and eval tools, shared definitions, `WR_min`, all
 baselines, budgets, seed table, main caption, thresholds, data splits, analyses,
-kill rules, claim levels, and listening design. Give it to Claude for merge.
+kill rules, claim levels, and listening design. Give it to the reviewing agent for merge.
 Never overwrite it after registration; changes use a new deviation addendum.
 
 Before submitting this H1 preregistration, stop and explain in Chinese the two
@@ -534,8 +686,8 @@ Claim levels:
 3. Mission-level evidence: report the share of test clips with note-F1 at least
    0.9 and WR no more than 0.1 below no-guide.
 
-The owner supplies 36 melodies to Claude privately. Before Stage 3 training,
-Claude runs the fixed-seed seal script: six become dev JSON under
+The owner supplies 36 melodies to the reviewing agent privately. Before Stage 3 training,
+the reviewing agent runs the fixed-seed seal script: six become dev JSON under
 `melodies/dev/`; thirty remain private with only SHA256 in
 `records/testset_seal.json`. Before Stage 4, test melodies may undergo format
 validation only. No generation, tuning, or scoring on them. Stages 0-2 may
@@ -607,7 +759,7 @@ the achieved claim level. Then stop.
 
 ### Stage 5: release, only after claim level 2 and owner agreement
 
-Do not start release automatically. The owner and Claude decide license and
+Do not start release automatically. The owner and the reviewing agent decide license and
 release method first. If authorized, provide a 12 GB inference script, a
 Gradio demo (optionally on Hugging Face Spaces), weights, and clear usage.
 Select demo clips by rules or seeds fixed in advance, never by listening for
@@ -619,9 +771,9 @@ Use the existing `dacapo.symbolic` Note and Melody APIs for JSON-to-MIDI and
 reference notes, plus `dacapo.render`, `dacapo.analysis`, `dacapo.metrics`, and
 `dacapo.provenance.write_result`. Import `dacapo.ace` only inside functions that
 run with the real model. Its top-level code reads `ACESTEP_REPO` and imports
-ACE-Step. Do not import it at `lib.py` top level or in ordinary CPU tests.
-The same restriction applies to E4 `run_sing.py`; its `arms()` is called only
-from the GPU notebook.
+ACE-Step. Do not import it at `stage_s_lib.py` top level or in ordinary CPU
+tests. Import E4 `run_sing.py` and its `arms()` only inside GPU execution
+functions or the GPU notebook, since that module imports the real model.
 
 At the pinned source, the decoder supports LoRA or LoKr, not full SFT. See
 `docs/en/Large_Scale_SFT_Training_Guide.md`. Vanilla trainer is
@@ -636,9 +788,11 @@ and 64 chunk-mask channels. `build_context_latents` in
 `acestep/training/dataset_builder_modules/preprocess_context.py` accepts source
 latents already. For route A, run Side-Step preprocessing, then use the E7
 wrapper to replace `.pt` contexts with rendered melody VAE source latents.
-Do not alter ACE-Step source or model files.
+Do not patch ACE-Step source or model files for H1. The sole approved Stage S
+setup operation is the verified two-file code copy described above, into the
+materialized local weight snapshot. It is not an adapter or training change.
 
-Check these four pitfalls before interpreting a failure:
+Check these four H1 pitfalls before interpreting a failure:
 
 1. Do not guess chunk-mask values. Side-Step records 1.0 while auto masks can
    be assigned 2.0 into a possibly boolean tensor. Capture a real text2music
@@ -666,16 +820,17 @@ Stop and report, without expanding scope, when any of these applies:
 - A gate still fails after its allowed retries.
 - Stage S reaches its positive rule or has an insufficient ruler.
 - Work needs a protected-file edit, or the E5 registration check fails.
-- A phase exceeds 1.5 times its GPU budget.
+- An H1 phase exceeds 1.5 times its GPU budget. Stage S scoring has no time
+  stop; its separately reported ACE generation stage has the 432-second cap.
 - Kill rule 3 is triggered, or a license bans the needed research use.
 - The next action needs the owner: Suno generation, Colab execution, new
   melodies, H1 kill-rule-1 agreement, listening, or the day-30 decision.
 
 At this task's handoff, explain in Chinese what changed and confirm all changes
 are under E7. State pytest passed/skipped/failed counts and the precommit result.
-Tell the owner to create the PR for Claude, wait for preregistration merge, run
-the pack notebook, and follow the Suno protocol. The scoring notebook also
-waits for E5 v2. Include this exact opening for future tasks:
+Tell the owner that the existing PR has a new commit for review. Wait for
+preregistration merge before running the pack notebook and Suno protocol.
+The scoring notebook also waits for E5 v2. Include this exact opening for future tasks:
 
 ```text
 Read experiments/e7_melody_adapter/PLAN.md first and follow every rule in it. Continue from Progress. Reply to the owner in Chinese.
@@ -693,22 +848,22 @@ spectrograms, and fundamental frequency. Keep personal background out of files.
 
 ## Outcomes & Retrospective
 
-The first task's implementation is complete. Final CPU pytest: 64 passed,
-0 skipped, 0 failed in 19.62 seconds. This includes real FluidSynth rendering,
-SwiftF0 alignment, byte-identical source-record regeneration, notebook checks,
-context-hook tensors, private/public export boundaries, and registration guards.
-The upload package test verified 49 assets: 24 WAV, 12 MIDI, 12 lyric text files,
-and one 72-row recording CSV. Those binary outputs remain ignored.
+The initial implementation had 64 passed, 0 skipped, and 0 failed CPU tests.
+It verified 49 upload assets and stayed inside the E7 boundary. Independent
+review nevertheless found runtime and scientific defects. Those counts are
+historical; they do not validate this repair or the unrun GPU pipeline.
 
-Preregistration hashes match the frozen code and definitions. Precommit passes
-for all 24 delivered text files, each under 1 MB and under E7. No tracked file
-outside E7 changed. E5 registration is absent, so its check was not run and is
-not reported as passed. E5 v2 is still required before GPU scoring.
-
-No GPU or Suno result exists. The Stage S decision has not been made. Stop here
-for the owner to create the PR and have the registration reviewed and merged.
-Only after merge may the owner run the CPU upload notebook and Suno protocol.
-The GPU notebook additionally waits for E5 v2. H1 has not started.
+The thirteen review repairs passed integrated validation: **92 passed,
+0 skipped, 0 failed**, in 24.62 seconds. Source records regenerate byte for
+byte. The repaired registration was frozen at `2026-10-27T17:56:14Z`, covers
+fourteen runtime/dependency files, and passes its hash/configuration check.
+The precommit guard passes for 25 text paths, all under E7 and below 1 MB.
+The repaired implementation is an additional commit for PR #1; history is
+preserved. Runtime tests cover interruption, hard reset, file failures, E4
+forwarding, and ASR settings without claiming a real model measurement.
+No GPU, Suno, or H1 measurement was run during this repair. E5 v2 is still
+required before GPU scoring. External generation must wait for review and
+merge of the repaired registration.
 
 ## Ideas not done
 

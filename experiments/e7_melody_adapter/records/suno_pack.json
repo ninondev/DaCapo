@@ -4,14 +4,14 @@
     "asr_revision": null,
     "experiment": "e7_suno_pack_registration",
     "f0_tool": null,
-    "generator_sha256": "568dbc782c0e1fd335b3b0d8f547c5869079def07a1ad0dacb0e02af7254b089",
+    "generator_sha256": "1a4481c1b7764b66596a2a38bee336da7cbac776c88593d5833e6e3eb3294909",
     "seed": 20261027,
     "separator": null
   },
-  "config_hash": "439f98e1b787",
+  "config_hash": "3fecb81a78ba",
   "environment": {
     "fluidsynth": "FluidSynth runtime version 2.4.4",
-    "git_commit": "3c0c259d53251bd1992f1330e74f93776d20a0af",
+    "git_commit": "59a8365dcc8f494d5d22fadd4e41009e7489e878",
     "git_dirty": true,
     "machine": "x86_64",
     "packages": {
@@ -27,25 +27,25 @@
     "python": "3.12.14"
   },
   "environment_scope": "registration-time snapshot; not a measurement of this machine",
-  "finished_utc": "2026-10-27T13:58:24Z",
+  "finished_utc": "2026-10-27T17:44:31Z",
   "results": {
     "lyrics_by_item_sha256": {
       "mel00": "a16ddce1533dc5588eb646c4a565e2c27e2a39e16b6a8e83e4b69ab675d6620c",
-      "mel01": "946d6eb7a60d7188aeb01d82437f2a22c68e138305bde8df2f526e2e52dd6bde",
+      "mel01": "e5954760de70781063674d9d4d7c08bcd75b8864d1746aeeb9d999297e4c7239",
       "mel02": "61bde74892b6a02b13f8aee900782c3bf8df56e02c86031b524f18b50bf255c6",
-      "mel03": "cfc1fc35829b65e898458ac07eafc210ed1d848bca4ef39fb7cb04cb298616ef",
-      "mel04": "2fbc2832ab74ef4746cbbb646af288724cf6283de855738eef17848ec384e7d6",
+      "mel03": "bdb99db52d4b372cc981ce1ea05f80856c6469fa998b427c67280bc56d82f7eb",
+      "mel04": "d65333875397a2361905a18b31b9c3df22906800ae89fa9d99a6f779e3478e1b",
       "mel05": "9f567503960bcb002df97397a17018a9fc5f2aff41c2e71f2eb854e507ddd371",
       "mel06": "58208e468031851499b3c09dbae9e8090a92c08111ae143fc8b6cab276f39dfe",
-      "mel07": "66bdac8943a734efd66ce154e7c41a1d90b08884a6845dd4335a9591339857ca",
-      "mel08": "5506b38a8d9f51260d93097dc87dc0dde65dd7b2e8a1062395dc2e6409126c6e",
+      "mel07": "046456176603dc2cd73864a8c137fca9089b578ada206d7440d2c23dca497def",
+      "mel08": "95f7ba76fff676c43f1324e335b84d324ff0198b4cf936fba8090a1960d6209f",
       "mel09": "3c0207307a5ae69963f4758b190e3288e57e4f384a2ae8b5afeed5d08c142313",
       "mel10": "b96d5d5c477feacfd4dd0104782a102d1e295d611f42b1c5996b719bd3ca39f8",
-      "mel11": "22f54da6a71a23bd3711af8ecf81200131783da2b1b5a01ad9d654d08c96f753"
+      "mel11": "2b4382819b42417102c247e6314758057d782470dc6cabdda10f720005a7c216"
     },
-    "lyrics_provenance": "Lyrics written by Codex for this experiment.",
-    "lyrics_sha256": "ad9a0b39e9e21107c6d1b0891f902dd40c40ffb82b7a8e40971df383cb5ea00b",
-    "melodies_sha256": "97d11ac90cd4494c616c27279ceea7cf3b0884d44aeabef16901adc2f48170dd",
+    "lyrics_provenance": "Lyrics written by the agents for this experiment.",
+    "lyrics_sha256": "dd6a7eea85466c9cfa633dbbabfddd91c6c702ff987174de8a49d832ee9632ca",
+    "melodies_sha256": "d931ae69fb78f3805ec039367c055d127815a1663b2fbd038a3b36e6b027e97d",
     "render": {
       "programs": {
         "oohs": 53,

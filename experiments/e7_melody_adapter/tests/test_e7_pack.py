@@ -60,6 +60,37 @@ def test_melodies_have_fixed_form_and_one_syllable_per_note():
         assert sum(abs(interval) <= 2 for interval in melody.intervals()) >= 0.7 * 31
 
 
+def test_source_lyrics_avoid_numbers_and_registered_spelling_variants():
+    ambiguous = {"zero", "one", "two", "three", "four", "five", "six", "seven",
+                 "eight", "nine", "ten", "eleven", "twelve", "gray", "grey", "till", "til"}
+    manifest = pack.build_manifest()
+    for item in manifest["items"]:
+        words = item["lyrics"].lower().split()
+        assert len(words) == len(item["melody"]["notes"]) == 32
+        assert not ambiguous.intersection(words)
+        assert not any(character.isdigit() for character in item["lyrics"])
+
+
+def test_recording_table_preserves_reference_settings_and_actual_fields(tmp_path):
+    manifest = pack.build_manifest()
+    target = tmp_path / "recording.csv"
+    pack._write_owner_table(target, manifest)
+    with target.open(newline="") as stream:
+        reader = csv.DictReader(stream)
+        assert tuple(reader.fieldnames) == pack.TABLE_FIELDS
+        rows = list(reader)
+    lookup = {item["id"]: item for item in manifest["items"]}
+    assert len(rows) == 72
+    for row in rows:
+        item = lookup[row["item_id"]]
+        assert float(row["bpm"]) == item["melody"]["bpm"]
+        assert row["key"] == item["key"]
+        assert row["style"] == pack.STYLE
+        assert row["route_available"] == "unknown"
+        assert row["actual_bpm"] == row["actual_key"] == row["actual_style"] == ""
+    assert pack.ROUTE_AVAILABLE_VALUES == ("yes", "no", "unknown")
+
+
 @pytest.mark.parametrize("fault", ["duplicate_id", "out_of_range", "missing_word", "wrong_meter"])
 def test_manifest_validation_rejects_invalid_inputs(fault):
     manifest = copy.deepcopy(pack.load_manifest())
@@ -139,7 +170,8 @@ def test_real_upload_package_contains_every_asset_and_hash(tmp_path, monkeypatch
         f"S_{item['id']}_{route}_{take}.mp3"
         for item in manifest["items"] for route in ("R1", "R2", "R3") for take in ("a", "b")
     }
-    assert {"actual_option", "model_version", "date_utc", "credits_used", "route_available"} <= rows[0].keys()
+    assert {"actual_option", "model_version", "date_utc", "credits_used", "route_available",
+            "bpm", "key", "style", "actual_bpm", "actual_key", "actual_style"} <= rows[0].keys()
     assert all(row["actual_option"] == "" for row in rows)
 
 

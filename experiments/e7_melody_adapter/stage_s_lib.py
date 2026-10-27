@@ -7,7 +7,9 @@ that the performance is higher than the written melody.
 from __future__ import annotations
 
 import math
+import multiprocessing
 import re
+from concurrent.futures import ProcessPoolExecutor
 from typing import Sequence
 
 import numpy as np
@@ -16,8 +18,14 @@ from numba import njit
 from dacapo.metrics import note_metrics, note_pitch_accuracy
 
 HOP = 0.01
+WORD_EQUIVALENTS = {
+    str(number): word for number, word in enumerate(
+        ("zero", "one", "two", "three", "four", "five", "six", "seven",
+         "eight", "nine", "ten", "eleven", "twelve"))
+}
+WORD_EQUIVALENTS.update({"gray": "grey", "til": "till"})
 SCORING_CONFIG = {
-    "version": "stage-s-v1",
+    "version": "stage-s-v2",
     "f0_hop_s": HOP,
     "pitch_tolerance_cents": 50.0,
     "strict_external": {
@@ -46,6 +54,9 @@ SCORING_CONFIG = {
         "pitch_cost": "absolute semitone error, no octave folding",
         "transition_costs": "(1,1): one cost; (1,2): mean of two output costs for one reference frame; (2,1): sum of two reference costs at one output frame",
         "normalization": "number of non-rest reference frames",
+        "reported_cost": "dtw_cost_semitones includes the fixed unvoiced penalty; deviation_semitones is a compatibility alias for that objective, not a voiced pitch deviation",
+        "voiced_deviation_semitones": "mean absolute error on voiced DTW assignments only; each reference frame has unit total weight split across its matched output frames; null if no voiced assignment",
+        "unvoiced_frame_fraction": "unvoiced share of DTW assignment weight, with each reference frame contributing one; null if there is no complete alignment",
         "subsequence_start": "any output frame, all reference frames consumed",
         "duration_ratio": "0.5 to 2 times non-rest reference frame count, to frame quantization",
         "tie_order": "lower normalized cost, smaller absolute shift, earlier end, lower signed shift; path ties prefer (1,1), (1,2), (2,1)",
@@ -55,23 +66,29 @@ SCORING_CONFIG = {
     },
     "words": {
         "section_tags": "remove text enclosed in square brackets",
-        "normalization": "lowercase ASCII words; retain internal apostrophes; normalize curly apostrophe",
+        "normalization": "lowercase ASCII words and integer digit tokens; retain internal apostrophes; normalize curly apostrophe; apply only the registered equivalence map to both reference and transcript",
+        "equivalences": WORD_EQUIVALENTS,
         "matching": "longest common subsequence, preserving order and token multiplicity",
         "recall": "matched reference tokens / reference token count; empty reference returns zero",
         "chance": "mean recall against each of the other eleven lyrics",
     },
     "voice_present": {
+        "definition": "Stage S-specific diagnostic; these thresholds match the brief but the energy and RMS calculations are not the E6 stem-share/mono definition",
         "vocal_energy_share_min": 0.2,
         "active_seconds_min": 1.0,
         "active_rms_dbfs_min": -40.0,
         "frame_seconds": 0.05,
         "frame_overlap": False,
         "energy_share": "sum squared vocal samples / sum squared mixture samples over all channels",
+        "active_rms": "square root of mean squared vocal samples over all channels in each frame; channels are not averaged before squaring",
         "partial_frame": "use its actual duration and samples",
         "peak_gate": "not used for external audio",
     },
     "chance": "apply the identical full search to every other reference; average their scores",
-    "adjustment": "correct minus chance for accuracies and WR; chance minus correct for deviation",
+    "adjustment": "correct minus chance for accuracies and WR; chance minus correct for pitch deviation, DTW cost and unvoiced share",
+    "parallel_search": {"backend": "ProcessPoolExecutor", "start_method": "spawn",
+                        "unit": "one complete reference search", "result_order": "intended reference then all mismatched references in input order",
+                        "arithmetic": "same search and same ordered aggregation as serial execution"},
     "bootstrap": {"unit": "item", "draws": 2000, "confidence": 0.95, "seed": 20261027},
     "ruler_roles": {"label": "swift", "evaluator": "fcpe", "selector": "crepe"},
     "stage_s_f0": "swift",
@@ -323,9 +340,11 @@ def relaxed_alignment(notes_s, times, f0_hz) -> dict:
     for shift in range(-12, 13):
         cost, endpoint = _dtw_cost(reference, observed, shift)
         candidates.append((float(cost), abs(shift), int(endpoint), shift))
-    deviation, _, _, shift = min(candidates)
-    if not np.isfinite(deviation):
-        return {"deviation_semitones": None, "octave_deviation_semitones": None, "note_accuracy": 0.0, "octave_note_accuracy": 0.0,
+    objective, _, _, shift = min(candidates)
+    if not np.isfinite(objective):
+        return {"dtw_cost_semitones": None, "deviation_semitones": None,
+                "voiced_deviation_semitones": None, "unvoiced_frame_fraction": None,
+                "octave_deviation_semitones": None, "note_accuracy": 0.0, "octave_note_accuracy": 0.0,
                 "start_s": None, "end_s": None, "transpose_semitones": 0,
                 "reference_frames": len(reference), "matched": False}
     _, endpoint, ri, oi = _dtw_trace(reference, observed, shift)
@@ -334,6 +353,14 @@ def relaxed_alignment(notes_s, times, f0_hz) -> dict:
     sums = np.bincount(ri, weights=folded_cost, minlength=len(reference))
     counts = np.bincount(ri, minlength=len(reference))
     octave_deviation = float(np.mean(sums / np.maximum(1, counts)))
+    # These diagnostics use the selected path. Each reference frame retains
+    # unit weight even when the path maps it to two output frames.
+    weights = 1.0 / counts[ri]
+    voiced = np.isfinite(errors)
+    voiced_weight = float(weights[voiced].sum())
+    voiced_deviation = (float(np.dot(weights[voiced], np.abs(errors[voiced])) / voiced_weight)
+                        if voiced_weight else None)
+    unvoiced_fraction = float(weights[~voiced].sum() / weights.sum())
     correct, octave = 0, 0
     for idx, (_, _, pitch) in enumerate(notes):
         selected = observed[oi[note_ids[ri] == idx]]
@@ -343,7 +370,9 @@ def relaxed_alignment(notes_s, times, f0_hz) -> dict:
         d = float(np.median(selected) - (pitch + shift))
         correct += abs(d) < 0.5
         octave += abs((d + 6) % 12 - 6) < 0.5
-    return {"deviation_semitones": float(deviation), "octave_deviation_semitones": octave_deviation, "note_accuracy": float(correct / len(notes)),
+    return {"dtw_cost_semitones": float(objective), "deviation_semitones": float(objective),
+            "voiced_deviation_semitones": voiced_deviation, "unvoiced_frame_fraction": unvoiced_fraction,
+            "octave_deviation_semitones": octave_deviation, "note_accuracy": float(correct / len(notes)),
             "octave_note_accuracy": float(octave / len(notes)), "start_s": float(t[int(oi.min())]),
             "end_s": float(t[endpoint] + HOP), "transpose_semitones": int(shift),
             "reference_frames": len(reference), "matched": bool(np.isfinite(observed[oi]).any())}
@@ -351,7 +380,8 @@ def relaxed_alignment(notes_s, times, f0_hz) -> dict:
 
 def lyric_words(text: str) -> list[str]:
     text = re.sub(r"\[[^\]]*\]", " ", str(text)).lower().replace("’", "'")
-    return re.findall(r"[a-z]+(?:'[a-z]+)*", text)
+    tokens = re.findall(r"[a-z]+(?:'[a-z]+)*|[0-9]+", text)
+    return [WORD_EQUIVALENTS.get(token, token) for token in tokens]
 
 
 def word_recall(reference: str, hypothesis: str) -> float:
@@ -377,7 +407,7 @@ def word_scores(reference: str, others: Sequence[str], hypothesis: str) -> dict:
 
 
 def voice_present(vocals, mixture, sr: int) -> dict:
-    """Evaluate the registered external-audio gate on aligned audio arrays."""
+    """Evaluate the registered Stage S-specific diagnostic, not the E6 gate."""
     vocal, mix = np.asarray(vocals, dtype=np.float64), np.asarray(mixture, dtype=np.float64)
     if sr <= 0 or vocal.ndim not in (1, 2) or mix.ndim not in (1, 2):
         raise ValueError("audio must be samples or samples-by-channels with a positive sample rate")
@@ -401,14 +431,44 @@ def score_reference(notes_s, times, f0_hz, *, estimated_notes=None) -> dict:
             "relaxed": relaxed_alignment(notes_s, times, f0_hz)}
 
 
-def score_against_references(own_notes, other_notes, times, f0_hz, *, estimated_notes=None) -> dict:
-    """Use exactly the same searches for the intended and mismatched melodies."""
+def reference_pool(workers: int) -> ProcessPoolExecutor:
+    """Create workers without inheriting a parent's initialized CUDA runtime."""
+    if isinstance(workers, bool) or not isinstance(workers, int) or workers < 1:
+        raise ValueError("workers must be a positive integer")
+    return ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context("spawn"))
+
+
+def _score_reference_job(job: tuple) -> dict:
+    """Module-level worker entry point, importable by spawned processes."""
+    notes, times, f0_hz, estimated_notes = job
+    return score_reference(notes, times, f0_hz, estimated_notes=estimated_notes)
+
+
+def score_against_references(own_notes, other_notes, times, f0_hz, *, estimated_notes=None,
+                             workers: int = 1, executor: ProcessPoolExecutor | None = None) -> dict:
+    """Run identical searches in serial or spawned workers, in fixed order.
+
+    Pass an executor from reference_pool() to reuse workers across clips.
+    The caller owns that executor and must close it after the scoring run.
+    Each task computes an entire reference; aggregation stays in this process
+    and in input order, so worker scheduling cannot change a numeric result.
+    """
     if not other_notes:
         raise ValueError("chance scoring needs at least one mismatched reference")
-    own = score_reference(own_notes, times, f0_hz, estimated_notes=estimated_notes)
-    other = [score_reference(notes, times, f0_hz, estimated_notes=estimated_notes) for notes in other_notes]
+    if isinstance(workers, bool) or not isinstance(workers, int) or workers < 1:
+        raise ValueError("workers must be a positive integer")
+    jobs = [(notes, times, f0_hz, estimated_notes) for notes in [own_notes, *other_notes]]
+    if executor is not None:
+        scores = list(executor.map(_score_reference_job, jobs))
+    elif workers > 1:
+        with reference_pool(workers) as pool:
+            scores = list(pool.map(_score_reference_job, jobs))
+    else:
+        scores = [_score_reference_job(job) for job in jobs]
+    own, other = scores[0], scores[1:]
     keys = {"strict": ["npa", "npa_oct", "voiced_notes", "frame_accuracy", "note_f1_unvalidated"],
-            "relaxed": ["deviation_semitones", "octave_deviation_semitones", "note_accuracy", "octave_note_accuracy"]}
+            "relaxed": ["dtw_cost_semitones", "deviation_semitones", "voiced_deviation_semitones",
+                        "unvoiced_frame_fraction", "octave_deviation_semitones", "note_accuracy", "octave_note_accuracy"]}
     chance, adjusted = {}, {}
     for group, metrics in keys.items():
         chance[group], adjusted[group] = {}, {}
@@ -417,8 +477,9 @@ def score_against_references(own_notes, other_notes, times, f0_hz, *, estimated_
             value = None if any(v is None for v in values) else float(np.mean(values))
             chance[group][key] = value
             correct = own[group][key]
+            lower_is_better = key.endswith("deviation_semitones") or key in {"dtw_cost_semitones", "unvoiced_frame_fraction"}
             adjusted[group][key] = (None if correct is None or value is None else
-                                     value - correct if key.endswith("deviation_semitones") else correct - value)
+                                     value - correct if lower_is_better else correct - value)
     return {"own": own, "chance": chance, "adjusted": adjusted, "n_mismatched": len(other)}
 
 

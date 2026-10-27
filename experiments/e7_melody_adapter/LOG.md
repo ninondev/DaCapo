@@ -1,6 +1,6 @@
 # E7 work log
 
-## 2026-10-27: Stage S implementation
+## 2026-10-27: Initial Stage S implementation (historical)
 
 The first task prepares a fixed-melody Suno measurement and matching ACE-Step
 controls. It does not generate Suno songs or run GPU models in Cloud.
@@ -33,14 +33,14 @@ Detailed definitions and every later H1 gate are in `PLAN.md`.
 Stage S uses its own frozen lyric matcher. No switch to `dacapo.words` has
 happened. H1 must record that switch here after E5 v2 is available.
 
-The E4 arm names define the controls, but the E7 wrapper uses text2music with
-`is_covers=False`. Early-step guidance replaces only the 64 source channels
-and preserves the observed live mask. This avoids the older E4 cover task
-instruction while keeping the requested guide lengths.
+The first implementation used E4 arm names for a custom text2music context
+hook. Review found that this did not implement the E4 controls. The repair
+below replaces that path with the actual E4 task, source, strength, and noise
+settings. This old implementation is not the current Stage S protocol.
 
 ### Validation
 
-Final CPU pytest: **64 passed, 0 skipped, 0 failed**, in 19.62 seconds.
+Initial CPU pytest: **64 passed, 0 skipped, 0 failed**, in 19.62 seconds.
 The suite includes 22 scoring tests, 9 source/upload-pack tests, 11 boundary
 checks, 7 notebook/registration tests, and 15 runtime orchestration tests.
 All 49 upload assets were rendered and checked, including 24 WAV files at
@@ -64,7 +64,7 @@ CPU implementation tests.
 
 The existing main branch cannot run the required GPU protocol because the E5
 v2 files and independent RNG seed API are absent. The implementation must
-fail closed at that guard, with instructions to wait for Claude. No protected
+fail closed at that guard, with instructions to wait for the reviewing agent. No protected
 file is changed to bypass it.
 
 The precommit-guard tests first produced ten passes and one fixture error.
@@ -88,10 +88,11 @@ The initial notebook setup mixed incompatible torch and torchaudio versions.
 It now pins the matching 2.10.0 family and keeps Basic Pitch's no-dependency
 installation separate. The disposable GPU setup has not run here.
 
-Pinned upstream source review confirmed the bool chunk-mask path and the
-text2music cover flag. It also found native automatic missing-weight downloads
-and checkpoint Python sync. The runtime checks snapshot completeness and code
-agreement before loading, so it cannot silently replace the registered model.
+The first loader guard rejected every source/checkpoint code mismatch. Review
+confirmed that the two pinned revisions intentionally differ in two Python
+files, so this guard made the GPU notebook unusable. The approved repair
+verifies the original hashes and then performs the native two-file source
+sync into a materialized local snapshot, with provenance and resume checks.
 
 A self-check construction test initially compared floating-point times with
 exact equality. Its assertion now uses a numeric tolerance. This was a test
@@ -101,13 +102,121 @@ Record any later implementation failures here, including their trigger, fix,
 and rerun. Do not record unrun GPU behavior as a
 successful result. No study gate has failed or passed yet.
 
+### Initial handoff
+
+The first implementation was committed as 59a8365 and opened as PR #1. The
+review below occurs before any external generation or GPU measurement. The
+first test count does not establish that the owner-run pipeline was usable.
+
+## 2026-10-27: Pre-generation review repair
+
+The owner authorized all thirteen review fixes and a fresh preregistration
+before generating study outputs. Continue on the existing PR branch, append
+commits, and preserve its history. Do not push to main or merge. Repository
+identity was initially mismatched; no repair commit was made with that identity.
+The owner then authorized setting the specified local identity in the Cloud
+checkout. Verify it again before committing. Do not put identity details or
+private information in source files, commit messages, or the PR description.
+
+The repaired execution and registration contract is:
+
+1. Finish the synthetic ruler, then score Suno, then generate and score ACE
+   controls. Persist completed work on Drive by registration and audio hash.
+   Resume without repeating finished generation or scoring. Search the twelve
+   references with a spawn-based process pool and require exact serial parity.
+   Remove the unmeasured 5400-second scoring stop. Record actual stage times.
+   ACE generation alone has 432 active seconds, from 96 draws times the earlier
+   measured upper warm-call estimate of 3 seconds times 1.5. A control timeout
+   is reported without cancelling an already complete Suno/ruler decision.
+2. Move Stage S execution into stage_s_lib.py, stage_s_setup.py, stage_s_run.sh,
+   and requirements-stage-s.txt. Freeze only the Stage S runtime dependency
+   set. Future H1 work uses separate files, so it cannot break Stage S hashes.
+3. Materialize the pinned weight revision with local_dir. Verify both original
+   checkpoint Python hashes from the repair brief, copy the two approved files
+   from the pinned source, and require no mismatch afterwards. Record old and
+   new hashes and verify the same state when setup resumes. Never edit a
+   shared download-cache target or silently accept a different original file.
+4. Accept Python 3.12 and 3.13 and use the default Colab runtime.
+5. Check audio size and decoding before GPU work. List unreadable files and
+   ask for the same song to be downloaded again. Preserve decodable short
+   clips. Record each Suno scoring failure and continue with remaining files.
+6. Obtain the actual four E4 arm dictionaries inside GPU execution code and
+   forward their task, source guide, cover strength, and noise. Guided controls
+   use cover-nofsq. The H1 text2music plan remains separate.
+7. Remove number forms and easily varied spellings from source lyrics before
+   re-registration. Freeze a small lexical equivalence table and regenerate
+   all changed lyric and melody-source hashes.
+8. Register and assert the complete ASR preparation, dtype, pipeline, language,
+   task, and transformers-version settings.
+9. Register Stage 0c rescoring as a change to the F0 evaluator only. Keep the
+   same audio, separation, ASR, searches, aggregation, and thresholds. Require
+   the same 0.95 synthetic-ruler ceiling before applying the same route-level
+   NPA 0.90 and WR 0.60 rule. Any allowed rule change can only make a positive
+   conclusion easier. Record the chosen evaluator in a reviewed addendum.
+10. Supply BPM, key, and style in the recording table and record actual inputs.
+    Document Drive paths, complete names, route availability values, and
+    case-insensitive file extensions in the protocol.
+11. Separate the silence-penalized DTW objective from voiced aligned-frame
+    pitch deviation and unvoiced-frame fraction. Do not present penalized
+    cost as a pure pitch-error estimate.
+12. Explicitly label the retained voice calculation as Stage S-specific:
+    vocal/mixture energy over all channels and frame RMS over all samples and
+    channels. It is not the E6 stem-sum/mono calculation.
+13. Use the public evaluated statement only for a complete measurement. Use
+    "the run did not complete" otherwise. Public files still contain no Suno
+    score, route outcome, or threshold comparison.
+
+The owner also replaced named assistant attribution with "the agents" or
+"the reviewing agent". Repository prose, commit messages, and PR text contain
+no assistant product names or private identity details. Exact experimental
+model/tool identifiers and permitted paper citations remain intact.
+
+### Repair validation
+
+Final repair pytest: **92 passed, 0 skipped, 0 failed**, in 24.62 seconds.
+This includes 26 scoring, 11 source/upload-pack, 11 boundary, 21 delivery,
+13 runtime, and 10 ASR tests. Serial/process-pool parity covers all twelve
+references. Runtime tests cover interruptions, persisted hard-reset budgets,
+unchanged score reuse, per-file failures, E4 forwarding, model-code alignment,
+supported Python versions, fixed ASR settings, and public/private boundaries.
+The upload test renders and verifies all 49 assets and all 72 recording rows.
+Source records regenerate byte for byte; both notebooks regenerate exactly.
+The new preregistration timestamp is `2026-10-27T17:56:14Z`. Its fourteen code
+hashes and complete definitions pass `registration --check`. Precommit passes:
+25 text paths, all under E7, each below 1 MB, with no protected-file changes.
+No real GPU generation, source separation, Whisper, or Suno measurement has
+run during this repair. Mocked runtime checks do not establish model quality.
+
+### Failures and limits
+
+Independent review reproduced the problems above despite 64 initial passing
+tests. The total time budget could end before Suno finished, generic file
+locks blocked future H1 work, and the strict checkpoint-code guard rejected
+the supplied pinned revisions. The custom controls also differed from their
+E4 names. These were implementation and measurement-design defects, not
+negative findings about the measured systems.
+
+The second review found three resume edges: an orphaned completed output was
+checked after the budget, saved guides lacked hashes, and a hard runtime reset
+could lose an active call's budget charge. Recovery now precedes model loading
+and budget checks, guides use the asset hash store, and persisted in-flight
+reservations conservatively consume uncertain time separately from measured
+time. Tests cover output recovery at exhausted capacity and modified guides.
+An ASR audit also found that single-sample normalization produced NaN through
+the sample standard deviation. That case now uses a finite variance; a real
+one-sample WAV/ffmpeg/torch regression passes. Normal longer clips retain the
+existing normalization. The full rerun above includes all these corrections.
+E5 v2 remains absent at the checked main commit; its seed API and registration
+are still required before the owner GPU run.
+
 ### Next handoff
 
-After CPU checks pass, the owner creates a PR for Claude to review and merge.
-Suno generation starts only after Claude confirms the preregistration is on
-main. The owner then runs `colab_e7_pack.ipynb`, downloads both outputs, gives
-the upload hashes to Claude, and follows `suno_protocol.md`.
-`colab_e7_suno.ipynb` additionally waits for the E5 v2 merge and registration.
-Once E5 v2 lands, first rerun tests on that main and verify local seed parity.
-No Suno score or conclusion is public until the owner confirms the terms
-permit publication. No Stage S decision has been made yet.
+The repair is delivered as an additional commit for existing PR #1, with no
+history rewrite or main-branch change. The next step is review of that PR.
+Do not start external generation until the repaired preregistration is
+reviewed and merged. The owner then runs the
+CPU upload notebook and gives its hash JSON to the reviewing agent.
+The GPU notebook waits for E5 v2 and its passing registration check. Preserve
+Drive checkpoints and rerun the same registered notebook after interruption.
+No Suno score or conclusion becomes public until the owner confirms the terms
+permit publication. No Stage S or H1 result has been decided in this task.

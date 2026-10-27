@@ -6,21 +6,24 @@ to Suno or any other website or app before Stage 4.
 
 ## Before generating
 
-1. Create the implementation PR and give it to Claude for review and merge.
-   Wait for Claude to confirm `prereg_suno.json` is merged into main. Do not
-   generate study songs before that confirmation.
+1. Give the implementation PR to the reviewing agent. Wait for confirmation
+   that the revised `prereg_suno.json` is merged into main. Do not generate
+   study songs before that confirmation.
 2. Read Suno's current user terms. Decide whether they permit public evaluation
    results. Until the owner confirms this, every Suno score and conclusion
    stays private. This protocol does not make a legal determination.
 3. Open the merged
    [CPU pack notebook](https://colab.research.google.com/github/ninondev/DaCapo/blob/main/experiments/e7_melody_adapter/colab_e7_pack.ipynb).
-   Use a Python 3.12 CPU runtime and run its cells in order.
+   Use the default Colab runtime with a CPU and run its cells in order. Python
+   3.12 and 3.13 are supported; do not change the default Python version.
 4. Download `e7_suno_upload.zip` and `suno_upload_hashes.json`. Give the hash
-   JSON to Claude. Extract the zip locally. It contains MIDI, piano WAV,
-   Voice Oohs WAV, lyrics, and a recording table for all twelve melodies.
+   JSON to the reviewing agent. Extract the zip locally. It contains MIDI,
+   piano WAV, Voice Oohs WAV, lyrics, and a recording table for all melodies.
 
 Use the files exactly as rendered. Do not retune the melodies, change their
 lyrics, or select favorable passages. Keep the source hash record with the run.
+Discard any earlier unregistered upload pack: the revised lyrics and hashes
+must match this preregistration.
 
 ## Three routes
 
@@ -40,61 +43,94 @@ For all three routes, paste that melody's supplied lyrics. Use the exact style:
 pop, full band, female vocal
 ```
 
-Do not alter the style or lyrics between routes. Use the supplied melody tempo
-and key when the interface permits them, and record any unavailable controls.
+The CSV pre-fills `bpm`, `key`, and `style` with the reference values. When the
+interface offers tempo and key inputs, enter those values. Record what was
+actually entered in `actual_bpm`, `actual_key`, and `actual_style`. Write
+`unavailable` when an input does not exist. Record any difference in `notes`.
+Do not alter the style or lyrics between routes or guess a hidden setting.
 
 ## Requests, downloads, and records
 
 Request **once** for every melody and available route. Keep **both** songs
 returned by that request. Do not choose the better song, request extra draws,
-edit the audio, or replace a failed song without reporting it.
+edit the audio, or replace a failed song by generating a new song.
 
 For each request, fill in the CSV record sheet. Record the actual menu option,
-displayed model version, date, and credits spent. Also record route availability,
-missing output, errors, and any setting that differs from this protocol.
-Do not guess a model version that the interface does not show.
+displayed model version, date in UTC, and credits spent. Do not guess a model
+version that the interface does not show. The `route_available` field accepts:
 
-Download both audio files and name them:
+- `yes`: the route is available and was used.
+- `no`: the route is not available; explain why in `notes`.
+- `unknown`: availability has not been checked. This is the blank-table default.
+
+Download both audio files. Use the complete filename pattern
+`S_<melody_id>_<route>_<take>.mp3`, where the melody ID is `mel00` through `mel11`,
+the route is `R1`, `R2`, or `R3`, and the take is `a` or `b`. For example:
 
 ```text
-S_<melody_id>_<route>_a.mp3
-S_<melody_id>_<route>_b.mp3
+S_mel00_R1_a.mp3
+S_mel00_R1_b.mp3
 ```
 
-Use the melody IDs supplied in the pack and `R1`, `R2`, or `R3` exactly.
-Assign `a` and `b` by returned order, not quality. Put all audio files in one
-Google Drive folder and keep the completed CSV nearby. The scoring notebook
-lets you set the audio folder, CSV path, and output directory.
+Assign `a` and `b` by returned order, not quality. Keep the melody ID, route,
+and take spelling exact. Extensions are case-insensitive: `.mp3`, `.MP3`, and
+mixed-case forms are accepted. Match the actual filename in the CSV.
+
+Use these Google Drive locations, or change all corresponding notebook paths:
+
+```text
+MyDrive/e7-suno/audio/                       downloaded audio
+MyDrive/e7-suno/suno_recording_table.csv      completed recording table
+MyDrive/e7-suno/scored/                      results and persistent checkpoints
+```
+
+In Colab they begin with `/content/drive/`. Put all study audio in the audio
+folder. Keep the same `scored` folder when resuming a session. Do not delete
+its checkpoints or retained generated controls between sessions.
 
 A full run is twelve melodies times three routes times two songs, or 72 files.
-Unavailable routes and missing songs are allowed and must be listed. A route
-needs both songs on at least ten melodies to count as measured. No measured
-route means not measured, not a negative finding.
+Unavailable routes and missing songs must be listed. A route needs both songs
+on at least ten melodies to count as measured. No measured route means not
+measured, not a negative finding.
 
-## GPU scoring and review
+Before GPU work the notebook lists missing, empty, and unreadable audio. If a
+file is unreadable, download **the same returned song** again and replace that
+file. Do not request a new generation. Decodable short clips are still scored.
+If one clip fails during scoring, its reason is recorded and the other clips
+continue. Fix or re-download that same file, then rerun the notebook to retry it.
 
-Wait for Claude to push and register E5 v2. Its registration check must pass,
-and `dacapo.ace.generate` must support `rng_seed`. Only then run the merged
-[GPU scoring notebook](https://colab.research.google.com/github/ninondev/DaCapo/blob/main/experiments/e7_melody_adapter/colab_e7_suno.ipynb).
-Choose the documented GPU runtime, set the Drive paths, and run in order.
-The notebook verifies the registered code and source hashes. A mismatch stops
-scoring and needs a reviewed deviation addendum. Do not bypass that guard.
+## GPU scoring, resuming, and review
 
-The notebook also makes matched ACE-Step controls and a synthetic Voice Oohs
-ruler self-check. Voice Oohs is a synthesized instrument, not real singing.
-The one-hour L4 estimate is unmeasured. Report a runtime-budget stop instead
-of extending the study or selecting a subset.
+Wait for the reviewing agent to push and register E5 v2. Its registration check
+must pass, and `dacapo.ace.generate` must support `rng_seed`. Only then run the
+merged [GPU scoring notebook](https://colab.research.google.com/github/ninondev/DaCapo/blob/main/experiments/e7_melody_adapter/colab_e7_suno.ipynb).
+Use the default Colab runtime with an L4 or A100 GPU. Leave its default Python
+version unchanged, set the Drive paths above, and run the cells in order.
+The notebook calls `stage_s_run.sh` for Stage S work.
+
+The notebook checks registered code and source hashes. A mismatch stops scoring
+and needs a reviewed deviation addendum. Do not bypass that guard. Stage S
+files stay separate from future H1 code so H1 development does not break this
+registered measurement.
+
+The order is synthetic ruler first, Suno second, then ACE-Step generation and
+control scoring. Voice Oohs is a synthesized instrument, not real singing.
+Scoring has no fixed wall-time cutoff. Each completed score is checkpointed
+in Drive using the audio hash and the same preregistration. Rerun the same
+notebook with the same inputs and `scored` directory after a disconnect; it
+reuses completed scores and generated controls. It records actual stage times.
+Only ACE generation has the registered budget. An incomplete control run is
+reported separately and does not erase a completed Suno/ruler decision.
 
 Keep the exports separate:
 
 - `e7_suno_public.zip`: ACE-Step controls and synthetic-ruler numeric results.
-- `suno_private.zip`: Suno numeric scores, for the owner's private storage and
-  Claude's private review only.
+- `suno_private.zip`: Suno numeric scores, for private storage and private review.
 
-Neither result zip includes Suno audio or separated vocals. Keep original
-audio privately in Drive so the validated Stage 0c ruler can rescore the same
-files later. Give the public and private packages to Claude through their
-appropriate destinations. Claude applies the registered decision rule.
+Neither result zip includes Suno audio or separated vocals. Keep original audio
+privately in Drive so the validated Stage 0c ruler can rescore the same files.
+Give the public and private packages to the reviewing agent through their
+appropriate destinations. The reviewing agent applies the registered rule.
 
 Do not publish Suno scores, route outcomes, accuracy conclusions, or threshold
 comparisons until the owner confirms the terms permit that publication. Do not

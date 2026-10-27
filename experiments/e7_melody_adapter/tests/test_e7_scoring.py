@@ -9,7 +9,7 @@ import pytest
 from dacapo.analysis import f0_fcpe, f0_swift
 from dacapo.render import default_sf2, render_melody
 from dacapo.symbolic import Melody, Note, melody_from_spec
-from experiments.e7_melody_adapter import lib
+from experiments.e7_melody_adapter import stage_s_lib as lib
 
 
 NOTES = [
@@ -122,6 +122,20 @@ def test_relaxed_silence_cost_is_finite_and_not_a_pitch_match():
     assert score["deviation_semitones"] == pytest.approx(3.0)
     assert score["note_accuracy"] == 0.0
     assert score["octave_note_accuracy"] == 0.0
+    assert score["dtw_cost_semitones"] == score["deviation_semitones"]
+    assert score["voiced_deviation_semitones"] is None
+    assert score["unvoiced_frame_fraction"] == 1.0
+
+
+def test_relaxed_reports_voiced_pitch_error_separately_from_silence_penalty():
+    notes = [(0.0, .01, 60), (.01, .02, 64), (.02, .03, 67)]
+    times = np.array([0., .01, .02])
+    hz = np.array([440 * 2 ** ((60.2 - 69) / 12), 0., 440 * 2 ** ((67.2 - 69) / 12)])
+    score = lib.relaxed_alignment(notes, times, hz)
+    assert score["transpose_semitones"] == 0
+    assert score["dtw_cost_semitones"] == pytest.approx((.2 + 3 + .2) / 3)
+    assert score["voiced_deviation_semitones"] == pytest.approx(.2)
+    assert score["unvoiced_frame_fraction"] == pytest.approx(1 / 3)
 
 
 def test_word_recall_strips_sections_and_counts_repeated_words_once_per_match():
@@ -130,6 +144,15 @@ def test_word_recall_strips_sections_and_counts_repeated_words_once_per_match():
     assert lib.word_recall("go home", "home go") == 0.5
     assert lib.word_recall("[Verse] Don't go", "don't go") == 1.0
     assert lib.word_recall("", "words that were never requested") == 0.0
+
+
+def test_word_equivalences_are_small_explicit_and_keep_unknown_numbers():
+    assert lib.word_recall("one gray bird waits till dawn", "1 grey bird waits 'til dawn") == 1.0
+    assert lib.word_recall("Two lights shine", "2 lights shine") == 1.0
+    assert lib.word_recall("twelve red kites", "12 red kites") == 1.0
+    assert lib.lyric_words("13 red kites") == ["13", "red", "kites"]
+    assert lib.word_recall("two red kites", "three red kites") == pytest.approx(2 / 3)
+    assert lib.SCORING_CONFIG["words"]["equivalences"] == lib.WORD_EQUIVALENTS
 
 
 def test_lyric_mismatch_reveals_unrelated_hallucinated_words():
@@ -165,6 +188,17 @@ def test_voice_present_handles_stereo_and_silence():
     assert not score["voice_present"]
     assert score["energy_share"] == 0.0
     assert score["active_seconds"] == 0.0
+
+
+def test_voice_presence_is_explicitly_the_stage_s_channelwise_definition():
+    # Opposite-phase channels cancel in mono. Stage S deliberately computes
+    # energy and RMS across samples/channels, as registered, not after folding.
+    vocals = np.tile([.5, -.5], (1000, 1))
+    mixture = vocals * 2
+    score = lib.voice_present(vocals, mixture, 1000)
+    assert score["voice_present"] is True
+    assert score["energy_share"] == .25
+    assert "Stage S-specific" in lib.SCORING_CONFIG["voice_present"]["definition"]
 
 
 def test_bootstrap_is_seeded_and_does_not_invent_variation():
@@ -265,6 +299,23 @@ def test_chance_scores_all_eleven_references_independently():
     assert score["chance"]["relaxed"]["deviation_semitones"] == pytest.approx(direct["relaxed"]["deviation_semitones"])
     assert score["adjusted"]["strict"]["npa"] > 0.4
     assert score["adjusted"]["relaxed"]["deviation_semitones"] > 0.5
+
+
+def test_parallel_and_serial_full_reference_searches_are_exactly_equal():
+    times, hz = track(NOTES, start=.37, speed=1.03, transpose=2)
+    others = [[(s, e, p + i % 3) for s, e, p in wrong_contour(NOTES)] for i in range(11)]
+    events = [(.37 + s / 1.03, .37 + e / 1.03, p + 2) for s, e, p in NOTES]
+    serial = lib.score_against_references(NOTES, others, times, hz, estimated_notes=events)
+    parallel = lib.score_against_references(NOTES, others, times, hz, estimated_notes=events, workers=2)
+    assert parallel == serial
+    with lib.reference_pool(2) as executor:
+        reused = lib.score_against_references(NOTES, others, times, hz,
+                                             estimated_notes=events, executor=executor)
+        assert reused == serial
+        # A caller-owned pool remains usable for the next clip.
+        next_clip = lib.score_against_references(NOTES, others, times, hz,
+                                                estimated_notes=events, executor=executor)
+        assert next_clip == serial
 
 
 def test_frozen_track_contract_rejects_irregular_times_and_nonfinite_pitch():

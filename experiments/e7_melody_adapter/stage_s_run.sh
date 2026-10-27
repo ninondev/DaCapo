@@ -25,7 +25,7 @@ case "$stage" in
     exec bash "$e7_here/precommit_check.sh"
     ;;
   help|-h|--help)
-    echo 'Usage: bash experiments/e7_melody_adapter/run_stage.sh <pack|suno|check> [arguments]'
+    echo 'Usage: bash experiments/e7_melody_adapter/stage_s_run.sh <pack|suno|check> [arguments]'
     echo 'pack: render the upload pack on CPU; suno: score on a prepared CUDA runtime.'
     ;;
   *) echo "Unknown stage: $stage. H1 training stages are not part of this delivery." >&2; exit 2 ;;
