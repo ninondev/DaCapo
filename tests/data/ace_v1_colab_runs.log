@@ -1,0 +1,51 @@
+2026-10-26 18:52:24.851 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=/content/work/repo/experiments/e5_analogy/sources/mel00_lit.wav candidates=['/content/work/repo/experiments/e5_analogy/sources/mel00_lit.json']
+2026-10-26 18:52:26.025 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+solo flute melody, monophonic, no accompaniment
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 20 seconds
+<|endoftext|>
+2026-10-26 18:52:26.556 | INFO     | acestep.models.common.dcw_correction:__init__:98 - [DCW] Active - mode=double, scaler=0.0500, high_scaler=0.0200, wavelet='haar'
+2026-10-26 18:52:27.046 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 510])
+2026-10-26 18:52:28.380 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.2734, Target=-1.0dB
+2026-10-26 18:52:28.633 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=/content/work/repo/experiments/e5_analogy/sources/mel00_lit.wav candidates=['/content/work/repo/experiments/e5_analogy/sources/mel00_lit.json']
+2026-10-26 18:52:29.312 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+solo flute, classical, dry room
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 20 seconds
+<|endoftext|>
+2026-10-26 18:52:29.418 | INFO     | acestep.models.common.dcw_correction:__init__:98 - [DCW] Active - mode=double, scaler=0.0500, high_scaler=0.0200, wavelet='haar'
+2026-10-26 18:52:29.885 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 510])
+2026-10-26 18:52:31.132 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.2520, Target=-1.0dB
+2026-10-26 18:52:31.144 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=/content/work/repo/experiments/e5_analogy/sources/mel00_lit.wav candidates=['/content/work/repo/experiments/e5_analogy/sources/mel00_lit.json']
+2026-10-26 18:52:31.832 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+unaccompanied solo flute, a single melodic line, no other instruments, no chords, no drums
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 20 seconds
+<|endoftext|>
+2026-10-26 18:52:31.940 | INFO     | acestep.models.common.dcw_correction:__init__:98 - [DCW] Active - mode=double, scaler=0.0500, high_scaler=0.0200, wavelet='haar'
+2026-10-26 18:52:32.406 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 510])
+2026-10-26 18:52:33.658 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.2852, Target=-1.0dB

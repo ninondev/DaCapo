@@ -13,6 +13,12 @@ build/
 *.npz
 experiments/*/outputs*/
 package/
+package_*/
+listening_key*.json
 checkpoints/
 .cache/
-experiments/*/results/
+experiments/*/results/*
+experiments/*/results_*/
+# K0 run locally before addendum 2: registration evidence
+!experiments/e5_motif/results/e5_ruler_gate_p*.json
+experiments/e5_motif/run_v2*/

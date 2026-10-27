@@ -1,0 +1,749 @@
+{
+ "addendum_utc": "2026-10-27T17:28:38Z",
+ "title": "Addendum 2 to the E5 pre-registration: the corrected retry (run v2), and the E6 read-out",
+ "status": "Committed in two steps before any v2 generation. Step 1 records the owner's choice of K0 remedy R2 (section k0_remedy) with its exact procedure and new code hashes, before K0 runs again. Step 2 adds the redesigned manifest and the K0 files of that single rerun; register.py then rewrites sections k0 and k0_outcome. E5 v2 begins only if the flute K0 of step 2 passes.",
+ "refers_to": [
+  "experiments/e5_motif/registration/prereg.json",
+  "experiments/e5_motif/registration/addendum_1.json",
+  "experiments/e5_motif/registration/v1_outcome.json"
+ ],
+ "custody": {
+  "statement": "The original registration (registered 2026-10-26T17:14:21Z) and addendum 1 (2026-10-26T19:42:09Z) were committed in the author's private development repository, as commits 6e459d8 and 526fd3c, before this public repository existed. This repository began as one commit of the restructured code; section restructure records the file moves. This addendum is committed and pushed here before any v2 generation, and that push is its external timestamp.",
+  "commits": {
+   "prereg": "6e459d8",
+   "addendum_1": "526fd3c"
+  }
+ },
+ "decisions": {
+  "statement": "Every decision below was fixed before any v2 data existed.",
+  "list": [
+   {
+    "id": "D1",
+    "rule": "The primary population is ALL: the registered all-draw estimator (score_analogy index over every completed draw) decides H1 to H5 with the registered thresholds. The gate-passing draws (PASS) are secondary. A clause that compares two conditions (H2, the RI_k - RI_k(X-ctl) clause of H3, the H4 test against X-ctl, K3) must also hold in PASS. The PASS values and labels are reported next to every verdict.",
+    "implemented_in": "dacapo/motif_stats.py: summarize, verdict_comparison, verdict_h3, verdict_h4, k3_status, _labels"
+   },
+   {
+    "id": "D2",
+    "rule": "The quality gate is the registered gate_choice rule of v1 run_analogy.py: gap_voiced >= 0.6, gap_polyphony <= 1.3 with the registered Basic Pitch polyphony measure, and |gap RMS in dB relative to the 0-12 s context| <= 6. The same gate function decides Phase 0b (K1), the confirmatory quality rules Q1 and Q2 and the PASS population. Null gaps do not enter Q1 or Q2; their absolute level in dBFS is reported as a diagnostic only.",
+    "implemented_in": "dacapo/motif_features.py: GATE_REGISTERED, gate_flags, gate_record; dacapo/motif_stats.py: quality_decision, pilot_decision; experiments/e5_motif/score_analogy.py: quality"
+   },
+   {
+    "id": "D3",
+    "rule": "Sizes, cells, seeds, thresholds and timing follow the design part (section design): Phase 0b on the pilot melodies only, 12 cells, 1344 repaints, K1 needs 84 of 112 passing gaps in the best cell, ties broken in the order written there; the confirmatory grid is 36 fresh melodies x 8 conditions x 4 draws = 1152 repaints; Q1 needs 756 of 1008 non-null gaps to pass and Q2 needs 189 of 252 non-null (melody, condition) cells with at least 2 of 4 passing draws. Two-strike rule: if v2 fails Q1, Q2 or K1, there is no v3. Seeds are hashed per (item, draw), shared across conditions and cells, and none equals 1001, 2002 or 20261027 (registration/e5v2_seeds.json).",
+    "implemented_in": "experiments/e5_motif/v2_config.py: CELLS, SCALES, jobs, seed_table, K1_FRAC, Q1_FRAC, Q2_FRAC; dacapo/seeds.py: run_seeds"
+   },
+   {
+    "id": "D4",
+    "rule": "Generation is never interleaved with hypothesis scoring. Jobs that never completed may be generated again, because no outcome of theirs was seen; there are at most two automatic resume passes, after which still-missing draws count as gate failures. If a runtime reset loses audio files before the quality stage has frozen, those draws are generated again with the same seeds (outcome-blind). An integrity failure found before any hypothesis accuracy is computed voids attempt 1 and allows one attempt 2; a void attempt 2 is strike two.",
+    "implemented_in": "experiments/e5_motif/run_analogy.py: main, repair (interrupted starts, halt); dacapo/motif_integrity.py: ledger_state, open_starts, trailing_errors; experiments/e5_motif/score_analogy.py: quality, resumable, score; experiments/e5_motif/stage.py: _generate (technical stops), attempt_now; experiments/e5_motif/v2_config.py: record_void, attempt2_allowed"
+   },
+   {
+    "id": "D5",
+    "rule": "H4 needs both the melody-level one-sided exact sign test and the registered draw-level one-sided exact binomial test at p < 0.01, with p0 = max(k_c, 0.5)/n_c.",
+    "implemented_in": "dacapo/motif_stats.py: h4_tests, binom_vs_rate, sign_test_greater, verdict_h4"
+   },
+   {
+    "id": "D6",
+    "rule": "K2 is computed once, after the grid, on the first 6 confirmatory melodies (v2c00-v2c05), with ALL.",
+    "implemented_in": "dacapo/motif_stats.py: k2; experiments/e5_motif/score_analogy.py: score"
+   },
+   {
+    "id": "D7",
+    "rule": "There is no conservative repaint arm.",
+    "implemented_in": "experiments/e5_motif/v2_config.py: CELLS"
+   },
+   {
+    "id": "D8",
+    "rule": "The E6 read-out follows its revised plan (section e6_readout): 88 planned a cappella clips, the seven ACE-Step alignment heads, 200 matched random 7-head sets, Whisper large-v3 word times, a vocal-share threshold of 0.2 (changed after a CPU pilot and disclosed), extras of 4 verses x 2 captions x 5 seeds, and the owner's promotion rule. The read-out only gates B1; B1 itself is not built yet.",
+    "implemented_in": "experiments/e6_clock/readout.py; dacapo/attn_tap.py; dacapo/words.py"
+   },
+   {
+    "id": "D9",
+    "rule": "The notebook mounts Google Drive (one click at the start) and keeps the durable state there: the generation ledgers, designs, results, stage status and the generated E5 and E6 audio. After a runtime reset, Run all resumes from Drive. Without Drive the run continues on the local disk and says so.",
+    "implemented_in": "experiments/run_all.py: Paths, main; experiments/build_notebook.py (Drive mount, the commit kept on Drive for a resumed run)"
+   },
+   {
+    "id": "D10",
+    "rule": "Run A stages, in order, each gated automatically: setup (render the v2 sources and hypothesis renders from the committed manifests, check their sha256, K0 per caption timbre), A0 generation checks, E5 Phase 0b with the K1 decision, E5 confirmatory grid with its quality stage, accuracy stage and terminal outcome file, the E6 read-out, and packaging (results, logs, a listening subset and an anonymised blind-listening pack of about 60 clips with a separate answer key, written next to the package folder). Confirmatory E5 audio leaves the run only once the terminal outcome exists, and only from the attempt that produced it. The v1 stages (smoke, acap, sing, swap, e1, e1b, e3) are not part of Run A and stay runnable with --stages.",
+    "implemented_in": "experiments/run_all.py: RUN_A, e5_stage, e6_stage, package, blind_pack, e5_main_dir; experiments/e5_motif/stage.py"
+   },
+   {
+    "id": "D11",
+    "rule": "Registration custody as stated in section custody; this file lists every decision and deviation, discloses the CPU pilots, records the file moves of the restructure, the v2 manifest sha256 and the sha256 of every code file the runtime checks verify. register.py writes the hash sections as the last step before the commit, and every E5 v2 process refuses to start when a listed file differs.",
+    "implemented_in": "experiments/e5_motif/register.py; experiments/e5_motif/v2_config.py: addendum_status, registered_k0; dacapo/motif_integrity.py: check_registration"
+   },
+   {
+    "id": "D12",
+    "rule": "A CPU test scale: run_all.py --scale tiny --device cpu runs every Run A stage with one or two generations each, on pilot melodies only and with seeds of separate tags. Its run state (designs, ledgers, outputs, results, stage status, package) lives in folders the full scale never reads; the rendered sources are shared, and every run checks them against the sha256 in the manifests. --scale full is the default and the only scale whose results count.",
+    "implemented_in": "experiments/e5_motif/v2_config.py: SCALES, TINY_TAGS; experiments/run_all.py: Paths"
+   }
+  ]
+ },
+ "generation": [
+  "Software. ACE-Step 1.5 turbo at commit ca1e85fe9430179831e6bc6be790c332190a3866, with weights from Hugging Face ACE-Step/Ace-Step1.5 at revision 19671f406d603126926c1b7e2adc169acbcade22 (section ace lists the sha256 of the files A0 hashes). Run v1 downloaded the weights without a revision and recorded none. Every setting below is defined once in experiments/e5_motif/v2_config.py, which the A0 checks, the runner and the scorer import.",
+  "Task instruction. Each repaint passes ACE-Step's repaint instruction, \"Repaint the mask area based on the given conditions:\", unless Phase 0b selects a cell with the text-to-music instruction, \"Fill the audio semantic mask based on the given conditions:\". All 144 v1 repaints received the text-to-music instruction: ACE-Step's interface, REST API and command line substitute the task instruction, but its Python API, which v1 called, does not. The instruction is the first block of the text prompt that conditions the DiT and changes nothing else. The rest of the prompt holds the caption, \"bpm: 120\", time signature and key \"N/A\", \"duration: N seconds\" (N is the source length in whole seconds), language \"unknown\" and the lyrics \"[Instrumental]\".",
+  "Seeds. Each (item, draw) gets two seeds: d = sha256(f\"{tag}|{item_id}|{draw}\".encode()).digest(); dit_seed = int.from_bytes(d[0:4], \"little\") & 0x7FFFFFFF; rng_seed = int.from_bytes(d[4:8], \"little\") & 0x7FFFFFFF, replaced by rng_seed ^ 1 if it equals dit_seed. The tag is e5v2-a0 for A0, e5v2-p0b for Phase 0b and e5v2-main for the confirmatory grid. Every condition and cell of an (item, draw) uses the same pair, so conditions share their initial noise while items and draws do not. In v1 one seed served every item, so the grid held only two independent noise draws, and the Phase 0 caption was chosen on the draw the main grid reused. The 416 seeds in registration/e5v2_seeds.json are all different, and none equals 1001, 2002 or 20261027 (the v1 seeds and the CPU pilot's global seed). The runner refuses seeds that differ from that table.",
+  "Global random state. ACE-Step encodes the repaint source with a VAE posterior sample from torch's global generator, which v1 left unseeded. Right before each generation, rng_seed seeds the global generators of Python, NumPy and torch (CPU and CUDA). rng_seed always differs from dit_seed, because a global generator seeded with the DiT seed repeats the DiT noise. In a CPU check, two different seeds moved the source latent by at most 0.0093 (RMS 0.00055, against a latent RMS of 0.98), which changed 21.7% of the values the DiT receives after the cast to bf16; the same seed reproduced the latent bitwise.",
+  "DCW. ACE-Step's wavelet-domain sampler correction is on by default for turbo; v2 switches it off (dcw_enabled=False). In v1 it was requested but had no effect, because pytorch_wavelets was not installed.",
+  "Unchanged from v1: 8 steps, shift 3.0, ODE Euler sampling, batch size 1, repaint window 12.0-16.0 s (latent frames 300-399), chunk_mask_mode explicit, repaint_mode balanced with repaint_strength 0.5, no LM planner, peak normalisation to -1 dBFS. In balanced mode the window starts from pure noise and never receives source content. Outside the window the noised source is put back after each of the first four of eight steps, and the final audio outside 12-16 s is the source waveform, joined to the generated audio by 25 ms crossfades that lie outside the window.",
+  "Audio files. ACE-Step's own saver writes WAV through torchaudio, whose sample format depends on the torchaudio and torchcodec installed (16-bit PCM on the local CPU runs; 32-bit float with the soundfile backend of older torchaudio builds). v2 writes ACE-Step's normalised output itself with soundfile as 16-bit PCM and stores it as FLAC, which is lossless and about 40% of the WAV size, so the E5 audio needs about 4 GB on Google Drive. A0 checks the stored format.",
+  "Reproducibility. Every E5 v2 process runs with cuDNN deterministic, autotuning off, torch.use_deterministic_algorithms(True, warn_only=True) and CUBLAS_WORKSPACE_CONFIG=:4096:8, and the VAE decode chunk is fixed at 256 latent frames (ACESTEP_VAE_DECODE_CHUNK_SIZE=256). Without that setting ACE-Step picks the chunk from free GPU memory: in v1 it was 256 in every run, at 15.56-15.72 GB free, and at 16 GB it would have switched to 384, which moves the tile boundaries. These settings can change which kernels run, so v2 numbers are not bit-comparable with v1. Results reproduce on the same GPU type and software versions, not across devices. The runner refuses a GPU other than an NVIDIA L4, another ACE-Step commit or another weights revision.",
+  "Source length. t18 is the rendered source cut to exactly 864,000 samples (18.000 s, 450 latent frames) with a 50 ms half-cosine fade-out, written as 32-bit float WAV. rend is the source as FluidSynth renders it: D's last note followed by about 2.43 s of release and silence (20.4-21.2 s in total). D and all registered hypotheses are identical in both arms. make_items keeps every D note that starts before beat 4 at full length, so the t18 cut always ends inside D's last note or its release; in all 14 v1 melodies the last 50 ms before the cut still peaked at 0.12-0.16, close to the source peak of 0.16-0.17. This is disclosed, not repaired. Within one (item, draw) the two lengths share the initial noise in the repaint window but not the VAE posterior draw of the source, whose layout depends on the clip length.",
+  "Runs, errors and resumption. Every planned job of a phase is listed in design.json, written once per attempt, and every attempt is logged in an append-only ledger (start, done with the sha256 of the audio file and what ACE-Step used, error, interrupted, halt, lost, orphan, resume). Each finished run is checked at once against the plan (resolved and logged instruction, DCW off, latent frames, duration metadata, no cached source latents, seeds); a mismatch voids the attempt. A run that raises an error, including ACE-Step's 600 s timeout, ends its process, so a retry never shares a process with a generation thread that may still be running. Each job gets at most three attempts. A start whose process died before its outcome was logged (a runtime reset, a kill, a crash outside the generation call) is marked interrupted and is not counted as an attempt, since no outcome of it exists. Five generations in a row that raise halt the phase; their attempts are not counted either. Any end of the runner other than 'every job done' or 'jobs remain' (a crash, a refusal, a halt) is a technical stop: the quality stage does not run, no resume pass is used, and Run all continues from the ledger once the cause is fixed. A0 holds only for the addendum and the runtime it checked (software versions, dtypes, attention kernel, determinism flags); when either differs, A0 runs again before generation goes on. The runner also refuses to start when the disk that holds the run state has less free space than the remaining jobs need."
+ ],
+ "design": [
+  {
+   "id": "0",
+   "title": "Scope and timing",
+   "text": "This addendum, the code it lists, manifest_v2.json, manifest_p0b.json, the seed table and the K0 results are committed and pushed before any v2 generation. Run v1 (results/gpu_run1) failed its infill-quality gate (59 of 120 non-null gaps passed) and supports no induction claim, positive or negative. Run v2 is the only retry. It begins with the first Phase 0b generation; after that, generation with other code, another device type or other seeds would be a third run, and there is none. H1-H7, K0-K5 and every registered threshold are unchanged."
+  },
+  {
+   "id": "1",
+   "title": "Errata and earlier looks at data",
+   "text": "Addendum 1 says the rename came before any confirmatory DiT run. The v1 grid had finished at 19:00:24Z and addendum 1 was written at 19:42:09Z; v1 used the pre-rename code, whose hashes are in prereg.json, so no data are affected. v1's Phase 0 compared three flute captions instead of the registered flute, synth voice and clarinet captions, and this was not disclosed before the run. Every v1 outcome was examined before this addendum was written. The number of melodies and draws was chosen by simulation calibrated on v1 outcomes, including the selection-biased s1 rows. The decision memo after v1 proposed gate-passing draws as the primary population after v1 had shown them above the H1 threshold (0.31) and all rows below it (0.16); this addendum keeps the registered all-draw estimator as primary instead (D1). The Phase 0b tie order below is the one written before the CPU pilot. Section pilots lists every run made before this addendum."
+  },
+  {
+   "id": "2",
+   "title": "Generation, for every v2 run",
+   "text": "As in section generation. Sources are rendered in the setup stage from the committed manifests, and every rendered file must have the sha256 of its decoded samples that the manifest records (a float WAV carries a timestamp in its header, so file bytes are not compared). The runner checks the sources again before it generates anything."
+  },
+  {
+   "id": "3",
+   "title": "Phase 0b: K1 and the choice of configuration",
+   "text": "Phase 0b uses pilot melodies mel00-mel13; mel02-mel13 were confirmatory in v1 and are pilot material here. There are 12 cells: instruction (repaint, text2music) x source (as rendered; or cut at 18.000 s) x caption (\"solo <instrument> melody, monophonic, no accompaniment\" for flute, synth voice and clarinet). A failed K0 for synth voice or clarinet removes that timbre's cells; a flute K0 that has not passed stops E5 v2 until the units are redesigned (deviation aa). Every cell runs lit and ctl on every pilot melody with draws 0-3 under tag e5v2-p0b, with the same seeds in every cell: 112 gaps per cell and 1344 repaints. Phase 0b computes quality metrics only, never a hypothesis accuracy. The per-gap gate is the registered gate_choice rule (D2). A cell passes K1 when at least 84 of its 112 gaps pass; K1 triggers when no cell passes. The selected cell is the passing cell with the most passing gaps; ties go to repaint over text2music, then to the as-rendered source over the 18 s one, then to flute, synth voice and clarinet in that order. Reading K1 per cell is the lenient reading: if every cell truly passed 70% of gaps, some cell would clear 84 of 112 with probability 0.70, and the confirmatory gate would then pass with probability 0.11. Q1 is the binding guard. There is no conservative repaint arm (D7)."
+  },
+  {
+   "id": "4",
+   "title": "Confirmatory grid",
+   "text": "The grid uses 36 fresh melodies (v2c00-v2c35) from make_items with generator seed 303 and window-bound A, B, C and B2 units (section k0_remedy), none of whose units (A, B, C, D, B2) repeats a v1 unit. A first draw with seed 202 failed K0 (section k0_first_run). Before the second commit K0 was run on the redesigned melodies with hypothesis renders and wrong-note renders in GM programs 73 (flute), 54 (synth voice) and 71 (clarinet), at tau 0.7 with ties counted as errors; section k0 gives the results. Each melody runs all 8 registered conditions with draws 0-3 under tag e5v2-main in the selected cell: 1152 repaints. Melodies run in id order and nothing stops early."
+  },
+  {
+   "id": "5",
+   "title": "Quality rules, missing runs and resumes",
+   "text": "Q1 requires that at least 756 of the 1008 planned non-null gaps pass the per-gap gate (75%). Q2 requires that at least 189 of the 252 non-null (melody, condition) cells have at least 2 passing draws out of 4 (75%). Null gaps enter neither rule; their absolute RMS level in dBFS is reported as a diagnostic. A draw is ok (completed, audio present), lost (completed, audio gone) or missing (never completed). Before the quality stage has frozen, lost audio is generated again with the same seeds, since no outcome of it was seen, and a wav without a completed ledger entry is moved aside and its job generated again. A missing job may be generated again in an automatic resume pass, at most two per phase, and each job has at most three attempts; after that, still-missing draws count as gate failures and the rule decides. No phase is scored while a job can still be generated, and the quality decision is frozen, with the sha256 of every wav and of the stored tracker output, before any hypothesis accuracy is computed. If Q1 or Q2 fails, v2 is an infill-quality failure and no H1-H5 verdict is computed. A crash, refusal or halt of the generator is a technical stop and never reaches the quality stage, so it cannot turn missing draws into gate failures (section generation)."
+  },
+  {
+   "id": "6",
+   "title": "Populations, estimands and verdicts",
+   "text": "The primary population (ALL) is every completed confirmatory draw. Each index is the registered estimator of score_analogy.index: per melody, the mean of its contrast over its draws, then the mean over melodies, with the registered percentile cluster bootstrap over melodies (10,000 resamples, numpy default_rng(0), melodies in sorted id order). Draws are nested in melodies, so this one-level bootstrap includes draw-to-draw variance. The secondary population (PASS) uses only draws that pass the per-gap gate. An index on fewer than 12 contributing melodies is not evaluable. Values are rounded to 1e-9 before a threshold comparison, which removes floating-point noise and nothing else, and \"CI > 0\" means the 2.5th percentile is above 0. H1 (CI_lit >= 0.25, CI > 0), H5 (ANA >= 0.15, CI > 0), the RI_k >= 0.15 (CI > 0) and RI_k > LI_k clauses of H3, and the rate clauses of H4 are decided on ALL. A clause that compares two conditions must hold in both ALL and PASS: H2 (CI_lit - CI_ctl >= 0.15, CI > 0), the RI_k - RI_k(X-ctl) >= 0.10 clause of H3 and the H4 test against X-ctl. In ALL the comparison is the registered difference of the two indices, with a joint melody bootstrap that keeps the two terms paired (on v1 it reproduces 0.1147 [0.0695, 0.1667]); in PASS it is paired by melody over the melodies with passing draws in both conditions and needs 12 of them. H3 is supported if its clauses hold for at least 2 of k in {+2, +5, -3}; the literal-lag copier is reported per k, as registered. For H4, a rate is the mean over melodies of the share of each melody's seq draws classified as the hypothesis with the seq set (ties count for no hypothesis). H4 needs T+6A >= 0.20 and T+5A, T+7A <= 0.05 on ALL, the T+6A rate above the registered NULL coincidence rate in ALL, and above the X-ctl coincidence rate (X-ctl draws classified with the seq set) in ALL and in PASS. Each comparison uses a one-sided exact sign test over melodies and the registered one-sided exact binomial test against p0 = max(k_c, 0.5)/n_c, each at p < 0.01. Null gaps are silent by design (v1: 0 of 12 voiced), so the NULL comparison is easy to pass and X-ctl is the binding comparator. Each verdict is reported with its PASS values, the pass rate per condition, an exact McNemar test of lit against ctl on paired draws, and the label \"differential gating\" when two compared conditions pass at rates more than 0.10 apart. Under a negative benchmark every hypothesis carries its estimate and CI, and the label \"below threshold, CI excludes 0\" wherever that holds. A hypothesis that is not evaluable is reported as such, never as negative."
+  },
+  {
+   "id": "7",
+   "title": "K2 and K3",
+   "text": "K2 is computed once, after the grid, on the first six confirmatory melodies (v2c00-v2c05) with ALL, and triggers when CI(X-lit) < 0.10 and the literal index under X-ctl, CI(X-ctl), < 0.10. The grid never stops early, so computing K2 after the grid changes no decision. A trigger skips Phases 2-3. K3 (the H2 difference <= 0.05) is triggered when it holds in ALL and in PASS, indeterminate when it holds in one of them, and not evaluable unless both are evaluable; it redirects Phase 2 to the lag-copy pathway as registered. Phases 2-3 require a passed quality gate and no K2 trigger, as registered; their design is fixed in addendum 3 before they run."
+  },
+  {
+   "id": "8",
+   "title": "Two-strike rule and attempts",
+   "text": "Strike one is v1. Strike two is any terminal v2 outcome: K1 in Phase 0b, a failed Q1 or Q2, or a void second attempt. E5 then makes no induction claim from v1 or v2, there is no v3, the E5 stages of Run B are skipped, and E6 takes the primary slot. Failures before v2 begins (setup, K0 on the Colab renders, the A0 generation checks, a refusal before the first generation) are not strikes; they are fixed and this addendum is amended before v2 begins. Technical stops during generation (a crash, a halt, a refusal, a runtime unlike the one A0 checked) are not strikes either: the environment is fixed and Run all goes on from the ledger. A fix that would change a registered file after v2 has begun is not covered by these rules (section 0) and needs a decision recorded in an amendment before anything else runs. An integrity failure found after generation but before any hypothesis accuracy exists makes the attempt void. The quality stage checks integrity before any tracker runs, so a void attempt has no quality decision; that decision is computed and reported in full (score_analogy.py quality --void-report) only after the E5 v2 terminal outcome exists. Attempt 2 reuses the same design and seeds and redoes the voided phase and every later one. It runs only under an amendment in this file's amendments list, with new hashes from register.py, that names the failed checks of attempt 1 (failed_checks) and every registered file the fix changed (files); the runner refuses attempt 2 otherwise, and a fix may change only what the failed checks point to. Every start of E5 v2 is reported, including one whose run state was lost because Google Drive was not mounted. If the quality gate passes and H1-H5 are all not supported, the result is published as a negative benchmark, as registered."
+  },
+  {
+   "id": "9",
+   "title": "Scoring changes",
+   "text": "Every row is scored against every hypothesis in the manifest; the unused unit B2 enters onset-F1 only (the onset_B_minus_B2 replication). A row whose best hypotheses tie at the maximum (within 1e-9) is classified \"tie\" and credited to none of them; v1 credited the first-listed one, which is the rule answer in the seq, rel and ana sets. On v1 the strict rule changes none of the 132 choices. The scorer adds the registered quantities v1 omitted: the H2 and H3 difference CIs, RI under X-ctl, the coincidence rates under X-ctl and NULL, exact tests, Basic Pitch skyline note-F1 and onset-F1 (mir_eval; 50 ms onset, 50 cents, offsets ignored, the same lag grid), pass@2 and per-row gate flags. The scorer reproduces every number v1 stored (tests/test_e5_v1_regression.py; score_analogy.py regress-v1 in the setup stage)."
+  },
+  {
+   "id": "10",
+   "title": "Analyses fixed in advance as exploratory",
+   "text": "These have no verdicts: Phase 0b factor effects on the pass rate and on the quiet-gap rate; the v1-configuration cell (text2music, as rendered, flute) against v1's 70% (s1) and 0% (s2); null-gap absolute level; a nested melody-then-draw bootstrap; variance of the contrasts across draws within melodies; classification profiles including none, tie, copy-next D, copy-left and lag; association between gate features and the contrast among passing draws; Lee bounds for PASS contrasts; the octave-folded polyphony gate and a level gate with a splice-safe context (0.5-11.5 s, the D bar for null) and a -30 dBFS floor as alternative gates; accuracies of the Phase 0b outputs, computed only after the E5 v2 terminal outcome exists; the blind listening pack."
+  },
+  {
+   "id": "11",
+   "title": "Integrity checks",
+   "text": "Each failure voids the attempt (section 8). The quality stage runs checks 1-7, 9 and 10 on the stored files before any tracker runs; the trackers run and the decision is frozen only when they pass. (1) every scored file is lossless (WAV or FLAC) at 48 kHz; (2) every output's peak over all channels is -1 +- 0.5 dBFS unless it is silent; (3) null source contexts are below -90 dBFS, non-null contexts and every D bar above -40 dBFS; (4) the seeds match design.json and the committed table, no seed pair is shared by two melodies and no two draws of a melody share one; (5) confirmatory melodies and seed values are disjoint from Phase 0b; (6) the scored files are exactly the planned ones, with no other audio file in the phase folder, and every source still has the sha256 recorded before generation; (7) tau comes from a passed K0 on the same manifest and timbre; (8) every audio file and stored tracker output at scoring equals what the quality stage froze; (9) the ledger shows one completed attempt per draw since its last lost event, no failed per-run check, and the file on disk is the one it recorded; (10) the code and data that run match code_sha256 and data_sha256 of this addendum (data: the manifests, the seed table, the K0 files and the three earlier registration files), the manifest is the one design.json names, design.json names this addendum's sha256, and addendum_utc is earlier than the first generation. The quality and score stages both check the registered hashes, and the score stage also checks that they equal the hashes the quality stage stored. Every end state writes results/e5_terminal.json once; while it exists no E5 v2 generation starts. A diagnostic scoring run is allowed only after a terminal outcome; it writes a separate file labelled exploratory, which the pipeline never reads. Measurement software that differs from section measurement, or a bootstrap other than 10,000 resamples at the full scale, is refused before anything is computed (a technical stop, not a void)."
+  },
+  {
+   "id": "12",
+   "title": "Records added at commit time",
+   "text": "K0 per program (73, 54, 71) on v2c00-v2c35; sha256 of manifest.json, manifest_p0b.json, manifest_v2.json, the seed table, the K0 files, the first draw and its K0 files in k0_first_run/, the three earlier registration files and every file E5 v2 executes; the ACE-Step commit, the Hugging Face revision and the weight hashes; the FluidSynth version and the FluidR3_GM.sf2 sha256; the versions of the measurement packages with the ONNX model hashes; the old-to-new path map; the amendment history."
+  }
+ ],
+ "deviations": [
+  {
+   "id": "a",
+   "registered": "12 confirmatory melodies",
+   "v2_rule": "36 fresh melodies (v2c00-v2c35, generator seed 303, window-bound units; the first draw with seed 202 failed K0)",
+   "reason": "power at the registered thresholds",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "b",
+   "registered": "one seed per draw label for all items",
+   "v2_rule": "per-(item, draw) hashed seed pairs, 4 draws per melody and condition, all 8 conditions per draw, and a pinned global RNG",
+   "reason": "v1 had two effective noise draws and an unseeded VAE sample",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "c",
+   "registered": "repaint with the Python API defaults",
+   "v2_rule": "the repaint instruction, DCW off, decode chunk 256, deterministic kernels",
+   "reason": "v1 sent the text-to-music instruction; DCW was a silent no-op; the decode chunk depended on free memory",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "d",
+   "registered": "18 s sources (v1 ran 20.4-21.2 s)",
+   "v2_rule": "source length chosen in Phase 0b between as rendered and an 18.000 s cut",
+   "reason": "the cut truncates D's last note; which length fills better is untested",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "e",
+   "registered": "Phase 0 with three captions on the pilot melodies",
+   "v2_rule": "Phase 0b with 12 cells on 14 pilot melodies, K1 per cell at 84 of 112, fixed tie order",
+   "reason": "v1's Phase 0 rested on one noise draw and three flute captions",
+   "direction": "more lenient",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "f",
+   "registered": "the quality gate is a Phase 0 criterion",
+   "v2_rule": "the same registered gate also decides Q1 and Q2 on the confirmatory grid and defines PASS",
+   "reason": "v1 showed that infill can fail on the confirmatory draws",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "g",
+   "registered": "the gate applies to every gap",
+   "v2_rule": "null gaps enter neither Q1 nor Q2; their absolute level is reported",
+   "reason": "null gaps are silent by design and the registered level term is undefined for them (the splice crossfade leaks into the silent context)",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "h",
+   "registered": "no rule for missing or lost runs",
+   "v2_rule": "lost audio before the freeze is generated again with the same seeds; missing jobs get at most two automatic resume passes and three attempts, then count as gate failures; an interrupted start and the starts a halt lists are not counted; a crash, refusal or halt is a technical stop that uses no resume pass",
+   "reason": "a runtime reset or a broken environment must not change the design or decide the study, and the run must end",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "i",
+   "registered": "one attempt",
+   "v2_rule": "one attempt 2 after an integrity failure found before any accuracy exists, under an amendment that links the failed checks to every changed registered file; a void attempt gets no quality decision until the terminal outcome; a void attempt 2 is strike two",
+   "reason": "a mechanical fault should not end the study when no outcome was seen",
+   "direction": "more lenient",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "j",
+   "registered": "the registered estimator over every confirmatory row",
+   "v2_rule": "the same estimator (ALL) decides; comparisons between conditions must also hold among gate-passing draws (PASS)",
+   "reason": "when the gate passes at different rates in two conditions, ALL and PASS are biased in opposite directions",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "k",
+   "registered": "no CI for differences",
+   "v2_rule": "difference CIs by a joint melody bootstrap in ALL, paired over common melodies in PASS",
+   "reason": "the registered code computed none",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "l",
+   "registered": "H4 against the NULL coincidence rate",
+   "v2_rule": "H4 needs the registered test against NULL in ALL and the same test against X-ctl in ALL and PASS",
+   "reason": "null gaps are silent, so the NULL rate is near zero and the NULL test alone is easy to pass",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "m",
+   "registered": "H4 'in >= 20% of items'",
+   "v2_rule": "the mean of per-melody shares",
+   "reason": "with equal draws per melody it equals the pooled share",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "n",
+   "registered": "H4: exact binomial p < 0.01",
+   "v2_rule": "both the melody-level sign test and the draw-level binomial with p0 = max(k_c, 0.5)/n_c at p < 0.01",
+   "reason": "the binomial alone treats draws of a melody as independent",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "o",
+   "registered": "K2 at an interim after 6 melodies",
+   "v2_rule": "K2 after the grid on v2c00-v2c05 with ALL",
+   "reason": "the grid never stops early, so the numbers are the same",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "p",
+   "registered": "K3 on one difference",
+   "v2_rule": "K3 triggered when it holds in ALL and PASS, indeterminate when in one",
+   "reason": "agreement rule",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "q",
+   "registered": "argmax with the first-listed hypothesis winning ties",
+   "v2_rule": "ties classified as 'tie' and credited to none, in scoring and in K0",
+   "reason": "the first-listed hypothesis is the rule answer",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "r",
+   "registered": "each condition scored against its own set",
+   "v2_rule": "every hypothesis plus B2 scored on every row; the registered sets classify",
+   "reason": "RI(X-ctl) and the coincidence rates need it",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "s",
+   "registered": "no evaluability floor",
+   "v2_rule": "a quantity on fewer than 12 melodies is not evaluable",
+   "reason": "the registered sample size",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "t",
+   "registered": "K0 on the flute renders, tau chosen as the largest with maximal classification",
+   "v2_rule": "K0 per caption timbre (73, 54, 71), wrong-note renders in each timbre's program, tau fixed at 0.7 (v1's value)",
+   "reason": "Phase 0b runs three caption timbres",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "u",
+   "registered": "SwiftF0 and Basic Pitch are never used for selection",
+   "v2_rule": "through the registered gate they define PASS and the Phase 0b choice; they never read a hypothesis",
+   "reason": "the registered Phase 0 gate already used both",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "v",
+   "registered": "unrounded thresholds",
+   "v2_rule": "values rounded to 1e-9 before a threshold comparison",
+   "reason": "removes floating-point noise only",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "w",
+   "registered": "none",
+   "v2_rule": "a diagnostic scoring run after a terminal outcome, labelled exploratory",
+   "reason": "a failed gate should still be described",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "x",
+   "registered": "an unspecified GPU, unpinned software",
+   "v2_rule": "an NVIDIA L4, ACE-Step ca1e85f, weights revision 19671f40 with file hashes, and the measurement packages and ONNX models of section measurement, checked before setup, quality and scoring; numpy, scipy and soundfile are recorded, not pinned",
+   "reason": "reproducibility",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "y",
+   "registered": "none",
+   "v2_rule": "A0 generation checks before v2, including a 1e-3 tolerance between repeats of the decoded audio and the stored audio format as hard checks; A0 runs again whenever the addendum or the runtime (software versions, dtypes, attention kernel, determinism flags) differs from the one it checked",
+   "reason": "v1's configuration faults would have been caught",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "z",
+   "registered": "code hashes only",
+   "v2_rule": "the runtime also checks the sha256 of the manifests, the seed table, the K0 files and the earlier registration files, and every rendered source against its manifest",
+   "reason": "the data define the experiment as much as the code",
+   "direction": "stricter",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "aa",
+   "registered": "after a K0 failure the units are redesigned before any DiT run",
+   "v2_rule": "K0 runs per caption timbre; a flute K0 (the registered timbre) that has not passed stops E5 v2 until the units are redesigned under an amendment (section k0_remedy); a failed synth voice or clarinet K0 removes that timbre's 4 cells from Phase 0b instead",
+   "reason": "the registration knew only the flute ruler; the other two timbres are new in v2 (deviation t)",
+   "direction": "more lenient for synth voice and clarinet (no redesign); fewer Phase 0b cells also lower the chance that some cell passes K1 by luck",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "ab",
+   "registered": "none (v1 stored what ACE-Step's saver wrote, which depends on torchaudio)",
+   "v2_rule": "ACE-Step's normalised output is written with soundfile as 16-bit PCM and stored as FLAC; A0 checks the format",
+   "reason": "the stored format must not depend on the Colab image, and the run state must fit on Google Drive",
+   "direction": "neutral",
+   "decided_before_v2_data": true
+  },
+  {
+   "id": "ac",
+   "registered": "after a K0 failure the units are redesigned before any DiT run",
+   "v2_rule": "remedy R2: the A, B, C and B2 units keep every note inside the scored window; generator seed 303; ids and run seeds unchanged; K0 reruns once with the registered procedure",
+   "reason": "the first K0 failed because the registered wrong-note draw could change a note the ruler never scores (section k0_first_run)",
+   "direction": "as registered (a redesign of the units, not a change of the K0 procedure)",
+   "decided_before_v2_data": true
+  }
+ ],
+ "pilots": [
+  "The pre-registration trial (before 2026-10-26T17:14:21Z): one CPU repaint of pilot melody mel00, lit, caption 1, seed 1001, text-to-music instruction.",
+  "A four-run CPU pilot on mel00 lit with the flute caption, DiT seed 1001 and global seed 20261027, crossing instruction (text-to-music, repaint) with source (as rendered, cut to 18.000 s). With the rendered source both instructions filled the gap with all six notes of B (B accuracy 1.00, foil 0.33); measured polyphony was 1.64 with text-to-music and 1.33 with repaint. With the cut source the filled phrase faded out after about 2 s; that source ended inside D's last note and also differed in duration metadata (18 vs 20 s) and in 2.4 s of trailing release. A single draw cannot separate these causes, and the CPU encoder works in two tiles where the L4 encodes in one pass, so the pilot decides nothing. Latent diagnostics of these runs, VAE-only encodes of the 18 s source under equal and different seeds, and posterior-mean VAE round trips of the exact B and B~ renders of mel00 and mel01 (gap polyphony 1.02-1.20) were made with it.",
+  "An outcome-free run of the registered gate on the exact renders of all 23 hypotheses of mel00-mel13: every hypothesis passed 14 of 14 except copy-next D, 7 of 14, all seven failures being melodies whose D ends at beat 4 (voiced fraction 0.55). This led to no change in D, the hypotheses or the gate.",
+  "Simulations of power and of selection effects calibrated on v1 outcomes (design part), and the scorer's end-to-end tests on fake outputs built from FluidSynth renders of mel02, mel04 and mel05.",
+  "E6: one CPU pilot clip (item00 lyric, seed 6000), two planned clips (item00 seed 61000, verse v1 female seed 62100) and the two acceptance clips (seeds 6000 and 6001), all with Whisper small.en; section e6_readout gives the numbers.",
+  "The local K0 on v2c00-v2c35 for programs 73, 54 and 71, run twice with no DiT involved: once on the first draw (section k0_first_run) and once on the redesigned melodies (section k0).",
+  "Code tests of the whole Run A chain at the tiny scale on CPU (run_all.py --scale tiny): one or two repaints per stage of pilot melodies mel00 and mel01 under the separate tags e5v2-tiny-a0, e5v2-tiny-p0b and e5v2-tiny-main, which share no seed with the registered table, and the E6 acceptance clip of seed 6000 and planned clip item00 r0 again. No confirmatory melody and no registered seed was generated.",
+  "None of these runs used a confirmatory melody or a Phase 0b or confirmatory seed. CPU draws differ from GPU draws (mt19937 against Philox, fp32 against bf16 VAE, tiled against single-pass encode)."
+ ],
+ "restructure": {
+  "statement": "Before the v2 edits, the restructured make_items.py, score_analogy.py, metrics.py and analysis.py were AST-identical to the registered versions (addendum 1 hashes) once docstrings are removed, and run_analogy.py differed only in its import of the ACE-Step wrapper. dacapo/ace.py was AST-identical to the last development version of experiments/e2_trajectory/ace_lab.py (sha256 7be78c05...), which adds the E4 swap length fix to the version run 1 used (sha256 180458aa...); the repaint path is the same. prereg.json and addendum_1.json are byte-identical to the development files; v1_outcome.json differs from the development file only in its path references (refers_to and run), updated to the new layout.",
+  "path_map": {
+   "experiments/e5_analogy/*": "experiments/e5_motif/*",
+   "experiments/e5_analogy/results/e5_prereg.json": "experiments/e5_motif/registration/prereg.json",
+   "experiments/e5_analogy/results/e5_prereg_addendum_1.json": "experiments/e5_motif/registration/addendum_1.json",
+   "experiments/e5_analogy/results/e5_v1_outcome.json": "experiments/e5_motif/registration/v1_outcome.json",
+   "src/ryuichi/* and src/dacapo/*": "dacapo/*",
+   "experiments/e2_trajectory/ace_lab.py": "dacapo/ace.py",
+   "colab/suite.py": "experiments/run_all.py",
+   "colab/build_notebook.py": "experiments/build_notebook.py",
+   "runs/colab_l4_r1": "results/gpu_run1"
+  },
+  "development_sha256": {
+   "experiments/e5_analogy/results/e5_prereg.json": "d162a0fdb0837d37a109f01c65de1ce1dfa52ba37ec0a7850d3955eed70d29bd",
+   "experiments/e5_analogy/results/e5_prereg_addendum_1.json": "ae541a4c0cc166e5d295fb91e18cbbdb218f28092ad5edb69d5ce55a7e8bdadb",
+   "experiments/e5_analogy/results/e5_v1_outcome.json": "1e5dc424eb4c8eca9e992bc8e9486cd969c79802eb3873dea85d30d25a255461",
+   "experiments/e2_trajectory/ace_lab.py (run 1, 6e459d8)": "180458aa026674eff38a3e909aba450138d4a847b388da2ca8ff6ba01d70c370",
+   "experiments/e2_trajectory/ace_lab.py (last, 42b9628)": "7be78c05fd7f21cbe7bd1438ab2e180b21b236701b14524500d99584fe4ceb07"
+  },
+  "restructured_sha256_before_v2_edits": {
+   "experiments/e5_motif/make_items.py": "ca557d87eccc66e5a2d9e6728d47f3708f05d244aea5751de2629cab6d907f7a",
+   "experiments/e5_motif/score_analogy.py": "d091ba01e77cf22919425abbdfd455b5aaddc852fbb9e2b0a58d08fe2903e332",
+   "experiments/e5_motif/run_analogy.py": "b6108682e2259edab2694410c462ab2c9c9167aa71905e8ecc9be4086ac31944",
+   "dacapo/metrics.py": "a69087619f92fa750866a6904ca949e2efd1512daf5ab88fdf268df15b8db7b7",
+   "dacapo/analysis.py": "5d19e4dfdbf14186e83d18fa514795510e0e66f3f06fe9b528db9f4f51da3fb2",
+   "dacapo/ace.py": "0e9850041c2fc52537b2316144597f422cdc44469bf52aefe862a553bb3e4aa9"
+  }
+ },
+ "k0_outcome": "Written by register.py from results/e5_ruler_gate_p*.json (tau 0.7, ties counted as errors; a timbre passes with classification >= 0.95 and both AUCs >= 0.9): flute (GM 73) failed: classification 0.977 (1653 of 1692 rows), wrong-note AUC 0.8476 with one wrong note and 0.9518 with two; synth voice (GM 54) failed: classification 0.9829 (1663 of 1692 rows), wrong-note AUC 0.8611 with one wrong note and 0.9722 with two; clarinet (GM 71) failed: classification 0.9764 (1652 of 1692 rows), wrong-note AUC 0.8056 with one wrong note and 0.9367 with two.",
+ "k0_first_run": "K0 ran on this machine's CPU on 2026-10-27, before any v2 generation, with the registered procedure: hypothesis renders and wrong-note renders of v2c00-v2c35 in each program, tau fixed at 0.7, ties counted as errors. All three timbres fail. Classification passes everywhere (threshold 0.95): flute 1653 of 1692 rows (0.977), synth voice 1663 (0.9829), clarinet 1652 (0.9764). The 1-wrong-note AUC is below 0.9 everywhere: flute 0.8476, synth voice 0.8611, clarinet 0.8056 (2-wrong: 0.9518, 0.9722, 0.9367). The cause lies in the procedure, not in the ruler. The registered draw picks the wrong note among all notes of B, but the ruler scores only notes inside the gap less its 0.4 s margins, and B's first note starts at 12.0 s. In the v2 melodies 2 or 3 of B's 6 to 11 notes are never scored, so a 1-wrong render changes an unscored note with probability 0.275 (0.293 in the v1 melodies) and then scores exactly like the correct render. A ruler that detects every scored change would therefore expect a 1-wrong AUC near 0.86 on either item set. Here 10 of the 36 1-wrong renders changed an unscored note; v1 passed (0.9286) with 2 of 14, where 4.1 were expected. Counting only the renders whose changed note is scored, an exploratory reading of the same draw that decides nothing, the 1-wrong AUC is 0.9546 for flute, 1.0 for synth voice and 0.9391 for clarinet. The registration requires a redesign of the units after a K0 failure, before any DiT run; section k0_remedy fixes how the remedy is chosen and run. The first draw (make_items generator seed 202, no window constraint) and its K0 files are kept unchanged in experiments/e5_motif/k0_first_run/ with these sha256: k0_first_run/manifest_v2.json 5801ebae6e5f7467634fc798a7ebf21556e147e97560a853cb76fac7573e903d; k0_first_run/e5_ruler_gate_p73.json 3b9320f1bda637be82015be1c07b05d773f09d719e6b7095746caba9327a2027; k0_first_run/e5_ruler_gate_p54.json 904dbcaa7a2fa3c091b5fded555356c8f05cd23e5b2e2eb5e07a74cc33100602; k0_first_run/e5_ruler_gate_p71.json 0cc9b7e031eda9083fbfdaea08cacad39e7e369cfe32fd660d4697575c0c8804.",
+ "k0_remedy": {
+  "status": "chosen: R2, by the owner on 2026-10-27 (recorded 2026-10-27T17:20:04Z), after the first K0 result was known and before any v2 DiT output existed",
+  "rules": [
+   "The remedy is chosen after the K0 result above was known, when no v2 DiT output exists. It is recorded as a deviation that names this K0 result as its cause.",
+   "Its exact procedure (code, seeds, constraints) is committed, with new hashes from register.py, before K0 runs again. K0 then runs once, with no retry.",
+   "If the flute K0 fails again, E5 v2 does not run: there is no further redesign, E5 makes no induction claim, and E6 takes the primary slot, as after strike two. A synth voice or clarinet failure removes that timbre's cells (deviation aa).",
+   "register.py rewrites sections k0 and k0_outcome from the new K0 files; section k0_first_run keeps the numbers of the first run."
+  ],
+  "options": [
+   {
+    "id": "R1",
+    "what": "Amend K0: draw the wrong notes among the scored notes of B only.",
+    "conditions": "The registration prescribes a redesign of the units, and the design part had committed to a redesign rather than a redraw, so R1 departs from both and is more lenient. The scored-notes-only reading of the registered draw passes for every timbre (0.9546, 1.0, 0.9391), so R1 must not reuse that draw: it draws with a fresh seed declared in this file before K0 runs again, and the report gives the AUCs of the registered draw next to the new ones."
+   },
+   {
+    "id": "R2",
+    "what": "Redesign the units: confirmatory melodies whose B notes all lie inside the scored window, so the registered draw can only change a scored note; a new manifest, new render hashes and a new seed table follow.",
+    "conditions": "This is the remedy the registration prescribes. The generator seed and the constraint are declared and committed before anything is rendered, and the melodies are generated once; a failure is not redrawn with another seed."
+   }
+  ],
+  "procedure": {
+   "units": "make_items.unit_in_window draws A, B, C and B2: a 2-bar random_melody draw keeps only the notes with onset >= beat 1.0 and end <= beat 7.5, and is accepted with 6 to 12 notes and at least 4 distinct pitches. Placed in the gap at 12.0 s, every note then lies at 12.5-15.75 s, inside the scored window (onset >= 12.4 s, end <= 15.85 s), so the registered wrong-note draw can only change a scored note. D, the bar after the gap, still comes from make_items.unit.",
+   "generator_seed": 303,
+   "ids_and_seeds": "The ids stay v2c00-v2c35, so the run-seed table (e5v2_seeds.json, derived from tag, id and draw) is unchanged; no v2 DiT run has used it.",
+   "build": "make_items.py build-v2 writes manifest_v2.json once, with the sha256 of every render.",
+   "k0": "score_analogy.py gate runs once per program (73, 54, 71) on the new manifest with the registered procedure: tau 0.7, ties counted as errors, the registered wrong-note draw (rng seed 0). There is no retry and no other seed.",
+   "first_draw": "Kept in k0_first_run/ (sha256 in section k0_first_run) and listed in the data hashes."
+  }
+ },
+ "ace": {
+  "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "hf_repo": "ACE-Step/Ace-Step1.5",
+  "hf_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+  "weights_sha256": {
+   "acestep-v15-turbo/model.safetensors": "3f6e0797fad420a39bd33979eb6e840e30989e34a3794e843d23b60ec6e422d7",
+   "acestep-v15-turbo/silence_latent.pt": "a778e9dd942f5e8b2c09c55370782d318834432b03dabbcdf70e6ed49ad6358b",
+   "acestep-v15-turbo/modeling_acestep_v15_turbo.py": "71b22e01b490bd9e149e4c0c5da2e1f512126f3ab3316e0ae97779af84d19512",
+   "vae/diffusion_pytorch_model.safetensors": "da17edb604c40deaf09e9b24974e590d1ca83a374070e5d0884cfa4bed9a99b0",
+   "Qwen3-Embedding-0.6B/model.safetensors": "0437e45c94563b09e13cb7a64478fc406947a93cb34a7e05870fc8dcd48e23fd"
+  },
+  "gpu": "NVIDIA L4"
+ },
+ "measurement": {
+  "fluidsynth": "2.3.4",
+  "sf2": "FluidR3_GM.sf2",
+  "sf2_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+  "pinned": {
+   "swift-f0": "0.3.0",
+   "basic-pitch": "0.4.0",
+   "onnxruntime": "1.31.0",
+   "librosa": "1.0.0",
+   "soxr": "1.1.0",
+   "mir_eval": "0.8.2",
+   "pretty_midi": "0.2.11.post0",
+   "demucs": "4.1.0"
+  },
+  "recorded_not_pinned": {
+   "numpy": "2.5.4",
+   "scipy": "1.18.1",
+   "soundfile": "0.14.0"
+  },
+  "onnx_sha256": {
+   "swift_f0/model.onnx": "6385e8c2ebc3872e82c9ff5946228de44cd3be77a750ea53698b7dbfe94b0a22",
+   "basic_pitch/nmp.onnx": "2c3c1d144bfa61ad236e92e169c13535c880469a12a047d4e73451f2c059a0ec"
+  },
+  "note": "The notebook installs the pinned versions. The setup stage, the quality stage and the score stage refuse to run (a technical stop) when a pinned package or an ONNX model differs. numpy, scipy and soundfile stay as Colab ships them; the versions above are those of the local K0 run, and every quality file records the versions actually used."
+ },
+ "k0": {
+  "73": {
+   "timbre": "flute",
+   "passed": false,
+   "overall": 0.977,
+   "n_correct": 1653,
+   "n_rows": 1692,
+   "n_tie_rows": 25,
+   "tau": 0.7,
+   "wrong_note_auc": {
+    "1_wrong": 0.8476,
+    "2_wrong": 0.9518
+   },
+   "per_condition": {
+    "lit": 0.9583,
+    "ctl": 0.9792,
+    "rel+2": 0.9826,
+    "rel+5": 0.9792,
+    "rel-3": 0.9896,
+    "seq": 0.9769,
+    "ana": 0.9722,
+    "null": 0.9583
+   },
+   "manifest_problems": [],
+   "render_mismatch": []
+  },
+  "54": {
+   "timbre": "synth_voice",
+   "passed": false,
+   "overall": 0.9829,
+   "n_correct": 1663,
+   "n_rows": 1692,
+   "n_tie_rows": 24,
+   "tau": 0.7,
+   "wrong_note_auc": {
+    "1_wrong": 0.8611,
+    "2_wrong": 0.9722
+   },
+   "per_condition": {
+    "lit": 0.9583,
+    "ctl": 0.9792,
+    "rel+2": 0.9931,
+    "rel+5": 0.9896,
+    "rel-3": 0.9896,
+    "seq": 0.9861,
+    "ana": 0.9833,
+    "null": 0.9583
+   },
+   "manifest_problems": [],
+   "render_mismatch": []
+  },
+  "71": {
+   "timbre": "clarinet",
+   "passed": false,
+   "overall": 0.9764,
+   "n_correct": 1652,
+   "n_rows": 1692,
+   "n_tie_rows": 23,
+   "tau": 0.7,
+   "wrong_note_auc": {
+    "1_wrong": 0.8056,
+    "2_wrong": 0.9367
+   },
+   "per_condition": {
+    "lit": 0.9653,
+    "ctl": 0.9722,
+    "rel+2": 0.9861,
+    "rel+5": 0.9757,
+    "rel-3": 0.9861,
+    "seq": 0.9676,
+    "ana": 0.9778,
+    "null": 0.9653
+   },
+   "manifest_problems": [],
+   "render_mismatch": []
+  }
+ },
+ "code_sha256": {
+  "experiments/e5_motif/v2_config.py": "495700cff076b402eee3ec8d954f6f0f8851f33dc7f31e2a1a78f150093fecd3",
+  "experiments/e5_motif/make_items.py": "d57817b3e9cfa49938e1cdcd66be6b58729f53269bd101cc6da8ea0f1a2c0951",
+  "experiments/e5_motif/run_analogy.py": "a4c8fcfc53565b16025fb60d618255f0d40b89c8f30f527b0530dc1398d8b21f",
+  "experiments/e5_motif/score_analogy.py": "60cbcc314fee5ad6217196a4b53fda3f33853bd1399bf4b63803764087800db0",
+  "experiments/e5_motif/a0_checks.py": "079c173892edcc4d20b77f2d171d75123461d9ea67bf86439a9ea5471d006620",
+  "experiments/e5_motif/stage.py": "054750cfd2de792e03e4738331ac62df9bfac326cf14d155f3f9c46e09507fe2",
+  "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+  "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+  "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+  "dacapo/motif_stats.py": "4fd3e998845133da661ed45567397a0398770a26677bf5a40294b4665f958273",
+  "dacapo/motif_features.py": "bdc667e6166552f00557e9570db7a9097cc21fb180e8aa4bc9d23f1ab3dd2ada",
+  "dacapo/motif_integrity.py": "6126875e34697bf113052538b52b8187afbf6d8a28c46ddd0cc649141303a330",
+  "dacapo/metrics.py": "a69087619f92fa750866a6904ca949e2efd1512daf5ab88fdf268df15b8db7b7",
+  "dacapo/analysis.py": "5d19e4dfdbf14186e83d18fa514795510e0e66f3f06fe9b528db9f4f51da3fb2",
+  "dacapo/render.py": "96b67d791a983116a52bea8697c51d3bc0a8b9ae421f9c24af95164a511a9d79",
+  "dacapo/symbolic.py": "c2542d093f1c247b1d3bb095ea66cb1efde36c5e9ebcc9e3497c28c493a4e487",
+  "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+  "experiments/run_all.py": "3577cdb5557621a47f17e2cd89f2c43ac2944413642da4fbc63b5488ac882e0a"
+ },
+ "data_sha256": {
+  "experiments/e5_motif/manifest.json": "edb0320c327d6cf764351c998f7a33d01572b5da298303aaee955ad0daefee47",
+  "experiments/e5_motif/manifest_p0b.json": "e6692f4f61a6438652c3232b2640c7487f3e35390a6433bad27f346f628b6be7",
+  "experiments/e5_motif/manifest_v2.json": "d8ff8f9c60ebb85467af5c2486fcf5b5080e246f580e9a1628c46b6108b85872",
+  "experiments/e5_motif/registration/e5v2_seeds.json": "72563da0f072f3ec631d6c5449d887b075e097a8d13f0bcdfecd3f84ff93b7b5",
+  "experiments/e5_motif/registration/prereg.json": "d162a0fdb0837d37a109f01c65de1ce1dfa52ba37ec0a7850d3955eed70d29bd",
+  "experiments/e5_motif/registration/addendum_1.json": "ae541a4c0cc166e5d295fb91e18cbbdb218f28092ad5edb69d5ce55a7e8bdadb",
+  "experiments/e5_motif/registration/v1_outcome.json": "bc4f36f6b715c92a2d7d7af878a4bde00579234ca1f3a6813a664caeffe66424",
+  "experiments/e5_motif/results/e5_ruler_gate_p73.json": "3b9320f1bda637be82015be1c07b05d773f09d719e6b7095746caba9327a2027",
+  "experiments/e5_motif/results/e5_ruler_gate_p54.json": "904dbcaa7a2fa3c091b5fded555356c8f05cd23e5b2e2eb5e07a74cc33100602",
+  "experiments/e5_motif/results/e5_ruler_gate_p71.json": "0cc9b7e031eda9083fbfdaea08cacad39e7e369cfe32fd660d4697575c0c8804",
+  "experiments/e5_motif/k0_first_run/manifest_v2.json": "5801ebae6e5f7467634fc798a7ebf21556e147e97560a853cb76fac7573e903d",
+  "experiments/e5_motif/k0_first_run/e5_ruler_gate_p73.json": "3b9320f1bda637be82015be1c07b05d773f09d719e6b7095746caba9327a2027",
+  "experiments/e5_motif/k0_first_run/e5_ruler_gate_p54.json": "904dbcaa7a2fa3c091b5fded555356c8f05cd23e5b2e2eb5e07a74cc33100602",
+  "experiments/e5_motif/k0_first_run/e5_ruler_gate_p71.json": "0cc9b7e031eda9083fbfdaea08cacad39e7e369cfe32fd660d4697575c0c8804"
+ },
+ "tests_sha256": {
+  "tests/test_e5_cli.py": "50871c22ce548979186f555b3a1d3543da5b87c55159cf99916f94271b0c0007",
+  "tests/test_e5_features.py": "e94b4a1341fc616f7f193b15a032050b012745627b16ee2479c65dfb56982815",
+  "tests/test_e5_integrity.py": "8d317a973d4edf0ce175e8e1ade37f435485b7b359016718e86432c070375db6",
+  "tests/test_e5_stats.py": "8f13197d10d648371e8565fd404ca98425a3c6dd535fd44e04355b3d15f87f18",
+  "tests/test_e5_v1_regression.py": "a938253a9219fd151aa42c581d20ef57ebcfe53d79ec6ea2ea9d206da14014e3",
+  "tests/test_e5v2_a0_logic.py": "d3f41801b31ded281c394dc82e08e24055dc4adbabb7aa5e50185b6a70bdaa41",
+  "tests/test_e5v2_config.py": "3641dc35167f51df0ddf79716fb1cf640f2ce3dc497f90e585150a3f9327aab3",
+  "tests/test_e5v2_generation.py": "814f257b3ead0e9c072a415dec84a8379c955962d5d27e0090063e7ca91381e2",
+  "tests/test_e5v2_items.py": "9f64405ed4c393415a22afa4b608c4e900f5ae2199e274a7aac6c124395f1f92",
+  "tests/test_e5v2_runner.py": "840f9fa1f671fed1d9e728b2a10b1acdc6742bd13ed109cb24d890e2ff42dcbe",
+  "tests/test_e5v2_stage.py": "c4d522603bf22b0d232920a0d2f05fbdf1969576d2e7493e833a13b2ac96e4cb",
+  "tests/test_e6_ace_taps.py": "75433d3e1fd7f483100edd3b5e54da328a8c0d52a240031c020ed5e9cbb23cd5",
+  "tests/test_e6_decide.py": "cafa1b028909d5233ea9a4fcd550d3e832066e503e8500068fbcfdd951cc5312",
+  "tests/test_e6_words_and_tap.py": "7ab76bd0f3eb15158e952d02ccaae6a2885f73aa944eceb752ab7a7e5a5f761c",
+  "tests/test_render_chain.py": "51d79237347b324d44492c78c400994a18c781005657b9417a676bfc65e3b318",
+  "tests/test_symbolic_and_metrics.py": "40f80eeecd5e6d840bd4c76c096db30f7563deccfd941f734a902bd96c28500a"
+ },
+ "e6_readout": {
+  "text": "E6 read-out (exploratory; decides whether the lyric-clock stage B1 runs)\n\nRegistration. This section is committed and pushed with addendum 2, before Run A. The read-out code is experiments/e6_clock/readout.py, dacapo/attn_tap.py, dacapo/words.py and dacapo/ace.py, with the modules they import from the package (dacapo/__init__.py, dacapo/seeds.py, dacapo/provenance.py); its plan also reads experiments/e4_sing/manifest.json. The SHA-256 of these eight files at the pinned commit are listed under code_sha256. Generated clips are written by soundfile as 16-bit PCM WAV, whatever torchaudio is installed (deviation ab). Paths refer to the restructured repository, github.com/ninondev/DaCapo, where dacapo/ace.py is the former experiments/e2_trajectory/ace_lab.py. readout.py compares the files with these hashes before it generates anything and again before it decides, and every clip records them.\n\nQuestion. Do the seven cross-attention heads that ACE-Step 1.5 uses for its lyric timestamps give the onset of each sung word? The heads are layer 2 head 6, layer 3 heads 10 and 11, layer 4 head 3, layer 5 heads 8 and 9, and layer 6 head 8. This is the default in acestep/core/generation/handler/lyric_alignment_common.py at commit ca1e85f, and the turbo checkpoint does not override it.\n\nClips. 88 text2music runs of acestep-v15-turbo: 8 steps, shift 3.0, DCW off, batch 1, no language model, and the determinism settings of the E5 v2 runs.\n- The 12 E4 lyric lines × 4 seeds with E4's a cappella caption: 14 s, 100 BPM, the item's key.\n- 4 four-line verses × a female and a male a cappella caption × 5 seeds: 16 s, 90 BPM.\nDiT seeds are 61000 + 10·item + r and 62000 + 100·verse + 10·voice + r. Before each run the global random state is pinned to the DiT seed + 900000. Every planned run counts and nothing is selected. A run that raises an error is attempted at most three times with the same seeds and then counts as failed.\n\nMeasurement. The primary measurement follows ACE-Step's own timestamp path. The generated latent is re-noised to t = 1/8 with seed 42 and passed once through the decoder; MusicStampsAligner's bidirectional consensus (violence 2.0, median-filter width 1) and DTW then align the lyric tokens to the 80 ms DiT frames. A word's onset is the start of its first lyric token. Our code replicates that decoder pass and reads the alignment heads and the control from the same replicated attention, with one batched implementation of the aligner. ACE-Step's own get_lyric_timestamp runs on every clip as a check (condition 5).\n\nControl. The same pass, read through 200 random 7-head sets drawn once with numpy default_rng(20261027). Each set matches the alignment heads by layer and shares no key/value head with them: in layers 3 and 5 it takes another whole GQA pair, and in layers 2, 4 and 6 one head from another pair.\n\nReference. Whisper large-v3 word timestamps (Hugging Face revision 06f233fe06e710322aca913c1bc4249a0d71fce1) through the transformers pipeline, in fp16, greedy, English. Lyric words are matched to Whisper words in order by exact normalised spelling (lower case, whole numbers up to 20 spelled out). Only matched words are scored.\n\nVocal gate. The gate asks whether vocals are present, not whether they dominate. A clip is vocal if its htdemucs vocal stem holds at least 20% of the stem energy, at least 1.0 s of its 50 ms vocal-stem frames reach -40 dBFS, and its pre-normalisation peak is at least 0.01. A missing peak fails the gate. A clip is evaluable if it is vocal and has at least 4 matched words.\n\nRule, applied in code by readout.py decide. B1 runs only if all of these hold, with seconds rounded to 1e-6 before any comparison:\n0. Integrity. The code and manifest hashes match this registration at generation and at decision time, and the read-out files have no uncommitted changes. Every scored clip used the registered Whisper revision, every generated clip has its pre-normalisation peak, and no test flag was used. At most 4 of the 88 planned clips are missing, failed or unscored.\n1. At least 44 of the 88 planned clips pass the vocal gate. Missing, failed and unscored clips fail it.\n2. At least 20 clips are evaluable.\n3. The median over evaluable clips of the per-clip median absolute onset error against Whisper is at most 0.25 s.\n4. In at least 75% of evaluable clips, the alignment heads' per-clip error is below the median per-clip error of the 200 random sets. Ties count against the alignment heads.\n5. In every generated clip, ACE-Step's get_lyric_timestamp succeeds, and both ACE-Step's aligner on our replicated attention and our batched aligner reproduce its word onsets within one frame.\nThe gate file records the decision together with the commit, the hashes and the clip counts. Run B starts B1 only if readout.py check-gate accepts it, which requires a full-scale gate from the registered code that covers the 88 planned clips, used no test flag and allows B1. Before the planned clips, the stage runs acceptance checks on two clips outside the plan (seeds 6000 and 6001) and puts them through the registered scoring path. If any stage step fails, there is no gate and B1 is skipped.\n\nLabels. decide also names the outcome, and a label never changes the decision. \"Vocal yield insufficient\" means condition 1 failed. \"Reference-limited\" means condition 3 failed while the alignment heads were within 0.25 s of MMS forced alignment. \"Heads do not give word onsets\" means condition 3 or 4 failed otherwise. \"Technical\" means condition 0 or 5 failed.\n\nOperating characteristics. Condition 1 depends on the model's vocal yield as much as on the heads. For independent clips, the chance of at least 44 vocal clips out of 88 is 0.54 at a true vocal rate of 0.50, 0.85 at 0.55 and 0.98 at 0.60; run 1 had vocals in 4 of 6 a cappella clips. Clips that share a lyric are correlated, so these figures are optimistic. With 30 evaluable clips, condition 4 passes with probability 0.76 if the heads beat the random median in 80% of clips, and 0.93 at 85%. Whisper's own onset noise is close to the threshold of condition 3: on the pilot clip it differed from MMS by a median of 0.20 s.\n\nB1, fixed now. B1 takes nothing from this read-out except the gate. It steers exactly the seven alignment heads, never a head chosen from this read-out's tables, at all 8 sampling steps. It tests timing alone: text2music with no melody guide.\n- Items: the 12 E4 lines with E4's caption, 14 s, 100 BPM and the item's key, 3 draws per item. DiT seeds are 63000 + 10·item + r (r = 0, 1, 2), the global pin is the seed + 900000, and all arms of a draw share them.\n- Arms: no hook (β = 0); β = 1, 2 and 4 on the alignment heads; β = 2 on random set r of the registered draw for draw r. That makes 12 × 5 × 3 = 180 runs.\n- Intervention: a forward pre-hook on the cross-attention of layers 2-6 adds β to the pre-softmax logits of the steered heads wherever the query frame lies in a word's window and the key is one of that word's tokens. A word's window runs from its written note onset to the next note onset; the last word's runs to its note end. All other logits are unchanged. Before Run B, a CPU test must show that the hook with β = 0 leaves pred_latents bit-identical.\n- Measurement: Whisper large-v3 word onsets at the same revision, matched as above, and the same vocal gate. A clip's error is the median |onset − written note onset| over its matched words; a clip that is not evaluable has none. An item's error in an arm is the median over its evaluable draws, and an item with no evaluable draw in that arm or at β = 0 counts as not improved. Reduction = 1 − error(arm) / error(β = 0).\n- Rule, at the primary β = 2: a reduction of at least 30% in at least 9 of the 12 items; lyric-word recall and vocal-gate pass rate over the arm's 36 clips each no more than 0.10 below β = 0; and a median reduction for the random-head arm below half that of the β = 2 arm. β = 1 and 4 are reported as dose-response without a verdict.\nNone of the 88 read-out clips, onsets or tables enter B1's analysis. A B1 code addendum with hashes is committed before Run B, and it may not change anything listed here.\n\nReported outside the rule (exploratory or descriptive): the share of matched words within 0.25 s and the signed error; conditions 3 and 4 recomputed with re-noising seeds 43 and 44; the read-out at each of the 8 sampling steps, from layers 2-6, captured by forward hooks that recompute the attention probabilities without changing the forward pass; every single head; MMS forced alignment as a second reference; the error without each clip's first word; results by set and voice; 95% intervals from a cluster bootstrap that resamples lyrics within the E4 and verse strata (10,000 resamples, seed 0); the rank of the alignment set among the random sets.\n\nPilot and changes from the plan. Before this registration, one CPU clip was generated and analysed in bf16: the item00 lyric, which is in the plan, with seed 6000, which is not. With Whisper small.en as reference, the alignment heads' median onset error was 0.08 s, and 10 of 11 matched words were within 0.25 s. 200 random sets from an earlier draw, which allowed GQA partners, had a median of 1.58 s, and all 200 did worse. Of the 384 single heads, 5 reached 0.25 s or better, all of them alignment heads. The tap at sampling steps 0-7 gave 0.08-0.26 s, and Whisper and MMS differed by a median of 0.20 s. The code was then tested end to end on CPU, with Whisper small.en, on two planned clips (item00 with seed 61000: 0.12 s against 2.48 s for the random sets; verse v1, female, seed 62100: 0.12 s against 3.21 s; the tap at step 0 gave 0.12 s and 5.82 s) and on the two acceptance clips; Run A generates the planned clips again on the GPU. These settings were chosen with the pilot in view: at least 4 matched words for an evaluable clip; 200 random sets where the memo planned one layer-matched set of 7 heads; the post-hoc pass rather than the in-generation tap as the primary measurement; and conditions 0, 2 and 5, which the memo's rule did not have. The vocal-gate thresholds come from 12 a cappella clips of run 1 (htdemucs vocal share 0.000-0.002 without vocals, 0.74-0.999 with). The share threshold was first set at 0.5 and lowered to 0.2 after the CPU test: the verse v1 clip had singing that Whisper transcribed (8 of its 19 lyric words matched) over percussion the model added, and a vocal share of 0.388. The memo's one verse × 2 captions × 20 seeds became 4 verses × 2 captions × 5 seeds, which gives 16 lyric clusters instead of 13.\n\nScope. This read-out is exploratory. It tests whether the heads track word timing in finished audio, not whether they control it; B1 tests control under its own rule. The heads were chosen by ACE-Step's developers, and the released model may have been trained with a reward computed from them (the Attention Alignment Score of the ACE-Step 1.5 report, arXiv 2602.00744, section 4.2). Condition 4 is therefore a sanity check, not a finding. All clips of one duration share the same re-noising draw (seed 42, as in ACE-Step's own path); seeds 43 and 44 show how much that draw matters.",
+  "plan": {
+   "dit_seed": "61000+10*item+r (E4 lines, r 0-3); 62000+100*verse+10*voice+r (verses, r 0-4)",
+   "rng_seed": "dit_seed+900000",
+   "random_head_seed": 20261027,
+   "n_random": 200,
+   "posthoc_seed": 42,
+   "whisper": "openai/whisper-large-v3@06f233fe06e710322aca913c1bc4249a0d71fce1",
+   "vocal_share_min": 0.2
+  },
+  "b1": {
+   "heads": {
+    "2": [
+     6
+    ],
+    "3": [
+     10,
+     11
+    ],
+    "4": [
+     3
+    ],
+    "5": [
+     8,
+     9
+    ],
+    "6": [
+     8
+    ]
+   },
+   "steps": "all 8",
+   "betas": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "primary_beta": 2,
+   "random_sets_by_draw": [
+    {
+     "2": [
+      12
+     ],
+     "3": [
+      14,
+      15
+     ],
+     "4": [
+      5
+     ],
+     "5": [
+      14,
+      15
+     ],
+     "6": [
+      10
+     ]
+    },
+    {
+     "2": [
+      0
+     ],
+     "3": [
+      0,
+      1
+     ],
+     "4": [
+      8
+     ],
+     "5": [
+      14,
+      15
+     ],
+     "6": [
+      5
+     ]
+    },
+    {
+     "2": [
+      5
+     ],
+     "3": [
+      0,
+      1
+     ],
+     "4": [
+      10
+     ],
+     "5": [
+      2,
+      3
+     ],
+     "6": [
+      12
+     ]
+    }
+   ],
+   "dit_seed": "63000+10*item+r (r 0-2)",
+   "rng_seed": "dit_seed+900000",
+   "n_runs": 180,
+   "melody_guide": null
+  },
+  "code_sha256": {
+   "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+   "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+   "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+   "dacapo/attn_tap.py": "97b0548997794233211db75d85605250d4ff42e58fd75eb691980c53a12333d9",
+   "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+   "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+   "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+   "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911"
+  }
+ },
+ "amendments": []
+}

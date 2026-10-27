@@ -1,0 +1,64 @@
+2026-10-27 05:51:36.128 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=sources/mel00_lit.wav candidates=['sources/mel00_lit.json']
+2026-10-27 05:52:00.500 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+solo flute melody, monophonic, no accompaniment
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 20 seconds
+<|endoftext|>
+2026-10-27 05:52:19.808 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 510])
+2026-10-27 05:53:00.368 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.2515, Target=-1.0dB
+2026-10-27 05:53:00.461 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=sources/mel00_lit.wav candidates=['sources/mel00_lit.json']
+2026-10-27 05:53:23.055 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Repaint the mask area based on the given conditions:
+
+# Caption
+solo flute melody, monophonic, no accompaniment
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 20 seconds
+<|endoftext|>
+2026-10-27 05:53:40.958 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 510])
+2026-10-27 05:54:17.787 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.2199, Target=-1.0dB
+2026-10-27 05:54:17.877 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=sources/mel00_lit.wav candidates=['sources/mel00_lit.json']
+2026-10-27 05:54:44.773 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+solo flute melody, monophonic, no accompaniment
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 18 seconds
+<|endoftext|>
+2026-10-27 05:55:03.720 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 450])
+2026-10-27 05:55:42.877 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.1996, Target=-1.0dB
+2026-10-27 05:55:42.953 | INFO     | acestep.inference:_load_cached_repaint_source:468 - [repaint_cache] No cached source latents found for src_audio=sources/mel00_lit.wav candidates=['sources/mel00_lit.json']
+2026-10-27 05:56:04.012 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Repaint the mask area based on the given conditions:
+
+# Caption
+solo flute melody, monophonic, no accompaniment
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 18 seconds
+<|endoftext|>
+2026-10-27 05:56:18.412 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=256, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 450])
+2026-10-27 05:56:50.974 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=0.1861, Target=-1.0dB
