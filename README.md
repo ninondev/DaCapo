@@ -91,9 +91,13 @@ The hooks live in [`dacapo/ace.py`](dacapo/ace.py). At each of the 8 denoising s
 
 The main study (E5) asks whether the model can develop a motif. The test plays it a pattern like A B A, or a motif and the same motif moved up, and leaves a gap for the model to fill. Then it checks what the model put in the gap: a copy, a transposition, a sequence or an analogy, compared with shuffled melodies and wrong timing as controls. As I asked, the hypotheses, the stop rules and the code version were written down before the first run ([registration](experiments/e5_motif/registration/prereg.json)).
 
-That first run failed its own quality check. Only 49% of the gaps had one clear melody line at a normal volume, and the rule required 75%, so by that rule it says nothing about motifs either way. The agents found two mistakes in their setup that can explain it: the model got the wrong task instruction for filling a gap, and every song started from the same noise. The result and a correction are in [`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json). The fixed run will be registered before it starts.
+That first run failed its own quality check. Only 49% of the gaps had one clear melody line at a normal volume, and the rule required 75%, so by that rule it says nothing about motifs either way. The agents found two mistakes in their setup that can explain it: the model got the wrong task instruction for filling a gap, and every song started from the same noise. The result and a correction are in [`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json).
 
-The second study (E6) is the lyric clock. It will guide the attention heads that connect lyrics to audio, so each syllable lands on its note while the melody guide keeps the pitch.
+The fixed run, run 2, is registered in [addendum 2](experiments/e5_motif/registration/addendum_2.json) before it starts. It uses 36 new melodies, the right task instruction, and its own seed for every song. The addendum lists every rule, every change from the first registration, and the hash of every code file. The code checks those hashes before it runs.
+
+Run 2 starts with a check of the measuring tool (K0). The first time, it failed: some of the wrong notes it planted sat where the tool never looks. The registration says the melodies must be rebuilt after a failed check, so I chose that instead of changing the check. The agents rebuilt the melodies so that every note sits where the tool looks, and pushed this choice to GitHub before the check ran again. On the new melodies the check passed for all three instruments. The one-wrong-note AUC was 0.965 for flute, 0.996 for synth voice and 0.944 for clarinet, where 0.9 is required. Run 2 is ready for the GPU.
+
+The second study (E6) starts with a read-out. ACE-Step already uses seven attention heads to find when each lyric word is sung. The read-out checks whether those heads really follow the sung words, compared with 200 random sets of heads and with Whisper's word times. The lyric clock gets built only if they do. It would guide those heads so each syllable lands on its note, while the melody guide keeps the pitch.
 
 ## Status
 
@@ -105,8 +109,8 @@ The second study (E6) is the lyric clock. It will guide the attention heads that
 | E2 | Can the code hook every denoising step without changing the output? | Done: exactly the same output on CPU and GPU |
 | E3 | Can the pitch be read from the audio latents for any instrument? | Exploratory: 0.88 on new instruments (chance 0.03); a special subspace is no better than the full latent |
 | E4 | Can it sing the right notes and clear words? | Exploratory: 12 melodies × 21 settings × 2 seeds |
-| E5 | Can it develop a motif? | Run 1 failed its quality check; the fixed run is next |
-| E6 | Can a lyric clock time each syllable? | Planned |
+| E5 | Can it develop a motif? | Run 1 failed its quality check; run 2 is registered, passed its tool check and is ready for the GPU |
+| E6 | Can a lyric clock time each syllable? | The read-out is registered and ready for the GPU; the clock comes after it |
 
 [`LOG.md`](LOG.md) has every run, including the failures and the mistakes.
 
@@ -116,7 +120,7 @@ The measuring tools are tested on known notes before the model is. For the main 
 
 ## Run it
 
-The easiest way is the Colab button at the top. Pick an L4 runtime and choose Run all. The notebook installs everything, downloads the open ACE-Step weights (about 10 GB), runs all the GPU tests (about 2.5 hours on an L4, plus install and download), and gives you a zip with the results.
+The easiest way is the Colab button at the top. Pick an L4 runtime, choose Run all, and allow Google Drive access once. The notebook installs everything, downloads the open ACE-Step weights (about 10 GB) and runs Run A: the fixed motif study and the lyric read-out. That takes about 4 hours on an L4, install and download included. At the end you get a zip with the results, and a separate file with the answers for the blind listening test. The run state is kept on Drive (about 5 GB; E5 wants 7.5 GB free before it starts), so after a runtime reset, Run all continues where it stopped. The GPU tests from run 1 can still run with `--stages`.
 
 To run the measuring tools on your own computer (macOS or Linux):
 
@@ -128,7 +132,7 @@ uv pip install --no-deps basic-pitch        # ONNX model, so no TensorFlow
 # FluidSynth + a General MIDI soundfont:
 #   Ubuntu: sudo apt install fluidsynth fluid-soundfont-gm
 #   macOS:  brew install fluid-synth, then export DACAPO_SF2=/path/to/FluidR3_GM.sf2
-pytest -q                                    # 13 tests
+pytest -q -m "not slow"                      # unit tests; plain pytest -q also runs the end-to-end tests
 python experiments/e0_ruler/run.py --quick   # test the measuring tools (~3 min on CPU)
 python figures/make_figures.py               # redraw all charts from results/
 ```
@@ -140,7 +144,7 @@ Tests that run the song model need [ACE-Step 1.5](https://github.com/ace-step/AC
 
 ```
 dacapo/          the library: melodies, rendering, pitch tracking, scores, and ace.py (hooks into ACE-Step)
-experiments/     one folder per study (e0 to e5), plus run_all.py, which the notebook calls
+experiments/     one folder per study (e0 to e6), plus run_all.py, which the notebook calls
 results/cpu/     result files from CPU runs
 results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
 figures/         charts and the script that draws them
@@ -157,8 +161,9 @@ notebook.ipynb   the Colab notebook
 - [x] Find where the melody gets lost inside an open song model
 - [x] Hooks on every denoising step, checked to be exact on CPU and GPU
 - [x] Map the trade-off between right notes and clear words (exploratory)
-- [ ] Motif study: the fixed run, registered before it starts
-- [ ] Lyric clock (E6)
+- [x] Motif study: register the fixed run before it starts
+- [ ] Run the fixed motif study and the lyric read-out on the GPU (Run A)
+- [ ] Lyric clock (E6), if the read-out passes
 - [ ] More seeds, and a blind listening test with musicians
 - [ ] arXiv paper and a demo page with audio
 

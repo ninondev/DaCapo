@@ -1,7 +1,7 @@
 {
- "addendum_utc": "2026-10-27T17:28:38Z",
+ "addendum_utc": "2026-10-27T18:08:52Z",
  "title": "Addendum 2 to the E5 pre-registration: the corrected retry (run v2), and the E6 read-out",
- "status": "Committed in two steps before any v2 generation. Step 1 records the owner's choice of K0 remedy R2 (section k0_remedy) with its exact procedure and new code hashes, before K0 runs again. Step 2 adds the redesigned manifest and the K0 files of that single rerun; register.py then rewrites sections k0 and k0_outcome. E5 v2 begins only if the flute K0 of step 2 passes.",
+ "status": "Committed in two steps before any v2 generation. Step 1 (commit 1c91106) recorded the owner's choice of K0 remedy R2 (section k0_remedy) with its exact procedure and code hashes, before K0 ran again. Step 2 adds the K0 files of that single rerun, and register.py rewrote sections k0 and k0_outcome from them. All three timbres passed, so E5 v2 may begin.",
  "refers_to": [
   "experiments/e5_motif/registration/prereg.json",
   "experiments/e5_motif/registration/addendum_1.json",
@@ -431,7 +431,7 @@
    "dacapo/ace.py": "0e9850041c2fc52537b2316144597f422cdc44469bf52aefe862a553bb3e4aa9"
   }
  },
- "k0_outcome": "Written by register.py from results/e5_ruler_gate_p*.json (tau 0.7, ties counted as errors; a timbre passes with classification >= 0.95 and both AUCs >= 0.9): flute (GM 73) failed: classification 0.977 (1653 of 1692 rows), wrong-note AUC 0.8476 with one wrong note and 0.9518 with two; synth voice (GM 54) failed: classification 0.9829 (1663 of 1692 rows), wrong-note AUC 0.8611 with one wrong note and 0.9722 with two; clarinet (GM 71) failed: classification 0.9764 (1652 of 1692 rows), wrong-note AUC 0.8056 with one wrong note and 0.9367 with two.",
+ "k0_outcome": "Written by register.py from results/e5_ruler_gate_p*.json (tau 0.7, ties counted as errors; a timbre passes with classification >= 0.95 and both AUCs >= 0.9): flute (GM 73) passed: classification 0.9829 (1663 of 1692 rows), wrong-note AUC 0.9653 with one wrong note and 1.0 with two; synth voice (GM 54) passed: classification 0.987 (1670 of 1692 rows), wrong-note AUC 0.9961 with one wrong note and 1.0 with two; clarinet (GM 71) passed: classification 0.9852 (1667 of 1692 rows), wrong-note AUC 0.9444 with one wrong note and 0.9992 with two.",
  "k0_first_run": "K0 ran on this machine's CPU on 2026-10-27, before any v2 generation, with the registered procedure: hypothesis renders and wrong-note renders of v2c00-v2c35 in each program, tau fixed at 0.7, ties counted as errors. All three timbres fail. Classification passes everywhere (threshold 0.95): flute 1653 of 1692 rows (0.977), synth voice 1663 (0.9829), clarinet 1652 (0.9764). The 1-wrong-note AUC is below 0.9 everywhere: flute 0.8476, synth voice 0.8611, clarinet 0.8056 (2-wrong: 0.9518, 0.9722, 0.9367). The cause lies in the procedure, not in the ruler. The registered draw picks the wrong note among all notes of B, but the ruler scores only notes inside the gap less its 0.4 s margins, and B's first note starts at 12.0 s. In the v2 melodies 2 or 3 of B's 6 to 11 notes are never scored, so a 1-wrong render changes an unscored note with probability 0.275 (0.293 in the v1 melodies) and then scores exactly like the correct render. A ruler that detects every scored change would therefore expect a 1-wrong AUC near 0.86 on either item set. Here 10 of the 36 1-wrong renders changed an unscored note; v1 passed (0.9286) with 2 of 14, where 4.1 were expected. Counting only the renders whose changed note is scored, an exploratory reading of the same draw that decides nothing, the 1-wrong AUC is 0.9546 for flute, 1.0 for synth voice and 0.9391 for clarinet. The registration requires a redesign of the units after a K0 failure, before any DiT run; section k0_remedy fixes how the remedy is chosen and run. The first draw (make_items generator seed 202, no window constraint) and its K0 files are kept unchanged in experiments/e5_motif/k0_first_run/ with these sha256: k0_first_run/manifest_v2.json 5801ebae6e5f7467634fc798a7ebf21556e147e97560a853cb76fac7573e903d; k0_first_run/e5_ruler_gate_p73.json 3b9320f1bda637be82015be1c07b05d773f09d719e6b7095746caba9327a2027; k0_first_run/e5_ruler_gate_p54.json 904dbcaa7a2fa3c091b5fded555356c8f05cd23e5b2e2eb5e07a74cc33100602; k0_first_run/e5_ruler_gate_p71.json 0cc9b7e031eda9083fbfdaea08cacad39e7e369cfe32fd660d4697575c0c8804.",
  "k0_remedy": {
   "status": "chosen: R2, by the owner on 2026-10-27 (recorded 2026-10-27T17:20:04Z), after the first K0 result was known and before any v2 DiT output existed",
@@ -459,7 +459,8 @@
    "ids_and_seeds": "The ids stay v2c00-v2c35, so the run-seed table (e5v2_seeds.json, derived from tag, id and draw) is unchanged; no v2 DiT run has used it.",
    "build": "make_items.py build-v2 writes manifest_v2.json once, with the sha256 of every render.",
    "k0": "score_analogy.py gate runs once per program (73, 54, 71) on the new manifest with the registered procedure: tau 0.7, ties counted as errors, the registered wrong-note draw (rng seed 0). There is no retry and no other seed.",
-   "first_draw": "Kept in k0_first_run/ (sha256 in section k0_first_run) and listed in the data hashes."
+   "first_draw": "Kept in k0_first_run/ (sha256 in section k0_first_run) and listed in the data hashes.",
+   "rerun_note": "The first start of the rerun (about 17:29Z) was stopped by a tool time limit after about 10 minutes, before any K0 file was written or anything was printed; its partial renders were deleted and it was started again unchanged (about 17:40Z). That second start is the one K0 rerun; its files are in results/."
   }
  },
  "ace": {
@@ -503,75 +504,75 @@
  "k0": {
   "73": {
    "timbre": "flute",
-   "passed": false,
-   "overall": 0.977,
-   "n_correct": 1653,
+   "passed": true,
+   "overall": 0.9829,
+   "n_correct": 1663,
    "n_rows": 1692,
-   "n_tie_rows": 25,
+   "n_tie_rows": 10,
    "tau": 0.7,
    "wrong_note_auc": {
-    "1_wrong": 0.8476,
-    "2_wrong": 0.9518
+    "1_wrong": 0.9653,
+    "2_wrong": 1.0
    },
    "per_condition": {
-    "lit": 0.9583,
-    "ctl": 0.9792,
+    "lit": 0.9931,
+    "ctl": 0.9861,
     "rel+2": 0.9826,
-    "rel+5": 0.9792,
-    "rel-3": 0.9896,
-    "seq": 0.9769,
-    "ana": 0.9722,
-    "null": 0.9583
+    "rel+5": 0.9861,
+    "rel-3": 0.9861,
+    "seq": 0.9537,
+    "ana": 0.9889,
+    "null": 0.9931
    },
    "manifest_problems": [],
    "render_mismatch": []
   },
   "54": {
    "timbre": "synth_voice",
-   "passed": false,
-   "overall": 0.9829,
-   "n_correct": 1663,
+   "passed": true,
+   "overall": 0.987,
+   "n_correct": 1670,
    "n_rows": 1692,
-   "n_tie_rows": 24,
+   "n_tie_rows": 13,
    "tau": 0.7,
    "wrong_note_auc": {
-    "1_wrong": 0.8611,
-    "2_wrong": 0.9722
+    "1_wrong": 0.9961,
+    "2_wrong": 1.0
    },
    "per_condition": {
-    "lit": 0.9583,
-    "ctl": 0.9792,
-    "rel+2": 0.9931,
-    "rel+5": 0.9896,
-    "rel-3": 0.9896,
-    "seq": 0.9861,
-    "ana": 0.9833,
-    "null": 0.9583
+    "lit": 0.9931,
+    "ctl": 0.9861,
+    "rel+2": 0.9896,
+    "rel+5": 0.9931,
+    "rel-3": 0.9826,
+    "seq": 0.9676,
+    "ana": 0.9944,
+    "null": 0.9931
    },
    "manifest_problems": [],
    "render_mismatch": []
   },
   "71": {
    "timbre": "clarinet",
-   "passed": false,
-   "overall": 0.9764,
-   "n_correct": 1652,
+   "passed": true,
+   "overall": 0.9852,
+   "n_correct": 1667,
    "n_rows": 1692,
-   "n_tie_rows": 23,
+   "n_tie_rows": 13,
    "tau": 0.7,
    "wrong_note_auc": {
-    "1_wrong": 0.8056,
-    "2_wrong": 0.9367
+    "1_wrong": 0.9444,
+    "2_wrong": 0.9992
    },
    "per_condition": {
-    "lit": 0.9653,
-    "ctl": 0.9722,
+    "lit": 0.9861,
+    "ctl": 0.9792,
     "rel+2": 0.9861,
-    "rel+5": 0.9757,
-    "rel-3": 0.9861,
-    "seq": 0.9676,
-    "ana": 0.9778,
-    "null": 0.9653
+    "rel+5": 0.9861,
+    "rel-3": 0.9826,
+    "seq": 0.9815,
+    "ana": 0.9944,
+    "null": 0.9861
    },
    "manifest_problems": [],
    "render_mismatch": []
@@ -605,9 +606,9 @@
   "experiments/e5_motif/registration/prereg.json": "d162a0fdb0837d37a109f01c65de1ce1dfa52ba37ec0a7850d3955eed70d29bd",
   "experiments/e5_motif/registration/addendum_1.json": "ae541a4c0cc166e5d295fb91e18cbbdb218f28092ad5edb69d5ce55a7e8bdadb",
   "experiments/e5_motif/registration/v1_outcome.json": "bc4f36f6b715c92a2d7d7af878a4bde00579234ca1f3a6813a664caeffe66424",
-  "experiments/e5_motif/results/e5_ruler_gate_p73.json": "3b9320f1bda637be82015be1c07b05d773f09d719e6b7095746caba9327a2027",
-  "experiments/e5_motif/results/e5_ruler_gate_p54.json": "904dbcaa7a2fa3c091b5fded555356c8f05cd23e5b2e2eb5e07a74cc33100602",
-  "experiments/e5_motif/results/e5_ruler_gate_p71.json": "0cc9b7e031eda9083fbfdaea08cacad39e7e369cfe32fd660d4697575c0c8804",
+  "experiments/e5_motif/results/e5_ruler_gate_p73.json": "2ab143f33c19f4a69c5621e74f60c61e636d8771618ce76f4bf86870de30ca51",
+  "experiments/e5_motif/results/e5_ruler_gate_p54.json": "f35036da4c34dffc82a18a40c0398edf3fb7ead3afa091857e2e72f5304c2e3e",
+  "experiments/e5_motif/results/e5_ruler_gate_p71.json": "3a014c17aec966314c5eaea2fe6069920c2f7f2f723e0e7affa9021778833633",
   "experiments/e5_motif/k0_first_run/manifest_v2.json": "5801ebae6e5f7467634fc798a7ebf21556e147e97560a853cb76fac7573e903d",
   "experiments/e5_motif/k0_first_run/e5_ruler_gate_p73.json": "3b9320f1bda637be82015be1c07b05d773f09d719e6b7095746caba9327a2027",
   "experiments/e5_motif/k0_first_run/e5_ruler_gate_p54.json": "904dbcaa7a2fa3c091b5fded555356c8f05cd23e5b2e2eb5e07a74cc33100602",
@@ -620,7 +621,7 @@
   "tests/test_e5_stats.py": "8f13197d10d648371e8565fd404ca98425a3c6dd535fd44e04355b3d15f87f18",
   "tests/test_e5_v1_regression.py": "a938253a9219fd151aa42c581d20ef57ebcfe53d79ec6ea2ea9d206da14014e3",
   "tests/test_e5v2_a0_logic.py": "d3f41801b31ded281c394dc82e08e24055dc4adbabb7aa5e50185b6a70bdaa41",
-  "tests/test_e5v2_config.py": "3641dc35167f51df0ddf79716fb1cf640f2ce3dc497f90e585150a3f9327aab3",
+  "tests/test_e5v2_config.py": "aa184e3203380e08cfc94f66973872c295ef4b5697dbf9bd1297546ad1ccc7dc",
   "tests/test_e5v2_generation.py": "814f257b3ead0e9c072a415dec84a8379c955962d5d27e0090063e7ca91381e2",
   "tests/test_e5v2_items.py": "9f64405ed4c393415a22afa4b608c4e900f5ae2199e274a7aac6c124395f1f92",
   "tests/test_e5v2_runner.py": "840f9fa1f671fed1d9e728b2a10b1acdc6742bd13ed109cb24d890e2ff42dcbe",

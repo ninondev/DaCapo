@@ -107,4 +107,5 @@ def test_register_states_the_k0_outcome_from_the_files():
     import register
     add = json.loads((E5 / "registration" / "addendum_2.json").read_text())
     assert add["k0_outcome"] == register.k0_outcome(register.k0_summary())
-    assert "flute (GM 73) failed" in add["k0_outcome"] and add["k0_first_run"].startswith("K0 ran on this machine")
+    assert "flute (GM 73) passed" in add["k0_outcome"] and add["k0_first_run"].startswith("K0 ran on this machine")
+    assert "flute 0.8476" in add["k0_first_run"] and add["k0_remedy"]["status"].startswith("chosen: R2")

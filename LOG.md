@@ -129,3 +129,33 @@ Use the repaint instruction for gap filling, give each item its own seed, seed t
 ## 2026-10-27: new folder layout
 
 The files moved into a simpler layout: the library is in `dacapo/` (the hooks moved from `experiments/e2_trajectory/ace_lab.py` to `dacapo/ace.py`), the experiment folders got plainer names (`e1_melody_paths`, `e2_hooks`, `e3_pitch_readout`, `e5_motif`), and all kept result files are in `results/cpu/` and `results/gpu_run1/` with shorter names. The E5 registration files moved to `experiments/e5_motif/registration/` without any change to their content. No numbers changed.
+
+## 2026-10-27: E5 v2 and the E6 read-out, ready for the GPU
+
+The agents put the fixed E5 run (run v2) and the E6 lyric read-out into one GPU run, Run A, which the notebook runs from start to end without anyone watching. Addendum 2 (`experiments/e5_motif/registration/addendum_2.json`) lists every rule, every change from the registration, the CPU runs made before it, and the hashes the code checks before it starts.
+
+The confirmatory grid gets 36 new melodies (v2c00-v2c35, `manifest_v2.json`) that share no unit with v1. Phase 0b runs on the 14 v1 melodies (`manifest_p0b.json`). Both manifests record the sha256 of every rendered source, and `manifest_v2.json` also of every hypothesis render in the three K0 timbres.
+
+The E6 read-out asks whether the seven attention heads that ACE-Step 1.5 uses for its lyric timestamps find the start of each sung word. It runs 88 a cappella clips and compares those heads with 200 random sets of heads, using Whisper large-v3 word times as the reference. The lyric clock (stage B1) is built only if the read-out passes the rule in the addendum.
+
+The agents tested the whole chain on a CPU with `run_all.py --scale tiny --device cpu`. It runs every Run A stage once with one or two generations each, on pilot melodies mel00 and mel01, with seeds of their own tags, and keeps its run state in folders the full scale never reads. All six stages finished in about 25 minutes. Phase 0b triggered K1 and the E6 read-out blocked B1, as they should on a test this small. A second run from a clean state gave the same audio, byte for byte. Test-scale outputs aren't kept in the repo.
+
+A correction to the folder-layout entry above: `v1_outcome.json` did change when it moved, but only in its two path references.
+
+## 2026-10-27: review fixes before the GPU run
+
+Three reviews of the Run A code found ways a runtime reset or a broken environment could end the registered study. These now stop the run without a strike. A crash, a refusal or five generation errors in a row stop before the quality stage, so they use no resume pass and freeze no missing draw as a gate failure. A generation cut off by a reset no longer counts as an attempt. A phase whose quality stage has frozen is never generated again: Run all reads its outcome back and goes on to scoring. A0 runs again when the addendum or the runtime changes, and setup stops when the measurement packages, the registered files in git or the free space on Drive are not as they should be.
+
+The quality stage now checks integrity before it runs the trackers, so a void attempt has no quality decision until the terminal outcome exists, and attempt 2 needs an amendment that links the failed checks to every file the fix changed. The quality and score stages also check the hashes of the registered data (manifests, seed table, K0 files). H4 now also needs the registered comparison against null draws. E5 audio is written as 16-bit FLAC, so the format no longer depends on the torchaudio in the Colab image, and the run needs about 4 GB on Drive instead of 10. Confirmatory audio leaves the run only after the terminal outcome, and the blind-listening key is a file of its own.
+
+## 2026-10-27: K0 failed, so the melodies were rebuilt
+
+Before any model run, K0 ran on the first set of v2 melodies (generator seed 202) with the registered procedure: tau 0.7, ties counted as errors. Classification passed in all three timbres (0.976 to 0.983, threshold 0.95). The 1-wrong-note AUC failed in all three: flute 0.848, synth voice 0.861, clarinet 0.806, where 0.9 is required.
+
+The cause was in the procedure, not in the tool. The registered draw picks the wrong note among all notes of B, but the tool only scores notes inside the gap minus 0.4 s at each edge, and B's first note starts at 12.0 s. So 2 or 3 notes of each B are never scored. When the wrong note lands on one of them, the wrong render scores exactly like the right one, and even a perfect tool would expect an AUC near 0.86. v1 passed (0.93) because only 2 of its 14 wrong notes landed there, where about 4 were expected.
+
+After a failed K0, the registration says to redesign the units before any model run. The other option was to change the check so wrong notes come only from scored notes. I chose to rebuild the melodies, because that is what the registration says. In the new melodies the A, B, C and B2 units keep every note inside the scored window (generator seed 303). The ids and run seeds stay the same, since no model run had used them. The first melodies and their K0 files are kept unchanged in `experiments/e5_motif/k0_first_run/`. This choice and its exact procedure were pushed to GitHub (commit 1c91106) before K0 ran again, and the rule was that K0 runs once more and a second flute failure ends E5 v2.
+
+K0 on the rebuilt melodies passed in all three timbres, and no wrong note landed outside the scored window. Flute: classification 0.983 (1663 of 1692 rows), 1-wrong-note AUC 0.965, 2-wrong 1.0. Synth voice: 0.987, 0.996 and 1.0. Clarinet: 0.985, 0.944 and 0.999. Every render matched its hash in the manifest. Results: `experiments/e5_motif/results/e5_ruler_gate_p73.json`, `_p54.json` and `_p71.json`. Run 2 can start.
+
+What went wrong: the first start of the rerun was stopped by a tool time limit after about 10 minutes, before it wrote any result or printed anything. It was started again with the same code and files.
