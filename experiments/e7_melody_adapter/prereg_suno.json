@@ -1,0 +1,492 @@
+{
+  "code_sha256": {
+    "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+    "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+    "dacapo/analysis.py": "5d19e4dfdbf14186e83d18fa514795510e0e66f3f06fe9b528db9f4f51da3fb2",
+    "dacapo/metrics.py": "a69087619f92fa750866a6904ca949e2efd1512daf5ab88fdf268df15b8db7b7",
+    "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+    "dacapo/render.py": "96b67d791a983116a52bea8697c51d3bc0a8b9ae421f9c24af95164a511a9d79",
+    "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+    "dacapo/symbolic.py": "c2542d093f1c247b1d3bb095ea66cb1efde36c5e9ebcc9e3497c28c493a4e487",
+    "experiments/e4_sing/make_items.py": "30e3bb3f334aae32d4e54539e95c33f81398afc5eb4bf6901c2346b8be528b4f",
+    "experiments/e4_sing/run_sing.py": "0ba0a21b9d85e051c8fa40290e4a5385a6341d6daf424acfa078f8086793599b",
+    "experiments/e7_melody_adapter/colab_e7_pack.ipynb": "7984d34bc97792527de65a04db33b4f6e0cf464e9005c66d851a74dff9970ca5",
+    "experiments/e7_melody_adapter/colab_e7_suno.ipynb": "8e23b028f0348fa53280e8a42ccc0271729f9bf5ffa3a096f5d0d84421025955",
+    "experiments/e7_melody_adapter/pack.py": "dd4ce1f8770c49f20a5c6a450baa79e6d9953493433beb1178177a494b41feb3",
+    "experiments/e7_melody_adapter/registration.py": "706602aeea2519f753613ef980673fc05aae3d82905cbe645df8a20b4c014746",
+    "experiments/e7_melody_adapter/requirements-stage-s.txt": "f6c7f1142e431ceb546ae2f2686a16d1ad0924bdf9b99259af5ca678389055cd",
+    "experiments/e7_melody_adapter/stage_s_lib.py": "96b5b6a238d77781f0598a605afa19882ad1d368a21747de8f19ec495df3fba4",
+    "experiments/e7_melody_adapter/stage_s_run.sh": "0c9a3acbb3a1ab8e4f80fa794641b260d6e5cf728711ae952eaac8a92a20d43d",
+    "experiments/e7_melody_adapter/stage_s_setup.py": "1976717c54d5140e043482e920c1237c403f2cae7401e02a85882371292ea84e",
+    "experiments/e7_melody_adapter/suno.py": "1ccd4a80eaa768fb804fa295b5e0bb015a55c10b8b12a0809ff439d5ac0e8d29"
+  },
+  "config": {
+    "asr": {
+      "channels": "mean",
+      "dtype": "float16",
+      "fallback": "CUDA only; no smaller or alternate ASR model",
+      "generate_kwargs": {
+        "language": "english",
+        "task": "transcribe"
+      },
+      "input_dtype": "float32",
+      "input_sample_rate": 16000,
+      "input_source": "htdemucs vocals; decode float32 channels, average to mono, resample to 16000 Hz",
+      "model_load": {
+        "low_cpu_mem_usage": true,
+        "use_safetensors": true
+      },
+      "pipeline": {
+        "batch_size": 1,
+        "chunk_length_s": 30,
+        "device": 0,
+        "stride_length_s": 5
+      },
+      "resample_kwargs": {
+        "fix": true,
+        "res_type": "soxr_hq",
+        "scale": false
+      },
+      "resample_method": "librosa.resample",
+      "transformers_version": "4.57.6"
+    },
+    "decision": {
+      "already_accurate": "any measured route has median strict-external NPA >= 0.90 and median WR >= 0.60 on that same route",
+      "not_measured": "no route has at least ten complete item pairs: not measured, no negative claim",
+      "note_f1": "unvalidated diagnostic only in Stage S; excluded from decision",
+      "provisional_negative": "measured routes do not pass; re-evaluate the same private files after Stage 0c selects a validated singing ruler",
+      "ruler_insufficient": "ruler median NPA < 0.95: inconclusive, stop and report",
+      "threshold_changes": "only easier positive thresholds with recorded rationale; stricter rules need owner agreement"
+    },
+    "experiment": "e7_stage_s",
+    "measurement": {
+      "adjustment": "correct minus chance for accuracies and WR; chance minus correct for pitch deviation, DTW cost and unvoiced share",
+      "bootstrap": {
+        "confidence": 0.95,
+        "draws": 2000,
+        "seed": 20261027,
+        "unit": "item"
+      },
+      "chance": "apply the identical full search to every other reference; average their scores",
+      "f0_hop_s": 0.01,
+      "parallel_search": {
+        "arithmetic": "same search and same ordered aggregation as serial execution",
+        "backend": "ProcessPoolExecutor",
+        "result_order": "intended reference then all mismatched references in input order",
+        "start_method": "spawn",
+        "unit": "one complete reference search"
+      },
+      "pitch_tolerance_cents": 50.0,
+      "relaxed": {
+        "comparison_limit": "units match external studies; references, tools and alignment differ, so scores are not directly comparable",
+        "duration_ratio": "0.5 to 2 times non-rest reference frame count, to frame quantization",
+        "normalization": "number of non-rest reference frames",
+        "note_accuracy": "median matched voiced output pitch per reference note within 50 cents; missing notes wrong",
+        "octave_metric": "same path and transposition; fold error into [-6, 6] for deviation and note accuracy; diagnostic only",
+        "output": "10 ms MIDI pitch frames; retain unvoiced frames",
+        "pitch_cost": "absolute semitone error, no octave folding",
+        "reference": "10 ms MIDI pitch frames; remove reference rest frames only",
+        "reported_cost": "dtw_cost_semitones includes the fixed unvoiced penalty; deviation_semitones is a compatibility alias for that objective, not a voiced pitch deviation",
+        "silence_cost_semitones": 3.0,
+        "steps": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "subsequence_start": "any output frame, all reference frames consumed",
+        "tie_order": "lower normalized cost, smaller absolute shift, earlier end, lower signed shift; path ties prefer (1,1), (1,2), (2,1)",
+        "transition_costs": "(1,1): one cost; (1,2): mean of two output costs for one reference frame; (2,1): sum of two reference costs at one output frame",
+        "transpositions_semitones": [
+          -12,
+          -11,
+          -10,
+          -9,
+          -8,
+          -7,
+          -6,
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "unvoiced_frame_fraction": "unvoiced share of DTW assignment weight, with each reference frame contributing one; null if there is no complete alignment",
+        "voiced_deviation_semitones": "mean absolute error on voiced DTW assignments only; each reference frame has unit total weight split across its matched output frames; null if no voiced assignment"
+      },
+      "ruler_roles": {
+        "evaluator": "fcpe",
+        "label": "swift",
+        "selector": "crepe"
+      },
+      "stage_s_f0": "swift",
+      "strict_external": {
+        "coarse_candidates_per_speed_and_shift": 2,
+        "coarse_start_step_s": 0.1,
+        "complete_reference_required": true,
+        "fine_radius_s": 0.1,
+        "fine_start_step_s": 0.01,
+        "global_candidates_refined": 16,
+        "note_f1": "unvalidated Basic Pitch notes; same chosen alignment; no second lag or transposition search; onset tolerance 0.05 s, offsets ignored",
+        "npa": {
+          "central": 0.6,
+          "min_voiced": 3,
+          "tol_cents": 50.0,
+          "tolerance_operator": "strictly less than"
+        },
+        "octave_metric": "same chosen alignment, diagnostic only",
+        "reference_regions": "full note durations, without rests",
+        "search_objective": "fraction of written voiced-frame duration matching absolute pitch within 50 cents",
+        "speed_definition": "performed tempo / reference tempo; time = start + reference_time / speed",
+        "speed_ratios": [
+          0.9,
+          0.91,
+          0.92,
+          0.93,
+          0.94,
+          0.95,
+          0.96,
+          0.97,
+          0.98,
+          0.99,
+          1.0,
+          1.01,
+          1.02,
+          1.03,
+          1.04,
+          1.05,
+          1.06,
+          1.07,
+          1.08,
+          1.09,
+          1.1
+        ],
+        "tie_order": "higher frame accuracy, speed nearer one, smaller absolute shift, earlier start, lower speed, lower signed shift",
+        "transpositions_semitones": [
+          -12,
+          -11,
+          -10,
+          -9,
+          -8,
+          -7,
+          -6,
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "version": "stage-s-v2",
+      "voice_present": {
+        "active_rms": "square root of mean squared vocal samples over all channels in each frame; channels are not averaged before squaring",
+        "active_rms_dbfs_min": -40.0,
+        "active_seconds_min": 1.0,
+        "definition": "Stage S-specific diagnostic; these thresholds match the brief but the energy and RMS calculations are not the E6 stem-share/mono definition",
+        "energy_share": "sum squared vocal samples / sum squared mixture samples over all channels",
+        "frame_overlap": false,
+        "frame_seconds": 0.05,
+        "partial_frame": "use its actual duration and samples",
+        "peak_gate": "not used for external audio",
+        "vocal_energy_share_min": 0.2
+      },
+      "words": {
+        "chance": "mean recall against each of the other eleven lyrics",
+        "equivalences": {
+          "0": "zero",
+          "1": "one",
+          "10": "ten",
+          "11": "eleven",
+          "12": "twelve",
+          "2": "two",
+          "3": "three",
+          "4": "four",
+          "5": "five",
+          "6": "six",
+          "7": "seven",
+          "8": "eight",
+          "9": "nine",
+          "gray": "grey",
+          "til": "till"
+        },
+        "matching": "longest common subsequence, preserving order and token multiplicity",
+        "normalization": "lowercase ASCII words and integer digit tokens; retain internal apostrophes; normalize curly apostrophe; apply only the registered equivalence map to both reference and transcript",
+        "recall": "matched reference tokens / reference token count; empty reference returns zero",
+        "section_tags": "remove text enclosed in square brackets"
+      }
+    },
+    "melodies": {
+      "bars": 8,
+      "bpm_range": [
+        90,
+        110
+      ],
+      "count": 12,
+      "keys": [
+        "C major",
+        "D major",
+        "F major",
+        "G major"
+      ],
+      "lyrics": "one original English syllable per note; no owner-held-out melody",
+      "meter": [
+        4,
+        4
+      ],
+      "midi_pitch_range": [
+        57,
+        76
+      ],
+      "notes_range": [
+        24,
+        40
+      ],
+      "seed": 20261027
+    },
+    "models": {
+      "ace_source_commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+      "ace_weights": "ACE-Step/Ace-Step1.5",
+      "ace_weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+      "asr": "openai/whisper-large-v3",
+      "asr_revision": "06f233fe06e710322aca913c1bc4249a0d71fce1",
+      "cpu_asr_fallback": false,
+      "f0": "swift-f0==0.3.0",
+      "model_code_alignment": "Download real local_dir files at the fixed revision. Verify both original Python file hashes, then copy only those two files from the fixed source commit. Record original and installed hashes and require an empty upstream mismatch list. Never modify the shared weight cache.",
+      "original_model_code_sha256": {
+        "configuration_acestep_v15.py": "b89870c5c7a7ce060eb0bcdbb5ffc86b0b1a324ca325a26be552ea1b42496dc5",
+        "modeling_acestep_v15_turbo.py": "c1ab0dd547124fee7ada449b2b86eae8201dc7d15889932643bbb67e3c982444"
+      },
+      "separator": "htdemucs",
+      "separator_package": "demucs==4.1.0"
+    },
+    "note_transcription": {
+      "backend": "onnx",
+      "method": "dacapo.analysis.notes_basic_pitch",
+      "min_note_ms": 80.0,
+      "package": "basic-pitch==0.4.0",
+      "skyline": true,
+      "use": "unvalidated note-F1 diagnostic only; never the Stage S decision"
+    },
+    "phase": "preregistered_external_measurement",
+    "pitch_extraction": {
+      "confidence_min": 0.5,
+      "fmax_hz": 1500.0,
+      "fmin_hz": 65.0,
+      "method": "dacapo.analysis.f0_swift",
+      "package": "swift-f0==0.3.0",
+      "resampling": "10 ms grid from zero; searchsorted timestamp index, clipped at track endpoints, as in dacapo.analysis._to_grid"
+    },
+    "privacy": {
+      "audio_in_zips": false,
+      "incomplete_statement": "The run did not complete. No Stage S conclusion was made.",
+      "private_zip": "Suno numeric CSV/JSON only; retained by the owner privately",
+      "public_statement": "Stage S was evaluated under prereg_suno.json. The conclusion is in the private record.",
+      "public_zip": "ACE-Step controls and synthetic ruler only",
+      "publication": "No Suno score, route outcome, accuracy claim or threshold comparison before owner confirms terms permit publication."
+    },
+    "render": {
+      "programs": {
+        "oohs": 53,
+        "piano": 0
+      },
+      "reverb": false,
+      "sample_rate": 48000,
+      "soundfont": "FluidR3_GM; exact SHA256 in records/suno_pack.json"
+    },
+    "rescore_after_0c": {
+      "decision": "Apply the same minimum ten complete item pairs, median strict-external NPA >= 0.90 and median WR >= 0.60 on one route. A positive result triggers the same stop for owner direction. Preserve and report both original and rescored results privately; never select whichever is preferred.",
+      "fixed": [
+        "same original audio SHA256",
+        "same twelve melodies and lyrics",
+        "htdemucs and its settings",
+        "ASR model, revision and all settings",
+        "WR normalization",
+        "strict and relaxed alignment searches",
+        "all eleven mismatched references",
+        "pair and item aggregation",
+        "bootstrap seeds and draws",
+        "route eligibility and decision thresholds"
+      ],
+      "permitted_changes": "Only changes that make the already-accurate condition easier may be added, with rationale in a reviewed deviation addendum. Do not tighten thresholds or eligibility.",
+      "record": "Use a separate reviewed rescore addendum and output/checkpoint namespace. Record the original preregistration SHA256, validated ruler identity/version/config, validation record hashes, input audio SHA256 and parent result hashes; never overwrite the original Stage S records.",
+      "replace_only": "The separated-vocal F0 extractor and its validated fixed parameters; retain the 10 ms grid. Diagnostic note transcription remains unchanged unless separately registered in a reviewed addendum.",
+      "ruler_ceiling_minimum": 0.95,
+      "ruler_requirement": "Rerun all twelve synthetic ruler items with the replacement F0 extractor. Median pristine strict NPA below 0.95 is pending, not a negative finding. Stage 0c natural-singing validation is also required.",
+      "trigger": "Stage 0c selects a validated evaluator on held-out separated natural singing."
+    },
+    "ruler_self_check": {
+      "accompaniment_gain": 0.35,
+      "block_repetitions": 2,
+      "block_tail_beats": 8,
+      "ceiling": "median strict NPA across clean, speed and transposition variants; exclude corrupted notes",
+      "intro_seconds_cycle": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "peak_cap": 0.95,
+      "recovery_diagnostic": {
+        "decision_gate": false,
+        "relaxed": "report start and transposition errors without a new gate",
+        "speed_tolerance": 0.010001,
+        "strict_start_tolerance_s": 0.1,
+        "transpose_tolerance_semitones": 0
+      },
+      "sensitivity": "ROC AUC over twelve clean and twelve two-error NPA scores; bootstrap paired items, retaining both labels; matched-pair win rate is a separate diagnostic; no Stage S AUC gate",
+      "source": "synthetic FluidSynth Voice Oohs, not natural singing",
+      "tempo_ratio": 1.03,
+      "transpose_semitones": 2,
+      "variants": [
+        "clean",
+        "speed_1.03",
+        "transpose_2",
+        "two_wrong_notes"
+      ],
+      "vocal_gain": 1.0,
+      "wrong_note_indices": [
+        5,
+        21
+      ],
+      "wrong_note_offset_semitones": 1,
+      "wrong_note_offsets": [
+        1,
+        -1
+      ],
+      "wrong_notes": 2
+    },
+    "suno": {
+      "ace_generation_budget_basis": "96 calls times 3 seconds (upper end of run-1 L4 warm 2-3 seconds per call for E4's 14-second clips) scaled by the longest Stage S control, 26.09 seconds over 14 seconds, times 1.5, which is 805 seconds; plus one 120-second cold-call allowance. Active generation calls only, cumulative across resumes; exclude loading, rendering and scoring",
+      "ace_generation_budget_seconds": 925.0,
+      "ace_generation_call_limit_basis": "Covers a cold first call on a new runtime. The alarm for each call is the smaller of this limit and the remaining allowance. A call that reaches it stops generation as a budget stop",
+      "ace_generation_call_limit_seconds": 120.0,
+      "arm_call": "Use the matching E4 arms dictionary: task and rendered src, cover_strength default 1.0, cover_noise default 0.0; no custom context hook. Leave timesignature at the E4 default (empty), as E4 did",
+      "arm_definitions": [
+        {
+          "name": "noguide",
+          "task": "text2music"
+        },
+        {
+          "cover_strength": 0.375,
+          "guide": "oohs",
+          "name": "ctx_oohs_k3",
+          "task": "cover-nofsq"
+        },
+        {
+          "cover_strength": 0.75,
+          "guide": "oohs",
+          "name": "ctx_oohs_k6",
+          "task": "cover-nofsq"
+        },
+        {
+          "cover_strength": 0.5,
+          "guide": "clarinet",
+          "name": "ctx_clarinet_k4",
+          "task": "cover-nofsq"
+        }
+      ],
+      "arms": [
+        "noguide",
+        "ctx_oohs_k3",
+        "ctx_oohs_k6",
+        "ctx_clarinet_k4"
+      ],
+      "bootstrap_draws": 2000,
+      "bootstrap_seed": 20261027,
+      "budget_alarm": "ACE catches broad exceptions inside generation. The alarm handler sets a flag, and BudgetExceeded is raised after the call whenever the flag is set, whatever the call returned or raised",
+      "caption": "pop, full band, female vocal",
+      "completion": "The Suno decision needs all twelve ruler items and a complete Suno scoring pass: at least one decodable Suno file, and a score for every inventory file except registered exclusions. A file that is empty or cannot be decoded at inventory is pending, including a take that was scored earlier and is unreadable now; bytes identical to an earlier scored file keep that score. Any unresolved unreadable file or scoring failure whose audio hash still matches leaves the run incomplete; the decision is then scoring_failures_pending, the public record uses the incomplete statement, and the owner reruns the same notebook and output folder. Results are written right after the Suno pass and again after the controls. Incomplete or timed-out ACE controls are reported separately and do not invalidate that decision.",
+      "consecutive_failure_abort": 3,
+      "consecutive_failure_rule": "This many consecutive Suno clip failures with the same exception type go to the runtime probe. Failures in a run that ends early do not count toward exclusion.",
+      "draws": [
+        0,
+        1
+      ],
+      "duration_extra_beats": 8,
+      "f0_method": "swift",
+      "failure_exclusion_rule": "After each unreadable file or clip failure the owner downloads the same returned song again and reruns. A clip that is unreadable, or fails with the same exception type, with the same audio SHA256 in this many finished Suno passes (the first failure and two resumes) becomes a listed exclusion with its reason in the private record. It is then missing, not retried, and no longer blocks completion. A new file hash starts a new count.",
+      "failure_exclusion_runtimes": 3,
+      "interrupted_generation_budget": "Persist the call allowance (the smaller of the per-call limit and the remaining allowance) as an in-flight reservation before each generation call. Normal completion replaces it with that call's measured active time, added to the measured total. A hard runtime loss leaves timing unknown, so an unresolved reservation consumes that bounded call allowance on resume; report this conservative charge separately from measured time. Recover and score any completed output before checking that allowance; never regenerate a completed draw. Score every saved control even when generation stops early.",
+      "metric_aggregation": "Each route metric uses the complete item pairs whose a and b values are both non-null, and reports that item count. A null value removes only that item from that metric. A metric with no such pair reports median null, zero items, interval null and no item means. Strict NPA and WR are always numeric, so the decision uses every complete pair.",
+      "minimum_complete_item_pairs": 10,
+      "npa_threshold": 0.9,
+      "pair_aggregation": "arithmetic mean of a and b within item",
+      "requests_per_item_route": 1,
+      "resume": "Persistent Drive checkpoints keyed by audio SHA256 and clip identity, bound to this preregistration hash; reuse completed scores and generated audio; retry unreadable or failed original downloads without new service requests. An unreadable score checkpoint is set aside, logged and scored again. If a scored clip's audio hash later changes, the record lists both hashes and both scores as replaced_after_scoring",
+      "retain_both_outputs": true,
+      "route_aggregation": "median of item pair means; never pool different routes",
+      "routes": {
+        "R1": "MIDI prompt",
+        "R2": "piano audio cover/reference",
+        "R3": "Voice Oohs audio cover/reference"
+      },
+      "ruler_ceiling_minimum": 0.95,
+      "run_wide_faults": "BrokenProcessPool, MemoryError, torch OutOfMemoryError or AcceleratorError, a scorer start fault, or an exception or cause whose message contains CUDA, CUBLAS, cuDNN or out of memory. A scorer start fault ends the run as incomplete. A Suno clip that raises one of the others goes to the runtime probe.",
+      "runtime_probe": "Release the scorer, build a new one, and re-score the first ruler clip (mel00 clean) without saving the result. If the probe raises, or its strict NPA differs from the saved ruler score by more than runtime_probe_npa_tolerance, the fault is run-wide: the run ends incomplete and the faulting clip is not recorded as a failure. Otherwise each faulting clip is a clip failure, the streak restarts and the Suno pass continues.",
+      "runtime_probe_npa_tolerance": 0.1,
+      "scorer_start": "Build the scorer once before the ruler and Suno passes, outside any per-clip handler, whenever a ruler or Suno clip has no score checkpoint. A model download, version check or CUDA setup fault ends the run as incomplete.",
+      "scoring_time_limit_seconds": null,
+      "search_parallelism": "spawn process pool over all twelve references; preserve reference order and exact serial results",
+      "search_workers": 2,
+      "seed_tag": "e7-suno",
+      "separator_overlap": 0.25,
+      "separator_shifts": 0,
+      "shift": 3.0,
+      "stage_order": [
+        "ruler_render_and_score",
+        "suno_score",
+        "ace_generate_and_score"
+      ],
+      "steps": 8,
+      "word_recall_threshold": 0.6
+    },
+    "tool_roles_status": "The three distinct roles in measurement.ruler_roles are provisional H1 examples. Stage 0c must select and validate the evaluator before H1 preregistration.",
+    "validity": {
+      "chance": "all other eleven references, identical search and transcription matching",
+      "e5_v2": "required and register.py --check must pass before the GPU run",
+      "external_study_comparison": "Do not directly compare deviations with Qwen-Music; references, F0 and alignment differ.",
+      "hash_policy": "verify all code and melody/lyric hashes before scoring; changes require a reviewed addendum marked deviation and reporting original-version results",
+      "unrun": "Suno service use, GPU generation, separation and Whisper have not run in Cloud."
+    }
+  },
+  "lyrics_sha256": "ec9fe4d3d6ebc329e4042272eb4980e93ed9f67da62dd0f39f8ffb0860283766",
+  "manifest_sha256": "214306c18b7638437f09a1e12f1261b2dd965c6e52483dce7609f2651677c98a",
+  "registered_utc": "2026-10-27T19:49:06Z",
+  "schema_version": 1,
+  "source_pack_record_sha256": "dbb4955a71c670cd25a6e1aae1914e30befdf8feb27ff43b588a01d7f7675524",
+  "status": "awaiting_review_and_merge_before_external_generation"
+}

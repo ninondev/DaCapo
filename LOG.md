@@ -159,3 +159,11 @@ After a failed K0, the registration says to redesign the units before any model 
 K0 on the rebuilt melodies passed in all three timbres, and no wrong note landed outside the scored window. Flute: classification 0.983 (1663 of 1692 rows), 1-wrong-note AUC 0.965, 2-wrong 1.0. Synth voice: 0.987, 0.996 and 1.0. Clarinet: 0.985, 0.944 and 0.999. Every render matched its hash in the manifest. Results: `experiments/e5_motif/results/e5_ruler_gate_p73.json`, `_p54.json` and `_p71.json`. Run 2 can start.
 
 What went wrong: the first start of the rerun was stopped by a tool time limit after about 10 minutes, before it wrote any result or printed anything. It was started again with the same code and files.
+
+## 2026-10-27: E7 Stage S, registered
+
+E7 asks whether a song model can sing a melody the user gives it, with clear words. Before anything is built, Stage S measures where things stand. It uses 12 new 8-bar melodies with lyrics. Suno sings them through up to three input routes (MIDI, a piano recording, a wordless "oohs" recording), and ACE-Step 1.5 sings them with four settings from E4. The same tools score everything. Because Suno songs have intros, repeats and small changes of tempo or key, the scorer searches for the start, tempo and key first, and every score is also computed against the 11 other melodies to remove lucky matches.
+
+The rules, the hashes of the scoring code and the decision rule are in `experiments/e7_melody_adapter/prereg_suno.json`, registered before any song was generated. If Suno already sings the given melodies accurately on one route (median note accuracy at least 0.90 and median word recall at least 0.60), the plan changes. Otherwise the next step is a melody adapter trained inside the renderer. Suno's scores stay private until its terms of use are checked.
+
+Two rounds of review before registration fixed problems that would have stopped the scoring halfway through the Suno songs, refused to load the model, or let a run with broken files report a result. Details are in `experiments/e7_melody_adapter/LOG.md`.

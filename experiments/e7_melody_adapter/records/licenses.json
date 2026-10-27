@@ -1,0 +1,124 @@
+{
+  "config": {
+    "asr_model": null,
+    "asr_revision": null,
+    "experiment": "e7_stage_s_license_registration",
+    "f0_tool": null,
+    "generator_sha256": "dd4ce1f8770c49f20a5c6a450baa79e6d9953493433beb1178177a494b41feb3",
+    "separator": null
+  },
+  "config_hash": "b7858c86d2f3",
+  "environment": {
+    "fluidsynth": "FluidSynth runtime version 2.3.4",
+    "git_commit": "b6ed62fd22b04fb29876825b26f01b5942795d6d",
+    "git_dirty": true,
+    "machine": "x86_64",
+    "packages": {
+      "basic-pitch": "0.4.0",
+      "librosa": "1.0.0",
+      "mir_eval": "0.8.2",
+      "numpy": "2.5.4",
+      "pretty_midi": "0.2.11.post0",
+      "torch": "2.14.1+cpu",
+      "torchcrepe": "0.0.24"
+    },
+    "platform": "Linux-6.18.44-fc-v165-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "environment_scope": "registration-time snapshot; not a measurement of this machine",
+  "finished_utc": "2026-10-27T19:48:09Z",
+  "results": {
+    "external_datasets_used": [],
+    "policy": "Research-only licenses permit measurement, never training or repository inclusion.",
+    "resources": [
+      {
+        "kind": "soundfont",
+        "license": "MIT",
+        "name": "FluidR3_GM",
+        "url": "https://sources.debian.org/src/fluid-soundfont/3.1-5.3/debian/copyright/",
+        "use": "Render original test melodies; no soundfont is committed.",
+        "verification": "Installed Debian copyright file states MIT for the soundfont."
+      },
+      {
+        "kind": "renderer",
+        "license": "LGPL-2.1-or-later",
+        "name": "FluidSynth",
+        "url": "https://github.com/FluidSynth/fluidsynth/blob/master/LICENSE",
+        "use": "Local synthesis.",
+        "verification": "Installed Debian copyright file."
+      },
+      {
+        "kind": "pitch model",
+        "license": "MIT",
+        "name": "SwiftF0",
+        "url": "https://github.com/lars76/swift-f0",
+        "use": "Measurement.",
+        "verification": "Installed package metadata.",
+        "version": "0.3.0"
+      },
+      {
+        "kind": "pitch model",
+        "license": "MIT",
+        "name": "FCPE",
+        "url": "https://github.com/CNChTu/FCPE",
+        "use": "Measurement.",
+        "verification": "Installed torchfcpe metadata.",
+        "version": "0.0.4"
+      },
+      {
+        "kind": "pitch model",
+        "license": "MIT",
+        "name": "torchcrepe",
+        "url": "https://github.com/maxrmorrison/torchcrepe",
+        "use": "Measurement.",
+        "verification": "Installed package metadata.",
+        "version": "0.0.24"
+      },
+      {
+        "kind": "transcription model",
+        "license": "Apache-2.0",
+        "name": "Basic Pitch",
+        "url": "https://github.com/spotify/basic-pitch/blob/main/LICENSE",
+        "use": "Unvalidated diagnostic note-F1 only.",
+        "verification": "Installed distribution LICENSE file.",
+        "version": "0.4.0"
+      },
+      {
+        "kind": "song model",
+        "license": "MIT",
+        "name": "ACE-Step 1.5",
+        "revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "url": "https://huggingface.co/ACE-Step/Ace-Step1.5",
+        "use": "Untrained baseline generation in owner-run GPU stage.",
+        "verification": "Declared in the task brief; verify model card in the owner-run setup before use."
+      },
+      {
+        "kind": "ASR model",
+        "license": "Apache-2.0",
+        "name": "Whisper large-v3",
+        "revision": "06f233fe06e710322aca913c1bc4249a0d71fce1",
+        "url": "https://huggingface.co/openai/whisper-large-v3",
+        "use": "Measurement only; no weights were downloaded in Cloud.",
+        "verification": "Model-card declaration must be checked by owner-run setup before use."
+      },
+      {
+        "kind": "separator model",
+        "license": "MIT",
+        "name": "htdemucs",
+        "package_version": "demucs==4.1.0",
+        "url": "https://github.com/facebookresearch/demucs/blob/main/LICENSE",
+        "use": "Measurement only; no weights were downloaded in Cloud.",
+        "verification": "Upstream license must be checked by owner-run setup before use."
+      },
+      {
+        "kind": "external service audio",
+        "license": "Terms-dependent; not cleared for publication",
+        "name": "Suno user outputs",
+        "url": "https://suno.com/terms",
+        "use": "Private measurement only; never training; no audio or scores are committed.",
+        "verification": "Owner must check the current terms before generation and publication."
+      }
+    ]
+  },
+  "wall_seconds": 0.0
+}

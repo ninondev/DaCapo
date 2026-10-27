@@ -111,6 +111,7 @@ The second study (E6) starts with a read-out. ACE-Step already uses seven attent
 | E4 | Can it sing the right notes and clear words? | Exploratory: 12 melodies × 21 settings × 2 seeds |
 | E5 | Can it develop a motif? | Run 1 failed its quality check; run 2 is registered, passed its tool check and is ready for the GPU |
 | E6 | Can a lyric clock time each syllable? | The read-out is registered and ready for the GPU; the clock comes after it |
+| E7 | How well do Suno and ACE-Step sing a melody you give them? | Registered; waiting for the Suno songs |
 
 [`LOG.md`](LOG.md) has every run, including the failures and the mistakes.
 
@@ -144,7 +145,7 @@ Tests that run the song model need [ACE-Step 1.5](https://github.com/ace-step/AC
 
 ```
 dacapo/          the library: melodies, rendering, pitch tracking, scores, and ace.py (hooks into ACE-Step)
-experiments/     one folder per study (e0 to e6), plus run_all.py, which the notebook calls
+experiments/     one folder per study (e0 to e7), plus run_all.py, which the notebook calls
 results/cpu/     result files from CPU runs
 results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
 figures/         charts and the script that draws them
@@ -164,6 +165,8 @@ notebook.ipynb   the Colab notebook
 - [x] Motif study: register the fixed run before it starts
 - [ ] Run the fixed motif study and the lyric read-out on the GPU (Run A)
 - [ ] Lyric clock (E6), if the read-out passes
+- [ ] Measure Suno and ACE-Step on the same 12 melodies (E7, Stage S)
+- [ ] Train a melody adapter inside the renderer (E7), unless Stage S shows it is already solved
 - [ ] More seeds, and a blind listening test with musicians
 - [ ] arXiv paper and a demo page with audio
 

@@ -1,0 +1,61 @@
+{
+  "config": {
+    "asr_model": null,
+    "asr_revision": null,
+    "experiment": "e7_suno_pack_registration",
+    "f0_tool": null,
+    "generator_sha256": "dd4ce1f8770c49f20a5c6a450baa79e6d9953493433beb1178177a494b41feb3",
+    "seed": 20261027,
+    "separator": null
+  },
+  "config_hash": "785ec77ed1b7",
+  "environment": {
+    "fluidsynth": "FluidSynth runtime version 2.3.4",
+    "git_commit": "b6ed62fd22b04fb29876825b26f01b5942795d6d",
+    "git_dirty": true,
+    "machine": "x86_64",
+    "packages": {
+      "basic-pitch": "0.4.0",
+      "librosa": "1.0.0",
+      "mir_eval": "0.8.2",
+      "numpy": "2.5.4",
+      "pretty_midi": "0.2.11.post0",
+      "torch": "2.14.1+cpu",
+      "torchcrepe": "0.0.24"
+    },
+    "platform": "Linux-6.18.44-fc-v165-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "environment_scope": "registration-time snapshot; not a measurement of this machine",
+  "finished_utc": "2026-10-27T19:48:09Z",
+  "results": {
+    "lyrics_by_item_sha256": {
+      "mel00": "5b74f0979a0af7f39e46fcf97e983d8d5fb14be1d1a27a286f34c8290a513435",
+      "mel01": "0b987b9921513a5e3b8df4a1c96f935b8f9118192d3bd9b5b1f9901b8d7a72a6",
+      "mel02": "61bde74892b6a02b13f8aee900782c3bf8df56e02c86031b524f18b50bf255c6",
+      "mel03": "d9aa83fd260b56ad6a6fc9b9e3fd35f4cf17387c5c1c11b58c0eac76ff800cd1",
+      "mel04": "d65333875397a2361905a18b31b9c3df22906800ae89fa9d99a6f779e3478e1b",
+      "mel05": "9f567503960bcb002df97397a17018a9fc5f2aff41c2e71f2eb854e507ddd371",
+      "mel06": "58208e468031851499b3c09dbae9e8090a92c08111ae143fc8b6cab276f39dfe",
+      "mel07": "046456176603dc2cd73864a8c137fca9089b578ada206d7440d2c23dca497def",
+      "mel08": "95f7ba76fff676c43f1324e335b84d324ff0198b4cf936fba8090a1960d6209f",
+      "mel09": "3c0207307a5ae69963f4758b190e3288e57e4f384a2ae8b5afeed5d08c142313",
+      "mel10": "b96d5d5c477feacfd4dd0104782a102d1e295d611f42b1c5996b719bd3ca39f8",
+      "mel11": "2b4382819b42417102c247e6314758057d782470dc6cabdda10f720005a7c216"
+    },
+    "lyrics_provenance": "Lyrics written by the agents for this experiment.",
+    "lyrics_sha256": "ec9fe4d3d6ebc329e4042272eb4980e93ed9f67da62dd0f39f8ffb0860283766",
+    "melodies_sha256": "214306c18b7638437f09a1e12f1261b2dd965c6e52483dce7609f2651677c98a",
+    "render": {
+      "programs": {
+        "oohs": 53,
+        "piano": 0
+      },
+      "reverb": false,
+      "sample_rate": 48000,
+      "soundfont": "FluidR3_GM.sf2",
+      "soundfont_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0"
+    }
+  },
+  "wall_seconds": 0.0
+}
