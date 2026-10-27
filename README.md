@@ -9,23 +9,29 @@ English | [中文](README.zh-CN.md)
   <img alt="Diagram: in ACE-Step 1.5, a melody sent through the planner's 5 Hz plan tokens has the right pitch class in 29% of frames. The same melody given to the renderer as dense audio scores 91%, as high as the input itself (90%)." src="figures/hero_light.svg" width="100%">
 </picture>
 
-I studied music for six years as a kid (amateur grade exams, grade 6 or 7 out of 10) and stopped in middle school. AI song models got me interested again. I wanted one to sing a melody I wrote. The song sounded good, but the melody wasn't mine, and when I asked for my chorus to come back later in the song, it usually didn't.
+I studied music for five years as a kid (amateur grade exams, grade 6 or 7 out of 10) and stopped in middle school. AI song models got me interested again. I wanted one to sing a melody I wrote. The song sounded good, but the melody wasn't mine, and when I asked for my chorus to come back later in the song, it usually didn't.
 
-This repo is my attempt to find out why. I study one open model, ACE-Step 1.5, and measure where a melody gets lost inside it.
+This repo is my attempt to find out why. It studies one open model, ACE-Step 1.5, and measures where a melody gets lost inside it.
+
+## Who did what
+
+- Me: choosing the question; running the GPU tests in Colab; deciding to move the tests to a GPU and to build melody control inside the renderer; asking for each main study's rules to be written down before it runs, and for the final claims to come from people listening blind.
+- Another AI: suggested ACE-Step 1.5 and the overall plan.
+- Coding agents: designed the tests, wrote the code, ran the CPU tests, worked out the numbers, and wrote this README and the log.
 
 ## How the model works
 
 [ACE-Step 1.5](https://github.com/ace-step/ACE-Step-1.5) (MIT license) has two parts. A language model, the planner, writes a rough plan of the song as tokens, 5 per second. A flow-matching model, the renderer, turns that plan plus the lyrics and a short text prompt into audio in 8 denoising steps. The renderer can also take real audio as dense context instead of a plan.
 
-To score a melody I use pitch-class accuracy: the share of time where the note name (C, D, E and so on, octave ignored) matches my score.
+To score a melody, the tests use pitch-class accuracy: the share of time where the note name (C, D, E and so on, octave ignored) matches the written notes.
 
-## What I found
+## What the tests found
 
 1. The plan loses most of the melody. Through the planner's tokens, only 29% of frames have the right note name, where random guessing gets about 10%. That's with tokens made from the melody's own audio, an easy case for any planner. The same melody given to the renderer as dense audio scores 91%, as high as the input itself (90%).
 2. The loss is in the tokenizer. A linear probe reads the note name from audio latents at the same 5 Hz rate with 0.919 accuracy. From the plan tokens it gets 0.575.
-3. In my tests the model sings my words or my melody, not both. With lyrics but no melody it sings 66% of the words. When I guide it with a wordless version of the melody, the notes become right (86% to 100%) and the words drop to 3% or less.
+3. In these tests the model sings the words or the melody, not both. With lyrics but no melody it sings 66% of the words. When it's guided with a wordless version of the melody, the notes become right (86% to 100%) and the words drop to 3% or less.
 
-So I'm building control inside the renderer, where the melody survives. My code can look at each of the 8 denoising steps, read or change what the model is making, and switch the text, lyrics or audio it listens to. It adds no extra model calls.
+So I decided to build control inside the renderer, where the melody survives. The code can look at each of the 8 denoising steps, read or change what the model is making, and switch the text, lyrics or audio it listens to. It adds no extra model calls.
 
 ## Results
 
@@ -38,11 +44,11 @@ Every number here comes from a file in [`results/`](results/), and [`figures/mak
   <img alt="Bar chart of melody pitch-class accuracy, pooled over 80, 120 and 160 BPM, at shift 3.0 and 1.0: input itself 0.90 and 0.90; dense 25 Hz latents as context 0.91 and 0.91; VAE round trip 0.90 and 0.90; 5 Hz plan tokens 0.29 and 0.31; plan tokens with new instrumentation 0.31 and 0.32; no audio condition 0.10 and 0.11." src="figures/e1_melody_paths_light.svg" width="100%">
 </picture>
 
-I made 16 melodies with known notes, each a piano or flute line over chords, bass and drums, at 80, 120 and 160 BPM. Each one went through every path of the model, and I measured how much melody came out.
+The agents made 16 melodies with known notes, each a piano or flute line over chords, bass and drums, at 80, 120 and 160 BPM. Each one went through every path of the model, and the tests measured how much melody came out.
 
-Dense audio keeps the note names as well as my measuring tool can see. Its note F1 is 0.72 against 0.78 for the original, about the same loss as encoding and decoding the audio once. The plan tokens keep much less. I also score every output against the other melodies at the same tempo, and after removing that chance level, the tokens keep 28% (95% CI 22% to 34%) of the melody information. Their note F1 is 0.12.
+Dense audio keeps the note names as well as the measuring tool can see. Its note F1 is 0.72 against 0.78 for the original, about the same loss as encoding and decoding the audio once. The plan tokens keep much less. Every output is also scored against the other melodies at the same tempo, and after removing that chance level, the tokens keep 28% (95% CI 22% to 34%) of the melody information. Their note F1 is 0.12.
 
-<sub>16 melodies × 3 tempos, one seed, NVIDIA L4, 8-step turbo model. Shift is a sampler setting: 3.0 is what the ACE-Step docs recommend for turbo, and the default 1.0 gives the same result. The "no audio" bar uses only 6 different generations per setting. A smaller CPU test I ran earlier (4 melodies per tempo) gave the tokens 0.51 at 90 BPM, and the GPU run didn't repeat that, so I report the GPU numbers. Code: [`experiments/e1_melody_paths`](experiments/e1_melody_paths/).</sub>
+<sub>16 melodies × 3 tempos, one seed, NVIDIA L4, 8-step turbo model. Shift is a sampler setting: 3.0 is what the ACE-Step docs recommend for turbo, and the default 1.0 gives the same result. The "no audio" bar uses only 6 different generations per setting. A smaller CPU test the agents ran earlier (4 melodies per tempo) gave the tokens 0.51 at 90 BPM, and the GPU run didn't repeat that, so this page reports the GPU numbers. Code: [`experiments/e1_melody_paths`](experiments/e1_melody_paths/).</sub>
 
 ### Why it gets lost
 
@@ -62,11 +68,11 @@ The low frame rate isn't the whole reason. When a note stays the same for a full
   <img alt="Scatter plot of 21 settings (20 guides and no guide): notes sung at the written pitch against lyric words recognised. Without a guide, 0.03 of notes and 0.66 of words. Settings that reach 0.86 or more of the notes keep at most 0.03 of the words. Only 2 of 378 clips get at least half of both right." src="figures/e4_tradeoff_light.svg" width="100%">
 </picture>
 
-I asked the model to sing one lyric line on a melody, one note per one-syllable word. Without a guide it doesn't know the melody, so its notes match only by chance (3%), but it sings 66% of the words. Then I guided it with the melody sung or played without words, either as context for the first k of the 8 steps or as a noisy starting point (SDEdit, a known method that I use as a baseline). Every setting that got the notes right (86% or more) lost the words (3% or less). Only 2 of 378 test clips got at least half of both.
+The agents asked the model to sing one lyric line on a melody, one note per one-syllable word. Without a guide it doesn't know the melody, so its notes match only by chance (3%), but it sings 66% of the words. Then they guided it with the melody sung or played without words, either as context for the first k of the 8 steps or as a noisy starting point (SDEdit, a known method used here as a baseline). Every setting that got the notes right (86% or more) lost the words (3% or less). Only 2 of 378 test clips got at least half of both.
 
-My guess is that melody and lyrics have to be guided together, one syllable at a time. That's the idea behind the lyric clock (E6), which I haven't built yet.
+The working guess is that melody and lyrics have to be guided together, one syllable at a time. That's the idea behind the lyric clock (E6), which isn't built yet.
 
-<sub>12 melodies (3 for trying settings, 9 for testing) × 21 settings × 2 seeds. Words come from a Whisper large-v3 transcript. This test is exploratory: I didn't register the settings before running it. Code: [`experiments/e4_sing`](experiments/e4_sing/).</sub>
+<sub>12 melodies (3 for trying settings, 9 for testing) × 21 settings × 2 seeds. Words come from a Whisper large-v3 transcript. This test is exploratory: its settings weren't registered before the run. Code: [`experiments/e4_sing`](experiments/e4_sing/).</sub>
 
 ### Measuring is hard
 
@@ -75,17 +81,17 @@ My guess is that melody and lyrics have to be guided together, one syllable at a
   <img alt="Dot plot of pitch-tracker accuracy on a perfectly played melody, alone versus with a loud band: piano lead 0.95 vs 0.09, synth lead 0.95 vs 0.55, voice-like lead 0.93 vs 0.59." src="figures/e0_ruler_light.svg" width="100%">
 </picture>
 
-Before testing the model I tested my measuring tools on audio where I know every note. Pitch trackers are very good on a solo melody and bad once a loud band plays. With a voice-like melody in a full mix, one or two wrong notes are hard to catch (best AUC 0.65 to 0.78). So with a band, I always compare against the same score on the original audio, and for singing I only score songs where I asked for no instruments.
+Before testing the model, the agents tested the measuring tools on audio where every note is known. Pitch trackers are very good on a solo melody and bad once a loud band plays. With a voice-like melody in a full mix, one or two wrong notes are hard to catch (best AUC 0.65 to 0.78). So with a band, every score is compared with the same score on the original audio, and singing is only scored in songs where the prompt asked for no instruments.
 
 <sub>9 melodies per condition in the chart; the wrong-note tests use 6 melodies per condition. Code: [`experiments/e0_ruler`](experiments/e0_ruler/).</sub>
 
-## What I'm working on now
+## Working on now
 
-The hooks live in [`dacapo/ace.py`](dacapo/ace.py). At each of the 8 denoising steps they show what the model expects the final audio to be, and an experiment can read it, change it, or swap the text, lyrics or audio part way through. If a hook changes nothing, the output is exactly the same as without it (difference 0.0 on CPU and GPU), so any change I see comes from what I did.
+The hooks live in [`dacapo/ace.py`](dacapo/ace.py). At each of the 8 denoising steps they show what the model expects the final audio to be, and an experiment can read it, change it, or swap the text, lyrics or audio part way through. If a hook changes nothing, the output is exactly the same as without it (difference 0.0 on CPU and GPU), so any change in the output comes from the edit itself.
 
-The main study (E5) asks whether the model can develop a motif. I play it a pattern like A B A, or a motif and the same motif moved up, and leave a gap for the model to fill. Then I check what it put in the gap: a copy, a transposition, a sequence or an analogy, compared with shuffled melodies and wrong timing as controls. I wrote down the hypotheses, the stop rules and the code version before the first run ([registration](experiments/e5_motif/registration/prereg.json)).
+The main study (E5) asks whether the model can develop a motif. The test plays it a pattern like A B A, or a motif and the same motif moved up, and leaves a gap for the model to fill. Then it checks what the model put in the gap: a copy, a transposition, a sequence or an analogy, compared with shuffled melodies and wrong timing as controls. As I asked, the hypotheses, the stop rules and the code version were written down before the first run ([registration](experiments/e5_motif/registration/prereg.json)).
 
-That first run failed my own quality check. Only 49% of the gaps had one clear melody line at a normal volume, and I required 75%, so by my own rule it says nothing about motifs either way. I found two mistakes in my setup that can explain it: I gave the model the wrong task instruction for filling a gap, and every song started from the same noise. The result and a correction are in [`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json). The fixed run will be registered before it starts.
+That first run failed its own quality check. Only 49% of the gaps had one clear melody line at a normal volume, and the rule required 75%, so by that rule it says nothing about motifs either way. The agents found two mistakes in their setup that can explain it: the model got the wrong task instruction for filling a gap, and every song started from the same noise. The result and a correction are in [`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json). The fixed run will be registered before it starts.
 
 The second study (E6) is the lyric clock. It will guide the attention heads that connect lyrics to audio, so each syllable lands on its note while the melody guide keeps the pitch.
 
@@ -93,20 +99,20 @@ The second study (E6) is the lyric clock. It will guide the attention heads that
 
 | | Question | Status |
 |---|---|---|
-| E0 | How good are my measuring tools? | Done |
+| E0 | How good are the measuring tools? | Done |
 | E1 | How much melody survives each path through the model? | Done on GPU: 16 melodies × 3 tempos, two shift settings |
 | E1b | What is in the plan tokens, and where is the loss? | Done on GPU: 48 melodies, one test split |
-| E2 | Can I hook every denoising step without changing the output? | Done: exactly the same output on CPU and GPU |
-| E3 | Can I read the pitch from the audio latents for any instrument? | Exploratory: 0.88 on new instruments (chance 0.03); a special subspace is no better than the full latent |
+| E2 | Can the code hook every denoising step without changing the output? | Done: exactly the same output on CPU and GPU |
+| E3 | Can the pitch be read from the audio latents for any instrument? | Exploratory: 0.88 on new instruments (chance 0.03); a special subspace is no better than the full latent |
 | E4 | Can it sing the right notes and clear words? | Exploratory: 12 melodies × 21 settings × 2 seeds |
 | E5 | Can it develop a motif? | Run 1 failed its quality check; the fixed run is next |
 | E6 | Can a lyric clock time each syllable? | Planned |
 
-[`LOG.md`](LOG.md) has every run, including the failures and my mistakes.
+[`LOG.md`](LOG.md) has every run, including the failures and the mistakes.
 
-## How I work
+## How the tests are run
 
-I test the measuring tools on known notes before I test the model. For the main studies I write the hypotheses and stop rules down before the run, and when something changes I add a new file instead of editing the old one. Bad results get published too. Every method I test will get the same number of tries, with "generate many times and keep the best" as a baseline. I don't use a language model to judge music; final claims will come from people listening blind. Each number in this repo can be traced to a result file, and the audio can be made again from code with fixed seeds (the same device gives the same result, but CPU and GPU can differ).
+The measuring tools are tested on known notes before the model is. For the main studies, the hypotheses and stop rules are written down before the run (I asked for this), and when something changes, a new file is added instead of editing the old one. Bad results get published too. Every method tested will get the same number of tries, with "generate many times and keep the best" as a baseline. No language model judges the music; final claims will come from people listening blind (I asked for this too). Each number in this repo can be traced to a result file, and the audio can be made again from code with fixed seeds (the same device gives the same result, but CPU and GPU can differ).
 
 ## Run it
 
