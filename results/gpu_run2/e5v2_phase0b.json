@@ -1,0 +1,105 @@
+{
+ "decision": "selected",
+ "cell": "rep-rend-flute",
+ "attempt": 1,
+ "per_arm": {
+  "rep-rend-flute": {
+   "n_pass": 88,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.7857142857142857,
+   "k1_pass": true,
+   "excluded": false
+  },
+  "rep-rend-synth_voice": {
+   "n_pass": 84,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.75,
+   "k1_pass": true,
+   "excluded": false
+  },
+  "rep-rend-clarinet": {
+   "n_pass": 88,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.7857142857142857,
+   "k1_pass": true,
+   "excluded": false
+  },
+  "rep-t18-flute": {
+   "n_pass": 41,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.36607142857142855,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "rep-t18-synth_voice": {
+   "n_pass": 43,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.38392857142857145,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "rep-t18-clarinet": {
+   "n_pass": 39,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.3482142857142857,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "t2m-rend-flute": {
+   "n_pass": 60,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.5357142857142857,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "t2m-rend-synth_voice": {
+   "n_pass": 65,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.5803571428571429,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "t2m-rend-clarinet": {
+   "n_pass": 65,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.5803571428571429,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "t2m-t18-flute": {
+   "n_pass": 14,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.125,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "t2m-t18-synth_voice": {
+   "n_pass": 13,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.11607142857142858,
+   "k1_pass": false,
+   "excluded": false
+  },
+  "t2m-t18-clarinet": {
+   "n_pass": 10,
+   "n_planned": 112,
+   "need": 84,
+   "rate": 0.08928571428571429,
+   "k1_pass": false,
+   "excluded": false
+  }
+ },
+ "quality_file_sha256": "6fd98feef59223111e00790311dafed33154ffa5a050b90af71924b1227f9c42",
+ "utc": "2026-10-28T11:11:40Z"
+}

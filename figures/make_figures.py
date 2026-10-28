@@ -207,6 +207,66 @@ def fig_e4(th, name):
     save(fig, OUT / f"e4_tradeoff_{name}.svg", th)
 
 
+RUN2 = "results/gpu_run2"
+
+
+def fig_e5(th, name):
+    """E5 v2: how well the gap matches each answer, per condition, as registered (ALL draws).
+
+    One axis: each index is accuracy against an answer minus accuracy against a shuffled copy of it (0 = chance).
+    Blue: the answer the pattern asks for. Orange: a plain copy of B. Ticks: the registered thresholds."""
+    s = load(f"{RUN2}/e5v2_main.json")["summary"]
+    ix, h4 = s["indices"]["ALL"], s["verdicts"]["H4"]
+    rows = [("lit", "A B A _", [("rule", "CI_lit", 0.25)]),
+            ("ctl", "A B C _", [("copy", "CI_ctl", None)]),
+            ("rel+2", "A B A+2 _", [("rule", "RI+2", 0.15), ("copy", "LI+2", None)]),
+            ("rel+5", "A B A+5 _", [("rule", "RI+5", 0.15), ("copy", "LI+5", None)]),
+            ("rel−3", "A B A−3 _", [("rule", "RI-3", 0.15), ("copy", "LI-3", None)]),
+            ("seq", "A A+2 A+4 _", []),
+            ("ana", "A A+5 B _", [("rule", "ANA", 0.15)]),
+            ("null", "silence _", [("copy", "CI_null", None)])]
+    color = {"rule": th["s1"], "copy": th["s2"]}
+    marker = {"rule": "o", "copy": "D"}
+    fig, ax = plt.subplots(figsize=(8.6, 5.6), facecolor=th["surface"])
+    fig.subplots_adjust(left=0.20, right=0.97, top=0.78, bottom=0.13)
+    ax.axvline(0, color=th["axis"], linewidth=1, zorder=2)
+    n = len(rows)
+    for i, (cond, ctx, marks) in enumerate(rows):
+        y = n - 1 - i
+        offs = [0.0] if len(marks) == 1 else [0.17, -0.17]
+        for (kind, key, thr), dy in zip(marks, offs):
+            v = ix[key]
+            ax.plot([v["lo"], v["hi"]], [y + dy, y + dy], color=color[kind], linewidth=2, solid_capstyle="round", zorder=3)
+            ax.scatter([v["mean"]], [y + dy], s=64 if kind == "rule" else 52, marker=marker[kind], color=color[kind],
+                       edgecolors=th["surface"], linewidths=2, zorder=4)
+            ax.text(v["hi"] + 0.015, y + dy, f"{v['mean']:.2f}", va="center", fontsize=9.5, color=th["ink2"], zorder=4)
+            if thr is not None:
+                half = 0.12 if len(marks) == 2 else 0.2
+                ax.plot([thr, thr], [y + dy - half, y + dy + half], color=th["ink2"], linewidth=1.5, zorder=3)
+        if cond == "seq":
+            k, m = h4["tests_ALL"]["binomial"]["k"], h4["tests_ALL"]["binomial"]["n"]
+            ax.text(0.015, y, f"gap matched the next step A+6 in {k} of {m} draws (needed 20%)", va="center",
+                    fontsize=9.5, color=th["ink2"], zorder=4)
+    ax.set_yticks(range(n))
+    ax.set_yticklabels([f"{c}   {ctx}" for c, ctx, _ in rows][::-1], color=th["ink"], fontsize=10.5)
+    style(ax, th)
+    ax.set_xlim(-0.08, 0.68)
+    ax.set_ylim(-0.6, n - 0.4)
+    ax.set_xticks([0, 0.25, 0.5])
+    ax.set_xticklabels(["0 (chance)", "0.25", "0.50"])
+    ax.scatter([], [], s=64, marker="o", color=th["s1"], label="Gap vs the answer the pattern asks for")
+    ax.scatter([], [], s=52, marker="D", color=th["s2"], label="Gap vs a plain copy of B")
+    ax.plot([], [], color=th["ink2"], linewidth=1.5, marker="|", markersize=9, linestyle="none", label="Registered threshold")
+    top_legend(fig, ax, th, 0.865)
+    fig.text(0.02, 0.965, "The model repeats a pattern; transposing and extending it stay near zero", color=th["ink"],
+             fontsize=13.5, fontweight="bold", va="top")
+    fig.text(0.02, 0.915, "Match to an answer minus match to a shuffled answer, mean and 95% CI over 36 melodies",
+             color=th["ink2"], fontsize=10.5, va="top")
+    fig.text(0.02, 0.02, f"4 draws per melody and condition; flute lines, repaint, NVIDIA L4. Source: {RUN2}/e5v2_main.json",
+             color=th["muted"], fontsize=8.5, va="bottom")
+    save(fig, OUT / f"e5_motif_{name}.svg", th)
+
+
 def hero(th, name):
     """Schematic of a planner-renderer song model, the measured melody survival on each path, and the hook."""
     s = e1_pooled(3)
@@ -254,4 +314,5 @@ if __name__ == "__main__":
         fig_e1b(th, name)
         fig_e0(th, name)
         fig_e4(th, name)
+        fig_e5(th, name)
     print(sorted(p.name for p in OUT.glob("*.svg")))

@@ -1,0 +1,41 @@
+{
+ "b1_allowed": true,
+ "reasons": [],
+ "labels": [
+  "B1 allowed"
+ ],
+ "scale": "full",
+ "test_flags": [],
+ "registration": "/content/work/repo/experiments/e5_motif/registration/addendum_2.json",
+ "registered_sha256": {
+  "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+  "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+  "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+  "dacapo/attn_tap.py": "97b0548997794233211db75d85605250d4ff42e58fd75eb691980c53a12333d9",
+  "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+  "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+  "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+  "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911"
+ },
+ "code_sha256": {
+  "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+  "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+  "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+  "dacapo/attn_tap.py": "97b0548997794233211db75d85605250d4ff42e58fd75eb691980c53a12333d9",
+  "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+  "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+  "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+  "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911"
+ },
+ "git_commit": "83d46e706fdc27e50bbfd73cefdef488fa731e0a",
+ "git_tracked_changes": false,
+ "n_planned": 88,
+ "n_generated": 88,
+ "n_failed": 0,
+ "n_missing": 0,
+ "n_scored": 88,
+ "whisper_models": [
+  "openai/whisper-large-v3@06f233fe06e710322aca913c1bc4249a0d71fce1"
+ ],
+ "finished_utc": "2026-10-28T12:36:06Z"
+}

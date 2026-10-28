@@ -177,3 +177,63 @@ One confirmed problem was in the notebook, which is not a registered file. The c
 - The labelled listening examples in the package overlap the blind listening pack. Nobody should hear the labelled examples before doing the blind test.
 - K0 rounds its AUC to 4 decimals before the 0.9 test. The lowest registered AUC is 0.944, so no result changes.
 - The H3 summary leaves out one registered label ("below threshold, CI excludes 0"). It will be added in the write-up.
+
+## 2026-10-28: Run A on the GPU (E5 v2 and the E6 read-out)
+
+I ran Run A in Colab on an NVIDIA L4 with commit `83d46e7`, the code registered in addendum 2. Run all started at 09:43:35Z and finished at about 12:37Z, 173 minutes in all: setup 15.4 min, A0 1.6 min, Phase 0b 71.1 min, the confirmatory grid with quality and scoring 65.1 min (scoring alone took 177 s), the E6 read-out 19.3 min and packaging 0.8 min. Install and download time before that isn't recorded. The registered outputs are in `results/gpu_run2/` (its README lists them). The ledgers, logs, design and provenance files, the grid's quality file, the audio and the blind-listening pack are kept outside the repo, and the listening key is a separate file.
+
+### Setup and A0
+
+Setup found the registration intact (`registration_ok`, no uncommitted files) and rendered every source with the hash in its manifest. The scorer reproduced every stored v1 number. K0 on the Colab renders passed in all three timbres: flute classification 0.9829 and 1-wrong-note AUC 0.9653, synth voice 0.987 and 0.9961, clarinet 0.9852 and 0.9444, with no render mismatch. All 24 hard A0 checks passed, including the decode chunk of 256 with no CPU or out-of-memory decode. A repeat and a run in a fresh process gave bit-identical latents and audio (max difference 0.0).
+
+### Phase 0b (K1 and the cell choice)
+
+1344 repaints on the pilot melodies mel00-mel13, 112 gaps per cell. Three cells passed K1 (84 of 112 needed): repaint with the source as rendered, for flute (88), clarinet (88) and synth voice (84). The other nine cells passed 10 to 65 gaps. Repaint with the source cut at 18 s passed 39 to 43, text2music as rendered 60 to 65, and text2music cut at 18 s 10 to 14. Flute and clarinet tied at 88, and the registered tie order (flute before synth voice before clarinet) chose `rep-rend-flute`. The whole grid ran in that cell.
+
+### E5 v2: the confirmatory grid
+
+1152 repaints: 36 new melodies (v2c00-v2c35) × 8 conditions × 4 draws. None was missing or lost.
+
+Quality passed. Q1: 804 of 1008 non-null gaps passed the gate (0.798; 756 needed). Q2: 246 of 252 cells had at least 2 passing draws (0.976; 189 needed). Pass rates per condition: lit 0.875, ctl 0.778, rel+2 0.771, rel+5 0.778, rel-3 0.771, seq 0.8125, ana 0.799. Lit passed more often than ctl (exact McNemar 17 against 3, p = 0.0026), but the gap between the rates (0.097) is under the 0.10 that would add the "differential gating" label.
+
+Paper level: `supported:H1,H2`. All numbers are the registered estimator on ALL draws (36 melodies), with 95% bootstrap CIs over melodies; PASS is the gate-passing draws.
+- H1, supported. CI_lit 0.471 [0.405, 0.536], threshold 0.25. PASS 0.498 [0.426, 0.570] (label: PASS meets the threshold).
+- H2, supported. CI_lit - CI_ctl 0.365 [0.306, 0.425] in ALL and 0.403 [0.327, 0.479] in PASS, threshold 0.15, 36 common melodies each. CI_ctl alone is 0.106 [0.063, 0.152].
+- H3, not supported for any k. RI+2 -0.021 [-0.043, 0.001], RI+5 0.002 [-0.024, 0.028], RI-3 0.020 [-0.002, 0.041], threshold 0.15. RI_k - RI_k(X-ctl): -0.011 [-0.034, 0.014], 0.017 [-0.009, 0.042], 0.028 [0.005, 0.050]. RI_k - LI_k is negative for every k: -0.152 [-0.221, -0.089], -0.096 [-0.158, -0.040], -0.082 [-0.136, -0.030]. LI_k is 0.131 [0.076, 0.193], 0.098 [0.051, 0.151] and 0.103 [0.057, 0.150], so the gap leans toward the unmoved B. Every LI_k is under 0.15, so the registered "literal-lag copier" label doesn't apply to any k. PASS: RI -0.012, 0.012 and 0.025; RI_k - RI_k(X-ctl) 0.000 [-0.028, 0.028], 0.019 [-0.013, 0.051] and 0.029 [0.003, 0.054].
+- H4, not supported. Rates in seq: T+6A 0.000, T+5A 0.000, T+7A 0.000, T+4A (copy-left) 0.035, T+2A (lag) 0.132, D 0.042, none 0.792, tie 0.000. T+6A came up in 0 of 144 draws, and 0 of 144 under both NULL and X-ctl, so both tests give p = 1 (sign test with no untied melodies; binomial with p0 = 0.5/144). PASS: 0 of 117.
+- H5, not supported. ANA 0.008 [-0.018, 0.034], threshold 0.15. PASS 0.007 [-0.025, 0.038] (label: PASS does not meet the threshold).
+- K2 not triggered: on v2c00-v2c05, CI_lit 0.520 and CI_ctl 0.077, and it needs both under 0.10.
+- K3 not triggered: the H2 difference is far above 0.05 in ALL and in PASS.
+
+The label "below threshold, CI excludes 0" is registered for a negative benchmark, which this run isn't. The earlier entry said it would be added in the write-up, so for the record: it fits only the H3 clause RI-3 - RI-3(X-ctl), 0.028 [0.005, 0.050] in ALL and 0.029 [0.003, 0.054] in PASS. CI_null is -0.025 [-0.044, -0.007].
+
+Exploratory, from the per-draw classification at tau 0.7: 74 of 144 lit gaps were classified as B, against 12 of 144 ctl gaps.
+
+What it means: the model continues A B A with B, and that depends on the pattern, not only on the 8 s lag. It doesn't carry a transposition over to B, extend a sequence, or complete an analogy. These are instrumental flute lines filled by repaint in one model, scored by a pitch tracker, and the blind listening test hasn't been done yet.
+
+### Checks after the run
+
+Agents rechecked the run from the files. `e5_terminal.json` holds the sha256 of `e5v2_main.json`. All 18 code hashes and 14 data hashes in the result files equal addendum 2, and the repo at `83d46e7` matches them. Both design files name the sha256 of `addendum_2.json`, and the first generation (10:00:53Z) came after `addendum_utc` (2026-10-27T18:08:52Z). The ledgers have one pass and one attempt each: Phase 0b 1344 started and 1344 done, the grid 1152 and 1152, with no missing, extra, duplicate or lost job. All 2496 seed pairs match the committed table and its sha256 derivation, Phase 0b and the grid share none, and no reserved seed was used. Every quality-file wav hash equals the ledger's.
+
+A separate recompute, both with the repo's `motif_stats.summarize` and with an independent numpy version, reproduced every stored number and verdict, to within 1.7e-16. It used numpy 2.5.4 locally where Colab used 2.1.3.
+
+### E6: the lyric read-out (B1 allowed)
+
+88 clips planned, 88 generated and scored, 0 failed. Every condition of the registered rule passed:
+- Vocal gate: 76 of 88 clips (0.864; 44 needed).
+- Evaluable clips: 50 (20 needed): 37 from the E4 lines and 13 from the verses. Another 26 vocal clips had fewer than 4 words matched to Whisper.
+- Median over clips of the per-clip median onset error against Whisper: 0.21 s (0.25 s allowed).
+- The alignment heads beat the median of the 200 random sets in 49 of 50 clips (0.98; 75% needed). The random sets' median error was 1.95 s, and none of the 200 did as well as the alignment set.
+- ACE-Step's own `get_lyric_timestamp` worked on every clip, and both aligners reproduced it.
+
+Descriptive numbers, outside the rule: 95% cluster-bootstrap intervals of 0.795 to 0.932 for the vocal rate, 0.18 to 0.22 s for the error and 0.944 to 1.0 for the beat rate. The heads' word starts lag Whisper's by a median of 0.20 s (signed), and 65% of matched words are within 0.25 s. Re-noising seeds 43 and 44 give 0.20 and 0.21 s. MMS forced alignment differs from Whisper by a median of 0.39 s on these clips, and from the heads by 0.21 s. Six of the seven alignment heads are the six best single heads (0.10 to 0.22 s); the seventh, layer 3 head 11, is at 2.41 s. The E4 lines give 0.20 s and the verses 0.24 s. So B1, the lyric clock, can run in Run B. The read-out shows the heads follow word timing in finished audio, not that they control it.
+
+### What went wrong
+
+Nothing stopped the run, but four small things are worth recording.
+- The run state was on the Colab disk, not on Drive (`durable: false` in the status file). Addendum 2 asks that every start be reported, and this was the only one: one pass, attempt 1, no interruption.
+- The per-run check doesn't test the decode settings, as the review before the run noted. The ledgers show all 2496 runs with decode chunk 256, no CPU decode and no out-of-memory line, and the logs agree.
+- Null gaps weren't silent this time. Their level had a median of -21.7 dBFS (-46.4 to -12.8), and 21 of 144 were classified as D, the bar after the gap. In v1, 0 of 12 were voiced. Addendum 2 expected silent null gaps, which would make the NULL comparison in H4 easy to pass. Here it made no difference, because T+6A was 0 in every condition it was compared with.
+- Some result files have no `git_commit` field. The hashes above tie them to the run, and every file that has the field names `83d46e7`.
+
+The labelled listening examples in the package still overlap the blind pack (60 clips). Nobody should hear them before doing the blind test.

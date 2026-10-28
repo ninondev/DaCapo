@@ -74,6 +74,33 @@ The working guess is that melody and lyrics have to be guided together, one syll
 
 <sub>12 melodies (3 for trying settings, 9 for testing) × 21 settings × 2 seeds. Words come from a Whisper large-v3 transcript. This test is exploratory: its settings weren't registered before the run. Code: [`experiments/e4_sing`](experiments/e4_sing/).</sub>
 
+### Can it develop a motif?
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/e5_motif_dark.svg">
+  <img alt="Dot plot with 95% CIs over 36 melodies, 0 is chance. How well the gap matches the answer the pattern asks for: after A B A, 0.47 (0.40 to 0.54), threshold 0.25; after A B and A moved up 2, up 5 or down 3 semitones, -0.02, 0.00 and 0.02, threshold 0.15; analogy (A, A+5, B), 0.01, threshold 0.15. How well it matches a plain copy of B: after A B C, 0.11 (0.06 to 0.15); in the three transposed patterns, 0.13, 0.10 and 0.10; after silence, -0.03. After the sequence A, A+2, A+4, the gap matched the next step A+6 in 0 of 144 draws, where 20% was needed." src="figures/e5_motif_light.svg" width="100%">
+</picture>
+
+This is the main study (E5). The test plays a pattern of three short melodies, 4 seconds each, leaves a gap from 12 to 16 s, and lets the model fill it (repaint). After A B A, the pattern asks for B. Each gap is scored by how well its notes match the answer, minus how well they match a shuffled answer with the same rhythm and the same notes, so 0 is chance. The hypotheses and thresholds are in the [pre-registration](experiments/e5_motif/registration/prereg.json). The first run failed its own quality check ([`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json)), so this is run 2, registered in [addendum 2](experiments/e5_motif/registration/addendum_2.json) before it started. Before run 2, a check of the measuring tool failed once. I chose to rebuild the melodies, as the registration says, instead of changing the check ([`LOG.md`](LOG.md) has the details).
+
+- Repeat (H1, supported): after A B A, the gap's score for B was 0.47 (95% CI 0.40 to 0.54). The registered bar was 0.25.
+- Repeat because of the pattern (H2, supported): after A B C, nothing asks for B, and the score for B was only 0.11 (0.06 to 0.15). The difference, 0.37 (0.31 to 0.42), clears the registered 0.15. It also holds in the gaps that passed the quality check (0.40, 0.33 to 0.48). So the model repeats B because the pattern calls for it, not only because B was played 8 seconds earlier.
+- Transposition (H3, not supported): after A B and then A moved up 2 semitones, the answer is B moved up 2. The gap didn't match it: -0.02, 0.00 and 0.02 for +2, +5 and -3 semitones, where 0.15 was needed. It matched plain, unmoved B a little more (0.13, 0.10 and 0.10).
+- Sequence (H4, not supported): after A, A+2, A+4, the gap never matched the next step A+6 (0 of 144 draws, 20% needed).
+- Analogy (H5, not supported): after A, A+5, B, the gap didn't match B+5: 0.01 (-0.02 to 0.03), where 0.15 was needed.
+
+So the model can continue a pattern it heard by repeating a part of it unchanged, and the pattern decides what it repeats. Transposition, sequence and analogy all stayed far below their registered thresholds. The largest of those effects, the -3 transposition compared with its A B C baseline, was 0.03 (0.005 to 0.05), where 0.15 was needed. The melodies are instrumental flute lines with no singing, filled by repaint, in one model. The scores come from a pitch tracker. People will listen to the clips blind before I claim anything about how they sound.
+
+<sub>36 new melodies × 8 conditions × 4 draws = 1152 gaps, NVIDIA L4, commit 83d46e7. Phase 0b picked the setting first (repaint, flute, 88 of 112 gaps passed, 84 needed). 804 of the 1008 gaps outside the silence condition passed the quality check (756 needed). Verdicts use all draws, as registered, and the CIs come from resampling melodies. Code: [`experiments/e5_motif`](experiments/e5_motif/).</sub>
+
+### Do the lyric heads follow the words?
+
+ACE-Step 1.5 uses seven attention heads to find when each lyric word is sung. The read-out (E6) checks whether they really follow the words before the lyric clock is built on them. Of 88 a cappella clips, 76 had singing (44 needed) and 50 could be scored, with at least 4 words matched to Whisper (20 needed). In a typical clip, the heads put each word's start 0.21 s from Whisper's time (0.25 s allowed). Random sets of 7 heads were off by a median of 1.95 s, and the real heads beat the typical random set in 49 of 50 clips (98%, where 75% was needed). So the registered rule allows the lyric clock (B1). Two cautions: Whisper and a second aligner (MMS) disagree with each other by a median of 0.39 s on these clips, so 0.21 s is within the noise of the reference. And six of the seven heads are the six best single heads, but the seventh (layer 3, head 11) is off by 2.41 s on its own.
+
+This shows the heads follow the timing of words in finished audio. It doesn't show they can control it; B1 tests that under its own rule. ACE-Step may have been trained to line these heads up with the words, so beating random heads is a sanity check, not a finding.
+
+<sub>88 clips: 12 lyric lines from E4 × 4 seeds and 4 verses × 2 voices × 5 seeds, 8-step turbo model, NVIDIA L4. Whisper large-v3 word times are the reference. The read-out is exploratory; its rule decides only whether B1 runs. Code: [`experiments/e6_clock`](experiments/e6_clock/).</sub>
+
 ### Measuring is hard
 
 <picture>
@@ -89,15 +116,11 @@ Before testing the model, the agents tested the measuring tools on audio where e
 
 The hooks live in [`dacapo/ace.py`](dacapo/ace.py). At each of the 8 denoising steps they show what the model expects the final audio to be, and an experiment can read it, change it, or swap the text, lyrics or audio part way through. If a hook changes nothing, the output is exactly the same as without it (difference 0.0 on CPU and GPU), so any change in the output comes from the edit itself.
 
-The main study (E5) asks whether the model can develop a motif. The test plays it a pattern like A B A, or a motif and the same motif moved up, and leaves a gap for the model to fill. Then it checks what the model put in the gap: a copy, a transposition, a sequence or an analogy, compared with shuffled melodies and wrong timing as controls. As I asked, the hypotheses, the stop rules and the code version were written down before the first run ([registration](experiments/e5_motif/registration/prereg.json)).
+Run A finished on 2026-10-28, and its results are above. The motif study (E5) found literal repetition of a pattern, and no transposition, sequence or analogy at the registered sizes. It goes on to its next phases, which ask which layers of the model make the copy and whether pointing the model at B can make it copy on purpose. Their design will be written down in a new addendum before they run, as the registration says.
 
-That first run failed its own quality check. Only 49% of the gaps had one clear melody line at a normal volume, and the rule required 75%, so by that rule it says nothing about motifs either way. The agents found two mistakes in their setup that can explain it: the model got the wrong task instruction for filling a gap, and every song started from the same noise. The result and a correction are in [`v1_outcome.json`](experiments/e5_motif/registration/v1_outcome.json).
+The lyric read-out (E6) passed, so the lyric clock (B1) comes next. It guides the seven lyric heads so each word starts on its note. Its rule was fixed in addendum 2 before Run A: it has to cut the timing error by at least 30% in 9 of the 12 lyric lines, word recall and the share of clips with singing may each drop by 0.10 at most, and steering random heads must help less than half as much.
 
-The fixed run, run 2, is registered in [addendum 2](experiments/e5_motif/registration/addendum_2.json) before it starts. It uses 36 new melodies, the right task instruction, and its own seed for every song. The addendum lists every rule, every change from the first registration, and the hash of every code file. The code checks those hashes before it runs.
-
-Run 2 starts with a check of the measuring tool (K0). The first time, it failed: some of the wrong notes it planted sat where the tool never looks. The registration says the melodies must be rebuilt after a failed check, so I chose that instead of changing the check. The agents rebuilt the melodies so that every note sits where the tool looks, and pushed this choice to GitHub before the check ran again. On the new melodies the check passed for all three instruments. The one-wrong-note AUC was 0.965 for flute, 0.996 for synth voice and 0.944 for clarinet, where 0.9 is required. Run 2 is ready for the GPU.
-
-The second study (E6) starts with a read-out. ACE-Step already uses seven attention heads to find when each lyric word is sung. The read-out checks whether those heads really follow the sung words, compared with 200 random sets of heads and with Whisper's word times. The lyric clock gets built only if they do. It would guide those heads so each syllable lands on its note, while the melody guide keeps the pitch.
+The blind listening test comes from the same run: 60 clips that people will hear without knowing which condition each one comes from. I asked for this, and until it's done the motif result rests on pitch-tracker scores.
 
 ## Status
 
@@ -109,8 +132,8 @@ The second study (E6) starts with a read-out. ACE-Step already uses seven attent
 | E2 | Can the code hook every denoising step without changing the output? | Done: exactly the same output on CPU and GPU |
 | E3 | Can the pitch be read from the audio latents for any instrument? | Exploratory: 0.88 on new instruments (chance 0.03); a special subspace is no better than the full latent |
 | E4 | Can it sing the right notes and clear words? | Exploratory: 12 melodies × 21 settings × 2 seeds |
-| E5 | Can it develop a motif? | Run 1 failed its quality check; run 2 is registered, passed its tool check and is ready for the GPU |
-| E6 | Can a lyric clock time each syllable? | The read-out is registered and ready for the GPU; the clock comes after it |
+| E5 | Can it develop a motif? | Run 2 done on GPU: it repeats part of a pattern unchanged (H1, H2 supported), but shows no transposition, sequence or analogy at the registered thresholds (H3 to H5 not supported). Run 1 failed its quality check |
+| E6 | Can a lyric clock time each syllable? | Read-out done on GPU: the lyric heads put word starts a median 0.21 s from Whisper's, so the clock (B1) is allowed and comes next |
 | E7 | How well do Suno and ACE-Step sing a melody you give them? | Registered; waiting for the Suno songs |
 
 [`LOG.md`](LOG.md) has every run, including the failures and the mistakes.
@@ -148,6 +171,7 @@ dacapo/          the library: melodies, rendering, pitch tracking, scores, and a
 experiments/     one folder per study (e0 to e7), plus run_all.py, which the notebook calls
 results/cpu/     result files from CPU runs
 results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
+results/gpu_run2/ result files from Run A: the motif study and the lyric read-out (NVIDIA L4)
 figures/         charts and the script that draws them
 tests/           unit tests and a render-to-analysis test
 LOG.md           every run, in order
@@ -163,8 +187,10 @@ notebook.ipynb   the Colab notebook
 - [x] Hooks on every denoising step, checked to be exact on CPU and GPU
 - [x] Map the trade-off between right notes and clear words (exploratory)
 - [x] Motif study: register the fixed run before it starts
-- [ ] Run the fixed motif study and the lyric read-out on the GPU (Run A)
-- [ ] Lyric clock (E6), if the read-out passes
+- [x] Run the fixed motif study and the lyric read-out on the GPU (Run A)
+- [ ] Blind listening test of the motif clips from Run A
+- [ ] Motif study, next phases: which layers make the copy (new addendum first)
+- [ ] Lyric clock (E6, stage B1); the read-out passed
 - [ ] Measure Suno and ACE-Step on the same 12 melodies (E7, Stage S)
 - [ ] Train a melody adapter inside the renderer (E7), unless Stage S shows it is already solved
 - [ ] More seeds, and a blind listening test with musicians

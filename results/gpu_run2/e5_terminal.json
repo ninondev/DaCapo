@@ -1,0 +1,11 @@
+{
+ "paper_level": "supported:H1,H2",
+ "stage": "score",
+ "strike": null,
+ "scale": "full",
+ "utc": "2026-10-28T12:16:47Z",
+ "result_sha256": "acc176047787b54559a62ebf8bb47bd82882ef54d5cd381986837219ad880e5d",
+ "K2": "not_triggered",
+ "K3": "not_triggered",
+ "attempt": 1
+}

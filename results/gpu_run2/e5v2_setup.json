@@ -1,0 +1,70 @@
+{
+ "utc_start": "2026-10-28T09:43:35Z",
+ "registration_ok": true,
+ "changed": [],
+ "scale": "full",
+ "git_uncommitted": [],
+ "render_exit_codes": {
+  "manifest_p0b.json": 0,
+  "manifest_v2.json": 0
+ },
+ "regress_v1": 0,
+ "measurement": 0,
+ "k0": {
+  "73": {
+   "passed": true,
+   "registered": {
+    "program": 73,
+    "file_exists": true,
+    "addendum_agrees": true,
+    "passed": true
+   },
+   "overall": 0.9829,
+   "wrong_note_auc": {
+    "1_wrong": 0.9653,
+    "2_wrong": 1.0
+   },
+   "render_mismatch": 0,
+   "n_items": 36
+  },
+  "54": {
+   "passed": true,
+   "registered": {
+    "program": 54,
+    "file_exists": true,
+    "addendum_agrees": true,
+    "passed": true
+   },
+   "overall": 0.987,
+   "wrong_note_auc": {
+    "1_wrong": 0.9961,
+    "2_wrong": 1.0
+   },
+   "render_mismatch": 0,
+   "n_items": 36
+  },
+  "71": {
+   "passed": true,
+   "registered": {
+    "program": 71,
+    "file_exists": true,
+    "addendum_agrees": true,
+    "passed": true
+   },
+   "overall": 0.9852,
+   "wrong_note_auc": {
+    "1_wrong": 0.9444,
+    "2_wrong": 0.9992
+   },
+   "render_mismatch": 0,
+   "n_items": 36
+  }
+ },
+ "space": null,
+ "environment": {
+  "fluidsynth": "FluidSynth runtime version 2.3.4",
+  "sf2_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+  "sf2_registered": true
+ },
+ "utc_end": "2026-10-28T09:58:57Z"
+}
