@@ -359,3 +359,7 @@ tolerance is a choice, not a measurement of GPU run-to-run variation. A
 runtime that fails the probe every time still blocks completion, which is
 intended. A missing file, unlike an unreadable one, is still allowed and only
 listed.
+
+## Upload pack rendered (2026-10-28)
+
+The owner ran the CPU pack notebook on Colab (Python 3.13.18, FluidSynth 2.3.4) at commit f40132d with a clean checkout. Its hash record is in `records/suno_upload_hashes.json`. The same pack rendered again on the development machine from the same commit gave identical SHA256 values for all 49 files (12 MIDI files, 12 lyric files, 24 WAV files and the recording table), so the files sent to Suno are exactly the registered ones. No Suno song existed yet.
