@@ -65,7 +65,7 @@ ACE-Step is pinned to commit `{ACE_COMMIT[:7]}` and the weights to revision `{HF
         code("""
 SCALE = "full"                          # "full" is the registered run; "tiny" only tests the code
 STAGES = None                           # None = Run A; the v1 stages, e.g. ["smoke", "e1"], need SCALE = "quick"
-REPO_COMMIT = None                      # None = the commit the first run recorded on Drive, else the default branch
+REPO_COMMIT = None                      # None = the commit this scale's run recorded on Drive, else the default branch
 DRIVE_DIR = "/content/drive/MyDrive/dacapo_runA"
 import os, subprocess, sys
 print(subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv"], capture_output=True, text=True).stdout)
@@ -83,18 +83,31 @@ except Exception as exc:
     print("The run continues on the local disk; a runtime reset would lose its state.")
 """),
         code(f"""
-# Code. A resumed run checks out the commit its first runtime used (kept on Drive), so a later push to the
-# default branch cannot change the code mid-run; set REPO_COMMIT to move to another commit on purpose.
-if not os.path.exists("/content/work/repo"):
-    !git clone -q {REPO_URL} /content/work/repo
-commit_file = f"{{DRIVE_DIR}}/repo_commit.txt" if DRIVE_DIR else None
+# Code. A resumed run checks out the commit its first runtime used (kept on Drive for this scale only), so a
+# later push to the default branch cannot change the code mid-run. A pin left by a run that never started
+# must match the default branch; set REPO_COMMIT to move to another commit on purpose.
+def git(*a):
+    return subprocess.run(["git", "-C", "/content/work/repo", *a], check=True, capture_output=True, text=True).stdout.strip()
+if not os.path.exists("/content/work/repo/.git"):
+    subprocess.run(["git", "clone", "-q", "{REPO_URL}", "/content/work/repo"], check=True)
+git("fetch", "-q", "origin")
+latest = git("rev-parse", "origin/HEAD")
+state_dir = f"{{DRIVE_DIR}}/{{SCALE}}" if DRIVE_DIR else None
+commit_file = f"{{state_dir}}/repo_commit.txt" if state_dir else None
+started = bool(state_dir) and os.path.exists(f"{{state_dir}}/status.json")
 if not REPO_COMMIT and commit_file and os.path.exists(commit_file):
-    REPO_COMMIT = open(commit_file).read().strip()
-if REPO_COMMIT:
-    !git -C /content/work/repo checkout -q {{REPO_COMMIT}}
-head = subprocess.run(["git", "-C", "/content/work/repo", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
+    pin = open(commit_file).read().strip()
+    if pin and (started or pin == latest):
+        REPO_COMMIT = pin
+    elif pin:
+        raise SystemExit(f"Drive pins commit {{pin[:7]}} for scale {{SCALE}}, but no {{SCALE}} run has started and the "
+                         f"default branch is at {{latest[:7]}}. Delete {{commit_file}} to use the latest code, or set REPO_COMMIT.")
+git("checkout", "-q", REPO_COMMIT or latest)
+head = git("rev-parse", "HEAD")
 if commit_file:
+    os.makedirs(state_dir, exist_ok=True)
     open(commit_file, "w").write(head + "\\n")
+print("Da Capo HEAD", head, "| default branch", latest[:7], "| resumed run" if started else "| new run")
 !git -C /content/work/repo log -1 --format="Da Capo HEAD %h %cd"
 !git -C /content/work/repo log -1 --format="addendum 2 last changed in %h %cd" -- experiments/e5_motif/registration/addendum_2.json
 """),

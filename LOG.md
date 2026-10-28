@@ -167,3 +167,13 @@ E7 asks whether a song model can sing a melody the user gives it, with clear wor
 The rules, the hashes of the scoring code and the decision rule are in `experiments/e7_melody_adapter/prereg_suno.json`, registered before any song was generated. If Suno already sings the given melodies accurately on one route (median note accuracy at least 0.90 and median word recall at least 0.60), the plan changes. Otherwise the next step is a melody adapter trained inside the renderer. Suno's scores stay private until its terms of use are checked.
 
 Two rounds of review before registration fixed problems that would have stopped the scoring halfway through the Suno songs, refused to load the model, or let a run with broken files report a result. Details are in `experiments/e7_melody_adapter/LOG.md`.
+
+## 2026-10-28: independent review before the GPU run
+
+Before the GPU run, new review agents that had not seen the design work read the registered E5 v2 and E6 code against the registration, ran its tests, and ran small CPU generations where reading the code was not enough. They found no problem that would make the run invalid. The instruction that reaches the model, the repaint window, the noise per melody and draw, the 416 seeds, the gates and the statistics all match the registration, and the quality gate reproduces the 59 passing gaps of v1.
+
+One confirmed problem was in the notebook, which is not a registered file. The commit pin it keeps on Drive was shared by every scale, so a pin left by an earlier test could have made the full run use old code. The pin is now kept per scale, and a pin from a run that never started must match the latest code or the notebook stops. The smaller findings are noted here and handled after the run:
+- The per-job check doesn't re-test the decode settings (chunk 256, no CPU fallback, no out-of-memory). Each job records them, so they will be checked in the ledger after the run.
+- The labelled listening examples in the package overlap the blind listening pack. Nobody should hear the labelled examples before doing the blind test.
+- K0 rounds its AUC to 4 decimals before the 0.9 test. The lowest registered AUC is 0.944, so no result changes.
+- The H3 summary leaves out one registered label ("below threshold, CI excludes 0"). It will be added in the write-up.
