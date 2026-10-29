@@ -1,0 +1,2479 @@
+{
+ "seed": 22,
+ "bpm": 100.0,
+ "lines": "experiments/e8_clock_sing/lines_b2.txt",
+ "lines_sha256": "1b2bab848fe878c28025c18bd0845a3d00f4003c06a04226dff057542adefcb1",
+ "author": "The 24 lines were written by the agents under the line rules of addendum 3 (section items), before any B2 generation.",
+ "generator": "experiments/e4_sing/make_items.py rhythm() and pitches(), numpy default_rng(22), keys C, D, F, G in turn",
+ "items": [
+  {
+   "id": "b2t00",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "dogs",
+    "bark",
+    "at",
+    "the",
+    "gate",
+    "when",
+    "the",
+    "moon",
+    "climbs",
+    "up",
+    "the",
+    "sky"
+   ],
+   "lyrics": "[Verse]\nThe dogs bark at the gate when the moon climbs up the sky",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t00_oohs.wav",
+    "clarinet": "guides/b2t00_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t01",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "We",
+    "walked",
+    "in",
+    "deep",
+    "snow",
+    "to",
+    "the",
+    "small",
+    "house",
+    "on",
+    "the",
+    "hill"
+   ],
+   "lyrics": "[Verse]\nWe walked in deep snow to the small house on the hill",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t01_oohs.wav",
+    "clarinet": "guides/b2t01_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t02",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Dark",
+    "clouds",
+    "float",
+    "on",
+    "as",
+    "the",
+    "tall",
+    "ship",
+    "leaves",
+    "the",
+    "bay"
+   ],
+   "lyrics": "[Verse]\nDark clouds float on as the tall ship leaves the bay",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t02_oohs.wav",
+    "clarinet": "guides/b2t02_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t03",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Bring",
+    "the",
+    "bread",
+    "and",
+    "the",
+    "cheese",
+    "to",
+    "the",
+    "long",
+    "bench",
+    "in",
+    "the",
+    "yard"
+   ],
+   "lyrics": "[Verse]\nBring the bread and the cheese to the long bench in the yard",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t03_oohs.wav",
+    "clarinet": "guides/b2t03_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t04",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "A",
+    "slow",
+    "train",
+    "heads",
+    "west",
+    "to",
+    "the",
+    "fields",
+    "of",
+    "wheat",
+    "and",
+    "small",
+    "farms"
+   ],
+   "lyrics": "[Verse]\nA slow train heads west to the fields of wheat and small farms",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t04_oohs.wav",
+    "clarinet": "guides/b2t04_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t05",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "She",
+    "lit",
+    "a",
+    "lamp",
+    "and",
+    "wrote",
+    "her",
+    "name",
+    "on",
+    "the",
+    "cold",
+    "glass"
+   ],
+   "lyrics": "[Verse]\nShe lit a lamp and wrote her name on the cold glass",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 2.7,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t05_oohs.wav",
+    "clarinet": "guides/b2t05_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t06",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "kids",
+    "ran",
+    "down",
+    "the",
+    "lane",
+    "to",
+    "swim",
+    "in",
+    "the",
+    "cool",
+    "pond"
+   ],
+   "lyrics": "[Verse]\nThe kids ran down the lane to swim in the cool pond",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 5.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t06_oohs.wav",
+    "clarinet": "guides/b2t06_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t07",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Pack",
+    "the",
+    "bags",
+    "and",
+    "lock",
+    "the",
+    "door",
+    "when",
+    "the",
+    "clock",
+    "strikes",
+    "ten"
+   ],
+   "lyrics": "[Verse]\nPack the bags and lock the door when the clock strikes ten",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t07_oohs.wav",
+    "clarinet": "guides/b2t07_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t08",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Gulls",
+    "swing",
+    "low",
+    "as",
+    "the",
+    "fish",
+    "boats",
+    "come",
+    "in",
+    "at",
+    "dusk"
+   ],
+   "lyrics": "[Verse]\nGulls swing low as the fish boats come in at dusk",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 65,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 3.6,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t08_oohs.wav",
+    "clarinet": "guides/b2t08_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t09",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "I",
+    "keep",
+    "a",
+    "small",
+    "box",
+    "of",
+    "old",
+    "notes",
+    "from",
+    "my",
+    "best",
+    "friend"
+   ],
+   "lyrics": "[Verse]\nI keep a small box of old notes from my best friend",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 17.0,
+      "dur": 2.7,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t09_oohs.wav",
+    "clarinet": "guides/b2t09_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t10",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "fox",
+    "creeps",
+    "out",
+    "of",
+    "the",
+    "barn",
+    "and",
+    "hides",
+    "in",
+    "the",
+    "tall",
+    "corn"
+   ],
+   "lyrics": "[Verse]\nThe fox creeps out of the barn and hides in the tall corn",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t10_oohs.wav",
+    "clarinet": "guides/b2t10_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t11",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "We",
+    "play",
+    "cards",
+    "near",
+    "the",
+    "stove",
+    "while",
+    "the",
+    "storm",
+    "shakes",
+    "the",
+    "trees"
+   ],
+   "lyrics": "[Verse]\nWe play cards near the stove while the storm shakes the trees",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t11_oohs.wav",
+    "clarinet": "guides/b2t11_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t12",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Her",
+    "coat",
+    "was",
+    "thick",
+    "and",
+    "warm",
+    "like",
+    "the",
+    "wool",
+    "of",
+    "a",
+    "sheep"
+   ],
+   "lyrics": "[Verse]\nHer coat was thick and warm like the wool of a sheep",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 65,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t12_oohs.wav",
+    "clarinet": "guides/b2t12_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t13",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Count",
+    "the",
+    "stars",
+    "with",
+    "me",
+    "as",
+    "the",
+    "last",
+    "bus",
+    "pulls",
+    "out"
+   ],
+   "lyrics": "[Verse]\nCount the stars with me as the last bus pulls out",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t13_oohs.wav",
+    "clarinet": "guides/b2t13_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t14",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "We",
+    "climbed",
+    "the",
+    "steep",
+    "path",
+    "to",
+    "the",
+    "top",
+    "and",
+    "saw",
+    "the",
+    "coast"
+   ],
+   "lyrics": "[Verse]\nWe climbed the steep path to the top and saw the coast",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t14_oohs.wav",
+    "clarinet": "guides/b2t14_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t15",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "cat",
+    "sleeps",
+    "on",
+    "the",
+    "front",
+    "step",
+    "in",
+    "the",
+    "heat",
+    "of",
+    "noon"
+   ],
+   "lyrics": "[Verse]\nThe cat sleeps on the front step in the heat of noon",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t15_oohs.wav",
+    "clarinet": "guides/b2t15_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t16",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Snap",
+    "the",
+    "twigs",
+    "and",
+    "stack",
+    "the",
+    "logs",
+    "to",
+    "keep",
+    "the",
+    "cold",
+    "out"
+   ],
+   "lyrics": "[Verse]\nSnap the twigs and stack the logs to keep the cold out",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t16_oohs.wav",
+    "clarinet": "guides/b2t16_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t17",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "My",
+    "heart",
+    "jumps",
+    "when",
+    "the",
+    "drums",
+    "start",
+    "and",
+    "the",
+    "crowd",
+    "sings",
+    "loud"
+   ],
+   "lyrics": "[Verse]\nMy heart jumps when the drums start and the crowd sings loud",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t17_oohs.wav",
+    "clarinet": "guides/b2t17_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t18",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "old",
+    "man",
+    "fixed",
+    "his",
+    "net",
+    "and",
+    "sang",
+    "of",
+    "the",
+    "long",
+    "hard",
+    "years"
+   ],
+   "lyrics": "[Verse]\nThe old man fixed his net and sang of the long hard years",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t18_oohs.wav",
+    "clarinet": "guides/b2t18_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t19",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Pick",
+    "the",
+    "plums",
+    "from",
+    "the",
+    "low",
+    "branch",
+    "and",
+    "fill",
+    "the",
+    "deep",
+    "bowl"
+   ],
+   "lyrics": "[Verse]\nPick the plums from the low branch and fill the deep bowl",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t19_oohs.wav",
+    "clarinet": "guides/b2t19_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t20",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Sing",
+    "me",
+    "a",
+    "tune",
+    "of",
+    "the",
+    "north",
+    "where",
+    "the",
+    "wolves",
+    "run",
+    "free"
+   ],
+   "lyrics": "[Verse]\nSing me a tune of the north where the wolves run free",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 65,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 17.0,
+      "dur": 2.7,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t20_oohs.wav",
+    "clarinet": "guides/b2t20_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t21",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "tram",
+    "stops",
+    "near",
+    "the",
+    "park",
+    "and",
+    "the",
+    "doors",
+    "swing",
+    "wide"
+   ],
+   "lyrics": "[Verse]\nThe tram stops near the park and the doors swing wide",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t21_oohs.wav",
+    "clarinet": "guides/b2t21_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t22",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Hang",
+    "the",
+    "flags",
+    "on",
+    "the",
+    "walls",
+    "and",
+    "let",
+    "the",
+    "march",
+    "start",
+    "at",
+    "once"
+   ],
+   "lyrics": "[Verse]\nHang the flags on the walls and let the march start at once",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t22_oohs.wav",
+    "clarinet": "guides/b2t22_clarinet.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "b2t23",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Dust",
+    "lies",
+    "on",
+    "the",
+    "shelf",
+    "and",
+    "dry",
+    "leaves",
+    "blow",
+    "in",
+    "from",
+    "the",
+    "street"
+   ],
+   "lyrics": "[Verse]\nDust lies on the shelf and dry leaves blow in from the street",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/b2t23_oohs.wav",
+    "clarinet": "guides/b2t23_clarinet.wav"
+   },
+   "duration": 14.0
+  }
+ ]
+}

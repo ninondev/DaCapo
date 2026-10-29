@@ -1,0 +1,2243 @@
+{
+ "addendum_utc": "2026-10-29T04:50:31Z",
+ "title": "Addendum 3: B2 of Run B, the lyric clock with a melody guide (clocked cover)",
+ "refers_to": [
+  "experiments/e5_motif/registration/addendum_2.json",
+  "experiments/e5_motif/registration/addendum_2_b1code.json"
+ ],
+ "addendum_2_sha256": "81f49fae47d58701328227b6a768c9433cc4ae23a715edd2dd67f482c6f54144",
+ "b1_code_addendum": {
+  "path": "experiments/e5_motif/registration/addendum_2_b1code.json",
+  "sha256": "e3f74a031352dda9aa77bd2e661ff2456dc42bbdd783e4be2c108b27303e1f04",
+  "addendum_utc": "2026-10-28T20:56:49Z",
+  "code_sha256": {
+   "dacapo/attn_bias.py": "f76b20d77f3fb0e9f79231f5b38385be502640066d810c34e84714b8315673c3",
+   "experiments/e6_clock/clock_score.py": "19eb4d54f4bdcbe02cc9a0ebd59cfd5e557fad2eb08a4a4312253037cfa4875c",
+   "experiments/e6_clock/run_b1.py": "d7221a37cfbedfcb48c1c8e887147a2b450abfc4ac1912c47ad8534d25797c5c",
+   "experiments/e6_clock/runb_cpu_test.py": "fb6017bccd9e73a9dbeeadc6854e772433c6da1cc4e33058f324424e0e9874a8",
+   "experiments/e6_clock/register_b1code.py": "37e888c4fe2bd9ba97c5b5287429fbbffd3ea9d6b4d91ce27c9556fbca0267cc"
+  },
+  "tests_sha256": {
+   "experiments/e6_clock/tests/test_b1_attn_bias.py": "71b4c559962d904b15daf858574c453d96d299410f514dec676d0fa2150e1a66",
+   "experiments/e6_clock/tests/test_b1_plan_decide.py": "269dfd6104cddabde12ce4d05ee66a759dae26076d13790da94674e469647625",
+   "experiments/e6_clock/tests/test_b1_scorer.py": "61170980c2881c54fbe216c1afbae0460beb7b2355add0c7cffdeae727509bf3",
+   "experiments/e6_clock/tests/test_b1_tiny_dit.py": "19ce6cb45d48b1249768d5d0d5789100057536edd1f05c31f293b5fcd5d45fc8"
+  },
+  "cpu_test": {
+   "path": "results/cpu/runb_cpu_test.json",
+   "sha256": "34fcaca7b21a3e024341b3c345a8e911ccde0880a7bee3beb971f7d1fed4b798",
+   "passed": true,
+   "guide_sha256": "52671a2c49fc956e8d3d5506fc399bd9f522275f28883074893f98331fc875e7"
+  }
+ },
+ "custody": "This addendum is committed and pushed before Run B and before any B2 generation. The B1 code addendum (addendum_2_b1code.json) is committed and pushed first; addendum 3 follows it. That push is the external timestamp. Addendum 3 changes nothing that addendum 2 or the B1 code addendum registers.",
+ "sections": [
+  {
+   "id": "question",
+   "text": "Given a melody guide and a lyric, ACE-Step 1.5 turbo sings either the notes or the words and rarely both: 4 of 504 E4 clips had NPA >= 0.5 and word recall >= 0.5. B2 asks whether the lyric clock lets the model sing new melodies with the right notes and recognisable words. The clock is a pre-softmax bias that ties each word's lyric tokens to its written note window. The claim is about a pipeline a user could run: one recipe fixed on development lines, the user's melody rendered as a guide, the user's lyric, 4 draws, and an automatic selector that keeps the draw with the largest q. The selector needs only the melody and the lyric. The rationale is a hypothesis. Without a guide the model sings these lines early and fast. Under a moderate guide, the guide's note times and the model's own lyric timing disagree, and E4's outputs settle this by dropping the words. The clock moves the lyric attention onto the guide's note times, so the two conditions point the same way."
+  },
+  {
+   "id": "design",
+   "text": "Stage D (development) picks one clocked recipe, S*, and one unclocked recipe, B*, on the 12 E4 lines. Stage T (test) runs S*, its controls and the unclocked comparators on 24 new lines with new melodies and new seeds, 4 draws each, and decides. Registered code (select_b2.py) computes the selection from the Stage D rows, and the selection is fixed before Stage T starts. B1 runs first, as addendum 2 and the B1 code addendum fix it; B2 takes nothing from B1's results."
+  },
+  {
+   "id": "generation",
+   "text": "acestep-v15-turbo at ca1e85f with the weights of addendum 2, 8 steps, shift 3.0, DCW off, batch 1, no language model, sdpa attention. Caption 'a cappella, solo female vocal, no instruments, no drums, dry studio recording, clear lyrics'; bpm 100; keyscale the item's key; vocal language en; lyrics '[Verse]\\n' + line. Text2music runs are 14.0 s. Guided runs use task cover-nofsq, audio_cover_strength k/8, cover_noise_strength 0 and the guide WAV as source, so their length follows the guide. The E5 v2 determinism settings apply (setup_determinism, VAE decode chunk 256), and the global RNG is pinned to rng_seed right before each run. Clips are written by soundfile as 16-bit PCM WAV; pred_latents and target_latents are kept as float32 .npy."
+  },
+  {
+   "id": "items",
+   "text": "Dev: item00-item11 of experiments/e4_sing/manifest.json (registered in addendum 2). Test: b2t00-b2t23 of experiments/e8_clock_sing/manifest_b2.json, built by make_items_b2.py from the 24 lines of lines_b2.txt with E4's rhythm() and pitches() imported unchanged, numpy default_rng(22), keys C, D, F and G in turn, 100 BPM, a 4-beat lead-in, 16 beats, MIDI 57-76, each note sounding for 0.9 of its length, one note per word. The lines were written by the agents. The line rules are checked in code before registration: 11-13 words; every word one syllable (make_items_b2.syllables), letters only and capitalised as in E4's lines (the first word and I); no line from E4 or E6; every word 1-2 Qwen3 tokens; the tokenizer check passes (the header gives s = 9, the token words equal the lyric words, and the word count equals the note count); no word from the registered homophone list (sea, see, night, knight, one, won, sun, son, hear, here, road, rode, whole, hole, by, buy, new, knew, right, write, red, read, tale, tail, blue, blew, week, weak, made, maid, meet, meat); none of thank, you, watch, subscribe. A failing line is rewritten before registration, never after."
+  },
+  {
+   "id": "guides",
+   "text": "FluidSynth 2.3.4 with FluidR3_GM.sf2 (sha256 74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0, as in E5 v2), 48 kHz, gain 0.6, reverb and chorus off (dacapo/render.py), program 53 (Voice Oohs) and program 71 (clarinet). One guide per item and timbre: 36 x 2 = 72 WAVs, E4's guides included because they were never stored. Their sha256 are in guides_b2.json and in section plan.guides_sha256. They are not in git; Run B renders them again in setup and stops on any mismatch. item00's Voice Oohs guide is the guide the CPU test rendered."
+  },
+  {
+   "id": "seeds",
+   "text": "Stage D: (dit_seed, rng_seed) = dacapo.seeds.run_seeds('runB2-dev', item_id, r), r = 0, 1, 2. Stage T: run_seeds('runB2-test', item_id, r), r = 0-3. GPU A0: run_seeds('runB2-a0', 'item00', r), r = 0, 1. The tiny test scale uses the tags runB2-dev-tiny, runB2-test-tiny and runB2-a0-tiny. All arms and configs of an (item, draw) share the pair. seeds_b2.json holds every pair. register_b2.py checks that no new DiT seed or pin equals another new one or any earlier one: E4 {1, 2}; E5 v1 {1001, 2002} and the reserved {1001, 2002, 20261027}; the E5 v2 seed table and every E5 v2 tiny tag; E6 61000 + 10i + r and 62000 + 100v + 10w + r with their +900000 pins; E6 acceptance seeds 6000 and 6001 with their pins; B1 63000 + 10i + r with their pins; the CPU test, 6002 and 906002; 42, 43, 44, 20261027 and 20261029; and the seed tags of E7 Stage S. It also checks that dev and test share no seed. On a collision it refuses and never re-draws. There was no collision."
+  },
+  {
+   "id": "intervention",
+   "text": "The clock is dacapo/attn_bias.py of the B1 code addendum, unchanged: forward pre-hooks on decoder.layers[L].cross_attn for L = 2-6, at all 8 steps, in both the cover and the non-cover phase. Word j's tokens (keys 9 + token index; tok_check_b2.json lists them per item) get +beta in query frames whose centre, 0.08q + 0.04 s, lies in [onset_j, onset_(j+1)); the last word's window runs to its note end. Untouched: lead-in frames, frames after the last note, the [Verse] tag, the header, timbre and caption keys, and all other heads. Head sets: A = the seven alignment heads (L2h6, L3h10, L3h11, L4h3, L5h8, L5h9, L6h8); W = all 16 heads of layers 2-6. Beta 2, 4 and 8 are exact in bf16. 'No hook' means the context manager is not entered (see the fallback in section run). For a head that gives a word probability p in its window, beta raises it to p e^beta / (p e^beta + 1 - p): from p = 0.10, 0.45 at beta 2, 0.86 at beta 4 and 0.997 at beta 8."
+  },
+  {
+   "id": "stage_d",
+   "text": "30 configs: guide {oohs, clarinet} x k {3, 4, 5} x clock {none, A2, A4, A8, W2}, where A4 means head set A at beta 4. 12 items x 3 draws gives 1,080 runs, in the order item, draw, config. A Stage D run that still fails after 3 attempts, or is not scored, counts as q = 0 and gate failed."
+  },
+  {
+   "id": "selection",
+   "text": "select_b2.py, a pure function of the Stage D rows. For config c and item i, bo3_ci is the largest q over the 3 draws, and J_dev(c) is the number of items with bo3_ci >= 0.5. A clocked config is eligible if its vocal-gate rate over its 36 clips is at least 0.60. S* is the eligible clocked config with the highest key (J_dev, mean_i bo3_ci, mean per-clip q); remaining ties go, in order, to fewer steered heads, smaller beta, smaller k, and oohs before clarinet. B* is the unclocked config with the highest value of the same key. If no clocked config is eligible, Stage T is not run, and B2 is 'not supported' with the label 'clock silences the voice'. select writes b2_selection.json with S*, B*, the full dev table and the sha256 of the Stage D ledgers and of the code; the file has no time stamp, so the same rows give the same file. select writes the file's sha256 as the first line of the Stage T ledger. Stage T refuses to start without that line, and every Stage T row carries the hash. select is idempotent and refuses to change once a Stage T row exists. decide recomputes the selection from the Stage D rows and treats a mismatch as a P0 failure."
+  },
+  {
+   "id": "stage_t",
+   "text": "Each arm gets 4 draws on each of the 24 test items. Arms that coincide are merged, which leaves 5-8 arms and 480-768 runs, in the order item, draw, arm. 1. S*. 2. S*_b0: S*'s guide and k, no hook; it isolates the clock. 3. S*_rand, only if S* steers set A: S*'s guide, k and beta on E6 random set 3 + r for draw r (readout.random_head_sets()[3 + r]). 4. S*_shuf: S*'s guide, k, heads and beta, with the windows rotated so that word j's tokens get the window of word (j + floor(n/2)) mod n: the same heads and nearly the same number of biased pairs, with the wrong timing. 5. ctx_oohs_k3, no hook: E4's best mean best-of-2 q. 6. ctx_oohs_k4, no hook: E4's arm with the most joint clips. 7. noguide, no hook: the reference for words and the vocal gate, not a comparator. 8. B*, if it is none of the above."
+  },
+  {
+   "id": "measures",
+   "text": "One hashed scorer (score_b2.py on clock_score.py) computes everything; nothing is scored by hand. Vocal gate: E6's, unchanged (htdemucs vocal stem at least 20% of stem energy, at least 1.0 s of its 50 ms frames at -40 dBFS or more, pre-normalisation peak at least 0.01; a missing peak fails). NPA_v: E4's note_pitch_accuracy (dacapo/metrics.py through experiments/e4_sing/score_sing.py pitch_scores) on SwiftF0 of the htdemucs vocal stem: confidence >= 0.5, 65-1500 Hz, one global lag within +-0.5 s from frame_metrics, the median f0 over each note's central 60%, +-50 cents, absolute octave; unvoiced notes count as wrong. WR: lyric words matched in order (dacapo.words.match_words) to the word chunks of Whisper large-v3, divided by the number of lyric words; Whisper runs at revision 06f233fe06e710322aca913c1bc4249a0d71fce1, fp16, greedy, English, with word timestamps, on the full mix, and the scorer raises on the CPU and on any other model or revision. q = gate x min(NPA_v, WR). A clip is joint if q >= 0.5 and strict if q >= 0.75. Item outcome: bo4_i is the q of the draw the selector keeps; J_i = 1 if bo4_i >= 0.5; J(arm) is the mean of J_i over the 24 items. Selector: keep the draw with the largest q; ties go to higher WR, then higher NPA_v, then the lower draw index. Secondary measures, reported and never in the rule: NPA on the mix, octave-tolerant NPA, and NPA against the other melodies of the set (23 for test, 11 for dev: chance); E4's multiset WR and capped WER; onset error, the median |Whisper word onset - written onset| over matched words, signed and absolute, for clips with at least 4 matched words; ordered recall in the first half, the second half and on the last word; gate rate; the vowel-only rate; the wordless rate; the guide-copy index; instrument bleed; WR from the pinned CTC model facebook/wav2vec2-large-960h-lv60-self at revision 54074b1c16f4de6a5ad59affb4caa8f2ea03a119 (fp32, greedy) on the mix; best-of-n curves for n = 1-4."
+  },
+  {
+   "id": "rule",
+   "text": "decide_b2.py applies the rule to Stage T only. Values are rounded to 1e-6 before comparison. Intervals come from a cluster bootstrap over items: 10,000 resamples, numpy default_rng(0), draws kept within items, all arms resampled together. P0, integrity; all of these must hold: the code, manifest, guide, soundfont and seed-table hashes match addendum 3 at generation (every run row records them, and the sha256 of the guide it used) and at decision, when setup has rendered the guides again with the registered soundfont, dacapo/attn_bias.py and experiments/e6_clock/clock_score.py match the B1 code addendum, and the addendum 2 files are unchanged; the selection recomputed from the Stage D rows equals b2_selection.json, its hash is the first line of the Stage T ledger, written before the first Stage T generation, and every Stage T row carries it; the CPU beta 0 test passed before registration; the GPU A0 check is recorded, it ran on the registered code, and every B2 row follows its report; if it found a difference, the registered fallback ran: every unclocked B2 run, in Stage D and Stage T, has the hook attached at beta 0 on set A (B1's no-hook arm stays as registered); every hooked run made 40 hook calls with max biased key < n_lyr, and every unhooked run made none; within each (item, draw, guide), every cover run received the same guide latent (sha256 of target_latents), whatever its k; every scored clip, in Stage D and Stage T, used the pinned Whisper revision, and every generated clip has its pre-normalisation peak; at most 5% of planned Stage T runs are missing, failed after 3 attempts with the same seeds, or unscored, and these count as q = 0. P1, clock credit; both must hold: Delta_J = J(S*) - max_b J(b) >= 0.20, where b ranges over the unclocked guided arms run in Stage T (S*_b0, ctx_oohs_k3, ctx_oohs_k4 and B*), so the comparator is the best of them on the test data; and the 2.5th percentile of the bootstrap Delta_J, with the max retaken in every resample, is above 0. P2, capability: J(S*) >= 0.50, a joint clip for at least 12 of the 24 melodies. Verdicts: 'B2 supported: the lyric clock gives the capability' if P0, P1 and P2 hold; 'Clock helps, capability not reached' if P0 and P1 hold and P2 fails; 'Capability reached, clock not credited' if P0 and P2 hold and P1 fails; 'Not supported' if P0 holds and both P1 and P2 fail, with the failed conditions named; 'Technical' if P0 fails, and no effect is claimed either way."
+  },
+  {
+   "id": "labels",
+   "text": "Labels never change a verdict. Strict capability: S* has bo4 >= 0.75 on at least 12 of 24 items. Head-specific clock (only if S* steers set A): mean bo4 q(S*) - mean bo4 q(S*_rand) >= 0.5 x (mean bo4 q(S*) - mean bo4 q(S*_b0)); otherwise 'nonspecific bias'. Timing-specific: the 95% lower bound of mean_i [bo4 q(S*) - bo4 q(S*_shuf)] is above 0; 'emphasis, not timing' if J(S*_shuf) - max_b J(b) >= 0.20 and that bound is at most 0. Timbre copy: S*'s vowel-only rate over its 96 clips is at least 0.30. Words cut: S*'s second-half recall is at least 0.20 below its first-half recall. Dev futility: S* does not rank above B* on the dev selection key; Stage T runs anyway. Frontier moved: mean NPA_v(S*) >= mean NPA_v(S*_b0) - 0.10 and mean WR(S*) >= mean WR(S*_b0) + 0.20. Independent ASR: P2 recomputed with the CTC model's WR on the same selected draws."
+  },
+  {
+   "id": "analysis",
+   "text": "For every arm: J; joint and strict clips out of 96; mean bo4 q and mean per-clip q; NPA_v, mix NPA, WR and gate rate; vowel-only and wordless rates; onset errors and recall by position; guide-copy index and bleed rate; CTC WR; best-of-n curves. Paired contrasts with 95% intervals: mean bo4 q and J of S* against each other arm. S* - S*_b0 is the clock's effect at a fixed recipe; S* - S*_rand and S* - S*_shuf are the specificity contrasts. The dev table is reported in full with the selection."
+  },
+  {
+   "id": "reporting",
+   "text": "Every planned clip, failures included, with its metrics, in item order. Demo by rule: for each of the 24 test items, the S* draw the selector keeps, next to the primary comparator's kept draw. The primary comparator is the unclocked guided arm with the highest J on test; ties go to mean bo4 q, then to the arm order of section stage_t. All 48 clips are published. A short reel, if one is made, is the 6 items with the highest S* q (ties go to item order), labelled 'top 6 of 24 by rule', with the full set linked. A blind A/B pack of the same 24 pairs asks 'melody right' and 'words clear'. The pair order comes from numpy default_rng(20261029); which clip of a pair is A comes from the operating system's random source and is written only to the key, so the code and the seed do not reveal it, and packaging again keeps the sides of the existing key. The pack and its key are separate files outside the package, and listeners get the pack before they hear the demo. The pack is exploratory. There is no owner demo."
+  },
+  {
+   "id": "success",
+   "text": "'B2 supported' requires P0, P1 and P2. In plain terms, with one recipe fixed before the test, 4 draws and the automatic selector, ACE-Step 1.5 turbo sings at least half of 24 unseen melodies with at least half the notes right on the vocal stem and at least half the words recognised in order, and does so for at least 5 more melodies than the best unclocked recipe chosen with hindsight. The labels say whether the gain belongs to the alignment heads, to the timing, or to neither."
+  },
+  {
+   "id": "disclosures",
+   "text": "E4's results chose the guide range, the k range and the comparators. No E6 read-out clip, onset or table enters B1 or B2; E6 figures appear only as background. The owner chose to include W2 in the Stage D grid; there is no owner demo. The owner approved one Colab L4 session of about 5-6 hours on the spec's time estimate, which left out Whisper's repetition loops on wordless clips. With the loop allowance of section run, the run is expected to take about 10-13 hours after the registered trim, and a run that Colab stops resumes from Drive in a new session. On 2026-10-29, before registration, the owner accepted this estimate instead of a smaller design. Before registration, the B2-type generations were these. The CPU layout test (item00, seed 6002) was not scored and not listened to. The tiny test chain (experiments/run_b.py --scale tiny --device cpu) ran several passes on this machine's CPU to test the code, with the tiny seed tags. Each pass made 2 A0 runs and 2 Stage D runs on item00, and 2 Stage T runs: on the test item b2t00 (Voice Oohs k4, with and without the clock) in the passes before review, and on the dev item item01 since then, so the tiny scale no longer touches a test item. Each pass also made B1's two tiny runs (see the B1 code addendum). The clips were scored with Whisper small.en and the pinned CTC model on the CPU, and every verdict was 'test only'. Nobody listened to them; their transcripts were read only to check the code, no setting or rule changed because of what they contained, and they were deleted. A review noted Whisper loops in some of these transcripts; the loop allowance added after it rests only on Run A's E4 and E6 records. No B2 setting changes after the first B2 generation, apart from the registered timing trim (section run). Any deviation goes into the ledger and the write-up."
+  },
+  {
+   "id": "run",
+   "text": "experiments/run_b.py runs every stage and resumes: setup, a0, b1, b2dev, select, b2test, decide, package. setup checks every hash (addendum 2, the B1 code addendum, addendum 3), runs readout.py check-gate with E6_RES=results/gpu_run2 (B1 needs it), checks the soundfont, renders the 72 guides again and compares their sha256, checks the seed table, and loads the model to record sdpa, the alignment heads, the determinism flags, the ACE-Step commit, the weights' sha256 and the lyric keys of all 36 items through ACE-Step's own path. A0 runs on the GPU with the runB2-a0 seeds on item00: text2music without the hook twice (determinism, recorded), text2music with the hook at beta 0 on set A, Voice Oohs k4 without the hook, with the hook at beta 0 and with beta 2, and Voice Oohs k3 and k5 without the hook. It requires 8 denoiser calls, the peak, 40 hook calls with every key below n_lyr, equal lyric rows of the encoder states at step 0 (cover) and step 4 (non-cover), one guide latent across the cover runs of k3, k4 and k5, a change of pred_latents at beta 2, and the registered scorer on all A0 clips (Whisper revision checked). If either beta 0 run differs from its no-hook run (torch.equal on pred_latents), the registered fallback applies to every unclocked B2 run, and B1 gets a note. Timing: for guided and for text2music runs separately, A0 takes the median generation seconds (leaving out the first run, which warms up the GPU) plus the median scoring seconds, and adds an allowance for Whisper's repetition loops ('oh, oh, ...' up to its 448-token limit): 46 s on 25% of guided runs and on 8% of text2music runs. On Run A's L4 such a clip took about 50 s to score against a median of 4.1 s (results/gpu_run2/e6_scores.json), and loops hit 22 of 96 guided E4 clips at k3 and k4 and 6 of 88 E6 text2music clips. A0 projects hours = 35/60 + (text2music runs x text2music seconds + guided runs x guided seconds) / 3600, where B1's 180 runs and Stage T's noguide arm are text2music and Stage D and the other seven Stage T arms are guided (Stage T at its largest, 8 arms). Past 7.0 h, A0 drops the five clarinet-k3 configs (-180 runs), and if still past 7.0 h, noguide from Stage T (-96 runs); the trim is fixed before Stage D. A0 runs once: a later runtime reuses its report while the report, its inputs and the code still hash to what A0 recorded. Stop rules: a setup or A0 failure before any B1 or B2 generation stops the run (package still collects the logs); the same failure on a resumed run stops generation, and B1's decision, decide and package still run; a B1 problem does not stop B2 unless the shared code fails its hash check; Stage T needs the selection line in its ledger; once B1 and B2 are under way, decide always runs and writes 'Technical' when P0 fails. Resume: each stage keeps an append-only JSONL ledger; a run is done when its WAV and latents hash to its ledger row, and a clip is scored when its score row names the WAV's sha256; a failed run gets at most 3 attempts with the same seeds. The tiny scale runs every stage with 1-2 runs each, on the CPU, with Whisper small.en and its own seed tags; its Stage T runs on the dev item item01, and its verdicts are 'test only'. The full scale refuses the CPU and test flags. Registered outputs go to results/gpu_run3/; audio and packs stay outside the repository."
+  }
+ ],
+ "fill_ins": [
+  {
+   "id": "names",
+   "text": "Configs are named guide_kK_clock: oohs_k3_A2 is the Voice Oohs guide at k = 3 with beta 2 on set A; R2 marks beta 2 on random set 3 + r, and the suffix _shuf the rotated windows; noguide is text2music. Stage T arms carry the labels of section stage_t; a merged run carries all of its labels."
+  },
+  {
+   "id": "missing",
+   "text": "A planned clip that is missing, failed after 3 attempts or not scored counts as q 0, gate failed, WR 0, NPA_v 0, mix NPA 0 and CTC WR 0. The vowel-only, wordless and bleed rates and the guide-copy index are reported over scored clips; the timbre-copy label divides S*'s vowel-only clips by all 96 planned clips. A missing, failed or unscored clip is not vowel-only; a scored clip with an empty transcript is."
+  },
+  {
+   "id": "positions",
+   "text": "The first half of a line is its first floor(n/2) words, the second half the rest; the last word is word n. Recall at a position set uses the same in-order matching (clock_score.ordered_recall)."
+  },
+  {
+   "id": "text",
+   "text": "Vowel-only: the transcript has no word, or at least half of its normalised words fully match (o+h*|a+h+|(la)+|m+|h+m+). Wordless: vowel-only, or the transcript is one or more of the registered E4 hallucination strings (thank you for watching, transcript emily beynon, satsang with mooji, thank you, oh my god, bf watch tv, bells chiming, oh god, oh yeah, so, um) with only vowel words besides. E4's capped WER compares lower-case lyric words with the transcript (score_sing compared the capitalised words)."
+  },
+  {
+   "id": "audio",
+   "text": "Guide-copy index: the largest Pearson correlation, over lags within +-0.5 s, between the log-mel spectrograms (16 kHz, 64 mels, 10 ms hop) of the vocal stem and the guide, on the frames where the guide is within 40 dB of its loudest frame; noguide clips are compared with the item's Voice Oohs guide as a reference level. Bleed: the non-vocal stems hold more than half of the stem energy. CTC: greedy argmax decoding of the mix resampled to 16 kHz mono."
+  },
+  {
+   "id": "best_of_n",
+   "text": "Best-of-n averages, over items and over every subset of n of the 4 draws, the largest q (and the share of items whose largest q is at least 0.5)."
+  },
+  {
+   "id": "labels",
+   "text": "The head-specific label needs a positive clock effect: if mean bo4 q(S*) <= mean bo4 q(S*_b0), it reads 'no clock effect to attribute'. The timing bound is the 2.5th percentile of the same item bootstrap; when neither 'timing-specific' nor 'emphasis, not timing' applies, the label reads 'timing not shown'. Dev futility compares (J_dev, mean bo3, mean q) only."
+  },
+  {
+   "id": "selection",
+   "text": "decide compares S*, B*, the config list, the trim and the dev table recomputed from the Stage D rows with b2_selection.json."
+  },
+  {
+   "id": "a0",
+   "text": "A0's hard checks stop the run on failure; the determinism repeat and the timing are recorded. Seconds per run, for guided and for text2music runs separately, are the median generation seconds of that kind's A0 runs (without the first A0 run) plus the median scoring seconds of its A0 clips, plus the loop allowance of section run; a kind A0 did not run takes the other kind's medians. Every B2 row records the sha256 of the A0 report it followed, and the report records the code it ran on."
+  },
+  {
+   "id": "rounding",
+   "text": "Values are rounded to 1e-6 before every comparison, as in E6 and B1. Percentiles are numpy's linear interpolation."
+  }
+ ],
+ "plan": {
+  "dev_items": [
+   "item00",
+   "item01",
+   "item02",
+   "item03",
+   "item04",
+   "item05",
+   "item06",
+   "item07",
+   "item08",
+   "item09",
+   "item10",
+   "item11"
+  ],
+  "test_items": [
+   "b2t00",
+   "b2t01",
+   "b2t02",
+   "b2t03",
+   "b2t04",
+   "b2t05",
+   "b2t06",
+   "b2t07",
+   "b2t08",
+   "b2t09",
+   "b2t10",
+   "b2t11",
+   "b2t12",
+   "b2t13",
+   "b2t14",
+   "b2t15",
+   "b2t16",
+   "b2t17",
+   "b2t18",
+   "b2t19",
+   "b2t20",
+   "b2t21",
+   "b2t22",
+   "b2t23"
+  ],
+  "lines": [
+   "The dogs bark at the gate when the moon climbs up the sky",
+   "We walked in deep snow to the small house on the hill",
+   "Dark clouds float on as the tall ship leaves the bay",
+   "Bring the bread and the cheese to the long bench in the yard",
+   "A slow train heads west to the fields of wheat and small farms",
+   "She lit a lamp and wrote her name on the cold glass",
+   "The kids ran down the lane to swim in the cool pond",
+   "Pack the bags and lock the door when the clock strikes ten",
+   "Gulls swing low as the fish boats come in at dusk",
+   "I keep a small box of old notes from my best friend",
+   "The fox creeps out of the barn and hides in the tall corn",
+   "We play cards near the stove while the storm shakes the trees",
+   "Her coat was thick and warm like the wool of a sheep",
+   "Count the stars with me as the last bus pulls out",
+   "We climbed the steep path to the top and saw the coast",
+   "The cat sleeps on the front step in the heat of noon",
+   "Snap the twigs and stack the logs to keep the cold out",
+   "My heart jumps when the drums start and the crowd sings loud",
+   "The old man fixed his net and sang of the long hard years",
+   "Pick the plums from the low branch and fill the deep bowl",
+   "Sing me a tune of the north where the wolves run free",
+   "The tram stops near the park and the doors swing wide",
+   "Hang the flags on the walls and let the march start at once",
+   "Dust lies on the shelf and dry leaves blow in from the street"
+  ],
+  "stage_d_configs": [
+   "oohs_k3_none",
+   "oohs_k3_A2",
+   "oohs_k3_A4",
+   "oohs_k3_A8",
+   "oohs_k3_W2",
+   "oohs_k4_none",
+   "oohs_k4_A2",
+   "oohs_k4_A4",
+   "oohs_k4_A8",
+   "oohs_k4_W2",
+   "oohs_k5_none",
+   "oohs_k5_A2",
+   "oohs_k5_A4",
+   "oohs_k5_A8",
+   "oohs_k5_W2",
+   "clarinet_k3_none",
+   "clarinet_k3_A2",
+   "clarinet_k3_A4",
+   "clarinet_k3_A8",
+   "clarinet_k3_W2",
+   "clarinet_k4_none",
+   "clarinet_k4_A2",
+   "clarinet_k4_A4",
+   "clarinet_k4_A8",
+   "clarinet_k4_W2",
+   "clarinet_k5_none",
+   "clarinet_k5_A2",
+   "clarinet_k5_A4",
+   "clarinet_k5_A8",
+   "clarinet_k5_W2"
+  ],
+  "n_stage_d_runs": 1080,
+  "stage_t_arm_order": [
+   "S*",
+   "S*_b0",
+   "S*_rand",
+   "S*_shuf",
+   "ctx_oohs_k3",
+   "ctx_oohs_k4",
+   "noguide",
+   "B*"
+  ],
+  "comparators": [
+   "S*_b0",
+   "ctx_oohs_k3",
+   "ctx_oohs_k4",
+   "B*"
+  ],
+  "a0_runs": [
+   {
+    "name": "t2m_nohook",
+    "draw": 0,
+    "config": "noguide",
+    "beta": null,
+    "why": "reference"
+   },
+   {
+    "name": "t2m_nohook_repeat",
+    "draw": 0,
+    "config": "noguide",
+    "beta": null,
+    "why": "determinism repeat"
+   },
+   {
+    "name": "t2m_A0",
+    "draw": 0,
+    "config": "noguide",
+    "beta": 0.0,
+    "why": "beta 0 bit-identity, text2music"
+   },
+   {
+    "name": "cover_nohook",
+    "draw": 1,
+    "config": "oohs_k4_none",
+    "beta": null,
+    "why": "reference"
+   },
+   {
+    "name": "cover_A0",
+    "draw": 1,
+    "config": "oohs_k4_none",
+    "beta": 0.0,
+    "why": "beta 0 bit-identity, cover-nofsq k4"
+   },
+   {
+    "name": "cover_A2",
+    "draw": 1,
+    "config": "oohs_k4_none",
+    "beta": 2.0,
+    "why": "beta 2 changes the output"
+   },
+   {
+    "name": "cover_k3",
+    "draw": 1,
+    "config": "oohs_k3_none",
+    "beta": null,
+    "why": "the same guide latent at k3"
+   },
+   {
+    "name": "cover_k5",
+    "draw": 1,
+    "config": "oohs_k5_none",
+    "beta": null,
+    "why": "the same guide latent at k5"
+   }
+  ],
+  "head_sets": {
+   "A": {
+    "2": [
+     6
+    ],
+    "3": [
+     10,
+     11
+    ],
+    "4": [
+     3
+    ],
+    "5": [
+     8,
+     9
+    ],
+    "6": [
+     8
+    ]
+   },
+   "W": "all 16 heads of layers 2-6",
+   "R": {
+    "3": {
+     "2": [
+      4
+     ],
+     "3": [
+      8,
+      9
+     ],
+     "4": [
+      5
+     ],
+     "5": [
+      10,
+      11
+     ],
+     "6": [
+      2
+     ]
+    },
+    "4": {
+     "2": [
+      11
+     ],
+     "3": [
+      6,
+      7
+     ],
+     "4": [
+      10
+     ],
+     "5": [
+      2,
+      3
+     ],
+     "6": [
+      1
+     ]
+    },
+    "5": {
+     "2": [
+      2
+     ],
+     "3": [
+      12,
+      13
+     ],
+     "4": [
+      13
+     ],
+     "5": [
+      0,
+      1
+     ],
+     "6": [
+      14
+     ]
+    },
+    "6": {
+     "2": [
+      5
+     ],
+     "3": [
+      12,
+      13
+     ],
+     "4": [
+      8
+     ],
+     "5": [
+      0,
+      1
+     ],
+     "6": [
+      10
+     ]
+    }
+   }
+  },
+  "tags": {
+   "full": {
+    "a0": "runB2-a0",
+    "dev": "runB2-dev",
+    "test": "runB2-test"
+   },
+   "tiny": {
+    "a0": "runB2-a0-tiny",
+    "dev": "runB2-dev-tiny",
+    "test": "runB2-test-tiny"
+   }
+  },
+  "seed_table_sha256": "eb41d3e4ba884d95267c039bfb131e50fb80c44b5f624c32a7f7f7793e6ce254",
+  "guides_sha256": {
+   "item00": {
+    "oohs": "52671a2c49fc956e8d3d5506fc399bd9f522275f28883074893f98331fc875e7",
+    "clarinet": "fb79bdc11f8c49ea65160c9e30adad9d56b8981f03548b7843416b859653d9c0"
+   },
+   "item01": {
+    "oohs": "2b78f79d087015d46c41e99a4284dd254d7bbb2a32c35efa434b9b11ad84ab56",
+    "clarinet": "fbc9f5af6b6d4e6b6608f59306ad04f4f807d40e0285928ac412b6e030740830"
+   },
+   "item02": {
+    "oohs": "7d9d7235d04148192766d1eb07372fd30f6a26e8ff56a0167b7cae335a3445a3",
+    "clarinet": "0a33fb90ddcdf792dc363ba52a980e4620eb5eb57ac691136b5530b834fcfe2b"
+   },
+   "item03": {
+    "oohs": "b8c379b21c232a930088b45aeb4464e246340a1144ffa48b800e2333fc97cb2c",
+    "clarinet": "6cc88d378893e5d4b8f55a7b4c2265b99bb21d3456bf477db0fa87838c5506ea"
+   },
+   "item04": {
+    "oohs": "c1e1769501f30db7623498d3bd38f3f15f487344512aefdaec4aacbdc7bd9588",
+    "clarinet": "bca5fcc4b1fed23384ef7d1ae3bca9fa5c07dbb0c46b3d68b6e961452acecb22"
+   },
+   "item05": {
+    "oohs": "ee71fe226e081c2622aa6b507e828186d11ec8616773e27ef52ee925cf7d184b",
+    "clarinet": "702d684becc6ffe143c4857117f391e8bfd5b63190d294c27b53dfdc7cc7d315"
+   },
+   "item06": {
+    "oohs": "e925635ae5ba1ad32cc8162e5b6f2663f558252a62bf20f1eec12f6074dbccfc",
+    "clarinet": "91415a3fbaba08e2a899f0a787745b799db105b22a335251492dfcf53876b9ef"
+   },
+   "item07": {
+    "oohs": "3e81eb2b75a8b857a89a73d8c0d362938f4eabfdb46665409cd551c649d75369",
+    "clarinet": "8600d6318737099202e033e058d295370c406bfcf9a6384739690cf278dd91a9"
+   },
+   "item08": {
+    "oohs": "6739ac44d779d612ef1a51b710ff15dd2acfdae530f66f252791ded745ec2970",
+    "clarinet": "e06effff57f7f1064646b3b7c93e54843a6f61d2f21b2aab319d30af82410693"
+   },
+   "item09": {
+    "oohs": "b2d9cca728b307aa09971869ab29fd94b05c30646cf9874e6eb9309285c77c28",
+    "clarinet": "984c5409c0528b749624d3f49b39af9a5765b96a4efa44276fcb53b6d3fe0233"
+   },
+   "item10": {
+    "oohs": "e25119154a5637a2715ac01c5ccd50b7b9ebeefd7790d21770479dea1641393b",
+    "clarinet": "298e1c1d3a47ca309967685b3460c4010117051e77c5c8e017cbe0a7857389a1"
+   },
+   "item11": {
+    "oohs": "f362f1cdae7e12b247d64158da2f613c3184d7c95eb8421d799e8d977f02bb43",
+    "clarinet": "4fd1161168610d959f893b0aa329a8596607abf2c9d8ae43fc0f575204237ce4"
+   },
+   "b2t00": {
+    "oohs": "aabbcf7baeedf749b0e85341b2f6a10dfcd31e9868cad36c25649fc8949529ad",
+    "clarinet": "0ec650965e08be586a11dd2c690cb9352eaf497d8a617dafc898066f5ba65e35"
+   },
+   "b2t01": {
+    "oohs": "e872764cc8ab8e07cadd8ba84e43bb5382be3c4483c25daef4ccdc5abf06aa07",
+    "clarinet": "60d754227568805589dad20864ef862881ff83e3d56e3f220796b8633db31e20"
+   },
+   "b2t02": {
+    "oohs": "792a37e7b89865a2db1d21e63c7e9d5099acecf777fea18f081d901c1af6a98b",
+    "clarinet": "bbf40f1fee0b29b85e2c689b5eb12346245771717cd2cf89418d62636f56ea0b"
+   },
+   "b2t03": {
+    "oohs": "63662d13d34b9fb51735c1c7f69691f2c2a4a05c1ea1fd73b5e507a0a1b254d2",
+    "clarinet": "323b2d58d5a86548257401938a8d80a983e592d8e74c7380b267b0eb1ce0fdcc"
+   },
+   "b2t04": {
+    "oohs": "34023987ac282942b2a151fe246702a0b3275993dc9d6a6ef8d10f03f66f5f30",
+    "clarinet": "1c5c3f2ca0343cb8cee89a1f9fa6df326d1fd33bdc21fce82591d89258300c4c"
+   },
+   "b2t05": {
+    "oohs": "2db22dad9d71ce314e60c96fcf6ae49c5785a1b50cb97e4df32be233bec4784d",
+    "clarinet": "2fb2d9c3aac6eaf5852b896dc0990cea52cf8dedb9611890a020bad44b24d911"
+   },
+   "b2t06": {
+    "oohs": "0d27b30caf33dd7a0e42a84c97a889364a5cc4b9e41eb0100c39a95c9d1b28ad",
+    "clarinet": "c42f12fb1f554366b2b7786fcb6892bc4eed2cf4e5fea72dfa85ab7e126edc54"
+   },
+   "b2t07": {
+    "oohs": "1c9342c0433e7c6e653d68632b5938e1d4b6259bb27f18288c27e09e3ef0ce32",
+    "clarinet": "01ce1e65efdb972f3db8c67dab8efd92e07dc682a57bf6c8ca8d833f9d396296"
+   },
+   "b2t08": {
+    "oohs": "64093dac5b08494e1b9c9d77136df16159fa1eb088af747f101373ddc5209b6f",
+    "clarinet": "09ac1c97e4c5182db8aa9acc4ca2e79528e738492833415fc56cb72a94d4e955"
+   },
+   "b2t09": {
+    "oohs": "fde86aa56fba9930d4b98657969d58f68a8f1d994513b92d826b8b1d253f3829",
+    "clarinet": "431fc871361199f9ef16848c702fc8541f0b51f92673105d677a5e53d31df169"
+   },
+   "b2t10": {
+    "oohs": "8585980903f4824b273a83efe3ace4dc8c3a3f1d11e8f4cfb38f91fe813217de",
+    "clarinet": "d722297f961a41ddf3f190d8decedb6569b37c68532171d4f830949668728d11"
+   },
+   "b2t11": {
+    "oohs": "6bfd5ffcdb0e805ad0b63c902e4b863656dc200b7fff5abd0e8c9b6b4ae5ff22",
+    "clarinet": "f392b3a88b52752099e3d3981090cb8e29bf888fb953001a06b3fceb562c1e42"
+   },
+   "b2t12": {
+    "oohs": "99b9feb41c256fe67396b10b71884364096ab2bf8c5e55e033aa28e6eb0c9a0f",
+    "clarinet": "ecf155cfa9e975f966899c4aca31c930251b81877c5247b26b06a41a2a83d755"
+   },
+   "b2t13": {
+    "oohs": "32122f64937ef391ddfb24028f09917f3c0c0a7e910ed4a80f8e8ccc28cfd311",
+    "clarinet": "6d6024f493888d750f6cd46b635875a9539ed34bf6ca14e0697d20cdbb7b09ce"
+   },
+   "b2t14": {
+    "oohs": "c791057d2865226a2f02f3c421a35ba72ed1bb6d84054848d4765981f504facd",
+    "clarinet": "5028b1979715649541d4743d2ded7d822456ab9bd014083e468984e3a090f3b9"
+   },
+   "b2t15": {
+    "oohs": "07ff1fd6a2f2532f97e5f6bf67032f95e2280ce1eec4b01412e56f1d4d482168",
+    "clarinet": "f309a41c3d8e3394a4aee65876aea2856efea6942844fc818ec8ecea46357a1e"
+   },
+   "b2t16": {
+    "oohs": "a4f36ad4017a27be08824d0867665d09faef80996af212f46802d94d03e4ef9c",
+    "clarinet": "c4f20ed354af97f104e83a92f3268d2bf3f4b12a6514bbc09246ea562e2532f2"
+   },
+   "b2t17": {
+    "oohs": "97e6f8f77301c7b6643b599e48b0f84893d550f137cf46c760ba556fcdb596ed",
+    "clarinet": "da3f780c18c2aaf1a1a778032c4b55ae13d6d0ad777a3d42009c89c013fe0816"
+   },
+   "b2t18": {
+    "oohs": "f7e265246e8716f39f83a11f32b8acfb4b97519b16ea29f09837a5ddc7d68167",
+    "clarinet": "b28145125484aaa04ad676e6521020991e5361b85e847a1ab867ee21efd507f9"
+   },
+   "b2t19": {
+    "oohs": "682c5237bd053fe0d07673882c345466213417b548e7caf46c708fc4e2309b60",
+    "clarinet": "8b700f16d54a57ef912fe539ae97c68c19d3fe3a1bd16c992695f345358fbbca"
+   },
+   "b2t20": {
+    "oohs": "040136d66e0839a8149077570634e69bb0ff5da0b0282dc7026c291633e08756",
+    "clarinet": "71f0a48b7ab97b68fc6f003472f94a00b9098cb0429cdd2796493bef11fee7a1"
+   },
+   "b2t21": {
+    "oohs": "c9e85529062a8bd51e1b2202fdd3bb14339409491b575c8983e8bb528bc2ad73",
+    "clarinet": "0a4604ee83109873b2e9db2536be1e82ebf58d432365f8cb0dccdb82e13f42b2"
+   },
+   "b2t22": {
+    "oohs": "94a6fdff114f341b222b6d35ebe1e58277b9c7d08c4391bc93d904750d87970d",
+    "clarinet": "d434078fd72662890e867f73f4a0cfbf1c4e9260bc80be52e1885e0da18d4430"
+   },
+   "b2t23": {
+    "oohs": "e28e94e5ac2f5e6107fc285eed93cad37e5175ce600af53e4894cee9f5665564",
+    "clarinet": "65db31f8b809f546c70a429c3fbba3c18c4608c9cabe17ac58433141ef30abe6"
+   }
+  },
+  "soundfont_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+  "fluidsynth": "FluidSynth runtime version 2.3.4",
+  "lyric_keys": {
+   "item00": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item01": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item02": {
+    "n_lyr": 25,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ]
+    ]
+   },
+   "item03": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item04": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item05": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item06": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item07": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item08": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "item09": {
+    "n_lyr": 25,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ]
+    ]
+   },
+   "item10": {
+    "n_lyr": 28,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14,
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ],
+     [
+      25
+     ]
+    ]
+   },
+   "item11": {
+    "n_lyr": 25,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ]
+    ]
+   },
+   "b2t00": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t01": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t02": {
+    "n_lyr": 25,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ]
+    ]
+   },
+   "b2t03": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t04": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t05": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t06": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t07": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t08": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12,
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t09": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t10": {
+    "n_lyr": 28,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14,
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ],
+     [
+      25
+     ]
+    ]
+   },
+   "b2t11": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t12": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t13": {
+    "n_lyr": 25,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ]
+    ]
+   },
+   "b2t14": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t15": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t16": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14,
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t17": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t18": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t19": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14,
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t20": {
+    "n_lyr": 26,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ]
+    ]
+   },
+   "b2t21": {
+    "n_lyr": 25,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ]
+    ]
+   },
+   "b2t22": {
+    "n_lyr": 27,
+    "start": 9,
+    "keys": [
+     [
+      12
+     ],
+     [
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ]
+    ]
+   },
+   "b2t23": {
+    "n_lyr": 28,
+    "start": 9,
+    "keys": [
+     [
+      12,
+      13
+     ],
+     [
+      14
+     ],
+     [
+      15
+     ],
+     [
+      16
+     ],
+     [
+      17
+     ],
+     [
+      18
+     ],
+     [
+      19
+     ],
+     [
+      20
+     ],
+     [
+      21
+     ],
+     [
+      22
+     ],
+     [
+      23
+     ],
+     [
+      24
+     ],
+     [
+      25
+     ]
+    ]
+   }
+  },
+  "trim": {
+   "budget_hours": 7.0,
+   "fixed_hours": 0.583333,
+   "b1_runs": 180,
+   "loop_extra_s": 46.0,
+   "loop_rate": {
+    "guided": 0.25,
+    "text2music": 0.08
+   }
+  },
+  "tiny": {
+   "dev": [
+    [
+     "item00",
+     0,
+     "oohs_k3_none"
+    ],
+    [
+     "item00",
+     0,
+     "oohs_k4_A2"
+    ]
+   ],
+   "test_items": [
+    "item01"
+   ]
+  },
+  "power": {
+   "path": "experiments/e8_clock_sing/power_b2.json",
+   "sims_per_cell": 2000,
+   "cells": {
+    "0.0": {
+     "p_worded": 0.0,
+     "joint_per_clip": 0.083,
+     "P1": 0.008,
+     "P2": 0.024,
+     "P1_and_P2": 0.004,
+     "mean_q_rule": 0.0,
+     "mean_J_s_star": 0.292,
+     "mean_J_best_comparator": 0.299
+    },
+    "0.1": {
+     "p_worded": 0.1,
+     "joint_per_clip": 0.174,
+     "P1": 0.271,
+     "P2": 0.635,
+     "P1_and_P2": 0.257,
+     "mean_q_rule": 0.09,
+     "mean_J_s_star": 0.514,
+     "mean_J_best_comparator": 0.302
+    },
+    "0.2": {
+     "p_worded": 0.2,
+     "joint_per_clip": 0.246,
+     "P1": 0.65,
+     "P2": 0.948,
+     "P1_and_P2": 0.648,
+     "mean_q_rule": 0.501,
+     "mean_J_s_star": 0.641,
+     "mean_J_best_comparator": 0.299
+    },
+    "0.3": {
+     "p_worded": 0.3,
+     "joint_per_clip": 0.305,
+     "P1": 0.837,
+     "P2": 0.994,
+     "P1_and_P2": 0.836,
+     "mean_q_rule": 0.842,
+     "mean_J_s_star": 0.726,
+     "mean_J_best_comparator": 0.301
+    },
+    "0.4": {
+     "p_worded": 0.4,
+     "joint_per_clip": 0.366,
+     "P1": 0.945,
+     "P2": 1.0,
+     "P1_and_P2": 0.945,
+     "mean_q_rule": 0.97,
+     "mean_J_s_star": 0.793,
+     "mean_J_best_comparator": 0.3
+    }
+   }
+  }
+ },
+ "code_sha256": {
+  "experiments/e8_clock_sing/plan_b2.py": "815520e84945ded0578e11b437118f391de0fbc2cc87605f8e17495a6239c4bd",
+  "experiments/e8_clock_sing/make_items_b2.py": "178f91d7242da4172d0096e59c366856cfd6ad9c1137d8e67e73ec1711557a0d",
+  "experiments/e8_clock_sing/run_b2.py": "ad378e53a75f85125e9772506333466c5aa9fc1dc6383655d28ee59f11c88794",
+  "experiments/e8_clock_sing/score_b2.py": "d1f485337a33021b33ba0418ce7290f1861a075b4e81bc2223bbe7385763af7c",
+  "experiments/e8_clock_sing/select_b2.py": "b6a43d8bf6202d7b0aac7e4f8e3ec34a5e9ce511e7e2c019589e55d694062216",
+  "experiments/e8_clock_sing/decide_b2.py": "40ea17d017d19939a2913d7791d97814e4b1708802b98dc4ae59d66d7cc044ed",
+  "experiments/e8_clock_sing/package_b2.py": "194243825dc0991bd9c7ec111b59f1ba48a4f77a30a2e713f2ffb44e48812a9c",
+  "experiments/e8_clock_sing/register_b2.py": "5c5686fee8116ebd65c1f4038fe38f0259f7d8fc23ade0a1be0d73058174bd48",
+  "experiments/e8_clock_sing/power_b2.py": "8e47dddb6ccb24385b157957078f643554fcefd9557a231ace617de2abe7b15f",
+  "experiments/run_b.py": "bec903081625eb1324a207b60b173e0588e209260079e048314d6b39510180ee",
+  "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+  "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+  "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+  "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+  "dacapo/metrics.py": "a69087619f92fa750866a6904ca949e2efd1512daf5ab88fdf268df15b8db7b7",
+  "dacapo/render.py": "96b67d791a983116a52bea8697c51d3bc0a8b9ae421f9c24af95164a511a9d79",
+  "dacapo/symbolic.py": "c2542d093f1c247b1d3bb095ea66cb1efde36c5e9ebcc9e3497c28c493a4e487",
+  "dacapo/analysis.py": "5d19e4dfdbf14186e83d18fa514795510e0e66f3f06fe9b528db9f4f51da3fb2",
+  "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+  "dacapo/attn_bias.py": "f76b20d77f3fb0e9f79231f5b38385be502640066d810c34e84714b8315673c3",
+  "dacapo/motif_integrity.py": "6126875e34697bf113052538b52b8187afbf6d8a28c46ddd0cc649141303a330",
+  "experiments/e6_clock/clock_score.py": "19eb4d54f4bdcbe02cc9a0ebd59cfd5e557fad2eb08a4a4312253037cfa4875c",
+  "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+  "experiments/e6_clock/run_b1.py": "d7221a37cfbedfcb48c1c8e887147a2b450abfc4ac1912c47ad8534d25797c5c",
+  "experiments/e4_sing/make_items.py": "30e3bb3f334aae32d4e54539e95c33f81398afc5eb4bf6901c2346b8be528b4f",
+  "experiments/e4_sing/run_sing.py": "0ba0a21b9d85e051c8fa40290e4a5385a6341d6daf424acfa078f8086793599b",
+  "experiments/e4_sing/score_sing.py": "883c044cabdac50a8056875270432e000a8ad9d60323b7ffd927fdd293121279",
+  "experiments/e5_motif/stage.py": "054750cfd2de792e03e4738331ac62df9bfac326cf14d155f3f9c46e09507fe2",
+  "experiments/e5_motif/v2_config.py": "495700cff076b402eee3ec8d954f6f0f8851f33dc7f31e2a1a78f150093fecd3"
+ },
+ "data_sha256": {
+  "experiments/e8_clock_sing/lines_b2.txt": "1b2bab848fe878c28025c18bd0845a3d00f4003c06a04226dff057542adefcb1",
+  "experiments/e8_clock_sing/manifest_b2.json": "b8728491a83b34423c0edb3b12e8223f238cecee2a77e1d92ec86382544f4f83",
+  "experiments/e8_clock_sing/guides_b2.json": "7a6f6259f1f7bbcd7c2e61064778def0877d04ca4d7e3f6907f29aa78efc89e7",
+  "experiments/e8_clock_sing/tok_check_b2.json": "ec3b8836d234f1a0ac4d8ed05908e07808066df8792cab0ed88b47b9d54b80cf",
+  "experiments/e8_clock_sing/seeds_b2.json": "eb41d3e4ba884d95267c039bfb131e50fb80c44b5f624c32a7f7f7793e6ce254",
+  "experiments/e8_clock_sing/power_b2.json": "c1008bfeace5e44eecfcbf1ad7740a42cb6053803adf4f5a695f0f29f0c542bb",
+  "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911",
+  "results/cpu/runb_cpu_test.json": "34fcaca7b21a3e024341b3c345a8e911ccde0880a7bee3beb971f7d1fed4b798"
+ },
+ "tests_sha256": {
+  "experiments/e8_clock_sing/tests/test_e8_decide.py": "a7749f17fefbfb75c518dfd99415276e9cd8253451cfdf5afe3d00f063fe193c",
+  "experiments/e8_clock_sing/tests/test_e8_items.py": "a1defe29d472839e8cb645737657fdf791cec27cc924d914debd30f87e09f95f",
+  "experiments/e8_clock_sing/tests/test_e8_plan.py": "6a854c2fb94d814176e9fb7d6f563de16bc51d01be51147583003e895dbccd01",
+  "experiments/e8_clock_sing/tests/test_e8_power.py": "db217c90751f3a3c8b6ab1a84eed50f9e012ccc97759d39ba17834ed400b3fb7",
+  "experiments/e8_clock_sing/tests/test_e8_register.py": "0e3f6255ffc47036a81bc82bc1a8b17241e7e71af7f730c468bf2d2f6cc45253",
+  "experiments/e8_clock_sing/tests/test_e8_run.py": "461bf68060310de0630e01306dbd701798b1bd9acf77b8f58b4852ca978ea095",
+  "experiments/e8_clock_sing/tests/test_e8_score.py": "d62b96c7b5c05a2b5fd6ccce8105e5d2cf7ea7a1b178a2c84b706bff4149047e",
+  "experiments/e8_clock_sing/tests/test_e8_select.py": "1a616656d3ffb6ec834999b4002ea3522516553587ea131e3f0979d933dbee56"
+ }
+}

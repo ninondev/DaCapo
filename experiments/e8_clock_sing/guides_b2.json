@@ -1,0 +1,156 @@
+{
+ "renderer": "dacapo.render.render: FluidSynth, gain 0.6, reverb and chorus off, 48 kHz",
+ "programs": {
+  "oohs": 53,
+  "clarinet": 71
+ },
+ "fluidsynth": "FluidSynth runtime version 2.3.4",
+ "soundfont": "FluidR3_GM.sf2",
+ "soundfont_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+ "sha256": {
+  "item00": {
+   "oohs": "52671a2c49fc956e8d3d5506fc399bd9f522275f28883074893f98331fc875e7",
+   "clarinet": "fb79bdc11f8c49ea65160c9e30adad9d56b8981f03548b7843416b859653d9c0"
+  },
+  "item01": {
+   "oohs": "2b78f79d087015d46c41e99a4284dd254d7bbb2a32c35efa434b9b11ad84ab56",
+   "clarinet": "fbc9f5af6b6d4e6b6608f59306ad04f4f807d40e0285928ac412b6e030740830"
+  },
+  "item02": {
+   "oohs": "7d9d7235d04148192766d1eb07372fd30f6a26e8ff56a0167b7cae335a3445a3",
+   "clarinet": "0a33fb90ddcdf792dc363ba52a980e4620eb5eb57ac691136b5530b834fcfe2b"
+  },
+  "item03": {
+   "oohs": "b8c379b21c232a930088b45aeb4464e246340a1144ffa48b800e2333fc97cb2c",
+   "clarinet": "6cc88d378893e5d4b8f55a7b4c2265b99bb21d3456bf477db0fa87838c5506ea"
+  },
+  "item04": {
+   "oohs": "c1e1769501f30db7623498d3bd38f3f15f487344512aefdaec4aacbdc7bd9588",
+   "clarinet": "bca5fcc4b1fed23384ef7d1ae3bca9fa5c07dbb0c46b3d68b6e961452acecb22"
+  },
+  "item05": {
+   "oohs": "ee71fe226e081c2622aa6b507e828186d11ec8616773e27ef52ee925cf7d184b",
+   "clarinet": "702d684becc6ffe143c4857117f391e8bfd5b63190d294c27b53dfdc7cc7d315"
+  },
+  "item06": {
+   "oohs": "e925635ae5ba1ad32cc8162e5b6f2663f558252a62bf20f1eec12f6074dbccfc",
+   "clarinet": "91415a3fbaba08e2a899f0a787745b799db105b22a335251492dfcf53876b9ef"
+  },
+  "item07": {
+   "oohs": "3e81eb2b75a8b857a89a73d8c0d362938f4eabfdb46665409cd551c649d75369",
+   "clarinet": "8600d6318737099202e033e058d295370c406bfcf9a6384739690cf278dd91a9"
+  },
+  "item08": {
+   "oohs": "6739ac44d779d612ef1a51b710ff15dd2acfdae530f66f252791ded745ec2970",
+   "clarinet": "e06effff57f7f1064646b3b7c93e54843a6f61d2f21b2aab319d30af82410693"
+  },
+  "item09": {
+   "oohs": "b2d9cca728b307aa09971869ab29fd94b05c30646cf9874e6eb9309285c77c28",
+   "clarinet": "984c5409c0528b749624d3f49b39af9a5765b96a4efa44276fcb53b6d3fe0233"
+  },
+  "item10": {
+   "oohs": "e25119154a5637a2715ac01c5ccd50b7b9ebeefd7790d21770479dea1641393b",
+   "clarinet": "298e1c1d3a47ca309967685b3460c4010117051e77c5c8e017cbe0a7857389a1"
+  },
+  "item11": {
+   "oohs": "f362f1cdae7e12b247d64158da2f613c3184d7c95eb8421d799e8d977f02bb43",
+   "clarinet": "4fd1161168610d959f893b0aa329a8596607abf2c9d8ae43fc0f575204237ce4"
+  },
+  "b2t00": {
+   "oohs": "aabbcf7baeedf749b0e85341b2f6a10dfcd31e9868cad36c25649fc8949529ad",
+   "clarinet": "0ec650965e08be586a11dd2c690cb9352eaf497d8a617dafc898066f5ba65e35"
+  },
+  "b2t01": {
+   "oohs": "e872764cc8ab8e07cadd8ba84e43bb5382be3c4483c25daef4ccdc5abf06aa07",
+   "clarinet": "60d754227568805589dad20864ef862881ff83e3d56e3f220796b8633db31e20"
+  },
+  "b2t02": {
+   "oohs": "792a37e7b89865a2db1d21e63c7e9d5099acecf777fea18f081d901c1af6a98b",
+   "clarinet": "bbf40f1fee0b29b85e2c689b5eb12346245771717cd2cf89418d62636f56ea0b"
+  },
+  "b2t03": {
+   "oohs": "63662d13d34b9fb51735c1c7f69691f2c2a4a05c1ea1fd73b5e507a0a1b254d2",
+   "clarinet": "323b2d58d5a86548257401938a8d80a983e592d8e74c7380b267b0eb1ce0fdcc"
+  },
+  "b2t04": {
+   "oohs": "34023987ac282942b2a151fe246702a0b3275993dc9d6a6ef8d10f03f66f5f30",
+   "clarinet": "1c5c3f2ca0343cb8cee89a1f9fa6df326d1fd33bdc21fce82591d89258300c4c"
+  },
+  "b2t05": {
+   "oohs": "2db22dad9d71ce314e60c96fcf6ae49c5785a1b50cb97e4df32be233bec4784d",
+   "clarinet": "2fb2d9c3aac6eaf5852b896dc0990cea52cf8dedb9611890a020bad44b24d911"
+  },
+  "b2t06": {
+   "oohs": "0d27b30caf33dd7a0e42a84c97a889364a5cc4b9e41eb0100c39a95c9d1b28ad",
+   "clarinet": "c42f12fb1f554366b2b7786fcb6892bc4eed2cf4e5fea72dfa85ab7e126edc54"
+  },
+  "b2t07": {
+   "oohs": "1c9342c0433e7c6e653d68632b5938e1d4b6259bb27f18288c27e09e3ef0ce32",
+   "clarinet": "01ce1e65efdb972f3db8c67dab8efd92e07dc682a57bf6c8ca8d833f9d396296"
+  },
+  "b2t08": {
+   "oohs": "64093dac5b08494e1b9c9d77136df16159fa1eb088af747f101373ddc5209b6f",
+   "clarinet": "09ac1c97e4c5182db8aa9acc4ca2e79528e738492833415fc56cb72a94d4e955"
+  },
+  "b2t09": {
+   "oohs": "fde86aa56fba9930d4b98657969d58f68a8f1d994513b92d826b8b1d253f3829",
+   "clarinet": "431fc871361199f9ef16848c702fc8541f0b51f92673105d677a5e53d31df169"
+  },
+  "b2t10": {
+   "oohs": "8585980903f4824b273a83efe3ace4dc8c3a3f1d11e8f4cfb38f91fe813217de",
+   "clarinet": "d722297f961a41ddf3f190d8decedb6569b37c68532171d4f830949668728d11"
+  },
+  "b2t11": {
+   "oohs": "6bfd5ffcdb0e805ad0b63c902e4b863656dc200b7fff5abd0e8c9b6b4ae5ff22",
+   "clarinet": "f392b3a88b52752099e3d3981090cb8e29bf888fb953001a06b3fceb562c1e42"
+  },
+  "b2t12": {
+   "oohs": "99b9feb41c256fe67396b10b71884364096ab2bf8c5e55e033aa28e6eb0c9a0f",
+   "clarinet": "ecf155cfa9e975f966899c4aca31c930251b81877c5247b26b06a41a2a83d755"
+  },
+  "b2t13": {
+   "oohs": "32122f64937ef391ddfb24028f09917f3c0c0a7e910ed4a80f8e8ccc28cfd311",
+   "clarinet": "6d6024f493888d750f6cd46b635875a9539ed34bf6ca14e0697d20cdbb7b09ce"
+  },
+  "b2t14": {
+   "oohs": "c791057d2865226a2f02f3c421a35ba72ed1bb6d84054848d4765981f504facd",
+   "clarinet": "5028b1979715649541d4743d2ded7d822456ab9bd014083e468984e3a090f3b9"
+  },
+  "b2t15": {
+   "oohs": "07ff1fd6a2f2532f97e5f6bf67032f95e2280ce1eec4b01412e56f1d4d482168",
+   "clarinet": "f309a41c3d8e3394a4aee65876aea2856efea6942844fc818ec8ecea46357a1e"
+  },
+  "b2t16": {
+   "oohs": "a4f36ad4017a27be08824d0867665d09faef80996af212f46802d94d03e4ef9c",
+   "clarinet": "c4f20ed354af97f104e83a92f3268d2bf3f4b12a6514bbc09246ea562e2532f2"
+  },
+  "b2t17": {
+   "oohs": "97e6f8f77301c7b6643b599e48b0f84893d550f137cf46c760ba556fcdb596ed",
+   "clarinet": "da3f780c18c2aaf1a1a778032c4b55ae13d6d0ad777a3d42009c89c013fe0816"
+  },
+  "b2t18": {
+   "oohs": "f7e265246e8716f39f83a11f32b8acfb4b97519b16ea29f09837a5ddc7d68167",
+   "clarinet": "b28145125484aaa04ad676e6521020991e5361b85e847a1ab867ee21efd507f9"
+  },
+  "b2t19": {
+   "oohs": "682c5237bd053fe0d07673882c345466213417b548e7caf46c708fc4e2309b60",
+   "clarinet": "8b700f16d54a57ef912fe539ae97c68c19d3fe3a1bd16c992695f345358fbbca"
+  },
+  "b2t20": {
+   "oohs": "040136d66e0839a8149077570634e69bb0ff5da0b0282dc7026c291633e08756",
+   "clarinet": "71f0a48b7ab97b68fc6f003472f94a00b9098cb0429cdd2796493bef11fee7a1"
+  },
+  "b2t21": {
+   "oohs": "c9e85529062a8bd51e1b2202fdd3bb14339409491b575c8983e8bb528bc2ad73",
+   "clarinet": "0a4604ee83109873b2e9db2536be1e82ebf58d432365f8cb0dccdb82e13f42b2"
+  },
+  "b2t22": {
+   "oohs": "94a6fdff114f341b222b6d35ebe1e58277b9c7d08c4391bc93d904750d87970d",
+   "clarinet": "d434078fd72662890e867f73f4a0cfbf1c4e9260bc80be52e1885e0da18d4430"
+  },
+  "b2t23": {
+   "oohs": "e28e94e5ac2f5e6107fc285eed93cad37e5175ce600af53e4894cee9f5665564",
+   "clarinet": "65db31f8b809f546c70a429c3fbba3c18c4608c9cabe17ac58433141ef30abe6"
+  }
+ }
+}

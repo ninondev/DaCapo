@@ -1,0 +1,66 @@
+{
+ "experiment": "b2_power",
+ "sims_per_cell": 2000,
+ "seed": 0,
+ "n_items": 24,
+ "n_draws": 4,
+ "npa_drop": 0.1,
+ "logit_sd": 1.0,
+ "n_boot": 10000,
+ "delta_j": 0.2,
+ "j_min": 0.5,
+ "delta_q_first_design": 0.1,
+ "source": "results/gpu_run1/e4_sweep.json (ctx_oohs_k3, ctx_oohs_k4, noguide)",
+ "cells": {
+  "0.0": {
+   "p_worded": 0.0,
+   "joint_per_clip": 0.083,
+   "P1": 0.008,
+   "P2": 0.024,
+   "P1_and_P2": 0.004,
+   "mean_q_rule": 0.0,
+   "mean_J_s_star": 0.292,
+   "mean_J_best_comparator": 0.299
+  },
+  "0.1": {
+   "p_worded": 0.1,
+   "joint_per_clip": 0.174,
+   "P1": 0.271,
+   "P2": 0.635,
+   "P1_and_P2": 0.257,
+   "mean_q_rule": 0.09,
+   "mean_J_s_star": 0.514,
+   "mean_J_best_comparator": 0.302
+  },
+  "0.2": {
+   "p_worded": 0.2,
+   "joint_per_clip": 0.246,
+   "P1": 0.65,
+   "P2": 0.948,
+   "P1_and_P2": 0.648,
+   "mean_q_rule": 0.501,
+   "mean_J_s_star": 0.641,
+   "mean_J_best_comparator": 0.299
+  },
+  "0.3": {
+   "p_worded": 0.3,
+   "joint_per_clip": 0.305,
+   "P1": 0.837,
+   "P2": 0.994,
+   "P1_and_P2": 0.836,
+   "mean_q_rule": 0.842,
+   "mean_J_s_star": 0.726,
+   "mean_J_best_comparator": 0.301
+  },
+  "0.4": {
+   "p_worded": 0.4,
+   "joint_per_clip": 0.366,
+   "P1": 0.945,
+   "P2": 1.0,
+   "P1_and_P2": 0.945,
+   "mean_q_rule": 0.97,
+   "mean_J_s_star": 0.793,
+   "mean_J_best_comparator": 0.3
+  }
+ }
+}
