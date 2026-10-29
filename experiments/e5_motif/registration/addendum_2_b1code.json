@@ -1,0 +1,208 @@
+{
+ "addendum_utc": "2026-10-28T20:56:49Z",
+ "title": "B1 code addendum to addendum 2: the code, tests and CPU test of the lyric clock B1",
+ "refers_to": [
+  "experiments/e5_motif/registration/addendum_2.json"
+ ],
+ "addendum_2_sha256": "81f49fae47d58701328227b6a768c9433cc4ae23a715edd2dd67f482c6f54144",
+ "custody": "This addendum is committed and pushed before Run B and before addendum 3 (the B2 registration), and that push is its external timestamp. It changes nothing that addendum 2 registers: items, seeds, arms, intervention, measurement and rule stay as section e6_readout ('B1, fixed now') states them.",
+ "fill_ins": [
+  {
+   "id": "arms",
+   "text": "The five arms of a draw are named nohook (beta 0: no hook is entered), align1, align2 and align4 (beta 1, 2 and 4 on the seven alignment heads) and random2 (beta 2 on registered random set r for draw r, which equals readout.random_head_sets()[r]). Runs go in the order item, draw, arm."
+  },
+  {
+   "id": "recall",
+   "text": "Recall of a clip: the lyric words found by the registered in-order exact matching (dacapo.words.match_words over Whisper's normalised word chunks; chunks with an empty word or no start time are dropped, as in readout.py), divided by the number of lyric words. An arm's recall and vocal-gate rate are means over its 36 planned clips. A missing, failed or unscored clip counts as recall 0 and gate failed."
+  },
+  {
+   "id": "evaluable",
+   "text": "A clip is evaluable if it passes E6's vocal gate and at least 4 lyric words are matched, as in the E6 read-out. Its error is the median over the matched words of |Whisper onset - written onset|. An item's error in an arm is the median of the errors of its evaluable draws."
+  },
+  {
+   "id": "written_onset",
+   "text": "Word j sings note j. Its written onset is the note's start in beats x 0.6 s (100 BPM), from experiments/e4_sing/manifest.json. The last word's window ends at its note end, (start + dur) x 0.6 s; dur in the manifest is already 0.9 of the note's length, so item00 ends at 11.94 s."
+  },
+  {
+   "id": "frames_and_keys",
+   "text": "DiT query frame q covers latent frames 2q and 2q+1 and is placed at its centre, 0.08q + 0.04 s. It lies in word j's window if onset_j <= centre < onset_(j+1). Word j's keys are s plus its token indices in the pure lyric, with s from ACE-Step's _extract_lyric_segment (9 for these lines, so the first word is key 12). The bias goes to the steered heads of layers 2-6 at all 8 steps; the hook asserts that every biased key lies below n_lyr and n_lyr below Lk."
+  },
+  {
+   "id": "not_improved",
+   "text": "An item with no evaluable draw in the arm or at beta 0, or with a beta 0 error of 0, is not improved: it fails the 30% count and enters the medians with reduction 0. A computed reduction enters as it is, negative values included."
+  },
+  {
+   "id": "rounding",
+   "text": "Seconds and reductions are rounded to 1e-6 before any comparison, as in E6. A rounded reduction of 0.30 counts as 30%. The guards compare the rounded change in recall and in gate rate with -0.10. The random arm's rounded median reduction must be strictly below the rounded half of beta 2's."
+  },
+  {
+   "id": "integrity",
+   "text": "Integrity can block a verdict but never create one. The verdict is 'technical' unless all of these hold: the eight addendum 2 files and the B1 code hash to their registered values at generation (every run row records them) and at decision; readout.py check-gate accepts Run A's gate (E6_RES=results/gpu_run2); every scored clip used Whisper large-v3 at the pinned revision; every generated clip has its pre-normalisation peak; at most 9 of the 180 runs are missing, failed or unscored; every hooked run made 40 hook calls with every biased key inside the lyric, and every no-hook run made none."
+  },
+  {
+   "id": "attempts",
+   "text": "A run that raises is tried at most 3 times with the same seeds. The ledgers are append-only, and a run counts as generated only while its WAV and pred_latents hash to its ledger row."
+  },
+  {
+   "id": "verdicts",
+   "text": "'supported' if conditions 1-3 hold and 'not supported' otherwise, with the failed conditions named; 'technical' if integrity fails; 'test only' for any run with a test flag (the tiny CPU scale, a test Whisper model, unregistered code). Labels describe each condition and never change the verdict."
+  },
+  {
+   "id": "exploratory",
+   "text": "From addendum 2's exploratory list, the parts that apply to B1, per arm: the share of matched words within 0.25 s of the written onset, the median signed error, the error without each clip's first matched word, and 95% intervals from a bootstrap over items (10,000 resamples, seed 0) for the median reduction and the items improved."
+  },
+  {
+   "id": "generation",
+   "text": "Every run goes through dacapo.ace.generate at batch 1 with sdpa attention and the E5 v2 determinism settings. Clips are written by soundfile as 16-bit PCM WAV, pred_latents as float32 .npy."
+  },
+  {
+   "id": "tiny_scale",
+   "text": "The tiny CPU scale (run_b1.py --scale tiny, part of experiments/run_b.py --scale tiny) runs item00 draw 0 without the hook and at beta 2 on the alignment heads, with its own seeds (dacapo.seeds.run_seeds('runB1-tiny', item, draw)) and a test Whisper, and every verdict it writes is 'test only'. Before this addendum, the tiny scale used the registered seeds of those two runs (DiT seed 63000, pin 963000): the code tests on this machine's CPU generated these two planned runs several times and scored them with whisper-tiny and Whisper small.en. Nobody listened to them, their transcripts were read only to check the code, and they were deleted."
+  }
+ ],
+ "code_sha256": {
+  "dacapo/attn_bias.py": "f76b20d77f3fb0e9f79231f5b38385be502640066d810c34e84714b8315673c3",
+  "experiments/e6_clock/clock_score.py": "19eb4d54f4bdcbe02cc9a0ebd59cfd5e557fad2eb08a4a4312253037cfa4875c",
+  "experiments/e6_clock/run_b1.py": "d7221a37cfbedfcb48c1c8e887147a2b450abfc4ac1912c47ad8534d25797c5c",
+  "experiments/e6_clock/runb_cpu_test.py": "fb6017bccd9e73a9dbeeadc6854e772433c6da1cc4e33058f324424e0e9874a8",
+  "experiments/e6_clock/register_b1code.py": "37e888c4fe2bd9ba97c5b5287429fbbffd3ea9d6b4d91ce27c9556fbca0267cc"
+ },
+ "tests_sha256": {
+  "experiments/e6_clock/tests/test_b1_attn_bias.py": "71b4c559962d904b15daf858574c453d96d299410f514dec676d0fa2150e1a66",
+  "experiments/e6_clock/tests/test_b1_plan_decide.py": "269dfd6104cddabde12ce4d05ee66a759dae26076d13790da94674e469647625",
+  "experiments/e6_clock/tests/test_b1_scorer.py": "61170980c2881c54fbe216c1afbae0460beb7b2355add0c7cffdeae727509bf3",
+  "experiments/e6_clock/tests/test_b1_tiny_dit.py": "19ce6cb45d48b1249768d5d0d5789100057536edd1f05c31f293b5fcd5d45fc8"
+ },
+ "cpu_test": {
+  "path": "results/cpu/runb_cpu_test.json",
+  "sha256": "34fcaca7b21a3e024341b3c345a8e911ccde0880a7bee3beb971f7d1fed4b798",
+  "finished_utc": "2026-10-28T16:38:26Z",
+  "passed": true,
+  "checks": {
+   "a_t2m_beta0_bit_identical": true,
+   "b_t2m_beta2_changes": true,
+   "c_cover_beta0_bit_identical": true,
+   "d_lyric_rows_equal_across_switch": true,
+   "e_hook_calls_40": true,
+   "e_max_key_below_n_lyr": true,
+   "runs_ok": true,
+   "alignment_heads_as_registered": true,
+   "sdpa": true
+  },
+  "recorded": {
+   "d_whole_encoder_states_equal_across_switch": true,
+   "d_lk_cover_non_cover": [
+    104,
+    104
+   ],
+   "d_hooked_run_same_encoder_states": true,
+   "c_guide_latent_equal_across_arms": true,
+   "b_beta2_rel_l2_change": 0.3039146065711975,
+   "b_beta2_max_abs_change": 3.20703125,
+   "lq_lk_by_phase": {
+    "t2m_beta0": {
+     "text2music": [
+      [
+       175,
+       104
+      ]
+     ]
+    },
+    "t2m_beta2": {
+     "text2music": [
+      [
+       175,
+       104
+      ]
+     ]
+    },
+    "cover_beta0": {
+     "cover": [
+      [
+       187,
+       104
+      ]
+     ],
+     "non_cover": [
+      [
+       187,
+       104
+      ]
+     ]
+    }
+   },
+   "weights_match_addendum_2": true,
+   "ace_commit_matches_addendum_2": true
+  },
+  "n_lyr": 26,
+  "word_keys": [
+   [
+    12
+   ],
+   [
+    13
+   ],
+   [
+    14
+   ],
+   [
+    15
+   ],
+   [
+    16
+   ],
+   [
+    17
+   ],
+   [
+    18
+   ],
+   [
+    19
+   ],
+   [
+    20
+   ],
+   [
+    21
+   ],
+   [
+    22
+   ],
+   [
+    23
+   ]
+  ],
+  "guide_sha256": "52671a2c49fc956e8d3d5506fc399bd9f522275f28883074893f98331fc875e7",
+  "soundfont_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+  "hook_calls": {
+   "t2m_beta0": 40,
+   "t2m_beta2": 40,
+   "cover_beta0": 40
+  },
+  "code_sha256": {
+   "dacapo/attn_bias.py": "f76b20d77f3fb0e9f79231f5b38385be502640066d810c34e84714b8315673c3",
+   "experiments/e6_clock/runb_cpu_test.py": "fb6017bccd9e73a9dbeeadc6854e772433c6da1cc4e33058f324424e0e9874a8",
+   "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+   "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+   "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+   "dacapo/render.py": "96b67d791a983116a52bea8697c51d3bc0a8b9ae421f9c24af95164a511a9d79",
+   "dacapo/symbolic.py": "c2542d093f1c247b1d3bb095ea66cb1efde36c5e9ebcc9e3497c28c493a4e487",
+   "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+   "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+   "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911"
+  },
+  "dit_seed": 6002,
+  "rng_seed": 906002
+ },
+ "e6_files_sha256": {
+  "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+  "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+  "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+  "dacapo/attn_tap.py": "97b0548997794233211db75d85605250d4ff42e58fd75eb691980c53a12333d9",
+  "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+  "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+  "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+  "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911"
+ }
+}
