@@ -29,7 +29,7 @@ To score a melody, the tests use pitch-class accuracy: the share of time where t
 
 1. The plan loses most of the melody. Through the planner's tokens, only 29% of frames have the right note name, where random guessing gets about 10%. That's with tokens made from the melody's own audio, an easy case for any planner. The same melody given to the renderer as dense audio scores 91%, as high as the input itself (90%).
 2. The loss is in the tokenizer. A linear probe reads the note name from audio latents at the same 5 Hz rate with 0.919 accuracy. From the plan tokens it gets 0.575.
-3. In these tests the model sings the words or the melody, not both. With lyrics but no melody it sings 66% of the words. When it's guided with a wordless version of the melody, the notes become right (86% to 100%) and the words drop to 3% or less.
+3. In these tests the model sings the words or the melody, not both. With lyrics but no melody it sings 66% of the words. When it's guided with a wordless version of the melody, the notes become right (86% to 100%) and the words drop to 3% or less. A later test with a lyric clock did better by Whisper's count (see Results), but a second recogniser doesn't confirm the words.
 
 So I decided to build control inside the renderer, where the melody survives. The code can look at each of the 8 denoising steps, read or change what the model is making, and switch the text, lyrics or audio it listens to. It adds no extra model calls.
 
@@ -70,7 +70,7 @@ The low frame rate isn't the whole reason. When a note stays the same for a full
 
 The agents asked the model to sing one lyric line on a melody, one note per one-syllable word. Without a guide it doesn't know the melody, so its notes match only by chance (3%), but it sings 66% of the words. Then they guided it with the melody sung or played without words, either as context for the first k of the 8 steps or as a noisy starting point (SDEdit, a known method used here as a baseline). Every setting that got the notes right (86% or more) lost the words (3% or less). Only 2 of 378 test clips got at least half of both.
 
-The working guess is that melody and lyrics have to be guided together, one syllable at a time. That's the idea behind the lyric clock (E6), which isn't built yet.
+The working guess is that melody and lyrics have to be guided together, one syllable at a time. That's the idea behind the lyric clock, tested in Run B below.
 
 <sub>12 melodies (3 for trying settings, 9 for testing) × 21 settings × 2 seeds. Words come from a Whisper large-v3 transcript. This test is exploratory: its settings weren't registered before the run. Code: [`experiments/e4_sing`](experiments/e4_sing/).</sub>
 
@@ -97,9 +97,33 @@ So the model can continue a pattern it heard by repeating a part of it unchanged
 
 ACE-Step 1.5 uses seven attention heads to find when each lyric word is sung. The read-out (E6) checks whether they really follow the words before the lyric clock is built on them. Of 88 a cappella clips, 76 had singing (44 needed) and 50 could be scored, with at least 4 words matched to Whisper (20 needed). In a typical clip, the heads put each word's start 0.21 s from Whisper's time (0.25 s allowed). Random sets of 7 heads were off by a median of 1.95 s, and the real heads beat the typical random set in 49 of 50 clips (98%, where 75% was needed). So the registered rule allows the lyric clock (B1). Two cautions: Whisper and a second aligner (MMS) disagree with each other by a median of 0.39 s on these clips, so 0.21 s is within the noise of the reference. And six of the seven heads are the six best single heads, but the seventh (layer 3, head 11) is off by 2.41 s on its own.
 
-This shows the heads follow the timing of words in finished audio. It doesn't show they can control it; B1 tests that under its own rule. ACE-Step may have been trained to line these heads up with the words, so beating random heads is a sanity check, not a finding.
+This shows the heads follow the timing of words in finished audio. It doesn't show they can control it. B1 tested that under its own rule, and at the registered strength the clock didn't move the timing (see below). ACE-Step may have been trained to line these heads up with the words, so beating random heads is a sanity check, not a finding.
 
 <sub>88 clips: 12 lyric lines from E4 × 4 seeds and 4 verses × 2 voices × 5 seeds, 8-step turbo model, NVIDIA L4. Whisper large-v3 word times are the reference. The read-out is exploratory; its rule decides only whether B1 runs. Code: [`experiments/e6_clock`](experiments/e6_clock/).</sub>
+
+### Can the lyric clock make it sing the words on the notes?
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/b2_clock_dark.svg">
+  <img alt="Dot plot, share of 24 new melodies where the kept draw (best of 4) gets at least half the notes and at least half the words right. Words recognised by Whisper: clock on the 7 lyric heads 14 of 24, past the capability bar of 0.50; no clock with the same guide 8; clock on 7 random heads 8; clock with the words on the wrong notes 7; no clock with a stronger guide (first 4 steps) 3. Words recognised by a second recogniser (CTC) on the same draws: 2, 3, 1, 2 and 1." src="figures/b2_clock_light.svg" width="100%">
+</picture>
+
+The lyric clock adds a fixed amount (beta) to the attention scores, before the softmax, that the seven lyric heads give each word while that word's note plays. At beta 8, a word that had a tenth of a head's attention gets almost all of it. Run B tested the clock twice, each time under a rule registered before the run.
+
+On its own (B1), the clock didn't fix the timing. Without a melody guide the model sings these lines early: in a typical clip the words start 3.6 s before their notes. At the registered strength, beta 2, the timing error fell by 30% or more in 2 of the 12 lines, where 9 were needed. Word recall and singing held, and random heads did nothing. A stronger clock (beta 4) cut the error by 30% or more in 6 lines, at some cost in word recall (0.59 to 0.52), and the words still started a median 2.9 s early. That wasn't the registered test.
+
+With a melody guide (B2), registered code first picked one clocked recipe out of 20, from runs on the 12 E4 lines: a wordless Voice Oohs version of the melody as context for the first 3 of the 8 steps, and the clock at beta 8. That recipe then ran on 24 new lines and melodies, 4 draws each, and the draw that scored best on notes and words together was kept. On 14 of the 24 melodies the kept draw had at least half the notes right and Whisper recognised at least half the words, in order (12 were needed). With the same guide and no clock it was 8. The clock on random heads got 8, and the clock with each word's window moved to the wrong note got 7. By the mean score of the kept draw (0.52 with the clock on the lyric heads, 0.35 on random heads, 0.39 with the windows moved, 0.39 with no clock), the registered labels call the clock's effect head-specific and timing-specific. Labels don't change the verdict.
+
+What limits this result:
+- The rule credits the clock only if the share of melodies that pass beats the best recipe without the clock by at least 0.20 (5 of 24 melodies), and the lower end of the gap's 95% bootstrap interval is above 0. The gap was 0.25 (6 melodies), but the lower end was exactly 0. The registered verdict is "Capability reached, clock not credited". Outside the rule, the mean score of the kept draw is higher with the clock: +0.13 (95% CI 0.06 to 0.20). That score also counts Whisper's words and uses the same best-of-4 pick.
+- A second speech recogniser (a wav2vec2 CTC model), on the same kept draws, passes 2 of 24 with the clock and 3 with the guide alone. On the kept draws it rates the clock a little below the guide alone (word recall -0.08); over all 96 clips of each arm the two are close (0.18 and 0.16). It reads every arm poorly (0.05 to 0.18), so it doesn't settle the question, but it doesn't confirm Whisper either. The words result rests on Whisper.
+- The kept draw is the best of 4 by the same score that decides whether it passes. That is the registered pipeline. With a single draw the clocked recipe passes on 32% of melodies (14% without the clock).
+- The margin is small. Two of the 14 melodies pass with no note to spare: one note fewer on every clip would leave exactly 12, and two fewer would leave 10. At the strict bar (three quarters of both), the clock and the guide alone each reach 2 of 24.
+- A timing check before the run overestimated its length about sixfold, because Whisper looped on the check's clips. So the registered trim dropped the clarinet guide at k = 3 from the recipe search (25 of 30 recipes ran) and the no-guide arm from the test, although the full design would have fit. The no-guide arm was a reference, not a comparator, so no verdict depends on it.
+
+People will hear the 24 pairs blind (each melody's kept clip with the clock and without it), asked whether the melody is right and the words are clear, before I claim anything about the words. That test is exploratory under addendum 3 and won't change the registered verdict.
+
+<sub>B1: 12 lines × 5 arms × 3 draws. B2: Stage D 25 recipes × 12 lines × 3 draws; Stage T 5 arms × 24 new lines × 4 draws, 480 clips, none lost. Notes are scored on the separated vocal with a pitch tracker (chance about 0.10). Words are matched, in order, against a Whisper large-v3 transcript, and Whisper isn't given the lyric. NVIDIA L4, commit bd61a9f. Rules: B1 in [addendum 2](experiments/e5_motif/registration/addendum_2.json) with the [B1 code addendum](experiments/e5_motif/registration/addendum_2_b1code.json); B2 in [addendum 3](experiments/e5_motif/registration/addendum_3.json). Code: [`experiments/e6_clock`](experiments/e6_clock/), [`experiments/e8_clock_sing`](experiments/e8_clock_sing/).</sub>
 
 ### Measuring is hard
 
@@ -118,9 +142,9 @@ The hooks live in [`dacapo/ace.py`](dacapo/ace.py). At each of the 8 denoising s
 
 Run A finished on 2026-10-28, and its results are above. The motif study (E5) found literal repetition of a pattern, and no transposition, sequence or analogy at the registered sizes. It goes on to its next phases, which ask which layers of the model make the copy and whether pointing the model at B can make it copy on purpose. Their design will be written down in a new addendum before they run, as the registration says.
 
-The lyric read-out (E6) passed, so the lyric clock (B1) comes next. It guides the seven lyric heads so each word starts on its note. Its rule was fixed in addendum 2 before Run A: it has to cut the timing error by at least 30% in 9 of the 12 lyric lines, word recall and the share of clips with singing may each drop by 0.10 at most, and steering random heads must help less than half as much.
+Run B finished on 2026-10-30, and its results are above. The lyric clock alone didn't fix the timing (B1). With a melody guide, the chosen recipe reached the registered bar by Whisper's count (B2), but the clock wasn't credited and a second recogniser didn't confirm the words.
 
-The blind listening test comes from the same run: 60 clips that people will hear without knowing which condition each one comes from. I asked for this, and until it's done the motif result rests on pitch-tracker scores.
+The blind listening tests come from the runs: 60 motif clips from Run A and 24 singing pairs from Run B, which people will hear without knowing which condition each one comes from. I asked for this. Until they're done, the motif result rests on pitch-tracker scores and the singing result on the pitch tracker and Whisper.
 
 ## Status
 
@@ -133,8 +157,9 @@ The blind listening test comes from the same run: 60 clips that people will hear
 | E3 | Can the pitch be read from the audio latents for any instrument? | Exploratory: 0.88 on new instruments (chance 0.03); a special subspace is no better than the full latent |
 | E4 | Can it sing the right notes and clear words? | Exploratory: 12 melodies × 21 settings × 2 seeds |
 | E5 | Can it develop a motif? | Run 2 done on GPU: it repeats part of a pattern unchanged (H1, H2 supported), but shows no transposition, sequence or analogy at the registered thresholds (H3 to H5 not supported). Run 1 failed its quality check |
-| E6 | Can a lyric clock time each syllable? | Read-out done on GPU: the lyric heads put word starts a median 0.21 s from Whisper's, so the clock (B1) is allowed and comes next |
+| E6 | Can a lyric clock time each syllable? | Read-out done on GPU: the lyric heads put word starts a median 0.21 s from Whisper's. The clock alone (B1) is not supported: it cut the timing error enough in 2 of 12 lines, where 9 were needed |
 | E7 | How well do Suno and ACE-Step sing a melody you give them? | Registered; waiting for the Suno songs |
+| E8 | With a melody guide, can the lyric clock sing new melodies with the right notes and recognisable words? (stage B2) | Done on GPU: 14 of 24 new melodies pass by Whisper (12 needed), so the capability bar is reached, but the clock isn't credited (the gap's 95% interval starts at 0) and by a second recogniser only 2 pass. Blind test next |
 
 [`LOG.md`](LOG.md) has every run, including the failures and the mistakes.
 
@@ -144,7 +169,7 @@ The measuring tools are tested on known notes before the model is. For the main 
 
 ## Run it
 
-The easiest way is the Colab button at the top. Pick an L4 runtime, choose Run all, and allow Google Drive access once. The notebook installs everything, downloads the open ACE-Step weights (about 10 GB) and runs Run A: the fixed motif study and the lyric read-out. That takes about 4 hours on an L4, install and download included. At the end you get a zip with the results, and a separate file with the answers for the blind listening test. The run state is kept on Drive (about 5 GB; E5 wants 7.5 GB free before it starts), so after a runtime reset, Run all continues where it stopped. The GPU tests from run 1 can still run with `--stages`.
+The easiest way is the Colab button at the top. Pick an L4 runtime, choose Run all, and allow Google Drive access once. The notebook installs everything, downloads the open ACE-Step weights (about 10 GB) and runs Run A: the fixed motif study and the lyric read-out. That takes about 4 hours on an L4, install and download included. At the end you get a zip with the results, and a separate file with the answers for the blind listening test. The run state is kept on Drive (about 5 GB; E5 wants 7.5 GB free before it starts), so after a runtime reset, Run all continues where it stopped. The GPU tests from run 1 can still run with `--stages`. Run B, the lyric clock, has its own notebook, [`notebook_runB.ipynb`](notebook_runB.ipynb); its stages took about 5 hours on an L4.
 
 To run the measuring tools on your own computer (macOS or Linux):
 
@@ -168,14 +193,16 @@ Tests that run the song model need [ACE-Step 1.5](https://github.com/ace-step/AC
 
 ```
 dacapo/          the library: melodies, rendering, pitch tracking, scores, and ace.py (hooks into ACE-Step)
-experiments/     one folder per study (e0 to e7), plus run_all.py, which the notebook calls
+experiments/     one folder per study (e0 to e8), plus run_all.py and run_b.py, which the notebooks call
 results/cpu/     result files from CPU runs
 results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
 results/gpu_run2/ result files from Run A: the motif study and the lyric read-out (NVIDIA L4)
+results/gpu_run3/ result files from Run B: the lyric clock alone (B1) and with a melody guide (B2) (NVIDIA L4)
 figures/         charts and the script that draws them
 tests/           unit tests and a render-to-analysis test
 LOG.md           every run, in order
-notebook.ipynb   the Colab notebook
+notebook.ipynb   the Colab notebook for Run A
+notebook_runB.ipynb the Colab notebook for Run B
 ```
 
 </details>
@@ -190,7 +217,8 @@ notebook.ipynb   the Colab notebook
 - [x] Run the fixed motif study and the lyric read-out on the GPU (Run A)
 - [ ] Blind listening test of the motif clips from Run A
 - [ ] Motif study, next phases: which layers make the copy (new addendum first)
-- [ ] Lyric clock (E6, stage B1); the read-out passed
+- [x] Lyric clock alone (B1) and with a melody guide (B2) on the GPU (Run B)
+- [ ] Blind listening test of the 24 singing pairs from Run B
 - [ ] Measure Suno and ACE-Step on the same 12 melodies (E7, Stage S)
 - [ ] Train a melody adapter inside the renderer (E7), unless Stage S shows it is already solved
 - [ ] More seeds, and a blind listening test with musicians

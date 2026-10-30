@@ -1,0 +1,184 @@
+{
+ "_meta": {
+  "scale": "full",
+  "started": "2026-10-29 21:01:47",
+  "state": "/content/drive/MyDrive/dacapo_runB/full",
+  "durable": true,
+  "gpu": "NVIDIA L4"
+ },
+ "setup": {
+  "state": "ok",
+  "codes": {
+   "check": 0,
+   "model": 0
+  },
+  "problems": [],
+  "b1_gate": true,
+  "scale": "full",
+  "minutes": 0.9,
+  "minutes_total": 0.9
+ },
+ "a0": {
+  "state": "ok",
+  "returncode": 0,
+  "hard": {
+   "setup": true,
+   "t2m_nohook_ok": true,
+   "t2m_nohook_repeat_ok": true,
+   "t2m_A0_ok": true,
+   "cover_nohook_ok": true,
+   "cover_A0_ok": true,
+   "cover_A2_ok": true,
+   "cover_k3_ok": true,
+   "cover_k5_ok": true,
+   "hook_calls_40": true,
+   "lyric_rows_equal_across_switch": true,
+   "guide_latents_equal": true,
+   "beta2_changes_output": true,
+   "scorer": true,
+   "scorer_registered": true
+  },
+  "bit_identity": {
+   "cover_k4": true,
+   "text2music": true
+  },
+  "fallback": false,
+  "b1_note": null,
+  "timing": {
+   "medians": {
+    "guided": {
+     "gen_seconds_median": 2.7,
+     "score_seconds_median": 49.91,
+     "n_gen": 5,
+     "n_scored": 5
+    },
+    "text2music": {
+     "gen_seconds_median": 2.3499999999999996,
+     "score_seconds_median": 5.21,
+     "n_gen": 2,
+     "n_scored": 3
+    }
+   },
+   "seconds_per_run": {
+    "guided": 64.11,
+    "text2music": 11.24
+   }
+  },
+  "trim": {
+   "drop_clarinet_k3": true,
+   "drop_noguide_test": true,
+   "seconds_per_run": {
+    "guided": 64.11,
+    "text2music": 11.24
+   },
+   "projected_hours": [
+    32.645,
+    29.44,
+    29.14
+   ],
+   "budget_hours": 7.0,
+   "loop_allowance": {
+    "extra_s": 46.0,
+    "rate": {
+     "guided": 0.25,
+     "text2music": 0.08
+    }
+   }
+  },
+  "scale": "full",
+  "minutes": 4.5,
+  "minutes_total": 4.5
+ },
+ "b1": {
+  "state": "ok",
+  "codes": {
+   "gen": 0,
+   "score": 0,
+   "decide": 0
+  },
+  "verdict": "not supported",
+  "reasons": [
+   "c1_items_improved failed"
+  ],
+  "labels": [
+   "timing not moved in 9 items",
+   "recall and voice kept",
+   "head-specific"
+  ],
+  "note": null,
+  "scale": "full",
+  "minutes": 26.0,
+  "minutes_total": 26.0
+ },
+ "b2dev": {
+  "state": "ok",
+  "score_passes": 1,
+  "generated": 900,
+  "failed": 0,
+  "scored": 900,
+  "scale": "full",
+  "minutes": 154.0,
+  "minutes_total": 154.0
+ },
+ "select": {
+  "state": "ok",
+  "returncode": 0,
+  "s_star": "oohs_k3_A8",
+  "b_star": "oohs_k3_none",
+  "stage_t": true,
+  "gate_waived": false,
+  "scale": "full",
+  "minutes": 0.2,
+  "minutes_total": 0.2
+ },
+ "b2test": {
+  "state": "ok",
+  "score_passes": 1,
+  "generated": 480,
+  "failed": 0,
+  "scored": 480,
+  "scale": "full",
+  "minutes": 96.9,
+  "minutes_total": 96.9
+ },
+ "decide": {
+  "state": "ok",
+  "returncode": 0,
+  "verdict": "Capability reached, clock not credited",
+  "reasons": [
+   "P1 failed"
+  ],
+  "labels": {
+   "strict_capability": false,
+   "head_specific": "head-specific clock",
+   "timing": "timing-specific",
+   "timing_lower_bound": 0.04934,
+   "timbre_copy": false,
+   "words_cut": false,
+   "dev_futility": false,
+   "frontier_moved": false,
+   "independent_asr": {
+    "J_ctc": 0.083333,
+    "P2_with_ctc": false
+   }
+  },
+  "J": {
+   "S*": 0.583333,
+   "S*_b0": 0.333333,
+   "S*_rand": 0.333333,
+   "S*_shuf": 0.291667,
+   "ctx_oohs_k3": 0.333333,
+   "ctx_oohs_k4": 0.125,
+   "B*": 0.333333
+  },
+  "scale": "full",
+  "minutes": 0.6,
+  "minutes_total": 0.6
+ },
+ "package": {
+  "state": "running",
+  "scale": "full",
+  "started_epoch": 1793324690.2630363,
+  "minutes_total": 0.0
+ }
+}

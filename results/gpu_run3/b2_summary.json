@@ -1,0 +1,49 @@
+{
+ "verdict": "Capability reached, clock not credited",
+ "reasons": [
+  "P1 failed"
+ ],
+ "labels": {
+  "strict_capability": false,
+  "head_specific": "head-specific clock",
+  "timing": "timing-specific",
+  "timing_lower_bound": 0.04934,
+  "timbre_copy": false,
+  "words_cut": false,
+  "dev_futility": false,
+  "frontier_moved": false,
+  "independent_asr": {
+   "J_ctc": 0.083333,
+   "P2_with_ctc": false
+  }
+ },
+ "J": {
+  "S*": 0.583333,
+  "S*_b0": 0.333333,
+  "S*_rand": 0.333333,
+  "S*_shuf": 0.291667,
+  "ctx_oohs_k3": 0.333333,
+  "ctx_oohs_k4": 0.125,
+  "B*": 0.333333
+ },
+ "rule": {
+  "P1": {
+   "held": false,
+   "delta_j": 0.25,
+   "needed": 0.2,
+   "p2_5": 0.0,
+   "best_comparator": "S*_b0",
+   "comparators": {
+    "S*_b0": 0.333333,
+    "ctx_oohs_k3": 0.333333,
+    "ctx_oohs_k4": 0.125,
+    "B*": 0.333333
+   }
+  },
+  "P2": {
+   "held": true,
+   "J": 0.583333,
+   "needed": 0.5
+  }
+ }
+}

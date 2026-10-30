@@ -267,6 +267,57 @@ def fig_e5(th, name):
     save(fig, OUT / f"e5_motif_{name}.svg", th)
 
 
+RUN3 = "results/gpu_run3"
+
+
+def fig_b2(th, name):
+    """B2 (Run B): share of the 24 test melodies whose kept draw (best of 4) is joint, per Stage T arm.
+
+    Blue: q from Whisper large-v3, as registered. Orange: the same kept draws scored with the CTC recogniser's WR
+    (the registered independent-ASR label). Merged arms are drawn once. Tick: the registered capability bar (P2)."""
+    r = load(f"{RUN3}/b2_result.json")
+    q_ctc = {c["run_id"]: c["q_ctc"] for c in r["clips"]}
+    rows = [("S*", "Clock on the 7 lyric heads"),
+            ("S*_b0", "No clock, same guide"),
+            ("S*_rand", "Clock on 7 random heads"),
+            ("S*_shuf", "Clock, words on the wrong notes"),
+            ("ctx_oohs_k4", "No clock, stronger guide")]
+    n_items = r["arms"]["S*"]["n_items"]
+    fig, ax = plt.subplots(figsize=(8.6, 4.9), facecolor=th["surface"])
+    fig.subplots_adjust(left=0.29, right=0.97, top=0.74, bottom=0.15)
+    n = len(rows)
+    for i, (arm, label) in enumerate(rows):
+        y = n - 1 - i
+        a = r["arms"][arm]
+        wsp = sum(it["j"] for it in a["items"].values())
+        ctc = sum(round(q_ctc[it["kept_run"]], 6) >= 0.5 for it in a["items"].values())
+        ax.plot([ctc / n_items, wsp / n_items], [y, y], color=th["grid"], linewidth=2, zorder=2)
+        ax.scatter([wsp / n_items], [y], s=64, marker="o", color=th["s1"], edgecolors=th["surface"], linewidths=2, zorder=4)
+        ax.scatter([ctc / n_items], [y], s=52, marker="D", color=th["s2"], edgecolors=th["surface"], linewidths=2, zorder=4)
+        ax.text(wsp / n_items + 0.025, y, f"{wsp}/{n_items}", va="center", fontsize=9.5, color=th["ink2"], zorder=4)
+        ax.text(ctc / n_items - 0.025, y, f"{ctc}", va="center", ha="right", fontsize=9.5, color=th["ink2"], zorder=4)
+    bar = r["rule"]["P2"]["needed"]
+    ax.plot([bar, bar], [-0.5, n - 0.5], color=th["ink2"], linewidth=1.5, zorder=3)
+    ax.text(bar + 0.01, n - 0.45, "capability bar", va="bottom", fontsize=9, color=th["ink2"])
+    ax.set_yticks(range(n))
+    ax.set_yticklabels([lab for _, lab in rows][::-1], color=th["ink"], fontsize=10.5)
+    style(ax, th)
+    ax.set_xlim(-0.06, 1.0)
+    ax.set_ylim(-0.6, n - 0.1)
+    ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+    ax.set_xticklabels(["0", "0.25", "0.50", "0.75", "1"])
+    ax.scatter([], [], s=64, marker="o", color=th["s1"], label="Words recognised by Whisper (registered)")
+    ax.scatter([], [], s=52, marker="D", color=th["s2"], label="Words recognised by a second recogniser (CTC)")
+    top_legend(fig, ax, th, 0.85)
+    fig.text(0.02, 0.965, "The clocked recipe clears the bar by Whisper, not by a second recogniser",
+             color=th["ink"], fontsize=13.5, fontweight="bold", va="top")
+    fig.text(0.02, 0.915, "Share of 24 new melodies where the kept draw (best of 4) gets at least half the notes and half the words",
+             color=th["ink2"], fontsize=10.5, va="top")
+    fig.text(0.02, 0.02, f"Voice Oohs guide for the first 3 of 8 steps (4 for the stronger one); clock at beta 8. NVIDIA L4. Source: {RUN3}/b2_result.json",
+             color=th["muted"], fontsize=8.5, va="bottom")
+    save(fig, OUT / f"b2_clock_{name}.svg", th)
+
+
 def hero(th, name):
     """Schematic of a planner-renderer song model, the measured melody survival on each path, and the hook."""
     s = e1_pooled(3)
@@ -315,4 +366,5 @@ if __name__ == "__main__":
         fig_e0(th, name)
         fig_e4(th, name)
         fig_e5(th, name)
+        fig_b2(th, name)
     print(sorted(p.name for p in OUT.glob("*.svg")))

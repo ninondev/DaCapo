@@ -237,3 +237,97 @@ Nothing stopped the run, but four small things are worth recording.
 - Some result files have no `git_commit` field. The hashes above tie them to the run, and every file that has the field names `83d46e7`.
 
 The labelled listening examples in the package still overlap the blind pack (60 clips). Nobody should hear them before doing the blind test.
+
+## 2026-10-28 and 2026-10-29: Run B registered
+
+Run B has two parts. B1 is the lyric clock on its own, with no melody guide, under the rule addendum 2 fixed before Run A. The clock adds a fixed bias (beta) to the attention scores, before the softmax, of the seven alignment heads in layers 2 to 6, so each lyric word's tokens get more weight in the frames of that word's note. The code for B1 was registered in the B1 code addendum (`addendum_2_b1code.json`, 2026-10-28T20:56:49Z) after a CPU test showed that the hook at beta 0 leaves the output unchanged. B2 is the clock together with a melody guide. It was registered in addendum 3 (`addendum_3.json`, 2026-10-29T04:50:31Z) before any full-scale B2 generation. Before that, the CPU code tests had run the tiny scale, including two runs on the test item b2t00 in early passes, with their own seeds and Whisper small.en. Nobody listened to them, and addendum 3 lists them.
+
+B2 asks whether one fixed recipe can sing new melodies with the right notes and recognisable words. A clip is joint when its vocal-gate result times the smaller of NPA_v (notes right on the separated vocal) and WR (lyric words Whisper recognises, in order) is at least 0.5. Stage D picks one clocked recipe (S*) and one unclocked recipe (B*) on the 12 E4 lines. Stage T runs them, with controls, on 24 new lines and melodies, 4 draws each, and keeps the draw with the highest score. J is the share of the 24 melodies whose kept draw is joint. The clock gets credit (P1) if J(S*) beats the best unclocked recipe by at least 0.20 and the bootstrap's 2.5th percentile of that gap is above 0. The bootstrap resamples the melodies. The capability (P2) needs J(S*) of at least 0.50.
+
+I approved one Colab L4 session and, before registration, accepted an estimate of 10 to 13 hours.
+
+## 2026-10-29 and 2026-10-30: Run B on the GPU (B1 and B2)
+
+I ran Run B in Colab on an NVIDIA L4 with commit `bd61a9f`, the code registered in the B1 code addendum and addendum 3. It started at 21:01:47Z and decide finished at 01:44:50Z, 283 minutes of stages in all: setup 0.9 min, A0 4.5, B1 26.0, Stage D 154.0, selection 0.2, Stage T 96.9 and decide 0.6. The run state was on Google Drive, and every stage ran once with no resume. The registered outputs are in `results/gpu_run3/` (its README lists them). The ledgers, logs, audio and blind pack are kept outside the repo, and the blind key is a separate file.
+
+### Setup and A0
+
+Setup found all three registrations current, rendered the 72 guides again with their registered hashes, and found the seed table and soundfont as registered. A0 passed all 15 hard checks. With the hook attached at beta 0, the output was bit-identical to the run without the hook, both for text2music and for the Voice Oohs cover at k = 4, so the registered fallback was not needed. Every hooked run made 40 hook calls.
+
+A0 also sets the registered timing trim. It projected 32.6 hours for the full design, so it dropped the five clarinet configs at k = 3 from Stage D (29.4 h) and then the no-guide arm from Stage T (29.1 h). The trim was fixed 26 minutes before Stage D began. The projection was far too high: the whole run took 4.7 hours. The agents traced it to A0's scoring times. Three of A0's five guided clips were the Voice Oohs cover at k = 4 (no hook; hook at beta 0, an identical WAV; and beta 2, a different WAV), and Whisper looped on all three ("oh, oh, ...", 222 chunks each), so the median guided scoring time was 49.9 s instead of about 5 s. The registered allowance for Whisper loops was then added on top. At the run's measured costs (8.7 s per text2music run; 10.3 s and 12.1 s per guided run in Stage D and Stage T), A0's formula would have projected 6.2 to 6.6 hours for the full design, under the 7.0-hour limit, so no trim would have applied. The trim followed the registered rule, but it means clarinet at k = 3 was never tested and Stage T has no no-guide reference arm. The no-guide arm was a reference for words and the vocal gate, not a comparator, so no verdict depends on it. Whether clarinet at k = 3 would have changed S* or B* can't be known; the clarinet recipes that ran were joint on at most 3 of the 12 development lines, against S*'s 9.
+
+### B1: the clock alone (not supported)
+
+180 runs: 12 E4 lines × 5 arms (no hook; beta 1, 2 and 4 on the alignment heads; beta 2 on random heads) × 3 draws. All were generated and scored. Without a guide the model sings these lines early: in a typical clip the words start 3.6 s before their written notes.
+
+The registered rule, at beta 2:
+1. At least a 30% cut in timing error in 9 of the 12 lines. Not met: 2 lines (0.41 and 0.77), with a median cut of 0.047. The closest miss was 0.28.
+2. Word recall and the share of clips with singing drop by 0.10 at most. Met: recall 0.595 to 0.600, singing 0.944 to 0.972.
+3. Random heads at beta 2 help less than half as much. Met: median cut -0.001, against 0.024 allowed.
+
+Verdict: not supported. The run's label "timing not moved in 9 items" is a fixed phrase in the code for a failed condition 1; in fact 10 of the 12 lines were not improved. Its label "head-specific" only records that condition 3 held: random heads cut the error less (median -0.001) than the alignment heads (0.047). With so small a main effect, it says little.
+
+Outside the rule: beta 1 improved 1 line (median cut 0.003), and beta 4 improved 6 (median cut 0.229, 95% interval over lines 0.008 to 0.365), while recall fell to 0.525 and the words still started a median 2.9 s early. So a stronger clock moves the timing somewhat, but beta 2 alone doesn't.
+
+### B2 Stage D and the selection
+
+900 runs: 25 recipes (guide Voice Oohs or clarinet, k = 3, 4 or 5, clock none, A2, A4, A8 or W2, minus the trimmed clarinet k = 3) × 12 lines × 3 draws. In the clock names, A is the seven alignment heads, W is all 80 heads of layers 2 to 6, and the number is beta. 690 of 900 clips passed the vocal gate. 13 of the 20 clocked recipes passed the 0.60 gate rate needed to be chosen.
+
+S* is `oohs_k3_A8`: the Voice Oohs guide for the first 3 of 8 steps and the clock at beta 8 on the alignment heads. It was joint on 9 of the 12 lines, against 6 for the next recipe (`oohs_k4_A8`), so no tie-break was needed. B* is `oohs_k3_none`, the same guide without the clock (2 of 12). Three Stage T arms are therefore the same recipe (S*_b0, ctx_oohs_k3 and B*), and Stage T merged them as registered. The selection file was written at 00:07:20Z, its hash is the first line of the Stage T ledger, and the first Stage T generation followed at 00:07:40Z.
+
+### B2 Stage T and the decision
+
+480 runs: 5 arms × 24 new lines × 4 draws, none missing or failed. P0, the integrity conditions, held.
+
+| Arm | J (of 24) | Joint clips (of 96) | Mean NPA_v | Mean WR | Median word-start error |
+|---|---|---|---|---|---|
+| S*: clock on the alignment heads, beta 8 | 14 | 31 | 0.44 | 0.50 | 0.42 s |
+| Same guide, no clock (S*_b0 = ctx_oohs_k3 = B*) | 8 | 13 | 0.45 | 0.32 | 1.73 s |
+| Clock on random heads (S*_rand) | 8 | 11 | 0.44 | 0.28 | 1.86 s |
+| Clock with the windows rotated (S*_shuf) | 7 | 9 | 0.41 | 0.31 | 4.49 s |
+| Stronger guide, no clock (ctx_oohs_k4) | 3 | 5 | 0.75 | 0.07 | 3.75 s |
+
+NPA_v by chance (scored against the other test melodies) is about 0.10 in every arm. The word-start error is the median over clips with at least 4 matched words.
+
+- P1, clock credit, failed. The gap is J(S*) - J(S*_b0) = 0.583 - 0.333 = 0.25, above the 0.20 needed. But the bootstrap's 2.5th percentile is exactly 0, and the rule needs it above 0. 286 of the 10,000 resamples had a gap of 0 or less (2.9%). The exact bootstrap gives 3.0%, and seeds 0 to 19 and every percentile method also give 0, so this is not resampling noise. For reference, 1.0% of resamples were below 0, so the gap sits exactly on the rule's boundary. Against the same guide without the clock, S* won 8 melodies, lost 2 (b2t14 and b2t22) and tied 14.
+- P2, capability, held: 14 of 24 melodies, where 12 were needed.
+
+Verdict: "Capability reached, clock not credited."
+
+The registered labels:
+- Strict capability (kept q of 0.75 or more on at least 12 of the 24 melodies): no, 2 of 24. The same guide without the clock also has 2.
+- Head-specific clock: yes. Mean kept q is 0.517 for S*, 0.353 with random heads and 0.385 without the clock.
+- Timing-specific: yes. The lower bound of S* minus S*_shuf in mean kept q is 0.049 (mean 0.126).
+- Timbre copy: no. None of S*'s 96 clips was vowels only.
+- Words cut: no. Recall is 0.503 in the first half of the line and 0.489 in the second.
+- Frontier moved: no. NPA_v stays the same (-0.006), and WR rises by 0.174, short of the 0.20 needed.
+- Dev futility: no. On the development lines S* ranked above B* (joint on 9 lines against 2).
+- Independent ASR: P2 fails with the second recogniser. With the CTC model's word recognition on the same kept draws, S* is joint on 2 of 24 melodies.
+
+The paired contrast of mean kept q against the same guide without the clock is +0.131 (95% interval 0.064 to 0.200). Best of 1, 2, 3 and 4 draws gives J of 0.32, 0.47, 0.53 and 0.58 for S* (averaged over all subsets of draws), against 0.14, 0.23, 0.29 and 0.33 without the clock.
+
+What it means: with the clock, the kept draw has at least half the notes right on the vocal and Whisper recognises at least half the words, in order, for 14 of 24 new melodies. By mean kept q, a secondary measure outside the rule, S* is ahead of the same guide without the clock (+0.131, 95% interval 0.064 to 0.200), though q also rests on Whisper. By the registered J rule the gain can't be credited to the clock: the gap of 0.25 clears the 0.20 needed, but its bootstrap 2.5th percentile is 0, not above it. The second recogniser doesn't back up the words: it finds a joint clip for 2 of S*'s 24 kept draws and 3 of the unclocked arm's. On the kept draws it rates S* a little below the unclocked arm (WR -0.08, 9 melodies up and 13 down). Over all 96 seed-paired clips S* is slightly ahead (WR +0.02). The CTC model reads every arm poorly (mean WR 0.05 to 0.18), and Whisper and CTC agree least on S*'s clips (correlation 0.53, against 0.61 to 0.79). So the capability rests on Whisper large-v3 alone, and the blind listening test has to decide whether people hear the words. Whisper got no lyric prompt, and none of S*'s joint transcripts contains a known hallucination phrase.
+
+The margin is small. Two of S*'s 14 joint melodies (b2t12 and b2t18) have no spare note: with one note fewer right on every clip, J(S*) would be exactly 12 of 24, and with two fewer, 10.
+
+### Checks after the run
+
+Agents rechecked the run from the files and wrote their own code from the registered text. They didn't use the repo's decision code for the main computation.
+- Provenance: all 89 files registered in the three addenda hash to their registered values at `bd61a9f`, the tree was clean, every result file that records a commit names `bd61a9f`, and every ledger row carries the registered code hashes. `register_b2.py --check` passed on Colab during setup (`setup_check.json`) and passes here too, with stand-ins for two audio packages it imports but doesn't call.
+- Ledgers: every planned run appears exactly once, in the registered order: B1 180, Stage D 900, Stage T 480. Every hooked run made 40 hook calls with every biased key inside the lyric, and every run without a hook made none. The heads, beta and window rotation match the registered sets. Within each line, draw and guide, every cover run used the same guide latent, whatever its k. All seeds match the registered table. Whisper ran at its pinned revision on every clip, and the CTC model at its pinned revision on every B2 clip. To make sure the checker can fail, they injected 20 faults into a copy of the ledgers, and it raised all 21 expected flags.
+- B1: an independent recompute matched every number in `b1_result.json`. Under 12 other defensible readings of the rule, beta 2 improves 2 or 3 lines, never close to 9.
+- B2: independent recomputes of the selection and of the decision matched every stored number, with one exception: one ineligible recipe's mean differs by 1e-6 because of rounding order.
+- The blind pack: each clip is the demo clip of the run its key names, the pair order follows the registered seed, and nothing in the files (names, tags, durations, sizes, loudness) shows which side is which.
+
+### What went wrong
+
+Nothing stopped the run. These are worth recording:
+- The A0 time projection was six times too high, as described above. The trim was applied as registered, but it removed clarinet at k = 3 and Stage T's no-guide arm when the full design would have fit.
+- B1's label "timing not moved in 9 items" reads wrongly when fewer than 9 lines improve; 10 of 12 were not improved.
+- `b2_selection.json` marks every unclocked recipe as eligible, including two below the 0.60 gate rate. The rule puts no gate on B*, so this is only how the field is named.
+- ACE-Step copied its own `configuration_acestep_v15.py` into the checkpoint before the weights were hashed. The model file it copied matches the registered hash; the configuration file isn't in the registered list, so its content wasn't checked.
+- Ledger rows carry no time stamps. The log lines show the selection was written before Stage T began.
+- The WAV and latent files are on Drive, not in the package, so their hashes couldn't be checked again here.
+- The word matcher in `dacapo/words.py` is the one the registration names, but it isn't always the longest in-order match. On 12 to 13 of the 480 clips a longest match finds 1 or 2 more words. J and the verdict don't change.
+
+The labelled demo clips in the result package show which recipe each clip comes from. Nobody should hear them before doing the blind test.

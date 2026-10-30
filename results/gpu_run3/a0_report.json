@@ -1,0 +1,127 @@
+{
+ "utc": "2026-10-29T21:07:09Z",
+ "scale": "full",
+ "pass": true,
+ "recorded": true,
+ "hard": {
+  "setup": true,
+  "t2m_nohook_ok": true,
+  "t2m_nohook_repeat_ok": true,
+  "t2m_A0_ok": true,
+  "cover_nohook_ok": true,
+  "cover_A0_ok": true,
+  "cover_A2_ok": true,
+  "cover_k3_ok": true,
+  "cover_k5_ok": true,
+  "hook_calls_40": true,
+  "lyric_rows_equal_across_switch": true,
+  "guide_latents_equal": true,
+  "beta2_changes_output": true,
+  "scorer": true,
+  "scorer_registered": true
+ },
+ "soft": {
+  "whole_encoder_states_equal_across_switch": true,
+  "lk_cover_non_cover": [
+   104,
+   104
+  ],
+  "guide_latent_ks": [
+   3,
+   4,
+   5
+  ],
+  "cover_beta0_max_abs_diff": 0.0,
+  "t2m_beta0_max_abs_diff": 0.0,
+  "t2m_determinism_repeat": true
+ },
+ "bit_identity": {
+  "cover_k4": true,
+  "text2music": true
+ },
+ "fallback": false,
+ "b1_note": null,
+ "timing": {
+  "medians": {
+   "guided": {
+    "gen_seconds_median": 2.7,
+    "score_seconds_median": 49.91,
+    "n_gen": 5,
+    "n_scored": 5
+   },
+   "text2music": {
+    "gen_seconds_median": 2.3499999999999996,
+    "score_seconds_median": 5.21,
+    "n_gen": 2,
+    "n_scored": 3
+   }
+  },
+  "seconds_per_run": {
+   "guided": 64.11,
+   "text2music": 11.24
+  }
+ },
+ "trim": {
+  "drop_clarinet_k3": true,
+  "drop_noguide_test": true,
+  "seconds_per_run": {
+   "guided": 64.11,
+   "text2music": 11.24
+  },
+  "projected_hours": [
+   32.645,
+   29.44,
+   29.14
+  ],
+  "budget_hours": 7.0,
+  "loop_allowance": {
+   "extra_s": 46.0,
+   "rate": {
+    "guided": 0.25,
+    "text2music": 0.08
+   }
+  }
+ },
+ "code_sha256": {
+  "experiments/e8_clock_sing/plan_b2.py": "815520e84945ded0578e11b437118f391de0fbc2cc87605f8e17495a6239c4bd",
+  "experiments/e8_clock_sing/make_items_b2.py": "178f91d7242da4172d0096e59c366856cfd6ad9c1137d8e67e73ec1711557a0d",
+  "experiments/e8_clock_sing/run_b2.py": "ad378e53a75f85125e9772506333466c5aa9fc1dc6383655d28ee59f11c88794",
+  "experiments/e8_clock_sing/score_b2.py": "d1f485337a33021b33ba0418ce7290f1861a075b4e81bc2223bbe7385763af7c",
+  "experiments/e8_clock_sing/select_b2.py": "b6a43d8bf6202d7b0aac7e4f8e3ec34a5e9ce511e7e2c019589e55d694062216",
+  "experiments/e8_clock_sing/decide_b2.py": "40ea17d017d19939a2913d7791d97814e4b1708802b98dc4ae59d66d7cc044ed",
+  "experiments/e8_clock_sing/package_b2.py": "194243825dc0991bd9c7ec111b59f1ba48a4f77a30a2e713f2ffb44e48812a9c",
+  "experiments/e8_clock_sing/register_b2.py": "5c5686fee8116ebd65c1f4038fe38f0259f7d8fc23ade0a1be0d73058174bd48",
+  "experiments/e8_clock_sing/power_b2.py": "8e47dddb6ccb24385b157957078f643554fcefd9557a231ace617de2abe7b15f",
+  "experiments/run_b.py": "bec903081625eb1324a207b60b173e0588e209260079e048314d6b39510180ee",
+  "dacapo/__init__.py": "b8743fd0f34274283976d2d2a301b1f1659c7f2edc3cc086e882b7bd24811db1",
+  "dacapo/ace.py": "44188b43d8f0dd38c00e699406e80ec1fa7c3af4759824eff5de3ae09adfa054",
+  "dacapo/seeds.py": "420c4eca5a945ee640c24fa27158192e936f48b8474271cb5c39cb40ad3899cf",
+  "dacapo/words.py": "20b857c64720443ef53c3b804701ddfbbaf5a6c2155f789f03a306681ccea365",
+  "dacapo/metrics.py": "a69087619f92fa750866a6904ca949e2efd1512daf5ab88fdf268df15b8db7b7",
+  "dacapo/render.py": "96b67d791a983116a52bea8697c51d3bc0a8b9ae421f9c24af95164a511a9d79",
+  "dacapo/symbolic.py": "c2542d093f1c247b1d3bb095ea66cb1efde36c5e9ebcc9e3497c28c493a4e487",
+  "dacapo/analysis.py": "5d19e4dfdbf14186e83d18fa514795510e0e66f3f06fe9b528db9f4f51da3fb2",
+  "dacapo/provenance.py": "36f16510aa3f69e54ed00e8b3887bccfff51f0075d76367750b005cd6de980df",
+  "dacapo/attn_bias.py": "f76b20d77f3fb0e9f79231f5b38385be502640066d810c34e84714b8315673c3",
+  "dacapo/motif_integrity.py": "6126875e34697bf113052538b52b8187afbf6d8a28c46ddd0cc649141303a330",
+  "experiments/e6_clock/clock_score.py": "19eb4d54f4bdcbe02cc9a0ebd59cfd5e557fad2eb08a4a4312253037cfa4875c",
+  "experiments/e6_clock/readout.py": "42389c0cea1001f71f8238ffd899d00f4e815542a9b88c52b3f67bf0f05112c6",
+  "experiments/e6_clock/run_b1.py": "d7221a37cfbedfcb48c1c8e887147a2b450abfc4ac1912c47ad8534d25797c5c",
+  "experiments/e4_sing/make_items.py": "30e3bb3f334aae32d4e54539e95c33f81398afc5eb4bf6901c2346b8be528b4f",
+  "experiments/e4_sing/run_sing.py": "0ba0a21b9d85e051c8fa40290e4a5385a6341d6daf424acfa078f8086793599b",
+  "experiments/e4_sing/score_sing.py": "883c044cabdac50a8056875270432e000a8ad9d60323b7ffd927fdd293121279",
+  "experiments/e5_motif/stage.py": "054750cfd2de792e03e4738331ac62df9bfac326cf14d155f3f9c46e09507fe2",
+  "experiments/e5_motif/v2_config.py": "495700cff076b402eee3ec8d954f6f0f8851f33dc7f31e2a1a78f150093fecd3",
+  "experiments/e8_clock_sing/lines_b2.txt": "1b2bab848fe878c28025c18bd0845a3d00f4003c06a04226dff057542adefcb1",
+  "experiments/e8_clock_sing/manifest_b2.json": "b8728491a83b34423c0edb3b12e8223f238cecee2a77e1d92ec86382544f4f83",
+  "experiments/e8_clock_sing/guides_b2.json": "7a6f6259f1f7bbcd7c2e61064778def0877d04ca4d7e3f6907f29aa78efc89e7",
+  "experiments/e8_clock_sing/tok_check_b2.json": "ec3b8836d234f1a0ac4d8ed05908e07808066df8792cab0ed88b47b9d54b80cf",
+  "experiments/e8_clock_sing/seeds_b2.json": "eb41d3e4ba884d95267c039bfb131e50fb80c44b5f624c32a7f7f7793e6ce254",
+  "experiments/e8_clock_sing/power_b2.json": "c1008bfeace5e44eecfcbf1ad7740a42cb6053803adf4f5a695f0f29f0c542bb",
+  "experiments/e4_sing/manifest.json": "1c436d0d08e701f70dbe8367f12fc0614a6d7bbe70720b2896cf1d98e9b90911",
+  "results/cpu/runb_cpu_test.json": "34fcaca7b21a3e024341b3c345a8e911ccde0880a7bee3beb971f7d1fed4b798"
+ },
+ "a0_gen_sha256": "cae8237cd819c90c9592fc0ddf3c5218b23f11607a4c2e367b2ef4fd8f959f32",
+ "a0_scores_sha256": "8eb8ce2bc769d4290c687d0c8bccdcefe76af67fc16ccdb5c71c43328af2e1cd",
+ "test_flags": []
+}
