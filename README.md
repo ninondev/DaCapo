@@ -169,7 +169,7 @@ The measuring tools are tested on known notes before the model is. For the main 
 
 ## Run it
 
-The easiest way is the Colab button at the top. Pick an L4 runtime, choose Run all, and allow Google Drive access once. The notebook installs everything, downloads the open ACE-Step weights (about 10 GB) and runs Run A: the fixed motif study and the lyric read-out. That takes about 4 hours on an L4, install and download included. At the end you get a zip with the results, and a separate file with the answers for the blind listening test. The run state is kept on Drive (about 5 GB; E5 wants 7.5 GB free before it starts), so after a runtime reset, Run all continues where it stopped. The GPU tests from run 1 can still run with `--stages`. Run B, the lyric clock, has its own notebook, [`notebook_runB.ipynb`](notebook_runB.ipynb); its stages took about 5 hours on an L4.
+The easiest way is the Colab button at the top. Pick an L4 runtime, choose Run all, and allow Google Drive access once. The notebook installs everything, downloads the open ACE-Step weights (about 10 GB) and runs Run A: the fixed motif study and the lyric read-out. That takes about 4 hours on an L4, install and download included. At the end you get a zip with the results, and a separate file with the answers for the blind listening test. The run state is kept on Drive (about 5 GB; E5 wants 7.5 GB free before it starts), so after a runtime reset, Run all continues where it stopped. The GPU tests from run 1 can still run with `--stages`. Run B, the lyric clock, has its own notebook, [`notebook_runB.ipynb`](notebook_runB.ipynb); its stages took about 5 hours on an L4. To try the B2 recipe on a melody of your own, [`notebook_sing.ipynb`](notebook_sing.ipynb) sings one word per note with the lyric clock and keeps the best of a few takes; it is a tool, not a study, and it needs an L4 or A100 ([`experiments/sing`](experiments/sing/)).
 
 To run the measuring tools on your own computer (macOS or Linux):
 
@@ -203,6 +203,7 @@ tests/           unit tests and a render-to-analysis test
 LOG.md           every run, in order
 notebook.ipynb   the Colab notebook for Run A
 notebook_runB.ipynb the Colab notebook for Run B
+notebook_sing.ipynb a tool: sing your own melody with the B2 recipe
 ```
 
 </details>

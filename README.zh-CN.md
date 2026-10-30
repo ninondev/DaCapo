@@ -169,7 +169,7 @@ Run B 在 2026-10-30 跑完了，结果在上面。只用歌词时钟没有把�
 
 ## 运行
 
-最简单的是点上面的 Colab 按钮，选 L4，点“全部运行”，再允许一次 Google Drive 访问。笔记本会自动安装、下载 ACE-Step 的开源权重（约 10 GB），然后跑 Run A：修好后的动机研究和歌词读出。在 L4 上大约 4 小时，包括安装和下载。最后你会拿到一个结果压缩包，另有一个单独的文件，里面是盲听测试的答案。运行状态存在 Drive 上（约 5 GB；E5 开始前要求至少有 7.5 GB 空间），所以运行时重置后，再点一次“全部运行”就会从停下的地方接着跑。第一次 GPU 运行的那些测试，仍然可以用 `--stages` 来跑。Run B（歌词时钟）有自己的笔记本 [`notebook_runB.ipynb`](notebook_runB.ipynb)，在 L4 上各阶段大约用了 5 小时。
+最简单的是点上面的 Colab 按钮，选 L4，点“全部运行”，再允许一次 Google Drive 访问。笔记本会自动安装、下载 ACE-Step 的开源权重（约 10 GB），然后跑 Run A：修好后的动机研究和歌词读出。在 L4 上大约 4 小时，包括安装和下载。最后你会拿到一个结果压缩包，另有一个单独的文件，里面是盲听测试的答案。运行状态存在 Drive 上（约 5 GB；E5 开始前要求至少有 7.5 GB 空间），所以运行时重置后，再点一次“全部运行”就会从停下的地方接着跑。第一次 GPU 运行的那些测试，仍然可以用 `--stages` 来跑。Run B（歌词时钟）有自己的笔记本 [`notebook_runB.ipynb`](notebook_runB.ipynb)，在 L4 上各阶段大约用了 5 小时。想用 B2 的做法唱你自己的旋律，可以用 [`notebook_sing.ipynb`](notebook_sing.ipynb)：一个音唱一个词，加上歌词时钟，生成几次留下最好的一次。它是工具，不是研究，需要 L4 或 A100（[`experiments/sing`](experiments/sing/)）。
 
 在自己电脑上跑测量工具（macOS 或 Linux）：
 
@@ -203,6 +203,7 @@ tests/            单元测试和“渲染到分析”的测试
 LOG.md            按时间记下的每次运行
 notebook.ipynb    Run A 的 Colab 笔记本
 notebook_runB.ipynb Run B 的 Colab 笔记本
+notebook_sing.ipynb 工具：用 B2 的做法唱你自己的旋律
 ```
 
 </details>
