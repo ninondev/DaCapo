@@ -6,7 +6,7 @@ English | [中文](README.zh-CN.md)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/hero_dark.svg">
-  <img alt="Diagram: in ACE-Step 1.5, a melody sent through the planner's 5 Hz plan tokens has the right pitch class in 29% of frames. The same melody given to the renderer as dense audio scores 91%, as high as the input itself (90%)." src="figures/hero_light.svg" width="100%">
+  <img alt="Diagram: in ACE-Step 1.5, the model's tokenizer turns a melody's audio into 5 Hz tokens (the planner language model is not run), and the renderer's output from those tokens has the right pitch class in 29% of frames. The same melody given to the renderer as dense 25 Hz audio latents for all 8 steps scores 91%, as high as the input itself (90%)." src="figures/hero_light.svg" width="100%">
 </picture>
 
 I studied music for five years as a kid (amateur grade exams, grade 6 or 7 out of 10) and stopped in middle school. AI song models got me interested again. I wanted one to sing a melody I wrote. The song sounded good, but the melody wasn't mine, and when I asked for my chorus to come back later in the song, it usually didn't.
@@ -27,8 +27,8 @@ To score a melody, the tests use pitch-class accuracy: the share of time where t
 
 ## What the tests found
 
-1. The plan loses most of the melody. Through the planner's tokens, only 29% of frames have the right note name, where random guessing gets about 10%. That's with tokens made from the melody's own audio, an easy case for any planner. The same melody given to the renderer as dense audio scores 91%, as high as the input itself (90%).
-2. The loss is in the tokenizer. A linear probe reads the note name from audio latents at the same 5 Hz rate with 0.919 accuracy. From the plan tokens it gets 0.575.
+1. The plan loses most of the melody. Through the 5 Hz plan tokens, only 29% of frames have the right note name, where random guessing gets about 10%. That's with tokens made from the melody's own audio, an easy case for any planner. The same melody given to the renderer as dense audio scores 91%, as high as the input itself (90%).
+2. Much of the loss is in the tokenizer. A linear probe reads the note name from audio latents at the same 5 Hz rate with 0.919 accuracy. From the plan tokens it gets 0.575, which is still more than the 29% the renderer sings from them, so the renderer's use of the tokens loses some too.
 3. In these tests the model sings the words or the melody, not both. With lyrics but no melody it sings 66% of the words. When it's guided with a wordless version of the melody, the notes become right (86% to 100%) and the words drop to 3% or less. A later test with a lyric clock did better by Whisper's count (see Results), but a second recogniser doesn't confirm the words.
 
 So I decided to build control inside the renderer, where the melody survives. The code can look at each of the 8 denoising steps, read or change what the model is making, and switch the text, lyrics or audio it listens to. It adds no extra model calls.
@@ -65,7 +65,7 @@ The low frame rate isn't the whole reason. When a note stays the same for a full
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/e4_tradeoff_dark.svg">
-  <img alt="Scatter plot of 21 settings (20 guides and no guide): notes sung at the written pitch against lyric words recognised. Without a guide, 0.03 of notes and 0.66 of words. Settings that reach 0.86 or more of the notes keep at most 0.03 of the words. Only 2 of 378 clips get at least half of both right." src="figures/e4_tradeoff_light.svg" width="100%">
+  <img alt="Scatter plot of 21 settings (20 guides and no guide): notes at the written pitch in the whole output (no vocal gate) against lyric words recognised. Without a guide, 0.03 of notes and 0.66 of words. Settings that reach 0.86 or more of the notes keep at most 0.03 of the words. Only 2 of 378 clips get at least half of both right." src="figures/e4_tradeoff_light.svg" width="100%">
 </picture>
 
 The agents asked the model to sing one lyric line on a melody, one note per one-syllable word. Without a guide it doesn't know the melody, so its notes match only by chance (3%), but it sings 66% of the words. Then they guided it with the melody sung or played without words, either as context for the first k of the 8 steps or as a noisy starting point (SDEdit, a known method used here as a baseline). Every setting that got the notes right (86% or more) lost the words (3% or less). Only 2 of 378 test clips got at least half of both.

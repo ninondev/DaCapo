@@ -1,0 +1,381 @@
+{
+ "about": "Post-hoc, exploratory checks of B2 Stage T made by the agents after Run B; not registered, and they cannot change a registered verdict. Computed only from the file named in source.",
+ "source": {
+  "file": "results/gpu_run3/b2_result.json",
+  "sha256": "913ac5fdb1b8113cd5f557e1e0970cd2e51ed671de78b99f3bbe6ae8264fe037"
+ },
+ "script": "experiments/checks/runb_secondary.py",
+ "consistency": {
+  "kept_draws_reproduced": {
+   "definition": "The registered selector applied to the clip rows keeps the stored kept run for every arm and item",
+   "value": true
+  },
+  "j_reproduced": {
+   "definition": "J of every arm recomputed from the clip rows equals the stored J",
+   "value": true
+  },
+  "wr_reproduced_from_transcript": {
+   "definition": "Stage T clips (of 480) whose stored WR is reproduced by the registered matcher from the stored transcript split at white space and hyphens",
+   "value": 480
+  },
+  "npa_v_times_notes_max_deviation": {
+   "definition": "Largest distance of NPA_v x (the line's note count) from a whole number over all clips; near 0 means NPA_v is a count of correct notes out of the line's notes",
+   "value": 6e-06
+  },
+  "wr_times_words_max_deviation": {
+   "definition": "Largest distance of WR x (the line's word count) from a whole number over all clips",
+   "value": 6e-06
+  }
+ },
+ "p1_bootstrap": {
+  "comparators": {
+   "definition": "The unclocked guided arms over which P1 takes the max (S*_b0, ctx_oohs_k3 and B* are one run, so two distinct J vectors)",
+   "value": [
+    "S*_b0",
+    "ctx_oohs_k3",
+    "ctx_oohs_k4",
+    "B*"
+   ]
+  },
+  "delta_j": {
+   "definition": "J(S*) minus the largest comparator J",
+   "value": 0.25
+  },
+  "p2_5": {
+   "definition": "2.5th percentile (numpy linear) of the bootstrap Delta_J: 10,000 resamples of the 24 items, default_rng(0).integers(0, 24, (10000, 24)), max over comparators retaken (decide_b2)",
+   "value": 0.0
+  },
+  "n_le_0": {
+   "definition": "Resamples of those 10,000 with Delta_J <= 0",
+   "value": 286
+  },
+  "n_lt_0": {
+   "definition": "Resamples of those 10,000 with Delta_J < 0",
+   "value": 104
+  },
+  "seeds_0_19_p2_5": {
+   "definition": "The same 2.5th percentile with default_rng(s) for s = 0 to 19",
+   "value": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "seeds_0_19_share_le_0": {
+   "definition": "Share of the 10,000 resamples with Delta_J <= 0, for s = 0 to 19",
+   "value": [
+    0.0286,
+    0.0278,
+    0.0321,
+    0.0304,
+    0.0317,
+    0.029,
+    0.028,
+    0.0326,
+    0.0335,
+    0.0279,
+    0.0305,
+    0.0281,
+    0.0281,
+    0.0293,
+    0.0309,
+    0.0334,
+    0.035,
+    0.0311,
+    0.0282,
+    0.0319
+   ]
+  },
+  "exact_p_le_0": {
+   "definition": "Exact ideal-bootstrap P(Delta_J <= 0): all 24^24 equally likely resamples counted by item category",
+   "value": 0.029987
+  },
+  "exact_p_lt_0": {
+   "definition": "Exact ideal-bootstrap P(Delta_J < 0), counted the same way",
+   "value": 0.013158
+  },
+  "exact_p2_5_is_0": {
+   "definition": "The ideal bootstrap's 2.5th percentile is exactly 0, since P(Delta_J < 0) < 0.025 <= P(Delta_J <= 0)",
+   "value": true
+  },
+  "item_categories": {
+   "definition": "Items per category, the category being J(S*) - J(b) for each distinct comparator b (S*_b0, ctx_oohs_k4)",
+   "value": {
+    "1,1": 8,
+    "0,1": 5,
+    "0,0": 8,
+    "0,-1": 1,
+    "-1,0": 1,
+    "-1,-1": 1
+   }
+  }
+ },
+ "sign_test_s_star_vs_b0": {
+  "wins": {
+   "definition": "Items joint for S* and not for S*_b0",
+   "value": 8
+  },
+  "losses": {
+   "definition": "Items joint for S*_b0 and not for S*",
+   "value": 2
+  },
+  "ties": {
+   "definition": "Items joint for both or for neither",
+   "value": 14
+  },
+  "p_two_sided": {
+   "definition": "Exact two-sided binomial sign test on the untied items (p = 1/2)",
+   "value": 0.109375
+  }
+ },
+ "ctc": {
+  "j_ctc_same_kept_draws": {
+   "definition": "Items (of 24) whose kept draw, chosen by Whisper's q, has gate * min(NPA_v, CTC WR) >= 0.5",
+   "value": {
+    "S*": 2,
+    "S*_b0": 3,
+    "S*_rand": 1,
+    "S*_shuf": 2,
+    "ctx_oohs_k4": 1
+   }
+  },
+  "mean_wr_ctc": {
+   "definition": "Mean CTC WR over the arm's 96 clips",
+   "value": {
+    "S*": 0.178813,
+    "S*_b0": 0.159941,
+    "S*_rand": 0.121249,
+    "S*_shuf": 0.128017,
+    "ctx_oohs_k4": 0.045357
+   }
+  },
+  "kept_s_star_minus_b0_mean_wr_ctc": {
+   "definition": "Mean over items of CTC WR of S*'s kept draw minus CTC WR of S*_b0's kept draw",
+   "value": -0.080298
+  },
+  "kept_s_star_minus_b0_up_down_equal": {
+   "definition": "Items where that difference is > 0, < 0 and = 0",
+   "value": [
+    9,
+    13,
+    2
+   ]
+  },
+  "paired_96_s_star_minus_b0_mean_wr_ctc": {
+   "definition": "Mean over the 96 seed-paired clips of S*'s CTC WR minus S*_b0's",
+   "value": 0.018873
+  },
+  "corr_wr_whisper_ctc": {
+   "definition": "Pearson correlation over the arm's 96 clips of Whisper WR and CTC WR",
+   "value": {
+    "S*": 0.528948,
+    "S*_b0": 0.75721,
+    "S*_rand": 0.7573,
+    "S*_shuf": 0.611839,
+    "ctx_oohs_k4": 0.791434
+   }
+  },
+  "j_ctc_reselected": {
+   "definition": "Items (of 24) joint when the selector keeps the draw with the largest q_ctc = gate * min(NPA_v, CTC WR)",
+   "value": {
+    "S*": 4,
+    "S*_b0": 3,
+    "S*_rand": 3,
+    "S*_shuf": 2,
+    "ctx_oohs_k4": 1
+   }
+  }
+ },
+ "p2_margin": {
+  "j_s_star_minus_1_note": {
+   "definition": "Items (of 24) joint for S* when every clip has one correct note fewer: NPA_v = (correct notes - 1) / (the line's notes), floor 0, the selector re-picking",
+   "value": 12
+  },
+  "j_s_star_minus_2_notes": {
+   "definition": "The same with two correct notes fewer",
+   "value": 10
+  },
+  "j_s_star_minus_1_word": {
+   "definition": "Items (of 24) joint for S* when every clip has one matched word fewer: WR = (matched words - 1) / (the line's words), floor 0, the selector re-picking",
+   "value": 14
+  },
+  "j_s_star_minus_2_words": {
+   "definition": "The same with two matched words fewer",
+   "value": 12
+  },
+  "items_lost_minus_1_note": {
+   "definition": "S*'s joint items that are no longer joint with one correct note fewer",
+   "value": [
+    "b2t12",
+    "b2t18"
+   ]
+  }
+ },
+ "wr_chance": {
+  "wr_chance": {
+   "definition": "Mean over the arm's 96 clips of the clip's WR against each of the other 23 test lyrics (stored transcript, registered matcher), averaged over the 23",
+   "value": {
+    "S*": 0.14467,
+    "S*_b0": 0.092429,
+    "S*_rand": 0.085614,
+    "S*_shuf": 0.112923,
+    "ctx_oohs_k4": 0.026191
+   }
+  },
+  "max_wr_against_other_lyric": {
+   "definition": "Largest WR of any clip of the arm against any other test lyric",
+   "value": {
+    "S*": 0.416667,
+    "S*_b0": 0.416667,
+    "S*_rand": 0.416667,
+    "S*_shuf": 0.384615,
+    "ctx_oohs_k4": 0.384615
+   }
+  },
+  "wr_above_chance": {
+   "definition": "Mean WR minus WR chance",
+   "value": {
+    "S*": 0.350626,
+    "S*_b0": 0.229164,
+    "S*_rand": 0.195867,
+    "S*_shuf": 0.19676,
+    "ctx_oohs_k4": 0.045633
+   }
+  },
+  "s_star_minus_b0_wr_gain": {
+   "definition": "Mean WR of S* minus that of S*_b0",
+   "value": 0.173703
+  },
+  "s_star_minus_b0_wr_gain_above_chance": {
+   "definition": "The same gain after subtracting each arm's WR chance",
+   "value": 0.121462
+  }
+ },
+ "any_order": {
+  "j_any_order": {
+   "definition": "Items (of 24) joint with q = gate * min(NPA_v, WR in any order), the stored wr_multiset, the selector re-picking by that q",
+   "value": {
+    "S*": 15,
+    "S*_b0": 8,
+    "S*_rand": 8,
+    "S*_shuf": 10,
+    "ctx_oohs_k4": 3
+   }
+  },
+  "mean_kept_q_any_order": {
+   "definition": "Mean over items of the largest any-order q",
+   "value": {
+    "S*": 0.524087,
+    "S*_b0": 0.385028,
+    "S*_rand": 0.369415,
+    "S*_shuf": 0.445925,
+    "ctx_oohs_k4": 0.174874
+   }
+  },
+  "contrast_s_star_minus_shuf": {
+   "definition": "Mean over items of S*'s minus S*_shuf's kept any-order q, with the 95% interval of the registered item bootstrap (default_rng(0), 10,000 resamples, percentiles)",
+   "value": {
+    "mean": 0.078162,
+    "ci95": [
+     0.015052,
+     0.140784
+    ]
+   }
+  },
+  "contrast_s_star_minus_b0": {
+   "definition": "The same for S* minus S*_b0",
+   "value": {
+    "mean": 0.139059,
+    "ci95": [
+     0.068253,
+     0.210062
+    ]
+   }
+  }
+ },
+ "onset_seed_paired": {
+  "n_clips": {
+   "definition": "Seed-paired clips (same item and draw) with an onset error in both S* and S*_b0 (each clip with at least 4 matched words)",
+   "value": 39
+  },
+  "median_s_star": {
+   "definition": "Median absolute onset error (s) of S* over those clips",
+   "value": 0.4
+  },
+  "median_b0": {
+   "definition": "Median absolute onset error (s) of S*_b0 over those clips",
+   "value": 1.72
+  }
+ },
+ "longest_match": {
+  "n_clips_more_words": {
+   "definition": "Stage T clips (of 480) where the longest in-order match of lyric and transcript words finds more lyric words than the registered matcher",
+   "value": 12
+  },
+  "extra_words": {
+   "definition": "Extra words found on those clips, as {count: clips}",
+   "value": {
+    "1": 11,
+    "2": 1
+   }
+  },
+  "clips": {
+   "definition": "Those clips",
+   "value": [
+    "b2t00_r3_oohs_k3_R8",
+    "b2t03_r1_oohs_k3_R8",
+    "b2t03_r3_oohs_k3_A8_shuf",
+    "b2t04_r1_oohs_k3_R8",
+    "b2t07_r0_oohs_k3_none",
+    "b2t13_r2_oohs_k3_none",
+    "b2t14_r2_oohs_k3_A8",
+    "b2t16_r1_oohs_k3_A8_shuf",
+    "b2t19_r0_oohs_k3_A8_shuf",
+    "b2t21_r2_oohs_k3_A8_shuf",
+    "b2t23_r1_oohs_k3_A8_shuf",
+    "b2t23_r3_oohs_k3_A8_shuf"
+   ]
+  },
+  "j_with_longest_match": {
+   "definition": "Items (of 24) joint with WR from the longest in-order match, the selector re-picking",
+   "value": {
+    "S*": 14,
+    "S*_b0": 8,
+    "S*_rand": 8,
+    "S*_shuf": 7,
+    "ctx_oohs_k4": 3
+   }
+  },
+  "item_j_unchanged": {
+   "definition": "Every arm's per-item J is the same as with the registered matcher, so Delta_J, its bootstrap and the verdict do not change",
+   "value": true
+  }
+ },
+ "hallucination_strings": {
+  "n_s_star_joint_clips": {
+   "definition": "S*'s joint clips (q >= 0.5) over all 96",
+   "value": 31
+  },
+  "n_containing_a_registered_string": {
+   "definition": "Of those, transcripts that contain one of the registered E4 hallucination strings as whole words",
+   "value": 0
+  }
+ }
+}

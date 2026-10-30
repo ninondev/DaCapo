@@ -196,11 +196,11 @@ def fig_e4(th, name):
     ax.tick_params(colors=th["muted"], length=0, labelsize=10)
     ax.grid(True, color=th["grid"], linewidth=1)
     ax.set_axisbelow(True)
-    ax.set_xlabel("Notes sung at the written pitch", color=th["ink2"], fontsize=10.5)
+    ax.set_xlabel("Notes at the written pitch (whole output, no vocal gate)", color=th["ink2"], fontsize=10.5)
     ax.set_ylabel("Lyric words recognised", color=th["ink2"], fontsize=10.5)
     top_legend(fig, ax, th, 0.865)
-    fig.text(0.02, 0.965, "Right notes cost the words", color=th["ink"], fontsize=13.5, fontweight="bold", va="top")
-    fig.text(0.02, 0.915, "Each mark is one way of guiding the singer with the melody, sung or played without words",
+    fig.text(0.02, 0.965, "More notes at pitch, fewer words recognised", color=th["ink"], fontsize=13.5, fontweight="bold", va="top")
+    fig.text(0.02, 0.915, "Each mark is one way of guiding the model with the melody, sung or played without words",
              color=th["ink2"], fontsize=10.5, va="top")
     fig.text(0.02, 0.02, f"9 held-out melodies x 2 seeds per mark; words from a Whisper large-v3 transcript. Source: {RUN1}/e4_sweep.json",
              color=th["muted"], fontsize=8.5, va="bottom")
@@ -319,7 +319,8 @@ def fig_b2(th, name):
 
 
 def hero(th, name):
-    """Schematic of a planner-renderer song model, the measured melody survival on each path, and the hook."""
+    """Schematic of the two routes into the renderer (tokens the tokenizer computed from the melody's audio, and dense
+    latents), the measured melody survival on each, and the hook."""
     s = e1_pooled(3)
     pct = lambda k: f"{round(s[k], 2) * 100:.0f}%"  # same rounding as the bar labels
     W, H = 960, 340
@@ -335,24 +336,24 @@ def hero(th, name):
                 f'<path d="M{x2} {y2} l-11 -6 v12 z" fill="{color}"/>')
 
     parts = [f'<rect width="{W}" height="{H}" fill="{th["surface"]}"/>',
-             f'<text x="30" y="40" font-size="20" font-weight="700" fill="{ink}">Where does the melody live in an AI song model?</text>',
-             f'<text x="30" y="64" font-size="13.5" fill="{ink2}">Measured in ACE-Step 1.5 (open weights): how much of a known melody&#8217;s pitch survives each path</text>',
-             box(30, 110, 170, 74, "Your intent", "melody · lyrics · style"),
-             box(270, 110, 190, 74, "Planner", "language model"),
+             f'<text x="30" y="40" font-size="20" font-weight="700" fill="{ink}">Where does the melody go in ACE-Step 1.5?</text>',
+             f'<text x="30" y="64" font-size="13.5" fill="{ink2}">How much of a known melody&#8217;s pitch class survives each route into the renderer</text>',
+             box(30, 110, 170, 74, "Melody audio", "16 synthetic melodies"),
+             box(270, 110, 190, 74, "Tokenizer", "planner LM not run"),
              box(640, 110, 290, 74, "Renderer", "flow-matching transformer"),
              arrow(200, 147, 270, 147, line),
              arrow(460, 147, 640, 147, th["s2"], 4),
-             f'<text x="550" y="132" text-anchor="middle" font-size="12.5" fill="{ink2}">5 Hz plan tokens</text>',
+             f'<text x="550" y="132" text-anchor="middle" font-size="12.5" fill="{ink2}">5 Hz tokens from the audio</text>',
              f'<text x="550" y="176" text-anchor="middle" font-size="15" font-weight="700" fill="{ink}">{pct("codes_rt")} of pitch classes</text>',
              f'<path d="M115 184 C 115 278, 520 278, 676 193" fill="none" stroke="{th["s1"]}" stroke-width="4" stroke-linecap="round"/>',
              f'<path d="M686 186 l-14 2 l7 11 z" fill="{th["s1"]}"/>',
-             f'<text x="400" y="270" text-anchor="middle" font-size="12.5" fill="{ink2}">dense audio context (25 Hz latents)</text>',
+             f'<text x="400" y="270" text-anchor="middle" font-size="12.5" fill="{ink2}">dense audio context (25 Hz latents, all 8 steps)</text>',
              f'<text x="400" y="292" text-anchor="middle" font-size="15" font-weight="700" fill="{ink}">{pct("nofsq")} of pitch classes (input itself: {pct("input")})</text>',
              f'<line x1="830" y1="185" x2="830" y2="222" stroke="{th["s1"]}" stroke-width="1.5" stroke-dasharray="4 4"/>',
              f'<rect x="712" y="222" width="236" height="62" rx="12" fill="{th["surface"]}" stroke="{th["s1"]}" stroke-width="1.5"/>',
              f'<text x="830" y="248" text-anchor="middle" font-size="13" font-weight="700" fill="{ink}">Da Capo hooks every step</text>',
              f'<text x="830" y="269" text-anchor="middle" font-size="12" fill="{ink2}">read or change each step, no extra calls</text>',
-             f'<text x="30" y="328" font-size="11" fill="{muted}">Pitch-class accuracy (chance about 10%), 16 melodies x 3 tempi, NVIDIA L4. Source: {RUN1}/e1_melody_paths_shift3.json</text>']
+             f'<text x="30" y="328" font-size="11" fill="{muted}">Pitch-class accuracy (chance about 10%), 16 melodies x 3 tempos, one seed, NVIDIA L4. Source: {RUN1}/e1_melody_paths_shift3.json</text>']
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
            f'font-family="system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">' + "".join(parts) + "</svg>")
     (OUT / f"hero_{name}.svg").write_text(svg)
