@@ -144,6 +144,8 @@ Run A 在 2026-10-28 跑完了，结果在上面。动机研究（E5）发现模
 
 Run B 在 2026-10-30 跑完了，结果在上面。只用歌词时钟没有把时间对准（B1）。加上旋律引导以后，选出的做法按 Whisper 的计数达到了登记的门槛（B2），但不算时钟的功劳；换第二个识别器来听，歌词唱得清不清楚也没有得到证实。
 
+Run C 是 B2 的重复实验，用 96 条新旋律，已经搭好并登记，等 GPU 来跑（[addendum 4](experiments/e5_motif/registration/addendum_4.json)，[`notebook_runC.ipynb`](notebook_runC.ipynb)）。旋律是 B2 的 4 倍，应该能定下时钟到底有没有用。
+
 盲听测试用的是这两次运行的音频：Run A 的 60 段动机音频和 Run B 的 24 对歌唱音频，听的人不知道每段来自哪种条件。这是我要求的。在盲听做完之前，动机研究的结论只靠音高追踪器的分数，歌唱的结论靠音高追踪器和 Whisper。
 
 ## 进展
@@ -193,7 +195,7 @@ python figures/make_figures.py               # 从 results/ 重新画所有图
 
 ```
 dacapo/           代码库：旋律、渲染、音高追踪、打分，还有 ace.py（接到 ACE-Step 上的钩子）
-experiments/      每个研究一个文件夹（e0 到 e8），还有笔记本调用的 run_all.py 和 run_b.py
+experiments/      每个研究一个文件夹（e0 到 e9），还有笔记本调用的 run_all.py、run_b.py 和 run_c.py
 results/cpu/      CPU 上跑出来的结果文件
 results/gpu_run1/ 第一次 GPU 运行（NVIDIA L4）的结果文件
 results/gpu_run2/ Run A 的结果文件：动机研究和歌词读出（NVIDIA L4）
@@ -204,6 +206,7 @@ LOG.md            按时间记下的每次运行
 notebook.ipynb    Run A 的 Colab 笔记本
 notebook_runB.ipynb Run B 的 Colab 笔记本
 notebook_sing.ipynb 工具：用 B2 的做法唱你自己的旋律
+notebook_runC.ipynb Run C 的 Colab 笔记本
 ```
 
 </details>
@@ -220,6 +223,7 @@ notebook_sing.ipynb 工具：用 B2 的做法唱你自己的旋律
 - [ ] 动机研究的后续阶段：哪些层在做复制（先写新的 addendum）
 - [x] 在 GPU 上跑 Run B：只用歌词时钟（B1），以及时钟加旋律引导（B2）
 - [ ] 用 Run B 的 24 对歌唱音频做盲听测试
+- [ ] Run C：在 96 条新旋律上重做 B2 的两种做法（已经登记，等 GPU）
 - [ ] 用同样的 12 条旋律测 Suno 和 ACE-Step（E7，阶段 S）
 - [ ] 在渲染器里训练一个旋律适配器（E7），除非阶段 S 显示这件事已经有人做好了
 - [ ] 用更多随机种子重复，再请音乐人做盲听测试

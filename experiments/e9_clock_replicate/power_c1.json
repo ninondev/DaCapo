@@ -1,0 +1,63 @@
+{
+ "experiment": "c1_power",
+ "sims_per_cell": 2000,
+ "sim_seed": 0,
+ "n_items": 96,
+ "n_boot": 10000,
+ "boot_seed": 0,
+ "j_min": 0.5,
+ "size_bar": 0.2,
+ "half_probability": 0.375,
+ "source": "results/gpu_run3/b2_result.json (results.arms S* and S*_b0, items: j)",
+ "source_sha256": "913ac5fdb1b8113cd5f557e1e0970cd2e51ed671de78b99f3bbe6ae8264fe037",
+ "b2": {
+  "n_items": 24,
+  "J_s_star": 0.583333,
+  "J_s_b0": 0.333333,
+  "wins": 8,
+  "losses": 2,
+  "ties": 14
+ },
+ "cells": {
+  "observed": {
+   "P_R1": 0.979,
+   "P_R2": 0.965,
+   "P_R1_and_R2": 0.952,
+   "P_size_bar_and_R1": 0.781,
+   "mean_delta_j": 0.2519,
+   "mean_J_s_star": 0.5846,
+   "median_p2_5": 0.1354,
+   "mc_se_max": 0.011
+  },
+  "halved": {
+   "P_R1": 0.603,
+   "P_R2": 0.958,
+   "P_R1_and_R2": 0.598,
+   "P_size_bar_and_R1": 0.061,
+   "mean_delta_j": 0.1222,
+   "mean_J_s_star": 0.5825,
+   "median_p2_5": 0.0208,
+   "mc_se_max": 0.011
+  },
+  "halved_s_down": {
+   "P_R1": 0.631,
+   "P_R2": 0.252,
+   "P_R1_and_R2": 0.219,
+   "P_size_bar_and_R1": 0.066,
+   "mean_delta_j": 0.1256,
+   "mean_J_s_star": 0.4593,
+   "median_p2_5": 0.0208,
+   "mc_se_max": 0.011
+  },
+  "null": {
+   "P_R1": 0.024,
+   "P_R2": 0.24,
+   "P_R1_and_R2": 0.021,
+   "P_size_bar_and_R1": 0.001,
+   "mean_delta_j": 0.0004,
+   "mean_J_s_star": 0.4589,
+   "median_p2_5": -0.125,
+   "mc_se_max": 0.011
+  }
+ }
+}

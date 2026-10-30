@@ -1,0 +1,9748 @@
+{
+ "seed": 33,
+ "bpm": 100.0,
+ "lines": "experiments/e9_clock_replicate/lines_c1.txt",
+ "lines_sha256": "81ba65ab8eae2c1d877c3fa05650e30e63f9310f466d1a56bc13e78b5a05ec84",
+ "author": "The 96 lines were written by the agents under the line rules of addendum 3 (section items) and the rules added for Run C (addendum 4), before any Run C generation.",
+ "generator": "experiments/e4_sing/make_items.py rhythm() and pitches(), numpy default_rng(33), keys C, D, F, G in turn",
+ "items": [
+  {
+   "id": "c1t00",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Thin",
+    "smoke",
+    "drifts",
+    "up",
+    "from",
+    "the",
+    "barn",
+    "as",
+    "the",
+    "farm",
+    "dogs",
+    "sleep"
+   ],
+   "lyrics": "[Verse]\nThin smoke drifts up from the barn as the farm dogs sleep",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t00_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t01",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "She",
+    "tied",
+    "her",
+    "boat",
+    "to",
+    "a",
+    "post",
+    "and",
+    "slept",
+    "till",
+    "the",
+    "tide",
+    "turned"
+   ],
+   "lyrics": "[Verse]\nShe tied her boat to a post and slept till the tide turned",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 73,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t01_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t02",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "My",
+    "niece",
+    "bakes",
+    "plum",
+    "cake",
+    "each",
+    "spring",
+    "and",
+    "we",
+    "eat",
+    "it",
+    "warm"
+   ],
+   "lyrics": "[Verse]\nMy niece bakes plum cake each spring and we eat it warm",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t02_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t03",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "wind",
+    "tore",
+    "through",
+    "the",
+    "tent",
+    "so",
+    "we",
+    "packed",
+    "up",
+    "at",
+    "dawn"
+   ],
+   "lyrics": "[Verse]\nThe wind tore through the tent so we packed up at dawn",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t03_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t04",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Ducks",
+    "swim",
+    "in",
+    "a",
+    "line",
+    "on",
+    "the",
+    "pond",
+    "while",
+    "frogs",
+    "croak",
+    "loud"
+   ],
+   "lyrics": "[Verse]\nDucks swim in a line on the pond while frogs croak loud",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 14.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t04_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t05",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "He",
+    "drove",
+    "his",
+    "old",
+    "truck",
+    "down",
+    "the",
+    "dirt",
+    "track",
+    "to",
+    "the",
+    "farm"
+   ],
+   "lyrics": "[Verse]\nHe drove his old truck down the dirt track to the farm",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 10.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t05_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t06",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Pour",
+    "the",
+    "milk",
+    "in",
+    "a",
+    "cup",
+    "and",
+    "stir",
+    "it",
+    "with",
+    "a",
+    "spoon"
+   ],
+   "lyrics": "[Verse]\nPour the milk in a cup and stir it with a spoon",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t06_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t07",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Bees",
+    "hum",
+    "near",
+    "the",
+    "hive",
+    "as",
+    "the",
+    "warm",
+    "day",
+    "slips",
+    "to",
+    "dusk"
+   ],
+   "lyrics": "[Verse]\nBees hum near the hive as the warm day slips to dusk",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t07_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t08",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Fresh",
+    "snow",
+    "coats",
+    "the",
+    "hills",
+    "and",
+    "ponds",
+    "turn",
+    "hard",
+    "as",
+    "stone"
+   ],
+   "lyrics": "[Verse]\nFresh snow coats the hills and ponds turn hard as stone",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 62,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 6.0,
+      "dur": 3.6,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t08_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t09",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Grab",
+    "your",
+    "scarf",
+    "and",
+    "boots",
+    "since",
+    "the",
+    "frost",
+    "lies",
+    "thick",
+    "and",
+    "white"
+   ],
+   "lyrics": "[Verse]\nGrab your scarf and boots since the frost lies thick and white",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t09_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t10",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "clown",
+    "tossed",
+    "three",
+    "balls",
+    "up",
+    "and",
+    "the",
+    "kids",
+    "clapped",
+    "with",
+    "glee"
+   ],
+   "lyrics": "[Verse]\nThe clown tossed three balls up and the kids clapped with glee",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t10_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t11",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "We",
+    "sat",
+    "on",
+    "the",
+    "dock",
+    "and",
+    "tossed",
+    "small",
+    "stones",
+    "at",
+    "the",
+    "waves"
+   ],
+   "lyrics": "[Verse]\nWe sat on the dock and tossed small stones at the waves",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t11_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t12",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Bright",
+    "lamps",
+    "line",
+    "the",
+    "bridge",
+    "as",
+    "cars",
+    "rush",
+    "home",
+    "through",
+    "the",
+    "dark"
+   ],
+   "lyrics": "[Verse]\nBright lamps line the bridge as cars rush home through the dark",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t12_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t13",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Her",
+    "dad",
+    "climbed",
+    "the",
+    "roof",
+    "with",
+    "nails",
+    "and",
+    "a",
+    "bag",
+    "of",
+    "tools"
+   ],
+   "lyrics": "[Verse]\nHer dad climbed the roof with nails and a bag of tools",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t13_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t14",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "A",
+    "crow",
+    "sat",
+    "on",
+    "the",
+    "fence",
+    "and",
+    "cried",
+    "at",
+    "the",
+    "cold",
+    "dull",
+    "sky"
+   ],
+   "lyrics": "[Verse]\nA crow sat on the fence and cried at the cold dull sky",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t14_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t15",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Mix",
+    "the",
+    "dough",
+    "with",
+    "your",
+    "hands",
+    "and",
+    "let",
+    "it",
+    "rise",
+    "in",
+    "the",
+    "bowl"
+   ],
+   "lyrics": "[Verse]\nMix the dough with your hands and let it rise in the bowl",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t15_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t16",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "bus",
+    "was",
+    "late",
+    "so",
+    "we",
+    "walked",
+    "home",
+    "in",
+    "the",
+    "soft",
+    "spring",
+    "rain"
+   ],
+   "lyrics": "[Verse]\nThe bus was late so we walked home in the soft spring rain",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t16_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t17",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Thick",
+    "fog",
+    "rolled",
+    "in",
+    "from",
+    "the",
+    "bay",
+    "and",
+    "hid",
+    "the",
+    "boats",
+    "from",
+    "view"
+   ],
+   "lyrics": "[Verse]\nThick fog rolled in from the bay and hid the boats from view",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t17_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t18",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "I",
+    "lost",
+    "my",
+    "keys",
+    "in",
+    "the",
+    "long",
+    "grass",
+    "and",
+    "found",
+    "them",
+    "at",
+    "last"
+   ],
+   "lyrics": "[Verse]\nI lost my keys in the long grass and found them at last",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t18_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t19",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Three",
+    "black",
+    "cats",
+    "chase",
+    "a",
+    "mouse",
+    "round",
+    "and",
+    "round",
+    "the",
+    "shed"
+   ],
+   "lyrics": "[Verse]\nThree black cats chase a mouse round and round the shed",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t19_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t20",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Dad",
+    "hung",
+    "a",
+    "swing",
+    "from",
+    "the",
+    "oak",
+    "and",
+    "we",
+    "swung",
+    "up",
+    "so",
+    "high"
+   ],
+   "lyrics": "[Verse]\nDad hung a swing from the oak and we swung up so high",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t20_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t21",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "chef",
+    "sliced",
+    "the",
+    "ham",
+    "thin",
+    "and",
+    "laid",
+    "it",
+    "on",
+    "fresh",
+    "bread"
+   ],
+   "lyrics": "[Verse]\nThe chef sliced the ham thin and laid it on fresh bread",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t21_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t22",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Soft",
+    "bells",
+    "chime",
+    "from",
+    "the",
+    "church",
+    "as",
+    "the",
+    "crowd",
+    "steps",
+    "out"
+   ],
+   "lyrics": "[Verse]\nSoft bells chime from the church as the crowd steps out",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 7.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.0,
+      "dur": 3.6,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t22_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t23",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "We",
+    "pitched",
+    "camp",
+    "near",
+    "the",
+    "lake",
+    "and",
+    "lit",
+    "a",
+    "small",
+    "blaze",
+    "at",
+    "dusk"
+   ],
+   "lyrics": "[Verse]\nWe pitched camp near the lake and lit a small blaze at dusk",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t23_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t24",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "His",
+    "drum",
+    "beats",
+    "fast",
+    "and",
+    "the",
+    "girls",
+    "dance",
+    "in",
+    "a",
+    "ring"
+   ],
+   "lyrics": "[Verse]\nHis drum beats fast and the girls dance in a ring",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 9.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t24_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t25",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "kite",
+    "dipped",
+    "and",
+    "spun",
+    "then",
+    "caught",
+    "the",
+    "breeze",
+    "once",
+    "more"
+   ],
+   "lyrics": "[Verse]\nThe kite dipped and spun then caught the breeze once more",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 9.0,
+      "dur": 4.5,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t25_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t26",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "A",
+    "brown",
+    "cow",
+    "grazed",
+    "in",
+    "the",
+    "field",
+    "while",
+    "her",
+    "calf",
+    "slept",
+    "close"
+   ],
+   "lyrics": "[Verse]\nA brown cow grazed in the field while her calf slept close",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t26_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t27",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Clean",
+    "the",
+    "plates",
+    "and",
+    "dry",
+    "the",
+    "pots",
+    "then",
+    "sweep",
+    "the",
+    "floor"
+   ],
+   "lyrics": "[Verse]\nClean the plates and dry the pots then sweep the floor",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 16.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t27_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t28",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "moon",
+    "shone",
+    "on",
+    "the",
+    "lake",
+    "like",
+    "a",
+    "disc",
+    "of",
+    "bright",
+    "gold"
+   ],
+   "lyrics": "[Verse]\nThe moon shone on the lake like a disc of bright gold",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 3.6,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t28_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t29",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "We",
+    "left",
+    "the",
+    "town",
+    "at",
+    "noon",
+    "and",
+    "drove",
+    "west",
+    "for",
+    "a",
+    "long",
+    "time"
+   ],
+   "lyrics": "[Verse]\nWe left the town at noon and drove west for a long time",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t29_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t30",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Wet",
+    "leaves",
+    "stick",
+    "to",
+    "my",
+    "shoes",
+    "as",
+    "I",
+    "run",
+    "down",
+    "the",
+    "path"
+   ],
+   "lyrics": "[Verse]\nWet leaves stick to my shoes as I run down the path",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t30_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t31",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "judge",
+    "banged",
+    "on",
+    "his",
+    "desk",
+    "and",
+    "the",
+    "court",
+    "fell",
+    "still"
+   ],
+   "lyrics": "[Verse]\nThe judge banged on his desk and the court fell still",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t31_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t32",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Ten",
+    "ships",
+    "left",
+    "the",
+    "port",
+    "at",
+    "dawn",
+    "with",
+    "flags",
+    "held",
+    "high"
+   ],
+   "lyrics": "[Verse]\nTen ships left the port at dawn with flags held high",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t32_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t33",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Her",
+    "voice",
+    "was",
+    "low",
+    "and",
+    "calm",
+    "as",
+    "she",
+    "told",
+    "the",
+    "old",
+    "myth"
+   ],
+   "lyrics": "[Verse]\nHer voice was low and calm as she told the old myth",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t33_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t34",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "A",
+    "cold",
+    "drink",
+    "on",
+    "a",
+    "hot",
+    "day",
+    "is",
+    "all",
+    "I",
+    "want"
+   ],
+   "lyrics": "[Verse]\nA cold drink on a hot day is all I want",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t34_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t35",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Sheep",
+    "crowd",
+    "in",
+    "the",
+    "pen",
+    "when",
+    "the",
+    "dog",
+    "runs",
+    "down",
+    "the",
+    "slope"
+   ],
+   "lyrics": "[Verse]\nSheep crowd in the pen when the dog runs down the slope",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t35_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t36",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "lift",
+    "stuck",
+    "on",
+    "the",
+    "fifth",
+    "floor",
+    "and",
+    "we",
+    "pressed",
+    "the",
+    "bell"
+   ],
+   "lyrics": "[Verse]\nThe lift stuck on the fifth floor and we pressed the bell",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t36_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t37",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Paint",
+    "the",
+    "fence",
+    "green",
+    "and",
+    "then",
+    "hang",
+    "the",
+    "gate",
+    "back",
+    "on",
+    "its",
+    "hinge"
+   ],
+   "lyrics": "[Verse]\nPaint the fence green and then hang the gate back on its hinge",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t37_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t38",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Rain",
+    "beat",
+    "on",
+    "the",
+    "tin",
+    "shed",
+    "from",
+    "dusk",
+    "till",
+    "the",
+    "dawn",
+    "came"
+   ],
+   "lyrics": "[Verse]\nRain beat on the tin shed from dusk till the dawn came",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 3.6,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t38_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t39",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "twins",
+    "built",
+    "a",
+    "fort",
+    "of",
+    "sticks",
+    "and",
+    "moss",
+    "in",
+    "the",
+    "woods"
+   ],
+   "lyrics": "[Verse]\nThe twins built a fort of sticks and moss in the woods",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t39_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t40",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "I",
+    "like",
+    "to",
+    "walk",
+    "on",
+    "the",
+    "beach",
+    "when",
+    "the",
+    "gulls",
+    "glide",
+    "low"
+   ],
+   "lyrics": "[Verse]\nI like to walk on the beach when the gulls glide low",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 65,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 6.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t40_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t41",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "old",
+    "man",
+    "stirs",
+    "the",
+    "soup",
+    "on",
+    "the",
+    "stove",
+    "and",
+    "hums",
+    "a",
+    "tune"
+   ],
+   "lyrics": "[Verse]\nThe old man stirs the soup on the stove and hums a tune",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t41_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t42",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "train",
+    "shook",
+    "as",
+    "it",
+    "crossed",
+    "the",
+    "bridge",
+    "at",
+    "full",
+    "speed"
+   ],
+   "lyrics": "[Verse]\nThe train shook as it crossed the bridge at full speed",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 10.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t42_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t43",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "A",
+    "small",
+    "fish",
+    "leapt",
+    "from",
+    "the",
+    "stream",
+    "and",
+    "splashed",
+    "back",
+    "in"
+   ],
+   "lyrics": "[Verse]\nA small fish leapt from the stream and splashed back in",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t43_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t44",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Fold",
+    "the",
+    "shirts",
+    "and",
+    "stack",
+    "them",
+    "neat",
+    "on",
+    "the",
+    "top",
+    "shelf"
+   ],
+   "lyrics": "[Verse]\nFold the shirts and stack them neat on the top shelf",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 14.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t44_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t45",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "He",
+    "spent",
+    "his",
+    "last",
+    "coin",
+    "on",
+    "a",
+    "loaf",
+    "and",
+    "a",
+    "jar",
+    "of",
+    "jam"
+   ],
+   "lyrics": "[Verse]\nHe spent his last coin on a loaf and a jar of jam",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t45_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t46",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Young",
+    "lambs",
+    "leap",
+    "in",
+    "the",
+    "grass",
+    "as",
+    "the",
+    "wild",
+    "spring",
+    "winds",
+    "blow"
+   ],
+   "lyrics": "[Verse]\nYoung lambs leap in the grass as the wild spring winds blow",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 17.0,
+      "dur": 2.7,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t46_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t47",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "bell",
+    "rang",
+    "twice",
+    "and",
+    "the",
+    "class",
+    "ran",
+    "out",
+    "to",
+    "play"
+   ],
+   "lyrics": "[Verse]\nThe bell rang twice and the class ran out to play",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t47_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t48",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "We",
+    "walked",
+    "through",
+    "the",
+    "pines",
+    "at",
+    "dusk",
+    "and",
+    "gazed",
+    "up",
+    "at",
+    "the",
+    "stars"
+   ],
+   "lyrics": "[Verse]\nWe walked through the pines at dusk and gazed up at the stars",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t48_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t49",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Ice",
+    "cracks",
+    "on",
+    "the",
+    "lake",
+    "as",
+    "the",
+    "kids",
+    "skate",
+    "in",
+    "wide",
+    "loops"
+   ],
+   "lyrics": "[Verse]\nIce cracks on the lake as the kids skate in wide loops",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t49_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t50",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "She",
+    "hums",
+    "as",
+    "she",
+    "knits",
+    "a",
+    "thick",
+    "wool",
+    "hat",
+    "for",
+    "the",
+    "cold",
+    "months"
+   ],
+   "lyrics": "[Verse]\nShe hums as she knits a thick wool hat for the cold months",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t50_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t51",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Bring",
+    "a",
+    "torch",
+    "and",
+    "a",
+    "map",
+    "since",
+    "the",
+    "cave",
+    "is",
+    "deep",
+    "and",
+    "dark"
+   ],
+   "lyrics": "[Verse]\nBring a torch and a map since the cave is deep and dark",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t51_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t52",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "cook",
+    "burnt",
+    "the",
+    "toast",
+    "and",
+    "the",
+    "smoke",
+    "filled",
+    "the",
+    "house"
+   ],
+   "lyrics": "[Verse]\nThe cook burnt the toast and the smoke filled the house",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 12.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t52_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t53",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Wild",
+    "geese",
+    "head",
+    "south",
+    "in",
+    "a",
+    "long",
+    "thin",
+    "line",
+    "through",
+    "the",
+    "clouds"
+   ],
+   "lyrics": "[Verse]\nWild geese head south in a long thin line through the clouds",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t53_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t54",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "My",
+    "cat",
+    "naps",
+    "in",
+    "a",
+    "warm",
+    "patch",
+    "of",
+    "light",
+    "on",
+    "the",
+    "rug"
+   ],
+   "lyrics": "[Verse]\nMy cat naps in a warm patch of light on the rug",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t54_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t55",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Plant",
+    "the",
+    "beans",
+    "in",
+    "neat",
+    "lines",
+    "and",
+    "soak",
+    "the",
+    "soil",
+    "each",
+    "dusk"
+   ],
+   "lyrics": "[Verse]\nPlant the beans in neat lines and soak the soil each dusk",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.0,
+      "dur": 2.7,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t55_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t56",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "storm",
+    "brought",
+    "down",
+    "the",
+    "lines",
+    "and",
+    "the",
+    "town",
+    "went",
+    "dark"
+   ],
+   "lyrics": "[Verse]\nThe storm brought down the lines and the town went dark",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 17.0,
+      "dur": 2.7,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t56_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t57",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Big",
+    "trucks",
+    "roll",
+    "past",
+    "the",
+    "docks",
+    "with",
+    "crates",
+    "of",
+    "fruit",
+    "and",
+    "corn"
+   ],
+   "lyrics": "[Verse]\nBig trucks roll past the docks with crates of fruit and corn",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 73,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t57_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t58",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "I",
+    "sent",
+    "a",
+    "card",
+    "to",
+    "my",
+    "friend",
+    "and",
+    "drew",
+    "a",
+    "bird",
+    "on",
+    "it"
+   ],
+   "lyrics": "[Verse]\nI sent a card to my friend and drew a bird on it",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t58_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t59",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "pup",
+    "chewed",
+    "my",
+    "left",
+    "shoe",
+    "and",
+    "hid",
+    "it",
+    "in",
+    "the",
+    "yard"
+   ],
+   "lyrics": "[Verse]\nThe pup chewed my left shoe and hid it in the yard",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t59_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t60",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Fresh",
+    "peas",
+    "pop",
+    "from",
+    "the",
+    "pods",
+    "as",
+    "we",
+    "shell",
+    "them",
+    "on",
+    "the",
+    "porch"
+   ],
+   "lyrics": "[Verse]\nFresh peas pop from the pods as we shell them on the porch",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t60_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t61",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "A",
+    "tall",
+    "man",
+    "in",
+    "a",
+    "black",
+    "coat",
+    "strode",
+    "down",
+    "the",
+    "dim",
+    "street"
+   ],
+   "lyrics": "[Verse]\nA tall man in a black coat strode down the dim street",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t61_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t62",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "We",
+    "swam",
+    "out",
+    "to",
+    "the",
+    "raft",
+    "and",
+    "lay",
+    "in",
+    "the",
+    "heat",
+    "of",
+    "noon"
+   ],
+   "lyrics": "[Verse]\nWe swam out to the raft and lay in the heat of noon",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 58,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t62_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t63",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "crowd",
+    "roared",
+    "when",
+    "the",
+    "ball",
+    "went",
+    "in",
+    "the",
+    "net",
+    "at",
+    "last"
+   ],
+   "lyrics": "[Verse]\nThe crowd roared when the ball went in the net at last",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t63_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t64",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Hang",
+    "your",
+    "coat",
+    "on",
+    "the",
+    "hook",
+    "and",
+    "kick",
+    "off",
+    "your",
+    "wet",
+    "boots"
+   ],
+   "lyrics": "[Verse]\nHang your coat on the hook and kick off your wet boots",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t64_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t65",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "cook",
+    "keeps",
+    "the",
+    "bread",
+    "in",
+    "a",
+    "tin",
+    "so",
+    "it",
+    "stays",
+    "soft"
+   ],
+   "lyrics": "[Verse]\nThe cook keeps the bread in a tin so it stays soft",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t65_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t66",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Slow",
+    "clouds",
+    "drift",
+    "past",
+    "the",
+    "moon",
+    "as",
+    "the",
+    "bats",
+    "swoop",
+    "down"
+   ],
+   "lyrics": "[Verse]\nSlow clouds drift past the moon as the bats swoop down",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 14.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t66_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t67",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "He",
+    "tuned",
+    "his",
+    "harp",
+    "and",
+    "played",
+    "a",
+    "song",
+    "from",
+    "his",
+    "youth"
+   ],
+   "lyrics": "[Verse]\nHe tuned his harp and played a song from his youth",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t67_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t68",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Pick",
+    "up",
+    "your",
+    "toys",
+    "from",
+    "the",
+    "floor",
+    "and",
+    "put",
+    "them",
+    "in",
+    "the",
+    "box"
+   ],
+   "lyrics": "[Verse]\nPick up your toys from the floor and put them in the box",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t68_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t69",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Steam",
+    "curled",
+    "from",
+    "the",
+    "mugs",
+    "as",
+    "we",
+    "warmed",
+    "cold",
+    "hands",
+    "round",
+    "them"
+   ],
+   "lyrics": "[Verse]\nSteam curled from the mugs as we warmed cold hands round them",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t69_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t70",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "boat",
+    "lurched",
+    "in",
+    "the",
+    "swell",
+    "and",
+    "spray",
+    "soaked",
+    "the",
+    "deck"
+   ],
+   "lyrics": "[Verse]\nThe boat lurched in the swell and spray soaked the deck",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t70_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t71",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "A",
+    "fox",
+    "slipped",
+    "through",
+    "the",
+    "hedge",
+    "and",
+    "stole",
+    "a",
+    "hen",
+    "from",
+    "the",
+    "coop"
+   ],
+   "lyrics": "[Verse]\nA fox slipped through the hedge and stole a hen from the coop",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t71_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t72",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "We",
+    "hiked",
+    "for",
+    "miles",
+    "through",
+    "mud",
+    "and",
+    "rain",
+    "to",
+    "reach",
+    "the",
+    "hut"
+   ],
+   "lyrics": "[Verse]\nWe hiked for miles through mud and rain to reach the hut",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 65,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t72_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t73",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Her",
+    "bike",
+    "has",
+    "a",
+    "bell",
+    "and",
+    "a",
+    "big",
+    "brass",
+    "lamp",
+    "on",
+    "the",
+    "front"
+   ],
+   "lyrics": "[Verse]\nHer bike has a bell and a big brass lamp on the front",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t73_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t74",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "ice",
+    "cream",
+    "dripped",
+    "down",
+    "my",
+    "chin",
+    "in",
+    "the",
+    "noon",
+    "heat"
+   ],
+   "lyrics": "[Verse]\nThe ice cream dripped down my chin in the noon heat",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t74_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t75",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Lock",
+    "the",
+    "shed",
+    "and",
+    "bring",
+    "the",
+    "hens",
+    "in",
+    "when",
+    "the",
+    "light",
+    "fades"
+   ],
+   "lyrics": "[Verse]\nLock the shed and bring the hens in when the light fades",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t75_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t76",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "The",
+    "wheel",
+    "at",
+    "the",
+    "mill",
+    "turns",
+    "slow",
+    "as",
+    "the",
+    "stream",
+    "flows",
+    "past"
+   ],
+   "lyrics": "[Verse]\nThe wheel at the mill turns slow as the stream flows past",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 62,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t76_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t77",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "Dry",
+    "leaves",
+    "crunch",
+    "as",
+    "we",
+    "tramp",
+    "through",
+    "the",
+    "park",
+    "in",
+    "the",
+    "fall"
+   ],
+   "lyrics": "[Verse]\nDry leaves crunch as we tramp through the park in the fall",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 66,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t77_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t78",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "nurse",
+    "took",
+    "my",
+    "pulse",
+    "and",
+    "gave",
+    "me",
+    "a",
+    "glass",
+    "of",
+    "cold",
+    "milk"
+   ],
+   "lyrics": "[Verse]\nThe nurse took my pulse and gave me a glass of cold milk",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t78_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t79",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Kids",
+    "splash",
+    "in",
+    "the",
+    "pool",
+    "while",
+    "the",
+    "guard",
+    "sits",
+    "high",
+    "on",
+    "his",
+    "chair"
+   ],
+   "lyrics": "[Verse]\nKids splash in the pool while the guard sits high on his chair",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 60,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t79_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t80",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Thin",
+    "streams",
+    "of",
+    "smoke",
+    "rise",
+    "from",
+    "the",
+    "huts",
+    "on",
+    "the",
+    "far",
+    "shore"
+   ],
+   "lyrics": "[Verse]\nThin streams of smoke rise from the huts on the far shore",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t80_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t81",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "I",
+    "keep",
+    "my",
+    "shells",
+    "in",
+    "a",
+    "glass",
+    "jar",
+    "on",
+    "the",
+    "sill"
+   ],
+   "lyrics": "[Verse]\nI keep my shells in a glass jar on the sill",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t81_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t82",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "goat",
+    "climbed",
+    "the",
+    "rocks",
+    "and",
+    "stood",
+    "proud",
+    "on",
+    "the",
+    "top"
+   ],
+   "lyrics": "[Verse]\nThe goat climbed the rocks and stood proud on the top",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t82_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t83",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Sweep",
+    "the",
+    "leaves",
+    "off",
+    "the",
+    "steps",
+    "and",
+    "burn",
+    "them",
+    "in",
+    "the",
+    "drum"
+   ],
+   "lyrics": "[Verse]\nSweep the leaves off the steps and burn them in the drum",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 72,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t83_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t84",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Dark",
+    "rain",
+    "clouds",
+    "rolled",
+    "in",
+    "and",
+    "the",
+    "first",
+    "drops",
+    "hit",
+    "the",
+    "glass"
+   ],
+   "lyrics": "[Verse]\nDark rain clouds rolled in and the first drops hit the glass",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t84_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t85",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "She",
+    "knits",
+    "warm",
+    "socks",
+    "for",
+    "us",
+    "and",
+    "sings",
+    "songs",
+    "of",
+    "her",
+    "youth"
+   ],
+   "lyrics": "[Verse]\nShe knits warm socks for us and sings songs of her youth",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 71,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t85_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t86",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "The",
+    "bus",
+    "stop",
+    "is",
+    "past",
+    "the",
+    "shop",
+    "at",
+    "the",
+    "end",
+    "of",
+    "the",
+    "lane"
+   ],
+   "lyrics": "[Verse]\nThe bus stop is past the shop at the end of the lane",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 70,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 14.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t86_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t87",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "Swans",
+    "glide",
+    "on",
+    "the",
+    "still",
+    "lake",
+    "with",
+    "small",
+    "chicks",
+    "close",
+    "at",
+    "hand"
+   ],
+   "lyrics": "[Verse]\nSwans glide on the still lake with small chicks close at hand",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t87_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t88",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "We",
+    "stacked",
+    "hay",
+    "in",
+    "the",
+    "loft",
+    "and",
+    "slept",
+    "on",
+    "the",
+    "straw",
+    "at",
+    "dusk"
+   ],
+   "lyrics": "[Verse]\nWe stacked hay in the loft and slept on the straw at dusk",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 64,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 6.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 8.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 59,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 57,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t88_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t89",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "guard",
+    "checked",
+    "each",
+    "bag",
+    "as",
+    "the",
+    "crowd",
+    "filed",
+    "through",
+    "the",
+    "gate"
+   ],
+   "lyrics": "[Verse]\nThe guard checked each bag as the crowd filed through the gate",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 73,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 7.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 73,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t89_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t90",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "Soft",
+    "moss",
+    "grows",
+    "on",
+    "the",
+    "stones",
+    "near",
+    "the",
+    "wet",
+    "bank",
+    "of",
+    "the",
+    "brook"
+   ],
+   "lyrics": "[Verse]\nSoft moss grows on the stones near the wet bank of the brook",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 9.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 17.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t90_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t91",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "He",
+    "puffed",
+    "out",
+    "the",
+    "lamps",
+    "and",
+    "crept",
+    "up",
+    "to",
+    "bed",
+    "in",
+    "the",
+    "dark"
+   ],
+   "lyrics": "[Verse]\nHe puffed out the lamps and crept up to bed in the dark",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 66,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t91_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t92",
+   "split": "test",
+   "key": "C major",
+   "words": [
+    "Wash",
+    "the",
+    "grapes",
+    "and",
+    "pile",
+    "them",
+    "high",
+    "on",
+    "a",
+    "plate",
+    "for",
+    "lunch"
+   ],
+   "lyrics": "[Verse]\nWash the grapes and pile them high on a plate for lunch",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 69,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 11.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 65,
+      "start": 17.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t92_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t93",
+   "split": "test",
+   "key": "D major",
+   "words": [
+    "The",
+    "tent",
+    "flaps",
+    "snap",
+    "in",
+    "the",
+    "gale",
+    "as",
+    "we",
+    "grip",
+    "the",
+    "ropes"
+   ],
+   "lyrics": "[Verse]\nThe tent flaps snap in the gale as we grip the ropes",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 67,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 5.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 61,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 11.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 62,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 64,
+      "start": 18.0,
+      "dur": 1.8,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t93_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t94",
+   "split": "test",
+   "key": "F major",
+   "words": [
+    "A",
+    "child",
+    "drew",
+    "a",
+    "house",
+    "with",
+    "chalk",
+    "on",
+    "the",
+    "warm",
+    "stone",
+    "path"
+   ],
+   "lyrics": "[Verse]\nA child drew a house with chalk on the warm stone path",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 74,
+      "start": 4.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 8.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 9.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 10.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 70,
+      "start": 11.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 13.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 15.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 16.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t94_oohs.wav"
+   },
+   "duration": 14.0
+  },
+  {
+   "id": "c1t95",
+   "split": "test",
+   "key": "G major",
+   "words": [
+    "The",
+    "lights",
+    "of",
+    "the",
+    "fun",
+    "park",
+    "glow",
+    "as",
+    "the",
+    "big",
+    "wheel",
+    "spins"
+   ],
+   "lyrics": "[Verse]\nThe lights of the fun park glow as the big wheel spins",
+   "melody": {
+    "bpm": 100.0,
+    "notes": [
+     {
+      "pitch": 76,
+      "start": 4.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 5.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 6.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 7.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 8.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 76,
+      "start": 10.0,
+      "dur": 1.8,
+      "vel": 100
+     },
+     {
+      "pitch": 74,
+      "start": 12.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 13.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 72,
+      "start": 14.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 71,
+      "start": 15.0,
+      "dur": 2.7,
+      "vel": 100
+     },
+     {
+      "pitch": 69,
+      "start": 18.0,
+      "dur": 0.9,
+      "vel": 100
+     },
+     {
+      "pitch": 67,
+      "start": 19.0,
+      "dur": 0.9,
+      "vel": 100
+     }
+    ]
+   },
+   "guides": {
+    "oohs": "guides/c1t95_oohs.wav"
+   },
+   "duration": 14.0
+  }
+ ]
+}

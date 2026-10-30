@@ -1,0 +1,5950 @@
+{
+ "tokenizer": "Qwen3-Embedding-0.6B of the registered ACE-Step checkpoint",
+ "tokenizer_json_sha256": "def76fb086971c7867b829c23a26261e38d9d74e02139253b38aeb9df8b4b50a",
+ "header": "# Languages\nen\n\n# Lyric\n",
+ "items": {
+  "item00": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "i",
+    "walk",
+    "down",
+    "to",
+    "the",
+    "sea",
+    "and",
+    "watch",
+    "the",
+    "light",
+    "go",
+    "slow"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "item01": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "rain",
+    "falls",
+    "on",
+    "the",
+    "road",
+    "and",
+    "all",
+    "the",
+    "town",
+    "is",
+    "still"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t00": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "thin",
+    "smoke",
+    "drifts",
+    "up",
+    "from",
+    "the",
+    "barn",
+    "as",
+    "the",
+    "farm",
+    "dogs",
+    "sleep"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "drifts"
+   ],
+   "problems": []
+  },
+  "c1t01": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "she",
+    "tied",
+    "her",
+    "boat",
+    "to",
+    "a",
+    "post",
+    "and",
+    "slept",
+    "till",
+    "the",
+    "tide",
+    "turned"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t02": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "my",
+    "niece",
+    "bakes",
+    "plum",
+    "cake",
+    "each",
+    "spring",
+    "and",
+    "we",
+    "eat",
+    "it",
+    "warm"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "bakes"
+   ],
+   "problems": []
+  },
+  "c1t03": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "wind",
+    "tore",
+    "through",
+    "the",
+    "tent",
+    "so",
+    "we",
+    "packed",
+    "up",
+    "at",
+    "dawn"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t04": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "ducks",
+    "swim",
+    "in",
+    "a",
+    "line",
+    "on",
+    "the",
+    "pond",
+    "while",
+    "frogs",
+    "croak",
+    "loud"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23,
+     24
+    ],
+    [
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "Ducks",
+    "croak"
+   ],
+   "problems": []
+  },
+  "c1t05": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "he",
+    "drove",
+    "his",
+    "old",
+    "truck",
+    "down",
+    "the",
+    "dirt",
+    "track",
+    "to",
+    "the",
+    "farm"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t06": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "pour",
+    "the",
+    "milk",
+    "in",
+    "a",
+    "cup",
+    "and",
+    "stir",
+    "it",
+    "with",
+    "a",
+    "spoon"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t07": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "bees",
+    "hum",
+    "near",
+    "the",
+    "hive",
+    "as",
+    "the",
+    "warm",
+    "day",
+    "slips",
+    "to",
+    "dusk"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "Bees"
+   ],
+   "problems": []
+  },
+  "c1t08": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "fresh",
+    "snow",
+    "coats",
+    "the",
+    "hills",
+    "and",
+    "ponds",
+    "turn",
+    "hard",
+    "as",
+    "stone"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t09": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "grab",
+    "your",
+    "scarf",
+    "and",
+    "boots",
+    "since",
+    "the",
+    "frost",
+    "lies",
+    "thick",
+    "and",
+    "white"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t10": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "the",
+    "clown",
+    "tossed",
+    "three",
+    "balls",
+    "up",
+    "and",
+    "the",
+    "kids",
+    "clapped",
+    "with",
+    "glee"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21,
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24,
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "clapped",
+    "glee"
+   ],
+   "problems": []
+  },
+  "c1t11": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "we",
+    "sat",
+    "on",
+    "the",
+    "dock",
+    "and",
+    "tossed",
+    "small",
+    "stones",
+    "at",
+    "the",
+    "waves"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t12": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "bright",
+    "lamps",
+    "line",
+    "the",
+    "bridge",
+    "as",
+    "cars",
+    "rush",
+    "home",
+    "through",
+    "the",
+    "dark"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t13": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "her",
+    "dad",
+    "climbed",
+    "the",
+    "roof",
+    "with",
+    "nails",
+    "and",
+    "a",
+    "bag",
+    "of",
+    "tools"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t14": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "a",
+    "crow",
+    "sat",
+    "on",
+    "the",
+    "fence",
+    "and",
+    "cried",
+    "at",
+    "the",
+    "cold",
+    "dull",
+    "sky"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t15": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "mix",
+    "the",
+    "dough",
+    "with",
+    "your",
+    "hands",
+    "and",
+    "let",
+    "it",
+    "rise",
+    "in",
+    "the",
+    "bowl"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t16": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "the",
+    "bus",
+    "was",
+    "late",
+    "so",
+    "we",
+    "walked",
+    "home",
+    "in",
+    "the",
+    "soft",
+    "spring",
+    "rain"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t17": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "thick",
+    "fog",
+    "rolled",
+    "in",
+    "from",
+    "the",
+    "bay",
+    "and",
+    "hid",
+    "the",
+    "boats",
+    "from",
+    "view"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "Thick"
+   ],
+   "problems": []
+  },
+  "c1t18": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "i",
+    "lost",
+    "my",
+    "keys",
+    "in",
+    "the",
+    "long",
+    "grass",
+    "and",
+    "found",
+    "them",
+    "at",
+    "last"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t19": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "three",
+    "black",
+    "cats",
+    "chase",
+    "a",
+    "mouse",
+    "round",
+    "and",
+    "round",
+    "the",
+    "shed"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t20": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "dad",
+    "hung",
+    "a",
+    "swing",
+    "from",
+    "the",
+    "oak",
+    "and",
+    "we",
+    "swung",
+    "up",
+    "so",
+    "high"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "Dad"
+   ],
+   "problems": []
+  },
+  "c1t21": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "chef",
+    "sliced",
+    "the",
+    "ham",
+    "thin",
+    "and",
+    "laid",
+    "it",
+    "on",
+    "fresh",
+    "bread"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t22": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "soft",
+    "bells",
+    "chime",
+    "from",
+    "the",
+    "church",
+    "as",
+    "the",
+    "crowd",
+    "steps",
+    "out"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [
+    "chime"
+   ],
+   "problems": []
+  },
+  "c1t23": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "we",
+    "pitched",
+    "camp",
+    "near",
+    "the",
+    "lake",
+    "and",
+    "lit",
+    "a",
+    "small",
+    "blaze",
+    "at",
+    "dusk"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t24": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "his",
+    "drum",
+    "beats",
+    "fast",
+    "and",
+    "the",
+    "girls",
+    "dance",
+    "in",
+    "a",
+    "ring"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t25": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "kite",
+    "dipped",
+    "and",
+    "spun",
+    "then",
+    "caught",
+    "the",
+    "breeze",
+    "once",
+    "more"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t26": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "a",
+    "brown",
+    "cow",
+    "grazed",
+    "in",
+    "the",
+    "field",
+    "while",
+    "her",
+    "calf",
+    "slept",
+    "close"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "grazed"
+   ],
+   "problems": []
+  },
+  "c1t27": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "clean",
+    "the",
+    "plates",
+    "and",
+    "dry",
+    "the",
+    "pots",
+    "then",
+    "sweep",
+    "the",
+    "floor"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t28": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "the",
+    "moon",
+    "shone",
+    "on",
+    "the",
+    "lake",
+    "like",
+    "a",
+    "disc",
+    "of",
+    "bright",
+    "gold"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "shone"
+   ],
+   "problems": []
+  },
+  "c1t29": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "we",
+    "left",
+    "the",
+    "town",
+    "at",
+    "noon",
+    "and",
+    "drove",
+    "west",
+    "for",
+    "a",
+    "long",
+    "time"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t30": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "wet",
+    "leaves",
+    "stick",
+    "to",
+    "my",
+    "shoes",
+    "as",
+    "i",
+    "run",
+    "down",
+    "the",
+    "path"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "Wet"
+   ],
+   "problems": []
+  },
+  "c1t31": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "judge",
+    "banged",
+    "on",
+    "his",
+    "desk",
+    "and",
+    "the",
+    "court",
+    "fell",
+    "still"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t32": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "ten",
+    "ships",
+    "left",
+    "the",
+    "port",
+    "at",
+    "dawn",
+    "with",
+    "flags",
+    "held",
+    "high"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t33": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "her",
+    "voice",
+    "was",
+    "low",
+    "and",
+    "calm",
+    "as",
+    "she",
+    "told",
+    "the",
+    "old",
+    "myth"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t34": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "a",
+    "cold",
+    "drink",
+    "on",
+    "a",
+    "hot",
+    "day",
+    "is",
+    "all",
+    "i",
+    "want"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t35": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "sheep",
+    "crowd",
+    "in",
+    "the",
+    "pen",
+    "when",
+    "the",
+    "dog",
+    "runs",
+    "down",
+    "the",
+    "slope"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "Sheep"
+   ],
+   "problems": []
+  },
+  "c1t36": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "lift",
+    "stuck",
+    "on",
+    "the",
+    "fifth",
+    "floor",
+    "and",
+    "we",
+    "pressed",
+    "the",
+    "bell"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t37": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "paint",
+    "the",
+    "fence",
+    "green",
+    "and",
+    "then",
+    "hang",
+    "the",
+    "gate",
+    "back",
+    "on",
+    "its",
+    "hinge"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t38": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "rain",
+    "beat",
+    "on",
+    "the",
+    "tin",
+    "shed",
+    "from",
+    "dusk",
+    "till",
+    "the",
+    "dawn",
+    "came"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t39": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "twins",
+    "built",
+    "a",
+    "fort",
+    "of",
+    "sticks",
+    "and",
+    "moss",
+    "in",
+    "the",
+    "woods"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t40": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "i",
+    "like",
+    "to",
+    "walk",
+    "on",
+    "the",
+    "beach",
+    "when",
+    "the",
+    "gulls",
+    "glide",
+    "low"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21,
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "gulls"
+   ],
+   "problems": []
+  },
+  "c1t41": {
+   "start": 9,
+   "end": 27,
+   "n_lyr": 29,
+   "words": [
+    "the",
+    "old",
+    "man",
+    "stirs",
+    "the",
+    "soup",
+    "on",
+    "the",
+    "stove",
+    "and",
+    "hums",
+    "a",
+    "tune"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23,
+     24
+    ],
+    [
+     25
+    ],
+    [
+     26
+    ]
+   ],
+   "multi_token_words": [
+    "stirs",
+    "hums"
+   ],
+   "problems": []
+  },
+  "c1t42": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "train",
+    "shook",
+    "as",
+    "it",
+    "crossed",
+    "the",
+    "bridge",
+    "at",
+    "full",
+    "speed"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t43": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "a",
+    "small",
+    "fish",
+    "leapt",
+    "from",
+    "the",
+    "stream",
+    "and",
+    "splashed",
+    "back",
+    "in"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21,
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "leapt",
+    "splashed"
+   ],
+   "problems": []
+  },
+  "c1t44": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "fold",
+    "the",
+    "shirts",
+    "and",
+    "stack",
+    "them",
+    "neat",
+    "on",
+    "the",
+    "top",
+    "shelf"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t45": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "he",
+    "spent",
+    "his",
+    "last",
+    "coin",
+    "on",
+    "a",
+    "loaf",
+    "and",
+    "a",
+    "jar",
+    "of",
+    "jam"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t46": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "young",
+    "lambs",
+    "leap",
+    "in",
+    "the",
+    "grass",
+    "as",
+    "the",
+    "wild",
+    "spring",
+    "winds",
+    "blow"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "lambs"
+   ],
+   "problems": []
+  },
+  "c1t47": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "bell",
+    "rang",
+    "twice",
+    "and",
+    "the",
+    "class",
+    "ran",
+    "out",
+    "to",
+    "play"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t48": {
+   "start": 9,
+   "end": 27,
+   "n_lyr": 29,
+   "words": [
+    "we",
+    "walked",
+    "through",
+    "the",
+    "pines",
+    "at",
+    "dusk",
+    "and",
+    "gazed",
+    "up",
+    "at",
+    "the",
+    "stars"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16,
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21,
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ],
+    [
+     26
+    ]
+   ],
+   "multi_token_words": [
+    "pines",
+    "gazed"
+   ],
+   "problems": []
+  },
+  "c1t49": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "ice",
+    "cracks",
+    "on",
+    "the",
+    "lake",
+    "as",
+    "the",
+    "kids",
+    "skate",
+    "in",
+    "wide",
+    "loops"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t50": {
+   "start": 9,
+   "end": 27,
+   "n_lyr": 29,
+   "words": [
+    "she",
+    "hums",
+    "as",
+    "she",
+    "knits",
+    "a",
+    "thick",
+    "wool",
+    "hat",
+    "for",
+    "the",
+    "cold",
+    "months"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17,
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ],
+    [
+     26
+    ]
+   ],
+   "multi_token_words": [
+    "hums",
+    "knits"
+   ],
+   "problems": []
+  },
+  "c1t51": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "bring",
+    "a",
+    "torch",
+    "and",
+    "a",
+    "map",
+    "since",
+    "the",
+    "cave",
+    "is",
+    "deep",
+    "and",
+    "dark"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t52": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "cook",
+    "burnt",
+    "the",
+    "toast",
+    "and",
+    "the",
+    "smoke",
+    "filled",
+    "the",
+    "house"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t53": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "wild",
+    "geese",
+    "head",
+    "south",
+    "in",
+    "a",
+    "long",
+    "thin",
+    "line",
+    "through",
+    "the",
+    "clouds"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "geese"
+   ],
+   "problems": []
+  },
+  "c1t54": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "my",
+    "cat",
+    "naps",
+    "in",
+    "a",
+    "warm",
+    "patch",
+    "of",
+    "light",
+    "on",
+    "the",
+    "rug"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "naps"
+   ],
+   "problems": []
+  },
+  "c1t55": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "plant",
+    "the",
+    "beans",
+    "in",
+    "neat",
+    "lines",
+    "and",
+    "soak",
+    "the",
+    "soil",
+    "each",
+    "dusk"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t56": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "storm",
+    "brought",
+    "down",
+    "the",
+    "lines",
+    "and",
+    "the",
+    "town",
+    "went",
+    "dark"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t57": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "big",
+    "trucks",
+    "roll",
+    "past",
+    "the",
+    "docks",
+    "with",
+    "crates",
+    "of",
+    "fruit",
+    "and",
+    "corn"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t58": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "i",
+    "sent",
+    "a",
+    "card",
+    "to",
+    "my",
+    "friend",
+    "and",
+    "drew",
+    "a",
+    "bird",
+    "on",
+    "it"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t59": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "the",
+    "pup",
+    "chewed",
+    "my",
+    "left",
+    "shoe",
+    "and",
+    "hid",
+    "it",
+    "in",
+    "the",
+    "yard"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "chewed"
+   ],
+   "problems": []
+  },
+  "c1t60": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "fresh",
+    "peas",
+    "pop",
+    "from",
+    "the",
+    "pods",
+    "as",
+    "we",
+    "shell",
+    "them",
+    "on",
+    "the",
+    "porch"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t61": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "a",
+    "tall",
+    "man",
+    "in",
+    "a",
+    "black",
+    "coat",
+    "strode",
+    "down",
+    "the",
+    "dim",
+    "street"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19,
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "strode"
+   ],
+   "problems": []
+  },
+  "c1t62": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "we",
+    "swam",
+    "out",
+    "to",
+    "the",
+    "raft",
+    "and",
+    "lay",
+    "in",
+    "the",
+    "heat",
+    "of",
+    "noon"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "swam"
+   ],
+   "problems": []
+  },
+  "c1t63": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "the",
+    "crowd",
+    "roared",
+    "when",
+    "the",
+    "ball",
+    "went",
+    "in",
+    "the",
+    "net",
+    "at",
+    "last"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "roared"
+   ],
+   "problems": []
+  },
+  "c1t64": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "hang",
+    "your",
+    "coat",
+    "on",
+    "the",
+    "hook",
+    "and",
+    "kick",
+    "off",
+    "your",
+    "wet",
+    "boots"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t65": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "cook",
+    "keeps",
+    "the",
+    "bread",
+    "in",
+    "a",
+    "tin",
+    "so",
+    "it",
+    "stays",
+    "soft"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t66": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "slow",
+    "clouds",
+    "drift",
+    "past",
+    "the",
+    "moon",
+    "as",
+    "the",
+    "bats",
+    "swoop",
+    "down"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21,
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [
+    "swoop"
+   ],
+   "problems": []
+  },
+  "c1t67": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "he",
+    "tuned",
+    "his",
+    "harp",
+    "and",
+    "played",
+    "a",
+    "song",
+    "from",
+    "his",
+    "youth"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [
+    "harp"
+   ],
+   "problems": []
+  },
+  "c1t68": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "pick",
+    "up",
+    "your",
+    "toys",
+    "from",
+    "the",
+    "floor",
+    "and",
+    "put",
+    "them",
+    "in",
+    "the",
+    "box"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t69": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "steam",
+    "curled",
+    "from",
+    "the",
+    "mugs",
+    "as",
+    "we",
+    "warmed",
+    "cold",
+    "hands",
+    "round",
+    "them"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16,
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "mugs"
+   ],
+   "problems": []
+  },
+  "c1t70": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "boat",
+    "lurched",
+    "in",
+    "the",
+    "swell",
+    "and",
+    "spray",
+    "soaked",
+    "the",
+    "deck"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [
+    "lurched"
+   ],
+   "problems": []
+  },
+  "c1t71": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "a",
+    "fox",
+    "slipped",
+    "through",
+    "the",
+    "hedge",
+    "and",
+    "stole",
+    "a",
+    "hen",
+    "from",
+    "the",
+    "coop"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t72": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "we",
+    "hiked",
+    "for",
+    "miles",
+    "through",
+    "mud",
+    "and",
+    "rain",
+    "to",
+    "reach",
+    "the",
+    "hut"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "hiked"
+   ],
+   "problems": []
+  },
+  "c1t73": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "her",
+    "bike",
+    "has",
+    "a",
+    "bell",
+    "and",
+    "a",
+    "big",
+    "brass",
+    "lamp",
+    "on",
+    "the",
+    "front"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t74": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "ice",
+    "cream",
+    "dripped",
+    "down",
+    "my",
+    "chin",
+    "in",
+    "the",
+    "noon",
+    "heat"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [
+    "dripped"
+   ],
+   "problems": []
+  },
+  "c1t75": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "lock",
+    "the",
+    "shed",
+    "and",
+    "bring",
+    "the",
+    "hens",
+    "in",
+    "when",
+    "the",
+    "light",
+    "fades"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18,
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "hens"
+   ],
+   "problems": []
+  },
+  "c1t76": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "wheel",
+    "at",
+    "the",
+    "mill",
+    "turns",
+    "slow",
+    "as",
+    "the",
+    "stream",
+    "flows",
+    "past"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t77": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "dry",
+    "leaves",
+    "crunch",
+    "as",
+    "we",
+    "tramp",
+    "through",
+    "the",
+    "park",
+    "in",
+    "the",
+    "fall"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17,
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "tramp"
+   ],
+   "problems": []
+  },
+  "c1t78": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "the",
+    "nurse",
+    "took",
+    "my",
+    "pulse",
+    "and",
+    "gave",
+    "me",
+    "a",
+    "glass",
+    "of",
+    "cold",
+    "milk"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t79": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "kids",
+    "splash",
+    "in",
+    "the",
+    "pool",
+    "while",
+    "the",
+    "guard",
+    "sits",
+    "high",
+    "on",
+    "his",
+    "chair"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t80": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "thin",
+    "streams",
+    "of",
+    "smoke",
+    "rise",
+    "from",
+    "the",
+    "huts",
+    "on",
+    "the",
+    "far",
+    "shore"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19,
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "huts"
+   ],
+   "problems": []
+  },
+  "c1t81": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "i",
+    "keep",
+    "my",
+    "shells",
+    "in",
+    "a",
+    "glass",
+    "jar",
+    "on",
+    "the",
+    "sill"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t82": {
+   "start": 9,
+   "end": 23,
+   "n_lyr": 25,
+   "words": [
+    "the",
+    "goat",
+    "climbed",
+    "the",
+    "rocks",
+    "and",
+    "stood",
+    "proud",
+    "on",
+    "the",
+    "top"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t83": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "sweep",
+    "the",
+    "leaves",
+    "off",
+    "the",
+    "steps",
+    "and",
+    "burn",
+    "them",
+    "in",
+    "the",
+    "drum"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "Sweep"
+   ],
+   "problems": []
+  },
+  "c1t84": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "dark",
+    "rain",
+    "clouds",
+    "rolled",
+    "in",
+    "and",
+    "the",
+    "first",
+    "drops",
+    "hit",
+    "the",
+    "glass"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t85": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "she",
+    "knits",
+    "warm",
+    "socks",
+    "for",
+    "us",
+    "and",
+    "sings",
+    "songs",
+    "of",
+    "her",
+    "youth"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "knits"
+   ],
+   "problems": []
+  },
+  "c1t86": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "the",
+    "bus",
+    "stop",
+    "is",
+    "past",
+    "the",
+    "shop",
+    "at",
+    "the",
+    "end",
+    "of",
+    "the",
+    "lane"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t87": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "swans",
+    "glide",
+    "on",
+    "the",
+    "still",
+    "lake",
+    "with",
+    "small",
+    "chicks",
+    "close",
+    "at",
+    "hand"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "Swans"
+   ],
+   "problems": []
+  },
+  "c1t88": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "we",
+    "stacked",
+    "hay",
+    "in",
+    "the",
+    "loft",
+    "and",
+    "slept",
+    "on",
+    "the",
+    "straw",
+    "at",
+    "dusk"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t89": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "guard",
+    "checked",
+    "each",
+    "bag",
+    "as",
+    "the",
+    "crowd",
+    "filed",
+    "through",
+    "the",
+    "gate"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t90": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "soft",
+    "moss",
+    "grows",
+    "on",
+    "the",
+    "stones",
+    "near",
+    "the",
+    "wet",
+    "bank",
+    "of",
+    "the",
+    "brook"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24,
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "brook"
+   ],
+   "problems": []
+  },
+  "c1t91": {
+   "start": 9,
+   "end": 27,
+   "n_lyr": 29,
+   "words": [
+    "he",
+    "puffed",
+    "out",
+    "the",
+    "lamps",
+    "and",
+    "crept",
+    "up",
+    "to",
+    "bed",
+    "in",
+    "the",
+    "dark"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19,
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ],
+    [
+     26
+    ]
+   ],
+   "multi_token_words": [
+    "puffed",
+    "crept"
+   ],
+   "problems": []
+  },
+  "c1t92": {
+   "start": 9,
+   "end": 25,
+   "n_lyr": 27,
+   "words": [
+    "wash",
+    "the",
+    "grapes",
+    "and",
+    "pile",
+    "them",
+    "high",
+    "on",
+    "a",
+    "plate",
+    "for",
+    "lunch"
+   ],
+   "keys": [
+    [
+     12,
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ]
+   ],
+   "multi_token_words": [
+    "Wash"
+   ],
+   "problems": []
+  },
+  "c1t93": {
+   "start": 9,
+   "end": 26,
+   "n_lyr": 28,
+   "words": [
+    "the",
+    "tent",
+    "flaps",
+    "snap",
+    "in",
+    "the",
+    "gale",
+    "as",
+    "we",
+    "grip",
+    "the",
+    "ropes"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19,
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ],
+    [
+     24
+    ],
+    [
+     25
+    ]
+   ],
+   "multi_token_words": [
+    "flaps",
+    "gale"
+   ],
+   "problems": []
+  },
+  "c1t94": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "a",
+    "child",
+    "drew",
+    "a",
+    "house",
+    "with",
+    "chalk",
+    "on",
+    "the",
+    "warm",
+    "stone",
+    "path"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  },
+  "c1t95": {
+   "start": 9,
+   "end": 24,
+   "n_lyr": 26,
+   "words": [
+    "the",
+    "lights",
+    "of",
+    "the",
+    "fun",
+    "park",
+    "glow",
+    "as",
+    "the",
+    "big",
+    "wheel",
+    "spins"
+   ],
+   "keys": [
+    [
+     12
+    ],
+    [
+     13
+    ],
+    [
+     14
+    ],
+    [
+     15
+    ],
+    [
+     16
+    ],
+    [
+     17
+    ],
+    [
+     18
+    ],
+    [
+     19
+    ],
+    [
+     20
+    ],
+    [
+     21
+    ],
+    [
+     22
+    ],
+    [
+     23
+    ]
+   ],
+   "multi_token_words": [],
+   "problems": []
+  }
+ },
+ "passed": true
+}

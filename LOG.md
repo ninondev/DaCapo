@@ -341,3 +341,13 @@ Nobody had rated either blind pack yet, so the agents wrote down how the ratings
 - The keys stay in the owner's private repository. Their published fingerprints use a random salt, because a 24-pair key is short enough to search.
 
 Ratings close when the owner says no more sheets are coming, at the latest on 2026-11-30. The agents check every sheet without the key first, then commit the exclusions and the sheets' hashes, and only then open the keys.
+
+## 2026-10-30: Run C registered (B2's recipes again, on 96 new melodies)
+
+B2 ended "Capability reached, clock not credited": 14 of 24 new melodies with the clock against 8 without it, but the bootstrap's lower bound for the gap was exactly 0. 24 melodies were too few to settle the clock's effect. Run C runs the same two recipes, fixed in advance with no selection stage, plus the random-head and moved-window controls, on 96 new lines and melodies with 4 draws each (1,536 runs). Its rule was registered in addendum 4 (`addendum_4.json`, 2026-10-30T08:57:04Z) before any Run C generation.
+
+- R1, the clock's effect: the bootstrap's 2.5th percentile of J(S*) - J(S*_b0) is above 0. Unlike B2, R1 has no size bar. B2's 0.20 bar stays as a label, so B2's criterion can still be read off.
+- R2, the capability: J(S*) is at least 0.50, that is, 48 of the 96 melodies.
+- New secondary measure: the CTC recogniser also runs on the separated vocal, not only on the mix.
+
+At B2's observed effect, simulated power is 0.98 for R1 and 0.97 for R2. With the effect halved, power for R1 drops to 0.60, and with no effect R1 holds in 2.4% of simulations. Three independent reviews came before registration and found 11 problems. The worst was that setup called a function that didn't exist, so every session would have stopped at setup. All 11 are fixed. On the CPU, the tiny chain ran twice from a clean state with identical outputs, and once more after being killed and resumed. The run takes about 6 hours on an L4 and waits for my approval of a Colab session.

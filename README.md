@@ -144,6 +144,8 @@ Run A finished on 2026-10-28, and its results are above. The motif study (E5) fo
 
 Run B finished on 2026-10-30, and its results are above. The lyric clock alone didn't fix the timing (B1). With a melody guide, the chosen recipe reached the registered bar by Whisper's count (B2), but the clock wasn't credited and a second recogniser didn't confirm the words.
 
+Run C, a registered replication of B2 on 96 new melodies, is built and waits for a GPU session ([addendum 4](experiments/e5_motif/registration/addendum_4.json), [`notebook_runC.ipynb`](notebook_runC.ipynb)). With four times as many melodies, it should settle whether the clock helps.
+
 The blind listening tests come from the runs: 60 motif clips from Run A and 24 singing pairs from Run B, which people will hear without knowing which condition each one comes from. I asked for this. Until they're done, the motif result rests on pitch-tracker scores and the singing result on the pitch tracker and Whisper.
 
 ## Status
@@ -193,7 +195,7 @@ Tests that run the song model need [ACE-Step 1.5](https://github.com/ace-step/AC
 
 ```
 dacapo/          the library: melodies, rendering, pitch tracking, scores, and ace.py (hooks into ACE-Step)
-experiments/     one folder per study (e0 to e8), plus run_all.py and run_b.py, which the notebooks call
+experiments/     one folder per study (e0 to e9), plus run_all.py, run_b.py and run_c.py, which the notebooks call
 results/cpu/     result files from CPU runs
 results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
 results/gpu_run2/ result files from Run A: the motif study and the lyric read-out (NVIDIA L4)
@@ -204,6 +206,7 @@ LOG.md           every run, in order
 notebook.ipynb   the Colab notebook for Run A
 notebook_runB.ipynb the Colab notebook for Run B
 notebook_sing.ipynb a tool: sing your own melody with the B2 recipe
+notebook_runC.ipynb the Colab notebook for Run C
 ```
 
 </details>
@@ -220,6 +223,7 @@ notebook_sing.ipynb a tool: sing your own melody with the B2 recipe
 - [ ] Motif study, next phases: which layers make the copy (new addendum first)
 - [x] Lyric clock alone (B1) and with a melody guide (B2) on the GPU (Run B)
 - [ ] Blind listening test of the 24 singing pairs from Run B
+- [ ] Run C: B2's recipes on 96 new melodies (registered, waiting for a GPU session)
 - [ ] Measure Suno and ACE-Step on the same 12 melodies (E7, Stage S)
 - [ ] Train a melody adapter inside the renderer (E7), unless Stage S shows it is already solved
 - [ ] More seeds, and a blind listening test with musicians
