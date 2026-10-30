@@ -331,3 +331,13 @@ Nothing stopped the run. These are worth recording:
 - The word matcher in `dacapo/words.py` is the one the registration names, but it isn't always the longest in-order match. On 12 to 13 of the 480 clips a longest match finds 1 or 2 more words. J and the verdict don't change.
 
 The labelled demo clips in the result package show which recipe each clip comes from. Nobody should hear them before doing the blind test.
+
+## 2026-10-30: the listening analysis, registered before any rating
+
+Nobody had rated either blind pack yet, so the agents wrote down how the ratings will be analysed and registered it (`experiments/listening/registration/listening_plan.json`, with the code and tests hashed). Two independent reviews came first, and they changed three things.
+
+- The first Run A pack named its clips with a seed in the public code, so anyone could rebuild its key. The same 60 clips were renamed in an order from the operating system's random source (pack v2), and the first pack won't be handed to raters.
+- In the B2 pack the side of each pair was a coin toss, so the number of pairs with the clock on side A isn't 12. A plain test would let a listener who just likes clip A tip the result. The registered test is conditional on that number and compares how often A was picked when the clock was on A with how often it was picked when the clock was on B, so a side preference can't move it.
+- The keys stay in the owner's private repository. Their published fingerprints use a random salt, because a 24-pair key is short enough to search.
+
+Ratings close when the owner says no more sheets are coming, at the latest on 2026-11-30. The agents check every sheet without the key first, then commit the exclusions and the sheets' hashes, and only then open the keys.

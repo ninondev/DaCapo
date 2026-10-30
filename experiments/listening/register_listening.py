@@ -1,0 +1,210 @@
+"""Write or check experiments/listening/registration/listening_plan.json, the analysis plan of the two blind
+listening packs, with the sha256 of the analysis code and its tests. Run it as the last step before the commit,
+and commit and push before any rating is handed in.
+
+  python experiments/listening/register_listening.py           write it (refuses to overwrite a different plan)
+  python experiments/listening/register_listening.py --check   exit 1 if the written file is not current
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+import time
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+PLAN = HERE / "registration" / "listening_plan.json"
+CODE = ("experiments/listening/analyze_ratings.py", "experiments/listening/register_listening.py")
+TESTS = "experiments/listening/tests"
+
+PRIVATE = "the owner's private repository ninondev/project-ryuichi"
+PACKS = {
+    "b2": {"pack": "b2_blind_pack.zip: 24 pairs, written by experiments/e8_clock_sing/package_b2.py in Run B",
+           "pack_sha256": "d78b0d1812db26c63e0c795d57acf876b4517efc2f38d335fc991ed747875607",
+           "key": f"runs/colab_l4_runB_20261030/b2_blind_key_SEALED.json in {PRIVATE}, added at commit "
+                  "9d51772c63aaa4cbf62850e7f87168a50b61d9e4",
+           "salt": "runs/colab_l4_runB_20261030/b2_key_salt_SEALED.txt, added at commit "
+                   "e4b67ec111c9b5b81a71eb1d18c10e27b500d049",
+           "key_salted_sha256": "98f0b8a80322783c13040b473a01496ebd9805bc49be82b5d30831d40d890d1e",
+           "questions": ["melody_right", "words_clear"], "answers": ["A", "B", "same", "neither"]},
+    "runa": {"pack": "runA_listening_pack_v2.zip: the 60 clips of Run A's listening pack (written by "
+                     "experiments/run_all.py blind_pack), renamed on 2026-10-30 in an order from the operating "
+                     "system's random source",
+             "pack_sha256": "ab7e3f41000a5b20bc9fe6f34a270672d492c8051b7daa1aec5e7442e18edd44",
+             "key": f"runs/colab_l4_runA_20261028/listening_key_v2_SEALED.json in {PRIVATE}, added at commit "
+                    "e4b67ec111c9b5b81a71eb1d18c10e27b500d049",
+             "salt": "runs/colab_l4_runA_20261028/runA_key_v2_salt_SEALED.txt, added at the same commit",
+             "key_salted_sha256": "068b78126f16a1b8c1a2c1ac572b06e8a4830bbe55b3334d82639a51d2f9f336",
+             "questions": ["vocals_present", "words_intelligible", "accompaniment", "gap_repeats_earlier_motif"],
+             "answers": ["yes", "no", "unsure"]},
+}
+
+SECTIONS = [
+    ("scope", "Both packs are exploratory: addendum 2 lists Run A's pack among its exploratory outputs, and addendum 3 "
+              "calls the B2 pack exploratory. No result here changes a registered verdict (E5 v2: supported H1, H2; "
+              "B1: not supported; B2: Capability reached, clock not credited). This plan fixes the analysis before any "
+              "rating exists, so that nobody can choose the analysis after seeing which one gives the nicer result. "
+              "In the B2 pack, S* is the clock recipe and S*_b0 the same melody guide without the clock."),
+    ("raters", "Anyone may rate who has not heard the labelled demo clips of either result package, has not seen "
+               "either key, has not read the per-clip results of either run (results/gpu_run2/ and "
+               "results/gpu_run3/, which give transcripts and scores by condition and recipe), and has not opened the "
+               "first Run A pack or run experiments/run_all.py (see custody). Each rater confirms these four points in "
+               "one line when handing in a sheet; a 'no', or no confirmation by closing, excludes the rater. The owner "
+               "may rate; the agents do not. Each rater fills in a copy of the pack's ratings.csv named "
+               "ratings_<nickname>.csv, is named by the file, and is told that the nickname and the counts will be "
+               "public. One sheet per rater: if a rater hands in more than one, the last one before closing counts "
+               "and the others are kept but not used. A sheet in another format (xlsx, et, numbers) is saved as CSV "
+               "without changing any cell; both files are kept and hashed."),
+    ("closing", "Ratings close when the owner says no more sheets are coming, and at the latest on 2026-11-30 at 23:59 "
+                "UTC. The agents, who have seen the B2 key, take no part in deciding when to close, and nobody tallies "
+                "any answer before closing. At closing the agents run analyze_ratings.py check on every sheet (it "
+                "reads the pack's own blank ratings.csv and no key) and resolve every stop it reports by asking the "
+                "rater through the owner; the reply goes into a copy of the sheet, both files are kept, and the change "
+                "is reported. They then write exclusions.json (name, reason, date), the list of sheets with their "
+                "arrival dates and sha256, and the owner's nickname, and commit these to the public repository before "
+                "any key is opened. The key is opened once, after that commit; analyze_ratings.py is not run again "
+                "with a real key until then, and no sheet is changed after the key is opened. A sheet that arrives "
+                "after closing enters no test or label; it is listed with its arrival date only."),
+    ("answers", "Answers are compared after Unicode normalisation (full-width letters count as ordinary ones), "
+                "ignoring capital letters, spaces and a final full stop, exclamation mark or tilde. B2: A (also a段, "
+                "第一个, 第一段, 前者), B (b段, 第二个, 第二段, 后者), same (一样, 都一样, 一样好, 差不多, 都差不多, 相同, "
+                "没区别, 没有区别, 都好, 都对, 都清楚, both, equal, no difference), neither (都不, 都不行, 都不好, "
+                "两个都不行, 两个都不好, 两个都不, 都不对, 都不清楚, 都听不清, none); 不确定, 不知道, 说不清, ?, unsure and "
+                "not sure count as no answer. Run A: yes (y, 是, 是的, 有, 有的, 能, 对, 可以, √, 听得清, 能听清, 重复, "
+                "有重复, 有伴奏), no (n, 否, 不是, 没有, 没, 无, 不, 不能, 不对, 不可以, ×, 听不清, 不重复, 没重复, "
+                "没有伴奏), unsure (not sure, ?, 不确定, 不太确定, 不知道, 说不清, 不好说); 不清楚 is not listed because it "
+                "can mean either 'not clear' or 'I don't know'. An empty cell counts as no answer. Any other answer is "
+                "unreadable: it counts as no answer, and every unreadable string is reported with its count. Sheets "
+                "may be UTF-8, UTF-16 or GB18030, separated by commas, semicolons or tabs, with any line ending. Pair "
+                "and clip names are read without case, spaces or leading zeros ('Pair 1' is pair_01). These stop the "
+                "analysis until resolved at closing: a pair or clip name that is not in the pack, a name given twice "
+                "with different answers, a row with answers but no name, a missing question column, two sheets for one "
+                "nickname, and two byte-identical sheets under different nicknames (unless the owner confirms they "
+                "come from two people). A sheet with no readable answer is left out and listed."),
+    ("b2_test", "In plain words: on each pair we count the listeners who picked the clip with the clock and subtract "
+                "those who picked the clip without it. Which recipe became clip A was a coin toss per pair. If the "
+                "clock made no difference, every listener would have given the same answers whatever the coin tosses "
+                "were, so the p value is the share of possible coin tosses that give a result at least as far from "
+                "'no difference' as the real one. The test is taken over the coin tosses that put the clock on side A "
+                "as many times as the real key does (m of 24), each equally likely, and it compares how often "
+                "listeners picked A when the clock was on A with how often they picked A when the clock was on B, so "
+                "a listener who simply prefers clip A, or clip B, cannot move it. Exactly: with a_p the A answers "
+                "minus the B answers on pair p and s_p = +1 when S* is on side A, the margin is D = sum_p s_p a_p and "
+                "the centred margin is Dc = D - (2m - 24) mean_p(a_p), which is 2m(24 - m)/24 times (the mean of a_p "
+                "where S* is on A minus the mean of a_p where S* is on B). The two-sided p is the share of side "
+                "vectors with m entries +1 whose centred margin is at least as far from zero as the real one. The p "
+                "of D over all 2^24 coin tosses is stored in the output for reference and sets no label. Labels, per "
+                "question: 'listeners favour the clock' if Dc > 0 and p < 0.05, 'listeners favour no clock' if Dc < 0 "
+                "and p < 0.05, otherwise 'no clear preference'. The two questions are reported separately, each with "
+                "its own two-sided p; there is no correction for two questions, because the pack is exploratory."),
+    ("b2_report", "Per question: D, Dc and m; the number of answers for S*, for S*_b0, same, neither, no answer and "
+                  "unreadable; the balanced share for S*, the mean of P(A | S* on A) and P(B | S* on B) over A and B "
+                  "answers, which is the share quoted in the write-up (the plain share for S* among A and B answers is "
+                  "also stored); the share of A among A and B answers, whatever the recipe (position preference); "
+                  "the number of pairs with a net vote each way; each rater's counts; and agreement with the machine "
+                  "scores on the same clips (results/gpu_run3/b2_result.json): for 'words clear', the share of A and "
+                  "B answers that picked the clip with more words recognised by Whisper, and by the CTC recogniser; "
+                  "for 'melody right', the share that picked the clip with more notes right on the separated vocal. "
+                  "Machine ties are left out. The side balance of the key and every other fact the agents' audit of "
+                  "the key found stay sealed until the ratings close, and are reported with them."),
+    ("runa", "A listener can hear the context before the gap (A B A, A B C, or nothing for null), so these clips are "
+             "blind to their labels but not to their condition. For each E5 condition and each E6 set (12 E4 lines, "
+             "8 extra verses, and both together): the yes rate of each question, yes / (yes + no); the gap question "
+             "is reported for E5 clips only. 'The gap repeats an earlier phrase' for lit against ctl, a listener check "
+             "related to H2 (it counts a repeat of any unit heard before the gap, while H2 counts only B against its "
+             "altered copy B~): each clip's yes rate over raters, the mean over lit clips minus the mean over ctl "
+             "clips, and an exact two-sided permutation test over every way to relabel the lit and ctl clips that "
+             "have at least one yes or no answer (252 when all 10 do; the smallest possible p is then 2/252). Label: "
+             "'listeners hear more repeats after lit' if the difference > 0 and p < 0.05, 'fewer' if < 0 and p < "
+             "0.05, otherwise 'no clear difference'. The test runs on all raters, which is the headline result, and "
+             "again without the owner's sheet; both are reported, and a difference that holds only with the owner's "
+             "sheet is described as such (the analysis is run with --owner set to the owner's nickname, or 'none' if "
+             "the owner did not rate). Agreement with the pitch tracker: a clip's listener majority (yes or no; ties "
+             "left out) against whether the registered per-draw choice in results/gpu_run2/e5v2_main.json names a "
+             "unit heard before the gap (lit: A, B; ctl: A, B, C; rel+2, rel+5, rel-3: A, B and A moved by the same "
+             "step, that is T+2A, T+5A, T-3A; seq: A, T+2A, T+4A; ana: A, T+5A, B; null: no unit, since nothing "
+             "plays before the gap). Any other choice counts as not heard before, including 'none', D (which plays "
+             "after the gap) and B~; draws whose choice is 'tie' are left out. Reported as counts and Cohen's kappa "
+             "(agreement beyond chance: 0 is chance, 1 is full agreement), with lit, ctl and null as the primary "
+             "set, and again with moved copies of heard units also counted as heard (rel+k: T+kB; seq: T+6A; ana: "
+             "T+5B). E6 clips: the majority for 'anyone singing' against E6's automatic singing check (the vocal "
+             "gate), and for 'words intelligible' against Whisper recognising at least half the words "
+             "(results/gpu_run2/e6_readout.json)."),
+    ("custody", "The first Run A pack's clip names followed a seed in the public code (experiments/run_all.py), so "
+                "anyone could rebuild its key. On 2026-10-30, before any rating, the same 60 clips were renamed in an "
+                "order from the operating system's random source (pack v2, entries in name order with fixed time "
+                "stamps); the first pack is never handed to raters. The v2 clips are the same audio as the first "
+                "pack's, so someone holding the first pack and the public code could still match them; that is why "
+                "raters must not have opened the first pack or run the code. The B2 sides came from the operating "
+                "system's random source when Run B packaged its clips. A plain sha256 of the B2 key could be reversed "
+                "by trying all 2^24 side patterns, so each key's published fingerprint is sha256 of the salt file's 64 "
+                "ASCII hex characters (no newline) followed by the key file's bytes. The salts are kept with the keys "
+                "at the paths and commits in packs, and published with them. The agents opened both keys before "
+                "writing this plan: the B2 key to audit the pack after Run B (pair order, that every clip matches its "
+                "run, and that nothing in the files shows a side), the Run A key to read which experiments and "
+                "conditions it holds and to rename the clips. They also ran the analysis on each real key with a sheet "
+                "that answers 'same' or 'unsure' everywhere, last with the code registered here, to check it, and "
+                "deleted those outputs. No rating existed then. Facts from the audit, the side balance among them, "
+                "appeared in the agents' working output, which the owner can open. The B2 test does not depend on a "
+                "rater not knowing the side balance: knowing it says nothing about which pairs have the clock on "
+                "side A, and the centred margin cancels any preference for one side. No output of analyze_ratings.py with a real key is shared before the keys are "
+                "published, because each output holds the key's sha256."),
+    ("reporting", "The analysis writes results/listening/<pack>_ratings.json with the hashes of the code, the key, the "
+                  "exclusions file and every ratings file, the excluded ones included. README.md and LOG.md report "
+                  "the labels, D, Dc, m, the p values and the counts, computed from all raters left after exclusions "
+                  "(each rater's own counts are in the JSON file). The keys and their salts are published with the "
+                  "results. A change to this plan after this file is committed goes into a new file, which the "
+                  "write-up names."),
+]
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def computed() -> dict:
+    tests = sorted((ROOT / TESTS).rglob("*.py"))
+    refs = ("experiments/e5_motif/registration/addendum_2.json", "experiments/e5_motif/registration/addendum_3.json",
+            "results/gpu_run2/e5v2_main.json", "results/gpu_run2/e6_readout.json", "results/gpu_run3/b2_result.json")
+    return {"title": "Analysis plan of the blind listening packs of Run A and Run B (exploratory)",
+            "refers_to": {r: sha256(ROOT / r) for r in refs},
+            "packs": PACKS,
+            "sections": [{"id": i, "text": t} for i, t in SECTIONS],
+            "code_sha256": {c: sha256(ROOT / c) for c in CODE},
+            "tests_sha256": {str(t.relative_to(ROOT)): sha256(t) for t in tests}}
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--check", action="store_true")
+    a = ap.parse_args(argv)
+    want = computed()
+    if a.check:
+        if not PLAN.exists():
+            print("listening plan: missing")
+            return 1
+        have = json.loads(PLAN.read_text(encoding="utf-8"))
+        have.pop("plan_utc", None)
+        ok = have == want
+        print("listening plan: current" if ok else "listening plan: NOT current")
+        return 0 if ok else 1
+    if PLAN.exists():
+        have = json.loads(PLAN.read_text(encoding="utf-8"))
+        utc = have.pop("plan_utc", None)
+        if have == want:
+            print(f"listening plan: already current ({utc})")
+            return 0
+        print("listening plan: a different plan is written; a change after registration needs a new file")
+        return 1
+    PLAN.parent.mkdir(parents=True, exist_ok=True)
+    PLAN.write_text(json.dumps({"plan_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), **want},
+                               indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"listening plan: written {PLAN.relative_to(ROOT)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
