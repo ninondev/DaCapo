@@ -1,0 +1,83 @@
+{
+ "verdict": "Clock helps, capability not reached",
+ "reasons": [
+  "R2 failed"
+ ],
+ "labels": {
+  "strict_capability": false,
+  "head_specific": "head-specific clock",
+  "timing": "timing-specific",
+  "timing_lower_bound": 0.121898,
+  "timbre_copy": false,
+  "words_cut": false,
+  "frontier_moved": true,
+  "independent_asr": {
+   "J_ctc_mix": 0.09375,
+   "R2_with_ctc_mix": false,
+   "J_ctc_stem": 0.09375,
+   "R2_with_ctc_stem": false
+  },
+  "strict_capability_detail": {
+   "n_items_strict": 8,
+   "needed": 48
+  },
+  "b2_size_bar": {
+   "held": true,
+   "delta_j": 0.3125,
+   "needed": 0.2,
+   "with_r1": true
+  },
+  "listeners": null,
+  "listeners_note": "filled later from the Run C blind pack (exploratory)"
+ },
+ "J": {
+  "S*": 0.489583,
+  "S*_b0": 0.177083,
+  "S*_rand": 0.208333,
+  "S*_shuf": 0.09375
+ },
+ "rule": {
+  "R1": {
+   "held": true,
+   "delta_j": 0.3125,
+   "p2_5": 0.197917,
+   "ci95": [
+    0.197917,
+    0.427083
+   ],
+   "needed": "p2_5 > 0",
+   "J_s_star": 0.489583,
+   "J_s_b0": 0.177083
+  },
+  "R2": {
+   "held": false,
+   "J": 0.489583,
+   "n_items_joint": 47,
+   "n_items": 96,
+   "needed": 0.5
+  }
+ },
+ "pooled_with_b2": {
+  "label": "exploratory",
+  "n_items": 120,
+  "n_b2": 24,
+  "n_c1": 96,
+  "delta_j": {
+   "value": 0.3,
+   "ci95": [
+    0.191667,
+    0.4
+   ],
+   "p2_5": 0.191667
+  },
+  "mean_bo4_q": {
+   "value": 0.173791,
+   "ci95": [
+    0.13503,
+    0.211104
+   ]
+  },
+  "bootstrap": "clusters are items, 10000 resamples, numpy default_rng(0).integers(0, 120, (10000, 120))"
+ },
+ "runtime_changes": 0
+}

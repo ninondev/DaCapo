@@ -92,3 +92,70 @@ Terms follow `experiments/e8_clock_sing/decide_b2.py`. A clip's score is q = gat
 | Number | Value | Meaning |
 |---|---|---|
 | S\*'s joint transcripts with a registered string | 0 of 31 | None of the transcripts of S\*'s 31 joint clips contains, as whole words, one of the E4 hallucination strings registered in addendum 3 |
+
+# Post-hoc checks of Run C
+
+The agents made these checks of C1 after Run C, to back numbers that the write-up quotes, and some of them set C1 next to B2. They are post-hoc and exploratory. None of them was registered, and none can change a registered verdict. [`experiments/checks/runc_secondary.py`](../../experiments/checks/runc_secondary.py) reads two files, [`results/gpu_run4/c1_result.json`](../gpu_run4/c1_result.json) and [`results/gpu_run3/b2_result.json`](../gpu_run3/b2_result.json), records their sha256 and writes `runc_secondary.json`, where each value sits next to a one-line definition. It needs the standard library, numpy and `dacapo/words.py`, and its tests are in `experiments/checks/tests`.
+
+```
+python experiments/checks/runc_secondary.py
+```
+
+Terms follow `experiments/e9_clock_replicate/decide_c1.py`. A clip's score is q = gate × min(NPA_v, WR). The selector keeps each melody's draw with the largest q, and the melody is joint if that q is at least 0.5. J is the share of joint melodies, out of 96 in C1 and 24 in B2, and ΔJ is J(S\*) − J(S\*_b0). C1's registered bootstrap resamples the 96 melodies with `default_rng(0).integers(0, 96, (10000, 96))`. Where C1 and B2 are compared, B2's 24 melodies are resampled separately with `default_rng(1).integers(0, 24, (10000, 24))`, so the two runs vary independently. Intervals are 95% percentile intervals.
+
+## Consistency with the stored summaries
+
+| Number | Value | Meaning |
+|---|---|---|
+| Kept draws, J | reproduced | The registered selector, applied to the clip rows, keeps the stored draw and gives the stored J for every C1 arm and for B2's S\* and S\*_b0 |
+| Bootstrap index | reproduced | The sha256 of the index matrix equals the one `c1_result.json` records |
+| R1 | reproduced | ΔJ 0.3125, 2.5th percentile 0.197917 and interval 0.197917 to 0.427083, as stored |
+| Pooled estimate | reproduced | ΔJ and the mean kept q difference over B2's 24 melodies and C1's 96, as stored |
+| NPA_v × notes, WR × words | whole numbers (within 6e-6) | Over S\*'s 384 clips, so NPA_v and WR count notes and words out of the line's n. Each line has one note per word |
+
+## Melody by melody: S\* against S\*_b0
+
+| Number | Value | Meaning |
+|---|---|---|
+| Wins, losses, ties | 36, 6, 54 | Melodies joint for S\* only, for S\*_b0 only, and for both or neither |
+| Sign test | p = 2.8 × 10⁻⁶ | Exact two-sided binomial test on the 42 untied melodies |
+
+## J(S\*) and the capability bar (R2)
+
+| Number | Value | Meaning |
+|---|---|---|
+| J(S\*) | 0.490 (47 of 96) | As registered |
+| Interval | 0.39 to 0.59 | J(S\*) over the 10,000 registered resamples |
+| Resamples at 0.5 or above | 46.1% | Resamples in which S\* would have reached the bar |
+| One correct note more, or fewer | 54, or 35 | Every S\* clip gains or loses one correct note: NPA_v becomes (correct notes ± 1) / n, kept between 0 and 1, and the selector picks again. A clip that fails the gate stays at q = 0 |
+| One matched word more, or fewer | 54, or 40 | The same with one matched word: WR becomes (matched words ± 1) / n |
+| One note and one word more, or fewer | 63, or 27 | Both at once |
+| Melodies lost with one note fewer | 12 | And 7 melodies gained with one note more |
+
+## Run C next to B2
+
+| Number | Value | Meaning |
+|---|---|---|
+| ΔJ | 0.3125 (C1), 0.25 (B2) | J(S\*) − J(S\*_b0) in each run |
+| C1's ΔJ minus B2's | 0.0625 (−0.20 to 0.32) | With the independent resamples. 33.9% of them are at or below 0 |
+| Mean kept q difference | 0.184 (C1), 0.131 (B2) | Mean over melodies of S\*'s kept q minus S\*_b0's |
+| C1's minus B2's | 0.053 (−0.03 to 0.14) | The same resamples |
+| J(S\*), B2 to C1 | 0.583 to 0.490, a change of −0.094 (−0.31 to 0.13) | |
+| J(S\*_b0), B2 to C1 | 0.333 to 0.177, a change of −0.156 (−0.35 to 0.04) | |
+
+Every run-to-run interval above contains 0. The two runs' gaps can't be told apart, and neither recipe's drop from B2 to C1 is clear on its own.
+
+## Wordless output and the second recogniser
+
+| Number | Value | Meaning |
+|---|---|---|
+| Wordless rate | 0.036, 0.414, 0.419, 0.089 | Stored rate per arm (S\*, S\*_b0, S\*_rand, S\*_shuf): the share of scored clips whose Whisper transcript the registered scorer calls wordless, meaning empty, at least half vowel sounds, or nothing but the registered hallucination strings and vowel sounds. The clip flags give the same rates. B2: 0.021 (S\*) and 0.281 (S\*_b0) |
+| S\*'s joint kept draws also joint by CTC on the vocal | 9 of 47 (19%) | Of the melodies whose kept draw is joint by Whisper, those whose kept draw also has gate × min(NPA_v, CTC WR on the separated vocal) ≥ 0.5 |
+| The same for the other arms | 8 of 17, 6 of 20, 2 of 9 | S\*_b0, S\*_rand, S\*_shuf. In no arm is a kept draw joint by CTC and not by Whisper |
+
+## A single draw instead of the best of 4
+
+| Number | Value | Meaning |
+|---|---|---|
+| J with one draw | 0.216 (S\*), 0.060 (S\*_b0) in C1; 0.323 and 0.135 in B2 | Share of all clips with q ≥ 0.5, which is best-of-n at n = 1 |
+| ΔJ with one draw | 0.156 (0.10 to 0.21) in C1, 0.188 (0.07 to 0.30) in B2 | Intervals from each run's registered resamples, the draws of a melody kept together |

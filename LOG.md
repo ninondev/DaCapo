@@ -351,3 +351,58 @@ B2 ended "Capability reached, clock not credited": 14 of 24 new melodies with th
 - New secondary measure: the CTC recogniser also runs on the separated vocal, not only on the mix.
 
 At B2's observed effect, simulated power is 0.98 for R1 and 0.97 for R2. With the effect halved, power for R1 drops to 0.60, and with no effect R1 holds in 2.4% of simulations. Three independent reviews came before registration and found 11 problems. The worst was that setup called a function that didn't exist, so every session would have stopped at setup. All 11 are fixed. On the CPU, the tiny chain ran twice from a clean state with identical outputs, and once more after being killed and resumed. The run takes about 6 hours on an L4 and waits for my approval of a Colab session.
+
+## 2026-10-30 and 2026-10-31: Run C on the GPU (C1)
+
+I ran Run C in Colab on an NVIDIA L4 with commit `0c97266`, the code registered in addendum 4. Setup started at 09:07Z on 2026-10-30 and A0 passed at 09:10Z. The 1,536 generations and scores then ran from 09:10Z to 14:33Z (322 minutes) in four blocks of 24 melodies, and every run succeeded on its first attempt. Two later sessions (17:34Z the same day on the same Colab machine, and 04:09Z on 2026-10-31 on a fresh machine with the same runtime fingerprint) ran only setup, decide and package. They made no run, reused A0 on the same runtime fingerprint, and decide printed the same result. The registered outputs are in `results/gpu_run4/` (its README lists them).
+
+### The decision
+
+| Arm | J (of 96) | Joint clips (of 384) | Mean NPA_v | Mean WR | Median word-start error | J by CTC on the vocal |
+|---|---|---|---|---|---|---|
+| S*: clock on the alignment heads, beta 8 | 47 | 83 | 0.43 | 0.44 | 0.40 s | 9 |
+| S*_b0: same guide, no clock | 17 | 23 | 0.41 | 0.23 | 2.17 s | 8 |
+| S*_rand: clock on random heads | 20 | 25 | 0.41 | 0.19 | 2.02 s | 6 |
+| S*_shuf: clock with the windows rotated | 9 | 10 | 0.37 | 0.26 | 4.79 s | 2 |
+
+NPA_v by chance is about 0.10 in every arm. The word-start error is the median over clips with at least 4 matched words (269, 125, 104 and 148 clips).
+
+- P0, integrity, held.
+- R1, the clock's effect, held. J(S*) - J(S*_b0) = 0.3125, with a 95% bootstrap interval of 0.198 to 0.427. None of the 10,000 resamples was at or below 0, and seeds 0 to 19 all give the same answer. S* won 36 melodies, lost 6 and tied 54.
+- R2, the capability, failed: 47 of 96 melodies, where 48 were needed.
+
+Verdict: "Clock helps, capability not reached."
+
+The registered labels:
+- B2's size bar (a gap of at least 0.20): held, 0.3125. The interval's lower end, 0.198, is just under 0.20.
+- Strict capability (kept q of 0.75 or more on at least 48 melodies): no, 8.
+- Head-specific clock: yes. Mean kept q is 0.465 for S*, 0.286 with random heads and 0.281 without the clock.
+- Timing-specific: yes. The lower bound of S* minus S*_shuf in mean kept q is 0.122.
+- Timbre copy: no, 2 of 384 clips vowel-only.
+- Words cut: no. Recall drops by 0.018 from the first half of the line to the second.
+- Frontier moved: yes. NPA_v stays level (0.429 against 0.408), and WR rises by 0.217, just past the 0.20 needed.
+- Independent ASR: R2 fails with the CTC recogniser. On the same kept draws it finds a joint clip for 9 melodies with the clock and 9 without on the mix, and 9 against 8 on the separated vocal.
+
+Outside the rule: pooled over B2's 24 melodies and these 96, the gap in J is 0.30 (0.19 to 0.40). Best of 1, 2, 3 and 4 draws gives J of 0.22, 0.34, 0.42 and 0.49 for S*, against 0.06, 0.11, 0.15 and 0.18 without the clock.
+
+What it means: on 96 new melodies, the clock's effect, which B2 couldn't settle, is clear by the registered measure. With the clock, the kept draw had at least half the notes right and at least half the words recognised by Whisper on 47 melodies, against 17 without it. The two controls point to the alignment heads (against four random head sets, one per draw) and to the timing: a clock on the lyric heads at the wrong times still cuts wordless output, but far fewer of its words match. The capability bar of half the melodies was missed by one. Both recipes scored lower than in B2 (S* 0.58 to 0.49, the unclocked recipe 0.33 to 0.18), on different melodies, and neither drop is clear on its own. Run C's gap (0.31) and B2's (0.25) can't be told apart (difference 0.06, interval -0.20 to 0.32). The second recogniser still doesn't confirm the words: with its word recall in place of Whisper's, 9 melodies pass with the clock and 9 without on the mix (9 and 8 on the separated vocal). The listening tests have to decide whether people hear the difference. The post-hoc numbers in this paragraph are in `results/checks/runc_secondary.json`.
+
+### Checks after the run
+
+Agents rechecked the run from the files, with their own code written from addendum 4's text.
+- Provenance: all 63 files addendum 4 registers hash to their registered values at `0c97266`, and so do the 89 files the earlier addenda register. Every generation row carries the registered code hashes and the A0 report's hash, and every row's runtime fingerprint equals A0's (NVIDIA L4, CUDA 13.0, torch 2.11.0).
+- Ledgers: every planned run appears exactly once, in the registered order, on its first attempt, with no failure. Every row matches its planned recipe and seeds. Hooked runs made 40 hook calls, and unhooked runs made none. The rotated windows of S*_shuf match the registered rotation wherever the counts can tell. Within each melody and draw, all four arms used one guide latent. Whisper and the CTC model ran at their pinned revisions on every clip. A checker that injected 42 kinds of fault into copies of the ledgers caught every one.
+- Decision: an independent recompute matched the verdict, every rule number and every label. A skeptic tried six other defensible readings of the scoring (a longest in-order match, splitting hyphenated words, and others), and each left S* at 47. Scoring content words only, a different measure, gives 43 against 14, and R1 still holds.
+- Blind pack: each clip is the demo clip of the run its key names, the pairs follow the registered seed, and no file name, tag, size, duration, time stamp or zip position shows which side is which.
+
+Before anyone rated the C1 pack, its analysis was registered in `experiments/listening/registration/listening_plan_c1.json`, with the same test as the B2 pack.
+
+### What went wrong
+
+Nothing stopped the run. These are worth recording:
+- Two extra sessions touched the run state after it had finished, and nothing records why either was started. They generated nothing, and their decisions match.
+- I re-zipped the result package before sending it, and moved 140 of the 192 labelled demo clips into a separate folder to send them apart. File metadata in that folder's zip shows that two demo clips of c1t00, an item not in the blind pack, were opened in an application on 2026-10-31 (one carries a last-opened time of 05:01Z). I moved them and didn't listen to any demo clip. No run file records a hash of the C1 ledgers or the result files (A0's report hashes only A0's own two files, which still match), so their integrity after the re-zip rests on cross-checks: every kept draw and every J recomputed from the ledger rows matches.
+- Four of the pinned packages (swift-f0, onnxruntime, soxr and demucs) are recorded only as empty mismatch lists. The other seven appear with their installed versions in `c1_result.json` or the runtime fingerprint.
+- The demo MP3s can't be tied byte for byte to their WAVs, which stay on Drive.
+
+The labelled demo clips, in the result package and in the folder sent apart, show which recipe each clip comes from. So do the per-clip transcripts in `results/gpu_run4/c1_result.json`, read with its demo list. Nobody should hear those clips or read that file before rating the C1 blind pack.

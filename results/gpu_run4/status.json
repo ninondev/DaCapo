@@ -1,0 +1,114 @@
+{
+ "_meta": {
+  "scale": "full",
+  "started": "2026-10-31 04:09:50",
+  "state": "/content/drive/MyDrive/dacapo_runC/full",
+  "durable": true,
+  "gpu": "NVIDIA L4"
+ },
+ "setup": {
+  "state": "ok",
+  "codes": {
+   "check": 0,
+   "model": 0
+  },
+  "problems": [],
+  "scale": "full",
+  "minutes": 1.3,
+  "minutes_total": 3.7
+ },
+ "a0": {
+  "state": "ok",
+  "reused": "A0 passed earlier on this code and runtime",
+  "hard": {
+   "setup": true,
+   "s_b0_ok": true,
+   "beta0_ok": true,
+   "s_star_ok": true,
+   "hook_calls_40": true,
+   "guide_latents_equal": true,
+   "beta0_bit_identical": true,
+   "s_star_changes_output": true,
+   "scorer": true,
+   "scorer_registered": true
+  },
+  "bit_identity": {
+   "beta0_vs_no_hook": true
+  },
+  "projection": {
+   "n_runs": 1536,
+   "n_blocks": 4,
+   "from_run_b": 5.88,
+   "seconds_per_run_a0": 10.25,
+   "from_a0": 5.09
+  },
+  "scale": "full",
+  "minutes": 0.0,
+  "minutes_total": 1.8
+ },
+ "c1test": {
+  "state": "ok",
+  "blocks_done": [
+   "c1t00-c1t23",
+   "c1t24-c1t47",
+   "c1t48-c1t71",
+   "c1t72-c1t95"
+  ],
+  "generated": 1536,
+  "failed": 0,
+  "scored": 1536,
+  "scale": "full",
+  "minutes": 322.4,
+  "minutes_total": 322.4
+ },
+ "decide": {
+  "state": "ok",
+  "returncode": 0,
+  "verdict": "Clock helps, capability not reached",
+  "reasons": [
+   "R2 failed"
+  ],
+  "labels": {
+   "strict_capability": false,
+   "head_specific": "head-specific clock",
+   "timing": "timing-specific",
+   "timing_lower_bound": 0.121898,
+   "timbre_copy": false,
+   "words_cut": false,
+   "frontier_moved": true,
+   "independent_asr": {
+    "J_ctc_mix": 0.09375,
+    "R2_with_ctc_mix": false,
+    "J_ctc_stem": 0.09375,
+    "R2_with_ctc_stem": false
+   },
+   "strict_capability_detail": {
+    "n_items_strict": 8,
+    "needed": 48
+   },
+   "b2_size_bar": {
+    "held": true,
+    "delta_j": 0.3125,
+    "needed": 0.2,
+    "with_r1": true
+   },
+   "listeners": null,
+   "listeners_note": "filled later from the Run C blind pack (exploratory)"
+  },
+  "J": {
+   "S*": 0.489583,
+   "S*_b0": 0.177083,
+   "S*_rand": 0.208333,
+   "S*_shuf": 0.09375
+  },
+  "scale": "full",
+  "minutes": 5.1,
+  "minutes_total": 6.6
+ },
+ "package": {
+  "state": "running",
+  "scale": "full",
+  "started_epoch": 1793420178.5291214,
+  "minutes_total": 4.8
+ }
+}

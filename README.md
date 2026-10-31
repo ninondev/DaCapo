@@ -125,6 +125,26 @@ People will hear the 24 pairs blind (each melody's kept clip with the clock and 
 
 <sub>B1: 12 lines × 5 arms × 3 draws. B2: Stage D 25 recipes × 12 lines × 3 draws; Stage T 5 arms × 24 new lines × 4 draws, 480 clips, none lost. Notes are scored on the separated vocal with a pitch tracker (chance about 0.10). Words are matched, in order, against a Whisper large-v3 transcript, and Whisper isn't given the lyric. NVIDIA L4, commit bd61a9f. Rules: B1 in [addendum 2](experiments/e5_motif/registration/addendum_2.json) with the [B1 code addendum](experiments/e5_motif/registration/addendum_2_b1code.json); B2 in [addendum 3](experiments/e5_motif/registration/addendum_3.json). Code: [`experiments/e6_clock`](experiments/e6_clock/), [`experiments/e8_clock_sing`](experiments/e8_clock_sing/).</sub>
 
+#### Run C: the same two recipes on 96 new melodies
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/c1_clock_dark.svg">
+  <img alt="Dot plot, share of 96 new melodies where the kept draw (best of 4) gets at least half the notes and at least half the words right. Words recognised by Whisper: clock on the 7 lyric heads 47 of 96, just under the capability bar of 0.50; no clock with the same guide 17; clock on 7 random heads 20; clock with the words on the wrong notes 9. Words recognised by a second recogniser (CTC) on the separated vocal, on the same draws: 9, 8, 6 and 2." src="figures/c1_clock_light.svg" width="100%">
+</picture>
+
+B2's 24 melodies were too few to settle the clock's effect, so Run C ran the same two recipes again, fixed before the run, with the same two controls, on 96 new lines and melodies. Its rule was registered in addendum 4 before any Run C generation. It asked two questions. R1: does the clock help at all, judged by whether the lower end of the gap's 95% interval is above 0? R2: does the recipe with the clock reach at least half the melodies?
+
+The registered verdict is "Clock helps, capability not reached".
+- The clock helps. With the clock, the kept draw got at least half the notes right and at least half the words recognised by Whisper on 47 of 96 melodies, and without it on 17. The gap is 0.31 (95% interval 0.198 to 0.427, so its lower end sits just under B2's 0.20 bar). On 36 melodies only the recipe with the clock passed, and on 6 only the one without it.
+- The clock on random heads got 20, and with the windows moved to the wrong notes 9. The registered labels say head-specific and timing-specific: the gain needs the lyric heads (against four random sets of 7 heads, one per draw) and the right timing. A clock on the lyric heads at the wrong times still turns most wordless output into words (9% wordless, against 41% without the clock), but far fewer of those words match.
+- The capability bar was missed by one melody: 47, where 48 were needed. The margin is narrow either way: with one correct note more or fewer on every clip the count would be 54 or 35, and J's own 95% interval is 0.39 to 0.59. At B2's rate the registered power for R2 was 0.97, so the miss also suggests the recipe does worse than B2's 14 of 24 implied.
+- Both recipes scored lower on these 96 melodies than on B2's 24 (0.49 against 0.58 with the clock, 0.18 against 0.33 without), but neither drop is clear on its own, and the melodies differ. Run C's gap (0.31) and B2's (0.25) can't be told apart.
+- The second recogniser still doesn't confirm the words. With its word recall in place of Whisper's, on the same kept draws, 9 melodies pass with the clock and 8 without on the separated vocal (9 and 9 on the mix). It reads every arm poorly, and much of Whisper's gain is the clock turning wordless output into words: without the clock, 41% of clips sing no recognisable words (by the scorer's flag, which also counts stock captions Whisper makes up), against 4% with it.
+
+So by the registered measure, Whisper's count on the best of 4 draws, the clock's effect is clear on this model: 30 more melodies in 96 (95% interval 19 to 41), and 15 with a single draw. The second recogniser doesn't show that gain. Whether people hear clearer words is for the blind tests.
+
+<sub>Run C: 4 arms × 96 new lines × 4 draws = 1,536 clips, none lost, each on its first attempt. NVIDIA L4, commit 0c97266. Rule: [addendum 4](experiments/e5_motif/registration/addendum_4.json). Results: [`results/gpu_run4`](results/gpu_run4/) (if you will rate the Run C blind pack, don't open it first: its transcripts, read with the demo list, show which clip of a pair has the clock). Code: [`experiments/e9_clock_replicate`](experiments/e9_clock_replicate/).</sub>
+
 ### Measuring is hard
 
 <picture>
@@ -144,9 +164,9 @@ Run A finished on 2026-10-28, and its results are above. The motif study (E5) fo
 
 Run B finished on 2026-10-30, and its results are above. The lyric clock alone didn't fix the timing (B1). With a melody guide, the chosen recipe reached the registered bar by Whisper's count (B2), but the clock wasn't credited and a second recogniser didn't confirm the words.
 
-Run C, a registered replication of B2 on 96 new melodies, is built and waits for a GPU session ([addendum 4](experiments/e5_motif/registration/addendum_4.json), [`notebook_runC.ipynb`](notebook_runC.ipynb)). With four times as many melodies, it should settle whether the clock helps.
+Run C, the registered replication of B2 on 96 new melodies, ran on 2026-10-30, and its last session wrote the results on 2026-10-31. Its verdict is "Clock helps, capability not reached": by Whisper's count the clock helps (R1), and the capability bar was missed by one melody (R2), so B2's capability result didn't replicate. The second recogniser confirms neither. Its results are above.
 
-The blind listening tests come from the runs: 60 motif clips from Run A and 24 singing pairs from Run B, which people will hear without knowing which condition each one comes from. I asked for this. Until they're done, the motif result rests on pitch-tracker scores and the singing result on the pitch tracker and Whisper.
+The blind listening tests come from the runs: 60 motif clips from Run A and 24 singing pairs each from Run B and Run C, which people will hear without knowing which condition each one comes from. I asked for this. Until they're done, the motif result rests on pitch-tracker scores and the singing result on the pitch tracker and Whisper.
 
 ## Status
 
@@ -161,7 +181,7 @@ The blind listening tests come from the runs: 60 motif clips from Run A and 24 s
 | E5 | Can it develop a motif? | Run 2 done on GPU: it repeats part of a pattern unchanged (H1, H2 supported), but shows no transposition, sequence or analogy at the registered thresholds (H3 to H5 not supported). Run 1 failed its quality check |
 | E6 | Can a lyric clock time each syllable? | Read-out done on GPU: the lyric heads put word starts a median 0.21 s from Whisper's. The clock alone (B1) is not supported: it cut the timing error enough in 2 of 12 lines, where 9 were needed |
 | E7 | How well do Suno and ACE-Step sing a melody you give them? | Registered; waiting for the Suno songs |
-| E8 | With a melody guide, can the lyric clock sing new melodies with the right notes and recognisable words? (stage B2) | Done on GPU: 14 of 24 new melodies pass by Whisper (12 needed), so the capability bar is reached, but the clock isn't credited (the gap's 95% interval starts at 0) and by a second recogniser only 2 pass. Blind test next |
+| E8 | With a melody guide, can the lyric clock sing new melodies with the right notes and recognisable words? (stage B2) | Done on GPU: 14 of 24 new melodies pass by Whisper (12 needed), so the capability bar is reached, but the clock isn't credited (the gap's 95% interval starts at 0) and by a second recogniser only 2 pass. Blind test next. Run C, on 96 new melodies: by Whisper the clock helps (47 against 17, the gap's interval 0.198 to 0.427), and the capability bar was missed by one (47, where 48 were needed); by the second recogniser 9 and 8 pass |
 
 [`LOG.md`](LOG.md) has every run, including the failures and the mistakes.
 
@@ -200,6 +220,8 @@ results/cpu/     result files from CPU runs
 results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
 results/gpu_run2/ result files from Run A: the motif study and the lyric read-out (NVIDIA L4)
 results/gpu_run3/ result files from Run B: the lyric clock alone (B1) and with a melody guide (B2) (NVIDIA L4)
+results/gpu_run4/ result files from Run C: B2's recipes on 96 new melodies (NVIDIA L4)
+results/checks/  post-hoc checks the agents computed from the result files
 figures/         charts and the script that draws them
 tests/           unit tests and a render-to-analysis test
 LOG.md           every run, in order
@@ -223,7 +245,8 @@ notebook_runC.ipynb the Colab notebook for Run C
 - [ ] Motif study, next phases: which layers make the copy (new addendum first)
 - [x] Lyric clock alone (B1) and with a melody guide (B2) on the GPU (Run B)
 - [ ] Blind listening test of the 24 singing pairs from Run B
-- [ ] Run C: B2's recipes on 96 new melodies (registered, waiting for a GPU session)
+- [x] Run C: B2's recipes on 96 new melodies (the clock helps; the capability bar missed by one)
+- [ ] Blind listening test of the 24 Run C pairs (analysis registered in [`listening_plan_c1.json`](experiments/listening/registration/listening_plan_c1.json))
 - [ ] Measure Suno and ACE-Step on the same 12 melodies (E7, Stage S)
 - [ ] Train a melody adapter inside the renderer (E7), unless Stage S shows it is already solved
 - [ ] More seeds, and a blind listening test with musicians
