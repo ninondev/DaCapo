@@ -406,3 +406,7 @@ Nothing stopped the run. These are worth recording:
 - The demo MP3s can't be tied byte for byte to their WAVs, which stay on Drive.
 
 The labelled demo clips, in the result package and in the folder sent apart, show which recipe each clip comes from. So do the per-clip transcripts in `results/gpu_run4/c1_result.json`, read with its demo list. Nobody should hear those clips or read that file before rating the C1 blind pack.
+
+## 2026-11-03: E1b figure title
+
+The E1b figure's title said "Most of the loss is in the tokenizer". The numbers don't support "most". A linear probe still reads pitch class from the tokens at 0.58 to 0.67, against 0.92 from the audio latents, while a song rendered from those tokens keeps 0.29. So part of the loss happens in the tokenizer and part after it. The title now reads "Part of the loss is in the tokenizer". Nothing else in the figure changed.

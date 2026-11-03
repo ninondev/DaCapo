@@ -115,7 +115,7 @@ def fig_e1b(th, name):
     fig.subplots_adjust(left=0.33, right=0.97, top=0.70, bottom=0.15)
     hbar_groups(ax, th, [c[1] for c in cats], [p["quant"][c[0]] for c in cats], [p["latent_pool5"][c[0]] for c in cats],
                 "Plan tokens", "Audio latents at the same 5 Hz rate",
-                "Most of the loss is in the tokenizer",
+                "Part of the loss is in the tokenizer",
                 "Linear probe: decode the melody's pitch class on held-out melodies",
                 chance=p["majority_baseline"], chance_label="majority-class baseline", legend_y=0.835, fmt="{:.3f}",
                 note=f"48 melodies x 3 lead instruments; 6 melodies held out for testing. Source: {RUN1}/e1b_probe.json")
