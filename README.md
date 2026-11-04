@@ -16,7 +16,7 @@ This repo is my attempt to find out why. It studies one open model, ACE-Step 1.5
 ## Who did what
 
 - Me: in charge of the project. Choosing the question; searching for a model and choosing ACE-Step 1.5, with help from another AI; running the GPU tests in Colab; deciding to move the tests to a GPU and to build melody control inside the renderer; requiring each main study's rules to be written down before it runs, and the final claims to come from people listening blind.
-- AI coding tools, working inside the questions and rules I set: designed the tests, wrote the code, ran the CPU tests, worked out the numbers, and wrote this README and the log.
+- AI coding tools, working inside the questions and rules I set: designed the tests, wrote the code, ran the CPU tests, worked out the numbers, and wrote the log.
 
 ## How the model works
 
