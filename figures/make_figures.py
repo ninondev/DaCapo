@@ -1,6 +1,7 @@
 """Render the README figures (light + dark SVG) from committed result files.
 
   python figures/make_figures.py
+  python figures/make_figures.py --paper DIR   (light SVGs for the paper: no titles or source notes, cropped)
 
 Every number drawn here is read from the result files in results/. Nothing is typed in by hand.
 Colours: one blue and one orange series per theme, with light gridlines.
@@ -8,6 +9,7 @@ Colours: one blue and one orange series per theme, with light gridlines.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -29,6 +31,7 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "svg.fonttype": "path", "font
 
 RUN1 = "results/gpu_run1"
 NO_META = {"Creator": None, "Date": None, "Format": None, "Type": None}
+PAPER: Path | None = None
 
 
 def load(rel: str) -> dict:
@@ -36,7 +39,13 @@ def load(rel: str) -> dict:
 
 
 def save(fig, path: Path, th: dict) -> None:
-    fig.savefig(path, facecolor=th["surface"], metadata=NO_META)
+    if PAPER:
+        for text in list(fig.texts):
+            text.remove()
+        fig.savefig(PAPER / path.name.replace("_light", ""), facecolor=th["surface"], metadata=NO_META,
+                    bbox_inches="tight", pad_inches=0.05)
+    else:
+        fig.savefig(path, facecolor=th["surface"], metadata=NO_META)
     plt.close(fig)
 
 
@@ -410,8 +419,14 @@ def hero(th, name):
 
 
 if __name__ == "__main__":
-    for name, th in THEMES.items():
-        hero(th, name)
+    themes = THEMES
+    if sys.argv[1:2] == ["--paper"]:
+        PAPER = Path(sys.argv[2])
+        PAPER.mkdir(parents=True, exist_ok=True)
+        themes = {"light": THEMES["light"]}
+    for name, th in themes.items():
+        if not PAPER:
+            hero(th, name)
         fig_e1(th, name)
         fig_e1b(th, name)
         fig_e0(th, name)
@@ -419,4 +434,4 @@ if __name__ == "__main__":
         fig_e5(th, name)
         fig_b2(th, name)
         fig_c1(th, name)
-    print(sorted(p.name for p in OUT.glob("*.svg")))
+    print(sorted(p.name for p in (PAPER or OUT).glob("*.svg")))
