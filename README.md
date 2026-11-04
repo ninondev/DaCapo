@@ -15,9 +15,8 @@ This repo is my attempt to find out why. It studies one open model, ACE-Step 1.5
 
 ## Who did what
 
-- Me: choosing the question; running the GPU tests in Colab; deciding to move the tests to a GPU and to build melody control inside the renderer; asking for each main study's rules to be written down before it runs, and for the final claims to come from people listening blind.
-- Another AI: suggested ACE-Step 1.5 and the overall plan.
-- Coding agents: designed the tests, wrote the code, ran the CPU tests, worked out the numbers, and wrote this README and the log.
+- Me: in charge of the project. Choosing the question; searching for a model and choosing ACE-Step 1.5, with help from another AI; running the GPU tests in Colab; deciding to move the tests to a GPU and to build melody control inside the renderer; requiring each main study's rules to be written down before it runs, and the final claims to come from people listening blind.
+- AI coding tools, working inside the questions and rules I set: designed the tests, wrote the code, ran the CPU tests, worked out the numbers, and wrote this README and the log.
 
 ## How the model works
 
@@ -44,11 +43,11 @@ Every number here comes from a file in [`results/`](results/), and [`figures/mak
   <img alt="Bar chart of melody pitch-class accuracy, pooled over 80, 120 and 160 BPM, at shift 3.0 and 1.0: input itself 0.90 and 0.90; dense 25 Hz latents as context 0.91 and 0.91; VAE round trip 0.90 and 0.90; 5 Hz plan tokens 0.29 and 0.31; plan tokens with new instrumentation 0.31 and 0.32; no audio condition 0.10 and 0.11." src="figures/e1_melody_paths_light.svg" width="100%">
 </picture>
 
-The agents made 16 melodies with known notes, each a piano or flute line over chords, bass and drums, at 80, 120 and 160 BPM. Each one went through every path of the model, and the tests measured how much melody came out.
+The tests used 16 melodies with known notes, each a piano or flute line over chords, bass and drums, at 80, 120 and 160 BPM. Each one went through every path of the model, and the tests measured how much melody came out.
 
 Dense audio keeps the note names as well as the measuring tool can see. Its note F1 is 0.72 against 0.78 for the original, about the same loss as encoding and decoding the audio once. The plan tokens keep much less. Every output is also scored against the other melodies at the same tempo, and after removing that chance level, the tokens keep 28% (95% CI 22% to 34%) of the melody information. Their note F1 is 0.12.
 
-<sub>16 melodies × 3 tempos, one seed, NVIDIA L4, 8-step turbo model. Shift is a sampler setting: 3.0 is what the ACE-Step docs recommend for turbo, and the default 1.0 gives the same result. The "no audio" bar uses only 6 different generations per setting. A smaller CPU test the agents ran earlier (4 melodies per tempo) gave the tokens 0.51 at 90 BPM, and the GPU run didn't repeat that, so this page reports the GPU numbers. Code: [`experiments/e1_melody_paths`](experiments/e1_melody_paths/).</sub>
+<sub>16 melodies × 3 tempos, one seed, NVIDIA L4, 8-step turbo model. Shift is a sampler setting: 3.0 is what the ACE-Step docs recommend for turbo, and the default 1.0 gives the same result. The "no audio" bar uses only 6 different generations per setting. A smaller CPU test run earlier (4 melodies per tempo) gave the tokens 0.51 at 90 BPM, and the GPU run didn't repeat that, so this page reports the GPU numbers. Code: [`experiments/e1_melody_paths`](experiments/e1_melody_paths/).</sub>
 
 ### Why it gets lost
 
@@ -68,7 +67,7 @@ The low frame rate isn't the whole reason. When a note stays the same for a full
   <img alt="Scatter plot of 21 settings (20 guides and no guide): notes at the written pitch in the whole output (no vocal gate) against lyric words recognised. Without a guide, 0.03 of notes and 0.66 of words. Settings that reach 0.86 or more of the notes keep at most 0.03 of the words. Only 2 of 378 clips get at least half of both right." src="figures/e4_tradeoff_light.svg" width="100%">
 </picture>
 
-The agents asked the model to sing one lyric line on a melody, one note per one-syllable word. Without a guide it doesn't know the melody, so its notes match only by chance (3%), but it sings 66% of the words. Then they guided it with the melody sung or played without words, either as context for the first k of the 8 steps or as a noisy starting point (SDEdit, a known method used here as a baseline). Every setting that got the notes right (86% or more) lost the words (3% or less). Only 2 of 378 test clips got at least half of both.
+Here the model was asked to sing one lyric line on a melody, one note per one-syllable word. Without a guide it doesn't know the melody, so its notes match only by chance (3%), but it sings 66% of the words. Then it was guided with the melody sung or played without words, either as context for the first k of the 8 steps or as a noisy starting point (SDEdit, a known method used here as a baseline). Every setting that got the notes right (86% or more) lost the words (3% or less). Only 2 of 378 test clips got at least half of both.
 
 The working guess is that melody and lyrics have to be guided together, one syllable at a time. That's the idea behind the lyric clock, tested in Run B below.
 
@@ -152,7 +151,7 @@ So by the registered measure, Whisper's count on the best of 4 draws, the clock'
   <img alt="Dot plot of pitch-tracker accuracy on a perfectly played melody, alone versus with a loud band: piano lead 0.95 vs 0.09, synth lead 0.95 vs 0.55, voice-like lead 0.93 vs 0.59." src="figures/e0_ruler_light.svg" width="100%">
 </picture>
 
-Before testing the model, the agents tested the measuring tools on audio where every note is known. Pitch trackers are very good on a solo melody and bad once a loud band plays. With a voice-like melody in a full mix, one or two wrong notes are hard to catch (best AUC 0.65 to 0.78). So with a band, every score is compared with the same score on the original audio, and singing is only scored in songs where the prompt asked for no instruments.
+Before testing the model, the measuring tools were tested on audio where every note is known. Pitch trackers are very good on a solo melody and bad once a loud band plays. With a voice-like melody in a full mix, one or two wrong notes are hard to catch (best AUC 0.65 to 0.78). So with a band, every score is compared with the same score on the original audio, and singing is only scored in songs where the prompt asked for no instruments.
 
 <sub>9 melodies per condition in the chart; the wrong-note tests use 6 melodies per condition. Code: [`experiments/e0_ruler`](experiments/e0_ruler/).</sub>
 
@@ -221,7 +220,7 @@ results/gpu_run1/ result files from the first GPU run (NVIDIA L4)
 results/gpu_run2/ result files from Run A: the motif study and the lyric read-out (NVIDIA L4)
 results/gpu_run3/ result files from Run B: the lyric clock alone (B1) and with a melody guide (B2) (NVIDIA L4)
 results/gpu_run4/ result files from Run C: B2's recipes on 96 new melodies (NVIDIA L4)
-results/checks/  post-hoc checks the agents computed from the result files
+results/checks/  post-hoc checks computed from the result files
 figures/         charts and the script that draws them
 tests/           unit tests and a render-to-analysis test
 LOG.md           every run, in order
