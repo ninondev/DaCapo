@@ -4,6 +4,8 @@
 
 [English](README.md) | 中文
 
+论文：[Where does the melody go? Measuring and steering melody and lyrics inside an open song model](paper/where-does-the-melody-go.pdf)（预印本，2026 年 11 月），另有[补充材料](paper/where-does-the-melody-go-supplement.pdf)。
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/hero_dark.svg">
   <img alt="示意图：在 ACE-Step 1.5 里，模型自己的 token 化模块把旋律的音频变成每秒 5 个 token（没有运行规划器语言模型），渲染器从这些 token 生成的结果只有 29% 的帧音名正确；同一段旋律在全部 8 步里都作为稠密音频交给渲染器，得分是 91%，和原音频（90%）一样。" src="figures/hero_light.svg" width="100%">
@@ -249,7 +251,8 @@ notebook_runC.ipynb Run C 的 Colab 笔记本
 - [ ] 用同样的 12 条旋律测 Suno 和 ACE-Step（E7，阶段 S）
 - [ ] 在渲染器里训练一个旋律适配器（E7），除非阶段 S 显示这件事已经有人做好了
 - [ ] 用更多随机种子重复，再请音乐人做盲听测试
-- [ ] arXiv 论文和带音频的演示页
+- [x] 论文预印本（[`paper/`](paper/)）
+- [ ] arXiv 和带音频的演示页
 
 ## 致谢和许可
 
@@ -259,9 +262,10 @@ notebook_runC.ipynb Run C 的 Colab 笔记本
 
 ```bibtex
 @misc{dacapo2026,
-  title  = {Da Capo: Measuring and Steering Musical Structure in AI Song Models},
-  author = {ninondev},
+  title  = {Where does the melody go? Measuring and steering melody and lyrics inside an open song model},
+  author = {ninon},
   year   = {2026},
+  note   = {Preprint},
   url    = {https://github.com/ninondev/DaCapo}
 }
 ```

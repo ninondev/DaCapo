@@ -4,6 +4,8 @@
 
 English | [中文](README.zh-CN.md)
 
+Paper: [Where does the melody go? Measuring and steering melody and lyrics inside an open song model](paper/where-does-the-melody-go.pdf) (preprint, November 2026), with a [supplement](paper/where-does-the-melody-go-supplement.pdf).
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/hero_dark.svg">
   <img alt="Diagram: in ACE-Step 1.5, the model's tokenizer turns a melody's audio into 5 Hz tokens (the planner language model is not run), and the renderer's output from those tokens has the right pitch class in 29% of frames. The same melody given to the renderer as dense 25 Hz audio latents for all 8 steps scores 91%, as high as the input itself (90%)." src="figures/hero_light.svg" width="100%">
@@ -249,7 +251,8 @@ notebook_runC.ipynb the Colab notebook for Run C
 - [ ] Measure Suno and ACE-Step on the same 12 melodies (E7, Stage S)
 - [ ] Train a melody adapter inside the renderer (E7), unless Stage S shows it is already solved
 - [ ] More seeds, and a blind listening test with musicians
-- [ ] arXiv paper and a demo page with audio
+- [x] Paper preprint ([`paper/`](paper/))
+- [ ] arXiv and a demo page with audio
 
 ## Credits and license
 
@@ -259,9 +262,10 @@ To cite it:
 
 ```bibtex
 @misc{dacapo2026,
-  title  = {Da Capo: Measuring and Steering Musical Structure in AI Song Models},
-  author = {ninondev},
+  title  = {Where does the melody go? Measuring and steering melody and lyrics inside an open song model},
+  author = {ninon},
   year   = {2026},
+  note   = {Preprint},
   url    = {https://github.com/ninondev/DaCapo}
 }
 ```
